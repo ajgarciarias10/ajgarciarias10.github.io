@@ -298,7 +298,7 @@
   <section id="work">
     <div class="wrap">
       <div class="sec-head"><h2 data-i18n="work.title">Currently building</h2><div class="rule"></div></div>
-      <p class="sec-sub" data-i18n="work.sub">Three products in active development. Real users, real deadlines.</p>
+      <p class="sec-sub" data-i18n="work.sub">What I have in my hands right now — and what comes next.</p>
 
       <!-- F1-BUGAMBRA -->
       <article class="project">
@@ -433,6 +433,18 @@
         </div>
       </article>
 
+      <!-- PCBUILDER -->
+      <article class="project soon">
+        <div class="p-head">
+          <h3>🖥️ PCBuilder</h3>
+          <span class="badge soon" data-i18n="badge.next">Next project</span>
+        </div>
+        <p data-i18n="pb.p1">An API that puts together PC builds whose parts actually fit: socket and chipset, RAM generation, power draw against the supply, card length against the case. The rules are the interesting bit — a compatibility engine is a lot closer to a ruleset than to a catalogue. It is the next thing I am starting.</p>
+        <div class="links">
+          <a href="https://github.com/ajgarciarias10/pcbuilder-api" target="_blank" rel="noopener" data-i18n="link.repo">Repository →</a>
+        </div>
+      </article>
+
       <!-- CLEVERCLOTHER -->
       <article class="project soon">
         <div class="p-head">
@@ -451,11 +463,6 @@
       <div class="sec-head"><h2 data-i18n="more.title">Selected work</h2><div class="rule"></div></div>
       <p class="sec-sub" data-i18n="more.sub">Other things I have built along the way.</p>
       <div class="grid">
-        <a class="mini" href="https://github.com/ajgarciarias10/pcbuilder-api" target="_blank" rel="noopener">
-          <span class="tag">API · Backend</span>
-          <h4>PCBuilder</h4>
-          <p data-i18n="m.pcbuilder">API for building compatible PC configurations. Next one on the list.</p>
-        </a>
         <a class="mini" href="https://github.com/ajgarciarias10/SmartFruitClassifier" target="_blank" rel="noopener">
           <span class="tag">Machine Learning</span>
           <h4>SmartFruitClassifier</h4>
@@ -530,9 +537,9 @@ const I18N = {
     "hero.role2":"Y sobre todo, me gusta aprender. Cada proyecto de esta página empezó siendo algo que todavía no sabía hacer.",
     "hero.quote":"«Donde los sueños están al alcance de quien tiene disciplina.»",
     "hero.cv":"Descargar CV","hero.mail":"Escríbeme",
-    "work.title":"En construcción","work.sub":"Tres productos en desarrollo activo. Usuarios reales, plazos reales.",
+    "work.title":"En construcción","work.sub":"Lo que tengo entre manos ahora mismo — y lo que viene después.",
     "badge.live":"En producción","badge.pwa":"PWA instalable","badge.dev":"En desarrollo",
-    "badge.tfg":"Trabajo Fin de Grado","badge.soon":"Próximamente",
+    "badge.tfg":"Trabajo Fin de Grado","badge.soon":"Próximamente","badge.next":"Próximo proyecto",
     "badge.private":"🔒 Repositorio privado",
     "f1.kicker":"Un campeonato entre amigos, gestionado como un equipo real de Fórmula 1.",
     "f1.p1":"Empezó como una liga de consola los domingos por la noche. Acabó siendo una <strong>plataforma de gestión completa</strong>: contratos, presupuestos de escudería, un mercado de fichajes con reglas económicas reales, auditoría carrera a carrera y clasificaciones que se reconstruyen solas. Cada fin de semana un grupo de pilotos reales abre la app, revisa su asiento, negocia un fichaje y ve moverse el campeonato.",
@@ -567,10 +574,10 @@ const I18N = {
     "ct.pending.tag":"Sin capturas aún",
     "ct.pending":"Aquí no hay nada publicado a propósito. Cada hueco de arriba se rellena solo en cuanto el archivo esté en <code>assets/</code> — sin tocar el código.",
     "ct.cap":"Trabajo en curso — pantallas de la versión actual.",
+    "pb.p1":"Una API que monta configuraciones de PC cuyas piezas encajan de verdad: socket y chipset, generación de RAM, consumo frente a la fuente, longitud de la gráfica frente a la caja. Lo interesante son las reglas — un motor de compatibilidad se parece mucho más a un reglamento que a un catálogo. Es lo siguiente que voy a empezar.",
     "cc.p1":"Algo nuevo está en camino. Detalles muy pronto.",
     "link.live":"Abrir la app →","link.repo":"Código fuente →",
     "more.title":"Trabajos destacados","more.sub":"Otras cosas que he construido por el camino.",
-    "m.pcbuilder":"API para montar configuraciones de PC compatibles. El siguiente de la lista.",
     "m.fruit":"Modelo de clasificación de imágenes entrenado para distinguir variedades de fruta.",
     "m.raton":"Resolutor de laberintos con búsqueda por profundidad limitada (DLS).",
     "m.4raya":"Cuatro en raya con minimax y poda alfa-beta.",
