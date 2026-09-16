@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Antonio José García Arias — Software Engineer</title>
+<meta name="description" content="Computer Engineering student and developer. Building F1-BUGAMBRA, CleverTracker and CleverClother." />
+<meta property="og:title" content="Antonio José García Arias — Software Engineer" />
+<meta property="og:description" content="Computer Engineering student and developer. Building F1-BUGAMBRA, CleverTracker and CleverClother." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ajgarciarias10.github.io" />
+<meta property="og:image" content="https://ajgarciarias10.github.io/assets/profile.jpg" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0c10;
+    --bg-soft:#11141b;
+    --card:#141821;
+    --card-hi:#1a1f2b;
+    --line:#242b38;
+    --text:#e8ecf3;
+    --muted:#98a2b3;
+    --accent:#e10600;
+    --accent-2:#38bdf8;
+    --ok:#22c55e;
+    --warn:#f59e0b;
+    --radius:16px;
+    --max:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(225,6,0,.16), transparent 60%),
+      radial-gradient(700px 420px at 5% 5%, rgba(56,189,248,.10), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+  a{color:inherit}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:40;
+    backdrop-filter:blur(12px);
+    background:rgba(10,12,16,.72);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{display:flex;align-items:center;gap:16px;height:60px}
+  .brand{font-weight:700;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+  .brand span{color:var(--accent)}
+  .nav{display:flex;gap:18px;margin-left:auto;align-items:center}
+  .nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500}
+  .nav a:hover{color:var(--text)}
+  .lang{
+    display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;
+    background:var(--bg-soft);flex:none;
+  }
+  .lang button{
+    appearance:none;border:0;background:transparent;color:var(--muted);
+    font:600 12px/1 "Inter",sans-serif;padding:8px 12px;cursor:pointer;letter-spacing:.06em;
+  }
+  .lang button[aria-pressed="true"]{background:var(--accent);color:#fff}
+
+  /* ---------- hero ---------- */
+  .hero{padding:64px 0 40px}
+  .hero-grid{display:grid;grid-template-columns:200px 1fr;gap:36px;align-items:center}
+  .avatar{
+    position:relative;width:200px;height:200px;border-radius:24px;overflow:hidden;
+    border:1px solid var(--line);background:var(--card);
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+  }
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .ph{
+    position:absolute;inset:0;display:flex;flex-direction:column;gap:6px;
+    align-items:center;justify-content:center;text-align:center;padding:12px;
+    color:var(--muted);font-size:12px;
+    background:repeating-linear-gradient(45deg,#161b25,#161b25 10px,#131820 10px,#131820 20px);
+  }
+  .ph b{display:block;font-family:"JetBrains Mono",monospace;font-size:11px;color:#cbd5e1}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);margin:0 0 10px
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(34,197,94,.15)}
+  h1{font-size:clamp(30px,5vw,46px);line-height:1.1;letter-spacing:-.03em;margin:0 0 12px}
+  .role{color:var(--muted);font-size:17px;margin:0 0 18px;max-width:60ch}
+  .quote{
+    border-left:3px solid var(--accent);padding-left:14px;color:#cbd5e1;
+    font-style:italic;margin:0 0 24px;max-width:56ch
+  }
+  .cta{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    padding:11px 18px;border-radius:999px;font-weight:600;font-size:14px;
+    border:1px solid var(--line);background:var(--card);color:var(--text);
+    transition:transform .15s ease,border-color .15s ease,background .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);border-color:#3a4456;background:var(--card-hi)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn.primary:hover{background:#ff1a12;border-color:#ff1a12}
+
+  /* ---------- sections ---------- */
+  section{padding:44px 0}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  h2{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0;font-weight:700}
+  .rule{flex:1;height:1px;background:var(--line)}
+  .sec-sub{color:var(--muted);margin:0 0 26px;font-size:15px}
+
+  /* ---------- project cards ---------- */
+  .project{
+    border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
+    padding:26px;margin-bottom:22px;position:relative;overflow:hidden;
+  }
+  .project::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);opacity:.9
+  }
+  .project.cyan::before{background:var(--accent-2)}
+  .project.soon::before{background:#3a4456}
+  .p-head{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:6px}
+  .p-head h3{margin:0;font-size:22px;letter-spacing:-.02em}
+  .badge{
+    font:600 11px/1 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;
+    padding:6px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)
+  }
+  .badge.live{color:var(--ok);border-color:rgba(34,197,94,.35);background:rgba(34,197,94,.08)}
+  .badge.dev{color:var(--warn);border-color:rgba(245,158,11,.35);background:rgba(245,158,11,.08)}
+  .badge.soon{color:var(--muted)}
+  .p-kicker{color:var(--accent-2);font-size:13px;font-weight:600;margin:0 0 14px}
+  .project p{color:#c3ccdb;margin:0 0 14px;max-width:72ch}
+  .project p strong{color:var(--text)}
+  ul.feat{margin:0 0 16px;padding-left:18px;color:#c3ccdb}
+  ul.feat li{margin-bottom:6px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .chip{
+    font:500 12px/1 "JetBrains Mono",monospace;padding:7px 10px;border-radius:8px;
+    background:var(--bg-soft);border:1px solid var(--line);color:#aeb9c9
+  }
+  .links{display:flex;flex-wrap:wrap;gap:10px}
+  .links a{
+    font-size:13px;font-weight:600;text-decoration:none;color:var(--text);
+    border-bottom:1px solid var(--accent);padding-bottom:2px
+  }
+  .links a:hover{color:var(--accent)}
+
+  /* ---------- gallery ---------- */
+  .gallery{display:grid;gap:12px;margin:18px 0 20px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .shot{
+    position:relative;aspect-ratio:9/16;border-radius:12px;overflow:hidden;
+    border:1px solid var(--line);background:var(--bg-soft)
+  }
+  .shot.wide{aspect-ratio:16/10}
+  .shot img{width:100%;height:100%;object-fit:cover;display:block}
+  .cap{font-size:12px;color:var(--muted);margin-top:8px;text-align:center}
+
+  /* ---------- other projects ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+  .mini{
+    border:1px solid var(--line);border-radius:12px;background:var(--card);padding:18px;
+    text-decoration:none;display:block;transition:transform .15s ease,border-color .15s ease
+  }
+  .mini:hover{transform:translateY(-3px);border-color:#3a4456}
+  .mini h4{margin:0 0 6px;font-size:15px}
+  .mini p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+  .mini .tag{font:500 11px/1 "JetBrains Mono",monospace;color:var(--accent-2);display:block;margin-bottom:8px}
+
+  /* ---------- stack ---------- */
+  .stackrow{display:flex;flex-wrap:wrap;gap:10px}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);margin-top:30px;padding:34px 0 50px;color:var(--muted);font-size:14px}
+  .foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+  .foot a{color:var(--text);text-decoration:none;font-weight:600}
+  .foot a:hover{color:var(--accent)}
+
+  @media (max-width:760px){
+    .hero{padding:40px 0 24px}
+    .hero-grid{grid-template-columns:1fr;gap:22px;text-align:left}
+    .avatar{width:140px;height:140px;border-radius:20px}
+    .nav a{display:none}
+    .g3{grid-template-columns:1fr 1fr}
+    .project{padding:20px}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">AJ<span>.</span>García</a>
+    <nav class="nav">
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#more" data-i18n="nav.more">Projects</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="avatar">
+        <div class="ph"><b>assets/profile.jpg</b><span data-i18n="ph.photo">Your photo goes here</span></div>
+        <img src="assets/profile.jpg" alt="Antonio José García Arias" onerror="this.remove()" />
+      </div>
+      <div>
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="hero.status">Open to opportunities</span></p>
+        <h1>Antonio José García Arias</h1>
+        <p class="role" data-i18n="hero.role">Computer Engineering student, working as a Data Engineer. I build products end to end — from the business rules to the deploy — with a strong interest in AI agents.</p>
+        <p class="quote" data-i18n="hero.quote">“Where dreams are within reach for those who are disciplined.”</p>
+        <div class="cta">
+          <a class="btn primary" href="assets/cv.pdf" target="_blank" rel="noopener" data-i18n="hero.cv">Download CV</a>
+          <a class="btn" href="https://www.linkedin.com/in/antonio-jose-garcia-arias-095475208/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/ajgarciarias10" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="mailto:ajgarciarias@gmail.com" data-i18n="hero.mail">Email me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORK IN PROGRESS ================= -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head"><h2 data-i18n="work.title">Currently building</h2><div class="rule"></div></div>
+      <p class="sec-sub" data-i18n="work.sub">Three products in active development. Real users, real deadlines.</p>
+
+      <!-- F1-BUGAMBRA -->
+      <article class="project">
+        <div class="p-head">
+          <h3>🏎️ F1-BUGAMBRA</h3>
+          <span class="badge live" data-i18n="badge.live">Live in production</span>
+          <span class="badge" data-i18n="badge.pwa">Installable PWA</span>
+        </div>
+        <p class="p-kicker" data-i18n="f1.kicker">A championship between friends, managed like a real Formula 1 team.</p>
+
+        <p data-i18n="f1.p1">It started as a console league on Sunday nights. It ended up as a <strong>full management platform</strong>: contracts, team budgets, a transfer market with real money rules, race-by-race auditing and standings that rebuild themselves from scratch. Every weekend a group of real drivers opens the app, checks their seat, negotiates a transfer and watches the championship move.</p>
+        <p data-i18n="f1.p2">The interesting part is <strong>how it was built</strong>: the business logic was designed by an engineer — rulesets, economy, market parameters, immutable race revisions — and the product itself was shipped with <strong>vibe coding</strong>, iterating against real feedback from the league instead of a spec document. Design decisions had to survive contact with twenty people who notice immediately when a single point is wrong.</p>
+
+        <div class="gallery g3">
+          <figure class="shot" style="margin:0">
+            <div class="ph"><b>assets/f1-01.png</b><span data-i18n="ph.shot">Screenshot</span></div>
+            <img src="assets/f1-01.png" alt="F1-BUGAMBRA — standings" onerror="this.remove()" />
+          </figure>
+          <figure class="shot" style="margin:0">
+            <div class="ph"><b>assets/f1-02.png</b><span data-i18n="ph.shot">Screenshot</span></div>
+            <img src="assets/f1-02.png" alt="F1-BUGAMBRA — transfer market" onerror="this.remove()" />
+          </figure>
+          <figure class="shot" style="margin:0">
+            <div class="ph"><b>assets/f1-03.png</b><span data-i18n="ph.shot">Screenshot</span></div>
+            <img src="assets/f1-03.png" alt="F1-BUGAMBRA — team panel" onerror="this.remove()" />
+          </figure>
+        </div>
+        <p class="cap" data-i18n="f1.cap">Standings, transfer market and team management — as used by the league today.</p>
+
+        <ul class="feat">
+          <li data-i18n="f1.f1">Role-based access — admin, team principal, sporting director and driver — enforced by <strong>Firebase Auth</strong> and security rules.</li>
+          <li data-i18n="f1.f2"><strong>Firestore</strong> as the live data layer: standings, results and market moves update for everyone at once.</li>
+          <li data-i18n="f1.f3">Audit-first design: race results are stored as immutable revisions, so a correction rebuilds the season instead of patching a number.</li>
+          <li data-i18n="f1.f4">Installable on any phone as a PWA, with an install guide written for people who are not developers.</li>
+        </ul>
+
+        <div class="chips">
+          <span class="chip">React 19</span><span class="chip">TypeScript</span><span class="chip">Vite</span>
+          <span class="chip">Tailwind</span><span class="chip">Firebase Auth</span><span class="chip">Firestore</span>
+          <span class="chip">PWA</span><span class="chip">Vercel</span>
+        </div>
+        <div class="links">
+          <a href="https://f1-bugambra.vercel.app" target="_blank" rel="noopener" data-i18n="link.live">Open the app →</a>
+          <a href="https://github.com/ajgarciarias10/F1-BUGAMBRA" target="_blank" rel="noopener" data-i18n="link.repo">Source code →</a>
+        </div>
+      </article>
+
+      <!-- CLEVERTRACKER -->
+      <article class="project cyan">
+        <div class="p-head">
+          <h3>📍 CleverTracker</h3>
+          <span class="badge dev" data-i18n="badge.dev">In development</span>
+          <span class="badge" data-i18n="badge.tfg">Final degree project</span>
+        </div>
+        <p class="p-kicker" data-i18n="ct.kicker">A Flutter app on my own cloud infrastructure.</p>
+        <p data-i18n="ct.p1">CleverTracker is the project I am writing my <strong>final degree thesis</strong> around: a cross-platform <strong>Flutter</strong> client talking to a backend I administer myself on an <strong>Oracle Cloud</strong> server — provisioning, deployment, database and hardening included. Building both halves means owning every decision, from the widget tree to the firewall rules.</p>
+
+        <div class="gallery g2">
+          <figure class="shot" style="margin:0">
+            <div class="ph"><b>assets/clever-01.png</b><span data-i18n="ph.shot">Screenshot</span></div>
+            <img src="assets/clever-01.png" alt="CleverTracker screen" onerror="this.remove()" />
+          </figure>
+          <figure class="shot" style="margin:0">
+            <div class="ph"><b>assets/clever-02.png</b><span data-i18n="ph.shot">Screenshot</span></div>
+            <img src="assets/clever-02.png" alt="CleverTracker screen" onerror="this.remove()" />
+          </figure>
+        </div>
+        <p class="cap" data-i18n="ct.cap">Work in progress — screens from the current build.</p>
+
+        <div class="chips">
+          <span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Oracle Cloud</span>
+          <span class="chip">REST API</span><span class="chip">Linux</span>
+        </div>
+      </article>
+
+      <!-- CLEVERCLOTHER -->
+      <article class="project soon">
+        <div class="p-head">
+          <h3>👕 CleverClother</h3>
+          <span class="badge soon" data-i18n="badge.soon">Coming soon</span>
+        </div>
+        <p data-i18n="cc.p1">Something new is on the way. Details soon.</p>
+        <div class="links">
+          <a href="https://github.com/ajgarciarias10/CleverBot" target="_blank" rel="noopener" data-i18n="link.repo">Repository →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= MORE PROJECTS ================= -->
+  <section id="more">
+    <div class="wrap">
+      <div class="sec-head"><h2 data-i18n="more.title">Selected work</h2><div class="rule"></div></div>
+      <p class="sec-sub" data-i18n="more.sub">Other things I have built along the way.</p>
+      <div class="grid">
+        <a class="mini" href="https://github.com/ajgarciarias10/pcbuilder-api" target="_blank" rel="noopener">
+          <span class="tag">API · Backend</span>
+          <h4>PCBuilder</h4>
+          <p data-i18n="m.pcbuilder">API for building compatible PC configurations. Next one on the list.</p>
+        </a>
+        <a class="mini" href="https://github.com/ajgarciarias10/SmartFruitClassifier" target="_blank" rel="noopener">
+          <span class="tag">Machine Learning</span>
+          <h4>SmartFruitClassifier</h4>
+          <p data-i18n="m.fruit">Image classification model trained to tell fruit varieties apart.</p>
+        </a>
+        <a class="mini" href="https://github.com/ajgarciarias10/RatonExplorador" target="_blank" rel="noopener">
+          <span class="tag">AI · Search</span>
+          <h4>RatonExplorador</h4>
+          <p data-i18n="m.raton">Maze solver built on depth-limited search (DLS).</p>
+        </a>
+        <a class="mini" href="https://github.com/ajgarciarias10/_4EnRaya" target="_blank" rel="noopener">
+          <span class="tag">AI · Game</span>
+          <h4>4 En Raya</h4>
+          <p data-i18n="m.4raya">Connect Four with minimax and alpha-beta pruning.</p>
+        </a>
+        <a class="mini" href="https://github.com/ajgarciarias10/GRAPHQLDESK" target="_blank" rel="noopener">
+          <span class="tag">GraphQL · Testing</span>
+          <h4>GraphQLDesk</h4>
+          <p data-i18n="m.graphql">A desk for exploring and testing GraphQL APIs.</p>
+        </a>
+        <a class="mini" href="https://github.com/ajgarciarias10/WORDPRESS-ConcesionariosArias" target="_blank" rel="noopener">
+          <span class="tag">PHP · WordPress</span>
+          <h4>ConcesionariosArias</h4>
+          <p data-i18n="m.conce">Dealership site built on PHP and WordPress.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STACK ================= -->
+  <section id="stack">
+    <div class="wrap">
+      <div class="sec-head"><h2 data-i18n="stack.title">Toolbox</h2><div class="rule"></div></div>
+      <p class="sec-sub" data-i18n="stack.sub">What I reach for day to day.</p>
+      <div class="stackrow">
+        <span class="chip">Java</span><span class="chip">Python</span><span class="chip">TypeScript</span>
+        <span class="chip">Dart / Flutter</span><span class="chip">React</span><span class="chip">Kotlin</span>
+        <span class="chip">PHP</span><span class="chip">PostgreSQL</span><span class="chip">MySQL</span>
+        <span class="chip">Firebase</span><span class="chip">Oracle Cloud</span><span class="chip">Linux</span>
+        <span class="chip">Git</span><span class="chip">AI agents</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap foot">
+    <div>
+      <div data-i18n="foot.line">Let's talk — I reply to every message.</div>
+      <div style="margin-top:6px">
+        <a href="mailto:ajgarciarias@gmail.com">ajgarciarias@gmail.com</a>
+      </div>
+    </div>
+    <div style="display:flex;gap:16px">
+      <a href="https://www.linkedin.com/in/antonio-jose-garcia-arias-095475208/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/ajgarciarias10" target="_blank" rel="noopener">GitHub</a>
+      <a href="assets/cv.pdf" target="_blank" rel="noopener" data-i18n="foot.cv">CV</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  es: {
+    "nav.work":"Proyectos","nav.more":"Trabajos","nav.contact":"Contacto",
+    "ph.photo":"Aquí va tu foto","ph.shot":"Captura",
+    "hero.status":"Abierto a oportunidades",
+    "hero.role":"Estudiante de Ingeniería Informática y Data Engineer en activo. Construyo productos de principio a fin — de las reglas de negocio al despliegue — con un interés fuerte en agentes de IA.",
+    "hero.quote":"«Donde los sueños están al alcance de quien tiene disciplina.»",
+    "hero.cv":"Descargar CV","hero.mail":"Escríbeme",
+    "work.title":"En construcción","work.sub":"Tres productos en desarrollo activo. Usuarios reales, plazos reales.",
+    "badge.live":"En producción","badge.pwa":"PWA instalable","badge.dev":"En desarrollo",
+    "badge.tfg":"Trabajo Fin de Grado","badge.soon":"Próximamente",
+    "f1.kicker":"Un campeonato entre amigos, gestionado como un equipo real de Fórmula 1.",
+    "f1.p1":"Empezó como una liga de consola los domingos por la noche. Acabó siendo una <strong>plataforma de gestión completa</strong>: contratos, presupuestos de escudería, un mercado de fichajes con reglas económicas reales, auditoría carrera a carrera y clasificaciones que se reconstruyen solas. Cada fin de semana un grupo de pilotos reales abre la app, revisa su asiento, negocia un fichaje y ve moverse el campeonato.",
+    "f1.p2":"Lo interesante es <strong>cómo está hecho</strong>: la lógica de negocio la diseñó un ingeniero — rulesets, economía, parámetros de mercado, revisiones inmutables de carrera — y el producto se construyó con <strong>vibe coding</strong>, iterando sobre el feedback real de la liga en lugar de sobre un documento de requisitos. Las decisiones de diseño tienen que sobrevivir al contacto con veinte personas que detectan al instante si falta un solo punto.",
+    "f1.cap":"Clasificación, mercado de fichajes y gestión de escudería — tal y como los usa la liga hoy.",
+    "f1.f1":"Acceso por roles — admin, jefe de equipo, director deportivo y piloto — aplicado con <strong>Firebase Auth</strong> y reglas de seguridad.",
+    "f1.f2":"<strong>Firestore</strong> como capa de datos en vivo: clasificaciones, resultados y movimientos de mercado se actualizan para todos a la vez.",
+    "f1.f3":"Diseño orientado a auditoría: los resultados se guardan como revisiones inmutables, así que una corrección reconstruye la temporada en lugar de parchear un número.",
+    "f1.f4":"Instalable en cualquier móvil como PWA, con una guía de instalación escrita para gente que no programa.",
+    "ct.kicker":"Una app en Flutter sobre mi propia infraestructura cloud.",
+    "ct.p1":"CleverTracker es el proyecto sobre el que estoy escribiendo mi <strong>Trabajo Fin de Grado</strong>: un cliente multiplataforma en <strong>Flutter</strong> contra un backend que administro yo mismo en un servidor de <strong>Oracle Cloud</strong> — aprovisionamiento, despliegue, base de datos y bastionado incluidos. Hacer las dos mitades significa ser dueño de cada decisión, del árbol de widgets a las reglas del firewall.",
+    "ct.cap":"Trabajo en curso — pantallas de la versión actual.",
+    "cc.p1":"Algo nuevo está en camino. Detalles muy pronto.",
+    "link.live":"Abrir la app →","link.repo":"Código fuente →",
+    "more.title":"Trabajos destacados","more.sub":"Otras cosas que he construido por el camino.",
+    "m.pcbuilder":"API para montar configuraciones de PC compatibles. El siguiente de la lista.",
+    "m.fruit":"Modelo de clasificación de imágenes entrenado para distinguir variedades de fruta.",
+    "m.raton":"Resolutor de laberintos con búsqueda por profundidad limitada (DLS).",
+    "m.4raya":"Cuatro en raya con minimax y poda alfa-beta.",
+    "m.graphql":"Un escritorio para explorar y probar APIs GraphQL.",
+    "m.conce":"Web de concesionario construida con PHP y WordPress.",
+    "stack.title":"Herramientas","stack.sub":"Lo que uso en el día a día.",
+    "foot.line":"Hablemos — respondo a todos los mensajes.","foot.cv":"CV"
+  }
+};
+const EN = {};
+document.querySelectorAll("[data-i18n]").forEach(el => { EN[el.dataset.i18n] = el.innerHTML; });
+
+function setLang(lang){
+  const dict = lang === "es" ? I18N.es : EN;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const v = dict[el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  document.documentElement.lang = lang;
+  document.querySelectorAll(".lang button").forEach(b => {
+    b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+  });
+  try { localStorage.setItem("lang", lang); } catch (_) {}
+}
+
+document.querySelectorAll(".lang button").forEach(b => {
+  b.addEventListener("click", () => setLang(b.dataset.lang));
+});
+
+let initial = "en";
+try {
+  const saved = localStorage.getItem("lang");
+  if (saved === "es" || saved === "en") initial = saved;
+  else if ((navigator.language || "").toLowerCase().startsWith("es")) initial = "es";
+} catch (_) {
+  if ((navigator.language || "").toLowerCase().startsWith("es")) initial = "es";
+}
+setLang(initial);
+</script>
+</body>
+</html>
