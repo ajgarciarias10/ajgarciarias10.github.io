@@ -7,7 +7,7 @@ screenshots stay readable without taking over the page.
 | File | What it is | Recommended size |
 |---|---|---|
 | `fotoPerfil.png` | Profile photo (hero, square crop) | 600×600 px |
-| `cv.pdf` | Your CV — linked from the "Download CV" button | — |
+| `Curriculum.pdf` | CV — linked from the "Download CV" button and the footer | — |
 | `f1-excel-rules.png` | Original Excel — scoring, rivalries, teams, budget, transfers | wide screenshot |
 | `f1-excel-season.png` | Original Excel — race-by-race standings tracked by hand | wide screenshot |
 | `f1-01.png` | F1-BUGAMBRA — championship dashboard | wide screenshot (16:10) |
