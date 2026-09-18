@@ -299,6 +299,26 @@
       <div class="sec-head"><h2 data-i18n="work.title">Currently building</h2><div class="rule"></div></div>
       <p class="sec-sub" data-i18n="work.sub">What I have in my hands right now — and what comes next.</p>
 
+      <!-- GMAILKEEPER -->
+      <article class="project cyan" id="gmailkeeper">
+        <div class="p-head">
+          <h3>GmailKeeper Personal</h3>
+          <span class="badge dev" data-i18n="badge.dev">In development</span>
+          <span class="badge">MIT</span>
+        </div>
+        <p class="p-kicker" data-i18n="gk.kicker">Three instructions for Gmail: identify, label and archive.</p>
+        <p data-i18n="gk.p1">An open-source experiment that uses the Gmail API to organise messages by brand, add missing labels and archive them while preserving existing labels and read status. Each person uses their own credentials and private configuration.</p>
+        <p data-i18n="gk.p2">This is an <strong>open project in development</strong>. Setup still requires Python and Google OAuth. Becoming an accessible product needs substantial community support: testing different cases, improving the code and documentation, and simplifying installation.</p>
+        <p data-i18n="gk.license">Original idea: ajgarciarias10. Code and documentation are published under the <strong>MIT licence</strong>, retaining the copyright and licence notices.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Gmail API</span><span class="chip">OAuth</span><span class="chip">Linux / macOS / Windows</span></div>
+        <div class="links">
+          <a href="https://ajgarciarias10.github.io/gmailkeeper-personal/" data-i18n="gk.demo">Presentation &amp; demonstration →</a>
+          <a href="https://github.com/ajgarciarias10/gmailkeeper-personal" target="_blank" rel="noopener" data-i18n="link.repo">Source code →</a>
+          <a href="https://github.com/ajgarciarias10/gmailkeeper-personal/issues" target="_blank" rel="noopener" data-i18n="gk.contribute">Contribute an improvement →</a>
+          <a href="https://github.com/ajgarciarias10/gmailkeeper-personal/blob/main/LICENSE" target="_blank" rel="noopener" data-i18n="gk.licenseLink">MIT licence →</a>
+        </div>
+      </article>
+
       <!-- F1-BUGAMBRA -->
       <article class="project">
         <div class="p-head">
@@ -545,6 +565,13 @@ const I18N = {
     "badge.live":"En producción","badge.pwa":"PWA instalable","badge.dev":"En desarrollo",
     "badge.tfg":"Trabajo Fin de Grado","badge.soon":"Próximamente","badge.next":"Próximo proyecto",
     "badge.private":"🔒 Repositorio privado",
+    "gk.kicker":"Tres instrucciones para Gmail: identificar, etiquetar y archivar.",
+    "gk.p1":"Un experimento de código abierto que utiliza la API de Gmail para organizar mensajes por marca, añadir las etiquetas que faltan y archivar conservando las etiquetas anteriores y el estado de lectura. Cada persona usa sus propias credenciales y configuración privada.",
+    "gk.p2":"Es un <strong>proyecto abierto en desarrollo</strong>. La instalación todavía requiere Python y OAuth de Google. Llegar a un producto accesible necesita mucho apoyo de la comunidad: pruebas con distintos casos, mejoras de código y documentación, y una instalación más sencilla.",
+    "gk.license":"Idea original: ajgarciarias10. Código y documentación bajo <strong>licencia MIT</strong>, conservando el aviso de copyright y la licencia.",
+    "gk.demo":"Presentación y demostración →",
+    "gk.contribute":"Proponer una mejora →",
+    "gk.licenseLink":"Licencia MIT →",
     "f1.kicker":"Un campeonato entre amigos, gestionado como un equipo real de Fórmula 1.",
     "f1.p1":"Empezó como una liga de consola los domingos por la noche. Acabó siendo una <strong>plataforma de gestión completa</strong>: contratos, presupuestos de escudería, un mercado de fichajes con reglas económicas reales, auditoría carrera a carrera y clasificaciones que se reconstruyen solas. Cada fin de semana un grupo de pilotos reales abre la app, revisa su asiento, negocia un fichaje y ve moverse el campeonato.",
     "f1.p2":"Lo interesante es <strong>cómo está hecho</strong>: la lógica de negocio la diseñó un ingeniero — rulesets, economía, parámetros de mercado, revisiones inmutables de carrera — y el producto se construyó con <strong>vibe coding</strong>, iterando sobre el feedback real de la liga en lugar de sobre un documento de requisitos. Las decisiones de diseño tienen que sobrevivir al contacto con veinte personas que detectan al instante si falta un solo punto.",
@@ -649,3 +676,4 @@ setLang(initial);
 </script>
 </body>
 </html>
+
