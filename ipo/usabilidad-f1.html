@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informe de usabilidad — F1-BUGAMBRA vs. Tema 1 IPO</title>
+<link rel="stylesheet" href="estilo.css">
+<main>
+  <header>
+    <span class="eyebrow">INFORME DE PRÁCTICA · IPO 2026–27</span>
+    <h1>Revisión de usabilidad de F1-BUGAMBRA</h1>
+    <p class="lead">Evaluación de la aplicación con los principios del <strong>Tema 1: Introducción a la IPO</strong> (pp. 16–48). Capturas reales antes/después de las correcciones.</p>
+  </header>
+
+  <section class="card">
+    <h2>Resumen ejecutivo</h2>
+    <p>La aplicación tiene una base sólida (clasificación pública, adaptación móvil, PWA instalable), pero presenta fallos que contradicen los principios de usabilidad del tema 1. Se han corregido los más críticos: mensajes de error técnicos, navegación con estado recuperable, foco visible, modales accesibles y distinción entre fallo de red y datos vacíos.</p>
+    <table>
+      <thead><tr><th>Principio (Tema 1)</th><th>Estado antes</th><th>Estado después</th><th>Gravedad</th></tr></thead>
+      <tbody>
+        <tr><td>Recuperabilidad (p. 44) — corregir acción errónea</td><td>Errores Firebase sin guía de recuperación</td><td>Mensajes orientados a la acción + mostar/ocultar contraseña</td><td class="wrong">Crítico</td></tr>
+        <tr><td>Control del usuario (p. 41) — iniciar/terminar operaciones</td><td>Botones sin estado de carga diferenciado</td><td>Estados «Accediendo…», «Conectando con Google…»</td><td class="wrong">Alto</td></tr>
+        <tr><td>Robustez (p. 43) — funcionar en condiciones adversas</td><td>«Sin datos de temporada» al fallar red</td><td>Aviso diferenciado + botón «Reintentar carga»</td><td class="wrong">Alto</td></tr>
+        <tr><td>Consistencia (p. 42) — mecanismos uniformes</td><td>Modales con div fijo, sin Escape ni foco</td><td><code><dialog></code> nativo, Escape, foco, portal</td><td class="wrong">Alto</td></tr>
+        <tr><td>Tiempo de respuesta (p. 45) — expresar cambios al usuario</td><td>Spinner genérico sin mensaje de éxito</td><td>Confirmación «Tu voto se ha guardado»</td><td class="ok">Medio</td></tr>
+        <tr><td>Facilidad de aprendizaje (p. 39) — sintetizable, familiar</td><td>Registro sin requisitos visibles de contraseña</td><td>Ayuda contextual + <code>minlength</code> + validación nativa</td><td class="wrong">Medio</td></tr>
+        <tr><td>Adecuación de tareas (p. 46) — tareas en la forma que el usuario quiere</td><td>Recargar pierde pestaña y temporada</td><td>URL con <code>?tab=…&temporada=…</code> persistente</td><td class="ok">Medio</td></tr>
+        <tr><td>Disminución de carga cognitiva (p. 47) — reconocimiento vs. recuerdo</td><td>Etiquetas no asociadas a campos</td><td><code><label for></code>, <code>autocomplete</code>, foco visible</td><td class="wrong">Medio</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>Detalle de hallazgos y correcciones</h2>
+
+    <article>
+      <h3>1. Autenticación — Recuperabilidad y control del usuario (pp. 41, 44)</h3>
+      <p><strong>Antes:</strong> Al fallar el acceso, se mostraba el código técnico <code>auth/invalid-credential</code>. El usuario no sabía qué hacer. En registro, no se indicaba la longitud mínima y las etiquetas no estaban asociadas a los campos (<code>labels: 0</code> en la inspección).</p>
+      <p><strong>Después:</strong> <code>authFeedback.ts</code> traduce cada código a una instrucción accionable («Revisa el correo y la contraseña o utiliza "¿Olvidaste tu contraseña?"»). El formulario tiene <code><label for></code>, <code>autocomplete</code>, <code>minlength</code>, botón mostrar/ocultar contraseña y estados de carga diferenciados por operación.</p>
+      <div class="comparison">
+        <figure><img src="capturas-f1/antes-error.png" alt="Error técnico antes"><figcaption>Antes: código técnico sin guía</figcaption></figure>
+        <figure><img src="capturas-f1/despues-error-invalido.png" alt="Error comprensible después"><figcaption>Después: mensaje orientado a la acción</figcaption></figure>
+      </div>
+      <div class="comparison">
+        <figure><img src="capturas-f1/antes-registro.png" alt="Registro antes"><figcaption>Antes: sin requisitos visibles</figcaption></figure>
+        <figure><img src="capturas-f1/despues-registro.png" alt="Registro después"><figcaption>Después: ayuda contextual, validación nativa</figcaption></figure>
+      </div>
+    </article>
+
+    <article>
+      <h3>2. Ficha de carrera (modal) — Robustez, control y consistencia (pp. 42, 43)</h3>
+      <p><strong>Antes:</strong> El modal era un <code>div</code> fijo que no se cerraba con Escape, no atrapaba el foco, y al recargar se perdía. La barra de pestañas móvil se superponía al contenido. Los botones de votar usaban <code>opacity-40</code> sin <code>cursor: default</code>, y no había confirmación de voto.</p>
+      <p><strong>Después:</strong> <code><dialog></code> nativo vía <code>createPortal</code> en <code>document.body</code>, cierre con Escape, foco inicial en el título, <code>scrollToTop</code> configurable, <code>aria-pressed</code> en votos, mensaje «Tu voto se ha guardado», <code>cursor: default</code> en deshabilitados, texto «X votos» en lugar de solo número.</p>
+      <div class="comparison">
+        <figure><img src="capturas-f1/antes-modal-movil.png" alt="Modal móvil antes"><figcaption>Antes: barra tapa contenido, sin Escape</figcaption></figure>
+        <figure><img src="capturas-f1/despues-modal.png" alt="Modal móvil después"><figcaption>Después: <code><dialog></code> nativo, Escape, foco</figcaption></figure>
+      </div>
+    </article>
+
+    <article>
+      <h3>3. Navegación y estado — Adecuación de tareas (p. 46)</h3>
+      <p><strong>Antes:</strong> Cambiar de pestaña o temporada no actualizaba la URL. Recargar volvía a «Clasificación» y temporada activa, perdiendo el contexto del usuario.</p>
+      <p><strong>Después:</strong> <code>useSearchParams</code> sincroniza <code>?tab=…&temporada=…</code>. Compartir o recargar restaura exactamente la vista. El foco salta al encabezado de contenido tras cambiar de pestaña.</p>
+      <div class="comparison">
+        <figure><img src="capturas-f1/despues-url-profunda.png" alt="URL profunda después"><figcaption>URL persistente: <code>?tab=resultados&temporada=split_2</code></figcaption></figure>
+      </div>
+    </article>
+
+    <article>
+      <h3>4. Carga de datos — Robustez y tiempo de respuesta (pp. 43, 45)</h3>
+      <p><strong>Antes:</strong> Al bloquear Firestore, la app mostraba «Sin datos de temporada», confundiendo un fallo de red con una liga vacía. No había reintento manual.</p>
+      <p><strong>Después:</strong> Listeners con <code>includeMetadataChanges</code> detectan <code>fromCache</code>. Tres estados: carga, datos de caché (aviso ámbar con botón «Reintentar carga»), error de red. Si hay datos se muestran aunque estén desactualizados; si no, mensaje neutro.</p>
+      <div class="comparison">
+        <figure><img src="capturas-f1/antes-sin-datos.png" alt="Sin datos antes"><figcaption>Antes: «Sin datos de temporada» al fallar red</figcaption></figure>
+        <figure><img src="capturas-f1/despues-portada.png" alt="Portada después"><figcaption>Después: aviso diferenciado + reintento</figcaption></figure>
+      </div>
+    </article>
+
+    <article>
+      <h3>5. Accesibilidad transversal — Consistencia y carga cognitiva (pp. 42, 47)</h3>
+      <p><strong>Antes:</strong> Foco visible solo en algunos elementos. Textos de navegación en móvil truncados (<code>Clasific.</code>). Contraste de mensajes de éxito/error bajo en tema oscuro.</p>
+      <p><strong>Después:</strong> <code>:focus-visible</code> global con anillo ámbar + sombra oscura. Etiquetas completas en móvil («Clasificación», «Resultados»). <code>role="status"</code>/<code>alert</code> en mensajes. Contraste mejorado en alertas.</p>
+    </article>
+  </section>
+
+  <section class="card">
+    <h2>Principios del Tema 1 que la app ya cumple (fortalezas)</h2>
+    <ul>
+      <li><strong>Facilidad de aprendizaje — Familiaridad (p. 39):</strong> Clasificación, Equipos, Resultados usan metáforas deportivas conocidas; iconos consistentes (BarChart3, Shield, Flag).</li>
+      <li><strong>Flexibilidad — Control del usuario (p. 41):</strong> Navegación por pestañas superior + barra inferior móvil; instalación PWA opcional explicada en <code>/instalar</code>.</li>
+      <li><strong>Consistencia interna (p. 42):</strong> <code>sport-panel</code>, <code>rail-title</code>, <code>m-card</code>, <code>m-row</code> reutilizados en dashboards y vistas públicas.</li>
+      <li><strong>Robustez — Condiciones adversas (p. 43):</strong> <code>prefers-reduced-motion</code> respetado en animaciones; <code>safe-area-inset</code> para notch/isla dinámica; <code>touch-action: manipulation</code>.</li>
+      <li><strong>Adecuación de tareas (p. 46):</strong> Clasificación pública sin login; dashboards por rol (admin/jeque/piloto/usuario) con rutas protegidas.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Pendiente de validar con cuentas reales (fuera del alcance de esta revisión)</h2>
+    <p>Los siguientes flujos requieren cuentas de cada rol para evaluar completamente:</p>
+    <ul>
+      <li>Dashboard Jeque — gestión de escudería, fichajes, presupuesto</li>
+      <li>Dashboard Piloto — votación, estadísticas personales, rivalidades</li>
+      <li>Dashboard Usuario — predicciones, foro, sugerencias</li>
+      <li>Dashboard Admin — panel de control, usuarios, economía, rivalidades</li>
+      <li>Subasta en vivo — sincronización temps réel, pujas, timer</li>
+    </ul>
+    <p>La presente revisión cubre la <strong>portada pública, autenticación, navegación, resultados y carga de datos</strong> —los puntos de contacto comunes a todos los roles—.</p>
+  </section>
+
+  <section class="card">
+    <h2>Cómo se relaciona cada corrección con el temario</h2>
+    <table>
+      <thead><tr><th>Corrección</th><th>Concepto del Tema 1</th><th>Diapositiva / Página</th></tr></thead>
+      <tbody>
+        <tr><td>authFeedback.ts</td><td>Recuperabilidad: permitir corregir acción reconocida como errónea</td><td>p. 44</td></tr>
+        <tr><td>Estados de carga diferenciados</td><td>Control del usuario: iniciar/terminar operaciones, mensajes durante proceso</td><td>p. 41</td></tr>
+        <tr><td><dialog> nativo + Escape + foco</td><td>Consistencia: mecanismos uniformes; Robustez: funcionar sin ratón</td><td>pp. 42, 43</td></tr>
+        <tr><td>URL con SearchParams</td><td>Adecuación de tareas: tareas en la forma que el usuario quiere</td><td>p. 46</td></tr>
+        <tr><td>fromCache + aviso + reintento</td><td>Robustez: condiciones adversas; Tiempo de respuesta: expresar cambios</td><td>pp. 43, 45</td></tr>
+        <tr><td>label for, autocomplete, minlength</td><td>Disminución de carga cognitiva: reconocimiento vs. recuerdo</td><td>p. 47</td></tr>
+        <tr><td>:focus-visible global</td><td>Consistencia: mecanismos uniformes</td><td>p. 42</td></tr>
+        <tr><td>Mensajes role="status/alert"</td><td>Recuperabilidad + Control: realimentación clara</td><td>pp. 41, 44</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>Cómo verificar los cambios localmente</h2>
+    <ol class="steps">
+      <li><code>cd ~/Documentos/F1-BUGAMBRA</code></li>
+      <li><code>cp .env.example .env.local</code> (añade tu <code>GEMINI_API_KEY</code>)</li>
+      <li><code>corepack npm install</code></li>
+      <li><code>corepack npm run dev</code> → <code>http://localhost:3000</code></li>
+      <li>Prueba: portada → Resultados → Split 2 → click en carrera → modal → Escape</li>
+      <li>Prueba: Acceder → Registrarse → contraseña < 6 chars → error nativo</li>
+      <li>Prueba: Acceder → correo/contraseña inválidos → mensaje comprensible</li>
+      <li>Prueba: cambiar pestaña/temporada → recargar (F5) → se restaura</li>
+      <li>Prueba: herramientas de red → Offline → portada → aviso ámbar + Reintentar</li>
+    </ol>
+  </section>
+
+  <footer>
+    Basado en IPO2627.pdf, Tema I (pp. 16–48). El documento docente no se redistribuye en esta web. Capturas obtenidas con Playwright/Chromium contra <code>npm run dev</code> local. No es una auditoría formal ni sustituye pruebas con usuarios reales.
+  </footer>
+</main>
+</html>
