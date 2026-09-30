@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog · Field Notes — Antonio José García Arias</title>
+  <meta name="description" content="Field notes from building products end to end — full-stack engineering, local-first architectures, proprietary ML models, and real-time systems." />
+  <link rel="canonical" href="https://ajgarciarias10.github.io/blog/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Blog · Field Notes — Antonio José García Arias" />
+  <meta property="og:description" content="Field notes from building products end to end: F1-BUGAMBRA real-time auctions, GmailKeeper local-first privacy, and CleverTracker vision models." />
+  <meta property="og:url" content="https://ajgarciarias10.github.io/blog/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦅</text></svg>" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+  <!-- Tech Layers -->
+  <div class="bg-layer bg-grid" aria-hidden="true"></div>
+  <div class="bg-layer bg-dots-base" aria-hidden="true"></div>
+  <div class="bg-layer bg-dots-torch" aria-hidden="true"></div>
+  <div class="bg-layer bg-vignette" aria-hidden="true"></div>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="container topbar-content">
+      <a class="brand-link" href="../">
+        <span style="font-size: 16px; margin-right: 2px;">🦅</span>
+        <span class="brand-name">ajgarciarias</span><span class="brand-ext">.dev</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a class="nav-link" href="../#top" data-i18n="nav.home">home</a>
+        <a class="nav-link" href="../#projects" data-i18n="nav.projects">projects</a>
+        <a class="nav-link active" href="./" data-i18n="nav.blog">blog</a>
+        <a class="nav-link" href="../#about" data-i18n="nav.about">about</a>
+        <a class="nav-link" href="../ipo/" data-i18n="nav.study">study IPO</a>
+        <a class="nav-link" href="../#contact" data-i18n="nav.contact">contact</a>
+      </nav>
+
+      <div class="topbar-actions">
+        <!-- Language Switcher -->
+        <div class="lang-toggle" role="group" aria-label="Language selection">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">ES</button>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button type="button" class="icon-btn mobile-menu-btn" id="mobile-menu-btn" aria-label="Open mobile menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" aria-hidden="true"></div>
+  <aside class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-head">
+      <a class="brand-link" href="../">
+        <span style="font-size: 16px; margin-right: 2px;">🦅</span>
+        <span class="brand-name">ajgarciarias</span><span class="brand-ext">.dev</span>
+      </a>
+      <button type="button" class="icon-btn" id="mobile-drawer-close" aria-label="Close mobile menu">✕</button>
+    </div>
+    <nav>
+      <a class="nav-link" href="../#top">home</a>
+      <a class="nav-link" href="../#projects">projects</a>
+      <a class="nav-link active" href="./">blog</a>
+      <a class="nav-link" href="../#about">about</a>
+      <a class="nav-link" href="../ipo/">study IPO</a>
+      <a class="nav-link" href="../#contact">contact</a>
+    </nav>
+  </aside>
+
+  <main class="container" style="padding-top: 60px; padding-bottom: 80px;">
+    <!-- Breadcrumb & Title -->
+    <div style="font-family: var(--font-mono); font-size: 13px; color: var(--text-dim); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+      <a href="../" style="color: var(--accent);">~</a>
+      <span style="color: var(--text-faint);">/</span>
+      <span style="color: var(--text-bright);">blog</span>
+      <span style="color: var(--text-faint);">·</span>
+      <span>3 entries</span>
+    </div>
+
+    <h1 class="hero-title" style="margin-bottom: 14px;">
+      <span class="prompt-prefix">$ </span>cat <span class="accent-text">~/notes</span><span class="cursor-blink" aria-hidden="true"></span>
+    </h1>
+
+    <p style="font-size: 16.5px; line-height: 1.65; color: var(--text); max-width: 58ch; margin-bottom: 36px;">
+      Field notes from building products end to end — real-time concurrency, local-first daemons, proprietary vision models, and lessons learned along the way.
+    </p>
+
+    <!-- Search & Filter Bar -->
+    <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div style="flex: 1; min-width: 260px; display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px;">
+        <span style="font-family: var(--font-mono); color: var(--accent);">›</span>
+        <input style="flex: 1; font-family: var(--font-mono); font-size: 13px; color: var(--text-bright);" id="blog-search-input" placeholder="grep notes…" aria-label="grep notes…" />
+        <span style="font-family: var(--font-mono); font-size: 11px; padding: 2px 6px; border: 1px solid var(--border-strong); border-radius: 4px; color: var(--text-faint);">ESC</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+        <span class="filter-btn active" style="font-size: 11.5px; padding: 6px 12px;">all 3</span>
+        <span class="filter-btn" style="font-size: 11.5px; padding: 6px 12px;">Realtime</span>
+        <span class="filter-btn" style="font-size: 11.5px; padding: 6px 12px;">Local-First</span>
+        <span class="filter-btn" style="font-size: 11.5px; padding: 6px 12px;">Computer Vision</span>
+      </div>
+    </div>
+
+    <!-- Articles List -->
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+
+      <!-- Article 1 -->
+      <article class="blog-featured-card" data-article-id="f1-bugambra-realtime-auction">
+        <div class="blog-card-preview">
+          <div class="blog-code-box">
+            <span class="cmd">$ cat notes/f1-auction-concurrency.md</span>
+            <div class="meta-line">──────────────────────────────────────</div>
+            <div class="meta-line"># from-whatsapp-chaos-to-realtime-auctions</div>
+            <div class="meta-line">tags: [<span class="tags-val">Realtime, Firestore, Concurrency, PWA</span>]</div>
+            <div class="meta-line">read: ~6min · Sep 2026</div>
+          </div>
+        </div>
+        <div class="blog-card-info">
+          <span class="blog-badge-kicker">★ FEATURED · ENGINEERING DEEP DIVE</span>
+          <h2 class="blog-card-title">From WhatsApp Chaos to Real-time Auctions: Engineering the F1-BUGAMBRA Live Bidding Engine</h2>
+          <p class="blog-card-excerpt">
+            How we codified an unruly championship spreadsheet and chaotic WhatsApp group bids into an authoritative real-time platform with anti-sniping and concurrency locks.
+          </p>
+          <div class="blog-card-meta">
+            <span>SEP 20, 2026</span>
+            <span>·</span>
+            <span>6 min read</span>
+            <span>·</span>
+            <span>#Realtime #Firestore #WebSockets</span>
+          </div>
+          <span class="blog-read-cta">read post →</span>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="blog-featured-card" data-article-id="local-first-gmailkeeper">
+        <div class="blog-card-preview">
+          <div class="blog-code-box">
+            <span class="cmd">$ cat notes/local-first-gmailkeeper.md</span>
+            <div class="meta-line">──────────────────────────────────────</div>
+            <div class="meta-line"># local-first-privacy-gmailkeeper</div>
+            <div class="meta-line">tags: [<span class="tags-val">Local-First, Python, GmailAPI, OAuth2</span>]</div>
+            <div class="meta-line">read: ~5min · Aug 2026</div>
+          </div>
+        </div>
+        <div class="blog-card-info">
+          <span class="blog-badge-kicker">#LOCAL-FIRST · DATA PRIVACY</span>
+          <h2 class="blog-card-title">Local-First Privacy: Building GmailKeeper Without Cloud Middlemen or AI Costs</h2>
+          <p class="blog-card-excerpt">
+            Why users do not need another $15/month SaaS reading their personal emails. Architecture of a zero-cost local systemd daemon with hierarchical label dispatch.
+          </p>
+          <div class="blog-card-meta">
+            <span>AUG 14, 2026</span>
+            <span>·</span>
+            <span>5 min read</span>
+            <span>·</span>
+            <span>#Python #OAuth2 #Systemd</span>
+          </div>
+          <span class="blog-read-cta">read post →</span>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="blog-featured-card" data-article-id="clevertracker-custom-vision-models">
+        <div class="blog-card-preview">
+          <div class="blog-code-box">
+            <span class="cmd">$ cat notes/clevertracker-vision-models.md</span>
+            <div class="meta-line">──────────────────────────────────────</div>
+            <div class="meta-line"># custom-models-vs-third-party-apis</div>
+            <div class="meta-line">tags: [<span class="tags-val">ComputerVision, Flutter, PostgREST, ML</span>]</div>
+            <div class="meta-line">read: ~7min · Jul 2026</div>
+          </div>
+        </div>
+        <div class="blog-card-info">
+          <span class="blog-badge-kicker">#COMPUTER-VISION · FLUTTER ARCHITECTURE</span>
+          <h2 class="blog-card-title">Custom Models vs. Third-Party APIs: Why CleverTracker Trains Its Own Vision Models</h2>
+          <p class="blog-card-excerpt">
+            The architectural tradeoffs between calling external LLM vision endpoints and training custom lightweight models for a 681,000 product food catalog.
+          </p>
+          <div class="blog-card-meta">
+            <span>JUL 02, 2026</span>
+            <span>·</span>
+            <span>7 min read</span>
+            <span>·</span>
+            <span>#Flutter #PostgreSQL #OnDeviceML</span>
+          </div>
+          <span class="blog-read-cta">read post →</span>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- RSS Box -->
+    <div class="rss-box" style="margin-top: 40px;">
+      <div class="rss-box-icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.18 15.64a2.18 2.18 0 1 1 0 4.36 2.18 2.18 0 0 1 0-4.36zM4 4.44C12.51 4.44 19.56 11.49 19.56 20H16.5C16.5 13.18 10.82 7.5 4 7.5V4.44zm0 5.6c5.43 0 9.92 4.49 9.92 9.92H10.86c0-3.79-3.07-6.86-6.86-6.86v-3.06z"></path>
+        </svg>
+      </div>
+      <div>
+        <strong style="color: var(--text-bright); font-size: 14px;">Subscribe via RSS</strong>
+        <p style="color: var(--text-dim); font-size: 13px;">New engineering posts hit your reader instantly — zero spam, no tracking.</p>
+      </div>
+      <a class="btn btn-secondary code-btn" href="../" style="margin-left: auto;">← back to /home</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <span>© 2026 Antonio José García Arias</span>
+        <span style="color: var(--text-faint);">· built with precision, Blue Cyan theme, deployed on GitHub Pages</span>
+      </div>
+      <div class="footer-links">
+        <a href="../">/home</a>
+        <a href="../#projects">/projects</a>
+        <a href="./">/blog</a>
+        <a href="../ipo/">/study-ipo</a>
+        <a href="https://github.com/ajgarciarias10" target="_blank" rel="noopener noreferrer">github</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div class="modal-overlay" id="lightbox-modal" role="dialog" aria-modal="true" aria-label="Screenshot lightbox">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" aria-label="Close dialog">✕</button>
+      <div class="lightbox-body">
+        <div class="lightbox-img-wrap">
+          <img id="lightbox-img" src="" alt="Screenshot preview" />
+        </div>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog Article Reader Modal -->
+  <div class="modal-overlay" id="article-modal" role="dialog" aria-modal="true" aria-label="Article Reader">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" aria-label="Close dialog">✕</button>
+      <div class="reader-body">
+        <div class="reader-header">
+          <div class="reader-tags" id="article-tags"></div>
+          <h2 class="reader-title" id="article-title"></h2>
+          <div class="reader-meta" id="article-meta"></div>
+        </div>
+        <div class="reader-prose" id="article-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../app.js"></script>
+</body>
+</html>

@@ -1,21 +1,42 @@
-# ajgarciarias10.github.io
+# ajgarciarias.dev — Personal Portfolio & Engineering Notes
 
-Personal landing page — <https://ajgarciarias10.github.io>
+Live site: <https://ajgarciarias10.github.io>
 
-Single static `index.html`, no build step. Bilingual (EN/ES) with a selector in the
-top-right corner; the choice is remembered in `localStorage` and defaults to the
-browser language.
+High-performance personal engineering portfolio and technical field notes for **Antonio José García Arias (Toni)** — AI Engineer & Full-Stack Developer. Designed with a **Blue Cyan** aesthetic inspired by `akkila.dev`, featuring an interactive terminal assistant, multi-category project showcases, technical blog, and HCI active-recall study lab.
 
-## Editing
+---
 
-- **Content and copy** — `index.html`. English lives in the markup; the Spanish
-  translations are in the `I18N.es` dictionary at the bottom of the file. Every
-  translatable node carries a `data-i18n="key"` attribute, so adding a string means
-  adding the attribute *and* the matching key in the dictionary.
-- **Images and CV** — see [`assets/README.md`](assets/README.md).
-- **Colours** — the CSS custom properties under `:root`.
+## ⚡ Highlights
 
-## Deploy
+- **Aesthetic & Theme**: Precision Blue Cyan color system (`--accent: #00f0ff`, `--accent-secondary: #38bdf8`) with background tech layers (grid, dots, dynamic torchlight cursor spotlight, and radial vignette). Full dark/light mode toggle with preference persistence.
+- **Interactive Terminal (`~/ask-me.sh`)**: In-browser command line assistant answering questions about stack, projects (F1-BUGAMBRA, GmailKeeper, SmartFruitClassifier, CleverTracker), and availability.
+- **Bilingual (EN / ES)**: Complete English and Spanish localization handled via lightweight declarative client-side i18n engine in `app.js`.
+- **Project Showcase**:
+  - **Production [Done]**: *F1-BUGAMBRA* (Real-Time Auction Platform & Telemetry), *GmailKeeper Personal* (Local-First Email Daemon & Privacy Automation), *SmartFruitClassifier* (Bio-Inspired AI & Hugging Face Space).
+  - **In Progress**: *CleverTracker* (Computer Vision TFG & Edge Pipeline), *IPO Study Lab* (Active-Recall Interactivo de Interacción Persona-Ordenador).
+  - **Future Roadmap**: *CleverClother* (Recomendador de Moda & Grafos), *PC-BUILDER* (Motor de Reglas y Compatibilidad de Hardware).
+- **Technical Blog (`/blog/`)**: Field notes and technical analyses with live search and RSS feed (`feed.xml`).
+- **Interactive IPO Lab (`/ipo/`)**: Interactive study tool with active recall, flashcards, and progress tracking.
 
-Push to `main`. GitHub Pages serves the repository root
-(Settings → Pages → Deploy from a branch → `main` / `/root`).
+---
+
+## 📁 Repository Structure
+
+```
+├── index.html            # Main portfolio landing page
+├── styles.css            # Unified responsive stylesheet & theme variables
+├── app.js                # Core JS: i18n, terminal, torchlight, lightbox, filters
+├── README.md             # Project documentation
+├── blog/
+│   ├── index.html        # Field notes archive and live search
+│   └── feed.xml          # Valid RSS 2.0 feed
+├── ipo/                  # Human-Computer Interaction interactive study lab
+└── assets/               # Profile photo, CV (Curriculum.pdf), and project screenshots
+```
+
+---
+
+## 🚀 Deployment
+
+Served directly by **GitHub Pages** from the `main` branch root:
+`Settings → Pages → Source: Deploy from a branch → Branch: main / (root)`.
