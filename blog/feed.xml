@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Antonio José García Arias (Toni) — Engineering Field Notes</title>
+  <link>https://ajgarciarias10.github.io/blog/</link>
+  <description>Field notes from building products end to end: real-time concurrency, local-first daemons, proprietary vision models, and lessons learned along the way.</description>
+  <language>en</language>
+  <atom:link href="https://ajgarciarias10.github.io/blog/feed.xml" rel="self" type="application/rss+xml" />
+  
+  <item>
+    <title>From WhatsApp Chaos to Real-time Auctions: Engineering the F1-BUGAMBRA Live Bidding Engine</title>
+    <link>https://ajgarciarias10.github.io/blog/#f1-auction-concurrency</link>
+    <guid>https://ajgarciarias10.github.io/blog/#f1-auction-concurrency</guid>
+    <pubDate>Mon, 18 Aug 2026 10:00:00 GMT</pubDate>
+    <description>How we replaced a chaotic messaging group with a production real-time auction engine using WebSockets, monotonic clock anti-sniping timers, and double-checked lock concurrency.</description>
+  </item>
+
+  <item>
+    <title>Why Local-First Daemons Beat Cloud Microservices for Personal Inbox Automation</title>
+    <link>https://ajgarciarias10.github.io/blog/#local-first-gmailkeeper</link>
+    <guid>https://ajgarciarias10.github.io/blog/#local-first-gmailkeeper</guid>
+    <pubDate>Wed, 23 Jul 2026 12:00:00 GMT</pubDate>
+    <description>Analyzing the reliability, privacy guarantees, and token durability of building GmailKeeper as a local background daemon rather than a hosted multi-tenant cloud service.</description>
+  </item>
+
+  <item>
+    <title>Custom Models vs. Third-Party APIs: Why CleverTracker Trains Its Own Vision Models</title>
+    <link>https://ajgarciarias10.github.io/blog/#clevertracker-custom-vision-models</link>
+    <guid>https://ajgarciarias10.github.io/blog/#clevertracker-custom-vision-models</guid>
+    <pubDate>Thu, 02 Jul 2026 09:30:00 GMT</pubDate>
+    <description>The architectural tradeoffs between calling external LLM vision endpoints and training custom lightweight models for a 681,000 product food catalog.</description>
+  </item>
+</channel>
+</rss>

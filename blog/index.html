@@ -13,8 +13,9 @@
   <meta property="og:url" content="https://ajgarciarias10.github.io/blog/" />
   <meta property="og:type" content="website" />
 
-  <!-- Favicon -->
+  <!-- Favicon & Feed -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦅</text></svg>" />
+  <link rel="alternate" type="application/rss+xml" title="Field Notes — Toni" href="feed.xml" />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../styles.css" />
@@ -224,7 +225,10 @@
         <strong style="color: var(--text-bright); font-size: 14px;">Subscribe via RSS</strong>
         <p style="color: var(--text-dim); font-size: 13px;">New engineering posts hit your reader instantly — zero spam, no tracking.</p>
       </div>
-      <a class="btn btn-secondary code-btn" href="../" style="margin-left: auto;">← back to /home</a>
+      <div style="margin-left: auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+        <a class="btn btn-secondary code-btn" href="./feed.xml" target="_blank" rel="noopener noreferrer">feed.xml ↗</a>
+        <a class="btn btn-secondary code-btn" href="../">← /home</a>
+      </div>
     </div>
   </main>
 
