@@ -3,9 +3,58 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IPO · Prototipo de Plataforma Institucional UJA</title>
+  <title>IPO · Plataforma Institucional de Estudio y Dominio · UJA</title>
   <link rel="stylesheet" href="estilo.css">
   <style>
+    /* Estilos institucionales y de navegación */
+    .legal-notice-banner {
+      background: linear-gradient(135deg, #005043 0%, #006957 100%);
+      color: white;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 16px rgba(0, 80, 67, 0.15);
+      border-left: 6px solid #f59e0b;
+    }
+    .legal-notice-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .legal-logo-shield {
+      font-size: 2.2rem;
+      line-height: 1;
+      padding-top: 2px;
+    }
+    .legal-text {
+      flex: 1;
+    }
+    .legal-text strong.inst-title {
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fde68a;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .legal-text p {
+      margin: 4px 0 8px;
+      font-size: 0.9rem;
+      line-height: 1.45;
+      color: #e6f8f0;
+    }
+    .legal-badge-noncommercial {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.2);
+      color: #fef3c7;
+      border: 1px solid #f59e0b;
+      font-size: 0.76rem;
+      font-weight: 750;
+      padding: 3px 9px;
+      border-radius: 6px;
+      letter-spacing: 0.03em;
+    }
+
     .login-card {
       background: white;
       border: 2px solid var(--accent);
@@ -33,7 +82,7 @@
       border: 2px solid var(--accent);
     }
     .user-email {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--muted);
       font-family: ui-monospace, SFMono-Regular, monospace;
     }
@@ -51,6 +100,8 @@
       font-size: 0.88rem;
       margin-top: 12px;
     }
+
+    /* Pestañas de navegación */
     .tabs-nav {
       display: flex;
       gap: 8px;
@@ -64,7 +115,7 @@
       border: none;
       color: var(--muted);
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       padding: 10px 16px;
       border-radius: 8px;
       cursor: pointer;
@@ -80,6 +131,8 @@
       border-bottom: 3px solid var(--accent);
       border-radius: 8px 8px 0 0;
     }
+
+    /* Tarjetas de dominio por tema */
     .topics-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
@@ -107,47 +160,7 @@
       height: 100%;
       transition: width 0.4s ease;
     }
-    .topic-stats-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.82rem;
-      color: var(--muted);
-      background: var(--paper);
-      padding: 6px 10px;
-      border-radius: 6px;
-    }
-    .timeline-row {
-      display: flex;
-      gap: 16px;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--line);
-      align-items: flex-start;
-    }
-    .timeline-week {
-      min-width: 95px;
-      font-size: 0.88rem;
-    }
-    .timeline-week strong {
-      display: block;
-      color: var(--accent);
-    }
-    .timeline-week span {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-    .timeline-content {
-      flex: 1;
-    }
-    .timeline-milestone {
-      display: inline-block;
-      margin-top: 4px;
-      font-size: 0.78rem;
-      font-weight: 750;
-      background: #fef3c7;
-      color: #92400e;
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
+
     .kpi-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -172,254 +185,270 @@
       font-weight: 600;
       margin-top: 4px;
     }
+
+    .subnav-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .subnav-pill {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.88rem;
+      font-weight: 650;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .subnav-pill.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
   </style>
 </head>
 <body>
 <main>
-  <header>
-    <a href="index.html">← Laboratorio de estudio</a>
-    <span class="eyebrow">PROPUESTA DE DISEÑO & PROTOTIPO FUNCIONAL · UNIVERSIDAD DE JAÉN</span>
-    <h1>Plataforma de estudio y preparación de IPO</h1>
-    <p class="lead">Diseño integral con autenticación institucional de la UJA (<span style="font-family:monospace; color:var(--accent);">@red.ujaen.es</span>), analítica de dominio de los 10 temas, planificador cuatrimestral y banco masivo de preguntas.</p>
+  <!-- 1. AVISO LEGAL Y DERECHOS DE AUTOR INSTITUCIONALES (UJA) -->
+  <div class="legal-notice-banner">
+    <div class="legal-notice-content">
+      <div class="legal-logo-shield">🏛️</div>
+      <div class="legal-text">
+        <strong class="inst-title">Universidad de Jaén · Escuela Politécnica Superior · Grado en Ingeniería Informática</strong>
+        <p><strong>Asignatura: Interacción Persona-Ordenador (IPO2627)</strong> · Material didáctico, programa oficial y transparencias docentes propiedad intelectual de la <strong>Universidad de Jaén</strong> y de los profesores responsables: <strong>Drª. Salud María Jiménez Zafra</strong> y <strong>Dr. Manuel García Vega</strong>.</p>
+        <span class="legal-badge-noncommercial">⚠️ USO ESTRICTAMENTE DOCENTE Y DE ESTUDIO PERSONAL · PROHIBIDO SU USO COMERCIAL O CON ÁNIMO DE LUCRO</span>
+      </div>
+    </div>
+  </div>
+
+  <header style="padding-top:0;">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+      <a href="index.html">← Menú principal del laboratorio</a>
+      <a href="guia-estudio.html" style="font-size:0.9rem; font-weight:700;">📖 Ver Guía Didáctica de Estudio y Curva del Olvido →</a>
+    </div>
+    <h1 style="margin:14px 0 8px;">Plataforma de Estudio y Dominio de IPO</h1>
+    <p class="lead">Prototipo pedagógico que acompaña al estudiante en el ciclo de asimilación activa: <strong>Planificación semanal → Esquema conceptual corregido por NotebookLM → Consolidación antiolvido en fin de semana</strong>.</p>
   </header>
 
-  <!-- SECCIÓN DE AUTENTICACIÓN INSTITUCIONAL -->
+  <!-- 2. SECCIÓN DE AUTENTICACIÓN INSTITUCIONAL -->
   <section id="auth-section"></section>
 
-  <!-- PESTAÑAS DE NAVEGACIÓN DEL PROTOTIPO -->
-  <nav class="tabs-nav" aria-label="Secciones del prototipo">
-    <button class="tab-btn active" data-tab="tab-mastery">📊 Dominio por Temas (10 Temas)</button>
-    <button class="tab-btn" data-tab="tab-planner">📅 Planificador & Calendario UJA (15 Semanas)</button>
-    <button class="tab-btn" data-tab="tab-eval">🎓 Tiques y Evaluación (IPO2627)</button>
-    <button class="tab-btn" data-tab="tab-architecture">🏛️ Arquitectura & Especificación</button>
-    <a href="guia-estudio.html" class="tab-btn" style="text-decoration:none; color:var(--accent);">📖 Guía Didáctica de Estudio →</a>
+  <!-- 3. NAVEGACIÓN PRINCIPAL POR PESTAÑAS -->
+  <nav class="tabs-nav" aria-label="Secciones de la plataforma institucional">
+    <button class="tab-btn active" data-tab="tab-semanal">📅 1. Inicio Semanal & Plan de Estudio</button>
+    <button class="tab-btn" data-tab="tab-schema">📝 2. Esquemas & NotebookLM</button>
+    <button class="tab-btn" data-tab="tab-weekend">🎯 3. Sesión Antiolvido Fin de Semana</button>
+    <button class="tab-btn" data-tab="tab-mastery">📊 4. Dominio por Temas (10 Temas)</button>
+    <button class="tab-btn" data-tab="tab-eval">🎓 5. Criterios & Tiques UJA</button>
+    <button class="tab-btn" data-tab="tab-legal">🏛️ 6. Créditos & Aviso Legal</button>
   </nav>
 
-  <!-- TAB 1: DOMINIO Y PROGRESO POR TEMAS -->
-  <section id="tab-mastery" class="tab-view">
+  <!-- PESTAÑA 1: INICIO SEMANAL Y PLANIFICADOR (15 SEMANAS) -->
+  <section id="tab-semanal" class="tab-view">
+    <div id="semanal-container"></div>
+  </section>
+
+  <!-- PESTAÑA 2: SUBIDA Y CORRECCIÓN DE ESQUEMAS CON NOTEBOOKLM -->
+  <section id="tab-schema" class="tab-view" hidden>
+    <div id="schema-section-container"></div>
+  </section>
+
+  <!-- PESTAÑA 3: SESIÓN ANTIOLVIDO DE FIN DE SEMANA (EVALUACIÓN MULTIMODAL) -->
+  <section id="tab-weekend" class="tab-view" hidden>
+    <div class="card" style="margin-bottom:20px;">
+      <span class="eyebrow" style="color:var(--accent);">EVALUACIÓN MULTIMODAL CONTRA LA CURVA DEL OLVIDO</span>
+      <h2 style="margin:2px 0 6px;">Consolidación de Fin de Semana</h2>
+      <p class="muted" style="margin:0 0 16px; font-size:0.92rem;">
+        Para combatir el decaimiento mnemotécnico de Ebbinghaus, el alumno realiza tres actividades formativas complementarias: 
+        <strong>test de opciones múltiples sin número visible de preguntas</strong> (para evitar pereza/agobio), 
+        <strong>preguntas cortas de redacción</strong> y <strong>ejercicios prácticos de examen</strong>.
+      </p>
+
+      <div class="subnav-pills" id="weekend-subnav">
+        <button class="subnav-pill active" onclick="switchWeekendMode('test')">🎲 Modo A: Tipo Test Aleatorio Antiolvido</button>
+        <button class="subnav-pill" onclick="switchWeekendMode('short')">✍️ Modo B: Preguntas Cortas de Examen</button>
+        <button class="subnav-pill" onclick="switchWeekendMode('practical')">📐 Modo C: Ejercicios Prácticos de Examen</button>
+      </div>
+
+      <!-- MODO A: TIPO TEST ALEATORIO -->
+      <div id="weekend-mode-test">
+        <div id="test-random-container"></div>
+      </div>
+
+      <!-- MODO B: PREGUNTAS CORTAS -->
+      <div id="weekend-mode-short" hidden>
+        <div id="short-questions-container"></div>
+      </div>
+
+      <!-- MODO C: EJERCICIOS PRÁCTICOS -->
+      <div id="weekend-mode-practical" hidden>
+        <div id="practical-exercises-container"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PESTAÑA 4: MATRIZ DE DOMINIO POR TEMAS (10 TEMAS UJA) -->
+  <section id="tab-mastery" class="tab-view" hidden>
     <div class="kpi-row">
       <div class="kpi-box">
         <div class="kpi-num" id="global-mastery-val">0%</div>
         <div class="kpi-label">Dominio global del temario (10 Temas)</div>
       </div>
       <div class="kpi-box">
-        <div class="kpi-num">130</div>
-        <div class="kpi-label">Preguntas activas en el banco (Meta: ~700)</div>
+        <div class="kpi-num">130+</div>
+        <div class="kpi-label">Preguntas activas en el banco oficial</div>
       </div>
       <div class="kpi-box">
         <div class="kpi-num" id="tiques-count">0 / 50</div>
-        <div class="kpi-label">Tiques de clase obtenidos (100% participación)</div>
+        <div class="kpi-label">Tiques de clase acumulados (100% nota)</div>
       </div>
       <div class="kpi-box">
         <div class="kpi-num" id="exam-countdown">—</div>
-        <div class="kpi-label">Cuenta atrás para el examen teórico</div>
+        <div class="kpi-label">Cuenta atrás examen teórico oficial</div>
       </div>
     </div>
 
     <div class="card">
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
         <div>
-          <h2 style="margin:0 0 4px;">Progreso de aprendizaje por tema</h2>
-          <p class="muted" style="margin:0; font-size:0.9rem;">El dominio se calcula como <strong>Cobertura (preguntas vistas) × Solidez (retención y aciertos netos)</strong>.</p>
+          <h2 style="margin:0 0 4px;">Progreso por tema hacia el «Tema Dominado»</h2>
+          <p class="muted" style="margin:0; font-size:0.9rem;">
+            Un tema se considera <strong>Dominado (100%)</strong> al superar los 4 sellos: 
+            <strong>Planificación agendada + Esquema validado por NotebookLM + Test antiolvido + Preguntas cortas/ejercicios resueltos</strong>.
+          </p>
         </div>
-        <a href="generador.html" class="button">🎲 Abrir generador global de preguntas →</a>
+        <a href="generador.html" class="button">🎲 Abrir generador completo →</a>
       </div>
 
       <div class="topics-grid" id="temas-mastery-grid"></div>
     </div>
   </section>
 
-  <!-- TAB 2: PLANIFICADOR & CALENDARIO UJA -->
-  <section id="tab-planner" class="tab-view" hidden>
-    <div class="card">
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; margin-bottom:18px;">
-        <div>
-          <h2 style="margin:0 0 4px;">Calendario cuatrimestral de estudio (2026–27)</h2>
-          <p class="muted" style="margin:0;">Alineado con las <strong>21 lecciones teóricas</strong> y las <strong>4 prácticas de laboratorio</strong> de la UJA.</p>
-        </div>
-        <div style="display:flex; gap:10px;">
-          <button id="btn-export-ics" class="button" style="display:inline-flex; align-items:center; gap:8px;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            Exportar a mi calendario (.ics)
-          </button>
-        </div>
-      </div>
-
-      <!-- SECCIÓN RECORDATORIOS Y GOOGLE CALENDAR -->
-      <div class="card" style="background:var(--paper); border:1px solid var(--line); margin-bottom:24px;">
-        <span class="eyebrow" style="color:var(--accent);">RECORDATORIOS AUTOMÁTICOS & GOOGLE CALENDAR</span>
-        <h3 style="margin:4px 0 8px;">Que tu calendario te avise de cuándo estudiar</h3>
-        <p class="muted" style="margin:0 0 16px; font-size:0.9rem;">Elige tus días y horas de estudio preferidos para recibir notificaciones en tu móvil y tu cuenta institucional de la UJA.</p>
-
-        <form id="rec-ajustes" onsubmit="return false;" style="display:flex; flex-direction:column; gap:12px;">
-          <div>
-            <label style="font-size:0.88rem; font-weight:600; display:block; margin-bottom:4px;">Días habituales de estudio:</label>
-            <div style="display:flex; gap:12px; flex-wrap:wrap;">
-              <label class="inline" style="font-size:0.88rem;"><input type="checkbox" name="rec-dia" value="1" checked> L</label>
-              <label class="inline" style="font-size:0.88rem;"><input type="checkbox" name="rec-dia" value="2" checked> M</label>
-              <label class="inline" style="font-size:0.88rem;"><input type="checkbox" name="rec-dia" value="3" checked> X</label>
-              <label class="inline" style="font-size:0.88rem;"><input type="checkbox" name="rec-dia" value="4" checked> J</label>
-              <label class="inline" style="font-size:0.88rem;"><input type="checkbox" name="rec-dia" value="5" checked> V</label>
-              <label class="inline" style="font-size:0.88rem;"><input type="checkbox" name="rec-dia" value="6"> S</label>
-              <label class="inline" style="font-size:0.88rem;"><input type="checkbox" name="rec-dia" value="0"> D</label>
-            </div>
-          </div>
-
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:12px;">
-            <label style="font-size:0.85rem;">Hora de inicio:
-              <input id="rec-hora" type="time" value="18:00" style="display:block; width:100%; margin-top:4px; padding:8px 10px; border:1px solid var(--line); border-radius:6px; font:inherit;">
-            </label>
-            <label style="font-size:0.85rem;">Minutos por sesión:
-              <input id="rec-minutos" type="number" min="15" max="90" step="5" value="30" style="display:block; width:100%; margin-top:4px; padding:8px 10px; border:1px solid var(--line); border-radius:6px; font:inherit;">
-            </label>
-            <label style="font-size:0.85rem;">Fecha del examen teórico:
-              <input id="rec-examen" type="date" value="2027-01-20" style="display:block; width:100%; margin-top:4px; padding:8px 10px; border:1px solid var(--line); border-radius:6px; font:inherit;">
-            </label>
-            <label style="font-size:0.85rem;">Cuenta UJA:
-              <input id="rec-email" type="email" placeholder="usuario@red.ujaen.es" style="display:block; width:100%; margin-top:4px; padding:8px 10px; border:1px solid var(--line); border-radius:6px; font:inherit;">
-            </label>
-          </div>
-
-          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
-            <button id="rec-google" type="button" class="button" style="display:inline-flex; align-items:center; gap:8px;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"/></svg>
-              Sincronizar con Google Calendar
-            </button>
-            <button id="rec-ics" type="button" class="button secondary">⬇️ Descargar .ics con alarmas</button>
-            <button id="rec-notif" type="button" class="button secondary">🔔 Activar avisos web</button>
-          </div>
-        </form>
-
-        <div style="margin-top:18px; padding-top:14px; border-top:1px solid var(--line);">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-            <strong style="font-size:0.92rem;">He terminado de estudiar un tema hoy:</strong>
-            <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-              <select id="rec-tema" style="padding:6px 10px; font-size:0.85rem; width:auto;">
-                <option value="1">Tema 1 · Introducción a la IPO</option>
-                <option value="2">Tema 2 · El factor humano</option>
-                <option value="3">Tema 3 · Metáforas de interacción</option>
-                <option value="4">Tema 4 · Ingeniería de la interfaz</option>
-                <option value="5">Tema 5 · Internacionalización</option>
-                <option value="6">Tema 6 · El diseño gráfico</option>
-                <option value="7">Tema 7 · Estilos y paradigmas</option>
-                <option value="8">Tema 8 · Accesibilidad</option>
-                <option value="9">Tema 9 · Evaluación de la usabilidad</option>
-                <option value="10">Tema 10 · Estándares y guías de estilo</option>
-              </select>
-              <button id="rec-repasar" type="button" class="button" style="padding:6px 12px; font-size:0.85rem;">🔁 Programar repasos espaciados (1·3·7·16·35 días)</button>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top:14px;">
-          <strong style="font-size:0.88rem; color:var(--muted); text-transform:uppercase;">Próximos repasos programados:</strong>
-          <ul id="rec-pendientes" style="margin:6px 0; padding-left:20px; font-size:0.88rem;"></ul>
-          <p id="rec-pendientes-vacio" class="muted" style="margin:4px 0; font-size:0.85rem;">No hay repasos pendientes.</p>
-          <button id="rec-hechos" type="button" class="button secondary" style="font-size:0.82rem; padding:4px 10px; margin-top:6px;" hidden>✔ Marcar repasos de hoy como completados</button>
-        </div>
-
-        <p id="rec-estado" class="login-error-msg" style="background:#e0f2fe; color:#0369a1; border-color:#bae6fd;" hidden></p>
-      </div>
-
-      <div class="recommendation-card" style="margin-bottom:20px;">
-        <strong>💡 ¿Cómo funciona la exportación?</strong><br>
-        Al pulsar el botón se descarga un archivo <code>.ics</code> estándar compatible con Google Calendar, Apple Calendar y Outlook con todos los repasos y entregas programadas sin necesidad de solicitar permisos invasivos en tu cuenta de Google.
-      </div>
-
-      <div id="cronograma-list"></div>
-    </div>
-  </section>
-
-  <!-- TAB 3: TIQUES Y EVALUACIÓN SEGÚN EL PDF -->
+  <!-- PESTAÑA 5: CRITERIOS Y TIQUES SEGÚN EL PDF OFICIAL -->
   <section id="tab-eval" class="tab-view" hidden>
     <div class="card">
-      <h2>Criterios oficiales de evaluación (IPO2627.pdf)</h2>
-      <p>La calificación final de la asignatura de Interacción Persona-Ordenador se compone de cuatro bloques:</p>
+      <span class="eyebrow" style="color:var(--accent);">NORMATIVA OFICIAL DE EVALUACIÓN (IPO2627.pdf)</span>
+      <h2 style="margin:2px 0 10px;">Criterios de Calificación · Convocatoria 2026–27</h2>
+      <p>La calificación final de la asignatura de Interacción Persona-Ordenador se compone de cuatro bloques reglados:</p>
       
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin:18px 0;">
-        <div class="metric-box">
-          <div class="number">60%</div>
-          <div class="label">Examen teórico final</div>
-          <div class="detail">Obligatorio obtener al menos un <strong>5,0 sobre 10</strong> para promediar.</div>
+        <div class="card" style="margin:0; padding:18px; border-top:4px solid var(--accent); background:var(--paper);">
+          <div style="font-size:2rem; font-weight:800; color:var(--accent); line-height:1;">60%</div>
+          <div style="font-weight:700; margin:6px 0 4px;">Examen teórico final</div>
+          <div style="font-size:0.85rem; color:var(--muted);">Obligatorio obtener al menos un <strong>5,0 sobre 10</strong> para promediar. Convocatoria en Aulario Flores de Lemus.</div>
         </div>
-        <div class="metric-box">
-          <div class="number">30%</div>
-          <div class="label">Prácticas en laboratorio</div>
-          <div class="detail">Obligatorio entregar y exponer al menos 2 prácticas. La <strong>Práctica 4 (Internacionalización) es obligatoria</strong>.</div>
+        <div class="card" style="margin:0; padding:18px; border-top:4px solid #0284c7; background:var(--paper);">
+          <div style="font-size:2rem; font-weight:800; color:#0284c7; line-height:1;">30%</div>
+          <div style="font-weight:700; margin:6px 0 4px;">Prácticas de laboratorio</div>
+          <div style="font-size:0.85rem; color:var(--muted);">Obligatorio entregar y exponer al menos 2 prácticas. La <strong>Práctica 4 (Internacionalización) es estrictamente obligatoria</strong>.</div>
         </div>
-        <div class="metric-box">
-          <div class="number">5%</div>
-          <div class="label">Seminarios y ejercicios</div>
-          <div class="detail">Resolución de problemas en clase y entregas en PLATEA.</div>
+        <div class="card" style="margin:0; padding:18px; border-top:4px solid #d97706; background:var(--paper);">
+          <div style="font-size:2rem; font-weight:800; color:#d97706; line-height:1;">5%</div>
+          <div style="font-weight:700; margin:6px 0 4px;">Seminarios virtuales</div>
+          <div style="font-size:0.85rem; color:var(--muted);">Resolución de problemas individuales y entrega en la plataforma PLATEA.</div>
         </div>
-        <div class="metric-box">
-          <div class="number">5%</div>
-          <div class="label">Asistencia y participación</div>
-          <div class="detail">Sistema de tiques: <strong>50 tiques = 100%</strong> de este bloque (con opción a puntos extra).</div>
+        <div class="card" style="margin:0; padding:18px; border-top:4px solid #059669; background:var(--paper);">
+          <div style="font-size:2rem; font-weight:800; color:#059669; line-height:1;">5%</div>
+          <div style="font-weight:700; margin:6px 0 4px;">Asistencia y participación</div>
+          <div style="font-size:0.85rem; color:var(--muted);">Sistema de tiques: <strong>50 tiques = 100%</strong> de este bloque (con opción a puntos extra).</div>
         </div>
       </div>
 
       <div class="card" style="background:var(--soft); border-color:#bbf7d0; margin-top:20px;">
-        <h3>Sistema de Tiques de Participación (Gamificación)</h3>
-        <p>En clase puedes acumular tiques de las siguientes formas:</p>
-        <ul style="padding-left:20px;">
+        <h3 style="margin-top:0;">Sistema Oficial de Tiques de Participación (Gamificación)</h3>
+        <p style="font-size:0.92rem;">En clase y laboratorio puedes acumular tiques de las siguientes formas oficiales:</p>
+        <ul style="padding-left:20px; font-size:0.9rem; line-height:1.7;">
           <li>Sesión completa de prácticas: <strong>1 tique</strong></li>
           <li>Exposición y defensa de prácticas: <strong>3 tiques</strong></li>
-          <li>Teoría en días aleatorios: <strong>11 tiques en total</strong></li>
-          <li>Salir a la pizarra o destacar en una pregunta: <strong>1 tique</strong></li>
-          <li>Asistir a tutoría con dudas fundadas: <strong>1 tique</strong></li>
+          <li>Asistencia a teoría en días aleatorios: <strong>11 tiques en total a lo largo del curso</strong></li>
+          <li>Salir a la pizarra o destacar en una pregunta razonada: <strong>1 tique</strong></li>
+          <li>Asistir a tutoría (despacho A3-326 o A3-126) con dudas fundadas: <strong>1 tique</strong></li>
         </ul>
-        <div style="display:flex; align-items:center; gap:12px; margin-top:14px;">
-          <button id="btn-add-tique" class="button">+1 Tique conseguido en clase</button>
-          <span class="muted">Tus tiques se guardan automáticamente en tu perfil institucional.</span>
+        <div style="display:flex; align-items:center; gap:12px; margin-top:16px; flex-wrap:wrap;">
+          <button id="btn-add-tique" class="button">+1 Tique de clase / tutoría</button>
+          <button id="btn-add-defensa" class="button secondary">+3 Tiques por defensa de práctica</button>
+          <span class="muted" style="font-size:0.85rem;">Tus tiques se sincronizan de forma local e institucional.</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TAB 4: ARQUITECTURA & ESPECIFICACIÓN TÉCNICA -->
-  <section id="tab-architecture" class="tab-view" hidden>
+  <!-- PESTAÑA 6: CRÉDITOS Y AVISO LEGAL DE PROPIEDAD INTELECTUAL -->
+  <section id="tab-legal" class="tab-view" hidden>
     <div class="card">
-      <h2>Especificación técnica de la solución propuesta por Claude</h2>
-      <p>Para construir la versión final en producción sobre GitHub Pages conservando la privacidad y rendimiento:</p>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+        <span style="font-size:2.4rem;">🏛️</span>
+        <div>
+          <h2 style="margin:0;">Aviso Legal y Derechos de Autor (Copyright)</h2>
+          <p class="muted" style="margin:0; font-size:0.92rem;">Marco normativo y atribución de autoría del material docente de Interacción Persona-Ordenador.</p>
+        </div>
+      </div>
 
-      <ol class="steps">
-        <li><strong>Arquitectura Local-First con Sincronización Opcional:</strong>
-          <ul>
-            <li>La fuente de verdad inmediata es el navegador (IndexedDB). Permite estudiar en el tren o biblioteca sin cobertura.</li>
-            <li>Al iniciar sesión con la cuenta institucional de la UJA (<span class="code-pill">@red.ujaen.es</span>), los registros locales se envían de forma idempotente a una base de datos segura (Postgres con RLS en Supabase).</li>
-          </ul>
-        </li>
-        <li><strong>Validación Estricta de Cuentas Universitarias:</strong>
-          <ul>
-            <li>En el cliente se utiliza Google Identity Services con el parámetro sugerido <span class="code-pill">hd: 'red.ujaen.es'</span>.</li>
-            <li>En el servidor (Supabase Auth / Postgres Trigger), se comprueba con expresión regular que el correo termine en <span class="code-pill">@(red\.)?ujaen\.es$</span> antes de insertar el usuario.</li>
-          </ul>
-        </li>
-        <li><strong>Algoritmo de Repetición Espaciada Adaptativo (SM-2 Modificado):</strong>
-          <ul>
-            <li>Cálculo de intervalo basado en acierto, nivel de certeza (seguro, dudo, azar) y tiempo de respuesta.</li>
-            <li>Horizonte de examen: ningún intervalo de repaso se programa más allá de la fecha del examen oficial.</li>
-            <li>Detección de conceptos mal aprendidos: un fallo cometido con certeza alta se programa con máxima prioridad de refuerzo.</li>
-          </ul>
-        </li>
-        <li><strong>Ampliación Modular del Banco a ~700 Preguntas:</strong>
-          <ul>
-            <li>Estructura JSON estática versionada en Git (<span class="code-pill">/data/tema-01.json</span> a <span class="code-pill">/data/tema-10.json</span>).</li>
-            <li>Metadatos taxonómicos: nivel de Bloom (Recordar, Comprender, Aplicar, Analizar) y referencia exacta a las diapositivas de <span class="code-pill">IPO2627.pdf</span>.</li>
-          </ul>
-        </li>
-      </ol>
+      <div style="background:#fffbeb; border:1px solid #fef3c7; border-left:5px solid #d97706; padding:16px 20px; border-radius:8px; margin-bottom:20px;">
+        <strong style="color:#92400e; font-size:0.95rem; display:block; margin-bottom:6px;">DECLARACIÓN EXPLÍCITA DE NO COMERCIALIDAD:</strong>
+        <p style="margin:0; font-size:0.9rem; color:#78350f; line-height:1.6;">
+          Este prototipo de software y banco interactivo de estudio ha sido desarrollado <strong>exclusivamente con fines educativos y de apoyo pedagógico al alumnado</strong> de la Universidad de Jaén. 
+          <strong>QUEDA TOTALMENTE PROHIBIDA SU COMERCIALIZACIÓN, EXPLOTACIÓN LUCRATIVA O DISTRIBUCIÓN COMERCIAL POR CUALQUIER MEDIO.</strong>
+        </p>
+      </div>
+
+      <h3>1. Titularidad del Material Docente</h3>
+      <p style="font-size:0.92rem; line-height:1.6;">
+        Los contenidos teóricos, enunciados de problemas, lecciones (L1 a L21), guiones de laboratorio (Prácticas 1 a 4), diapositivas y referencias bibliográficas contenidas en el documento oficial <strong>IPO2627.pdf</strong> pertenecen a la <strong>Universidad de Jaén</strong> y a su equipo docente del Departamento de Informática:
+      </p>
+      <ul style="padding-left:20px; font-size:0.92rem; line-height:1.7;">
+        <li><strong>Drª. Salud María Jiménez Zafra</strong> (Responsable de la asignatura · Despacho: A3-326 · Correo: <a href="mailto:sjzafra@ujaen.es">sjzafra@ujaen.es</a>)</li>
+        <li><strong>Dr. Manuel García Vega</strong> (Profesor docente · Despacho: A3-126 · Correo: <a href="mailto:mgarcia@ujaen.es">mgarcia@ujaen.es</a>)</li>
+      </ul>
+
+      <h3>2. Régimen de Cita y Uso Legítimo Académico</h3>
+      <p style="font-size:0.92rem; line-height:1.6;">
+        La utilización de los esquemas, conceptos y preguntas en esta herramienta se acoge al derecho de cita con fines docentes y de investigación (art. 32 del Real Decreto Legislativo 1/1996 de la Ley de Propiedad Intelectual), orientado a combatir la curva del olvido de Ebbinghaus mediante técnicas contrastadas de recuerdo activo (Active Recall) y repetición espaciada (Spaced Repetition).
+      </p>
+
+      <h3>3. Integración con Google NotebookLM</h3>
+      <p style="font-size:0.92rem; line-height:1.6;">
+        El evaluador de esquemas implementado en esta plataforma emula el razonamiento socrático de Google NotebookLM para verificar la cobertura conceptual del estudiante frente al canon de la asignatura, fomentando que el alumno contraste directamente sus dudas en su propio cuaderno oficial con los documentos originales de la UJA.
+      </p>
     </div>
   </section>
 
   <footer>
-    Plataforma de estudio para Interacción Persona-Ordenador · Grado en Ingeniería Informática · Universidad de Jaén.
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <div>
+        <strong>Interacción Persona-Ordenador · Grado en Ingeniería Informática</strong><br>
+        <span class="muted">Universidad de Jaén · Escuela Politécnica Superior · Material de uso estrictamente docente.</span>
+      </div>
+      <div>
+        <a href="guia-estudio.html">Guía de Estudio</a> · 
+        <a href="generador.html">Generador Global</a> · 
+        <a href="../IPO2627.pdf" target="_blank" rel="noopener">IPO2627.pdf</a>
+      </div>
+    </div>
   </footer>
 </main>
 
-<script src="https://accounts.google.com/gsi/client" async defer></script>
-<script src="prototipo.js"></script>
+<script>
+  // Conmutador del submódulo de fin de semana
+  function switchWeekendMode(mode) {
+    document.querySelectorAll('#weekend-subnav .subnav-pill').forEach(p => p.classList.remove('active'));
+    document.getElementById('weekend-mode-test').hidden = mode !== 'test';
+    document.getElementById('weekend-mode-short').hidden = mode !== 'short';
+    document.getElementById('weekend-mode-practical').hidden = mode !== 'practical';
+
+    const pills = document.querySelectorAll('#weekend-subnav .subnav-pill');
+    if (mode === 'test' && pills[0]) pills[0].classList.add('active');
+    if (mode === 'short' && pills[1]) pills[1].classList.add('active');
+    if (mode === 'practical' && pills[2]) pills[2].classList.add('active');
+  }
+</script>
+
+<!-- Carga de módulos de datos y controladores -->
+<script src="preguntas-globales.js"></script>
+<script src="datos-evaluacion.js"></script>
 <script src="recordatorios.js"></script>
+<script src="prototipo.js"></script>
 </body>
 </html>
