@@ -553,8 +553,8 @@ function generateICS(semanaFiltro = null) {
 
   semanas.forEach((sem, idx) => {
     const semIndex = sem.semana - 1;
-    // 1. Día de Teoría (Martes 16:00)
-    const fechaTeoria = new Date(2026, 8, 15 + (semIndex * 7), 16, 0);
+    // 1. Bloque 1 post-clase (Viernes 18:00, en ventana 24–48 h tras la teoría del Jueves)
+    const fechaTeoria = new Date(2026, 8, 18 + (semIndex * 7), 18, 0);
     const finTeoria = new Date(fechaTeoria.getTime() + (userSettings.dailyMinutes * 60000));
     const t = TEMAS_UJA.find(x => x.id === sem.tema);
 
@@ -570,8 +570,8 @@ function generateICS(semanaFiltro = null) {
       'END:VEVENT'
     );
 
-    // 2. Día de Estudio y Esquema NotebookLM (Jueves 18:00)
-    const fechaEsquema = new Date(2026, 8, 17 + (semIndex * 7), 18, 0);
+    // 2. Día de Estudio y Esquema NotebookLM (Sábado 11:00)
+    const fechaEsquema = new Date(2026, 8, 19 + (semIndex * 7), 11, 0);
     const finEsquema = new Date(fechaEsquema.getTime() + (userSettings.dailyMinutes * 60000));
     ics.push(
       'BEGIN:VEVENT',
@@ -585,8 +585,8 @@ function generateICS(semanaFiltro = null) {
       'END:VEVENT'
     );
 
-    // 3. Fin de semana Antiolvido (Sábado 11:00)
-    const fechaRepaso = new Date(2026, 8, 19 + (semIndex * 7), 11, 0);
+    // 3. Fin de semana Antiolvido (Domingo 11:00)
+    const fechaRepaso = new Date(2026, 8, 20 + (semIndex * 7), 11, 0);
     const finRepaso = new Date(fechaRepaso.getTime() + (userSettings.dailyMinutes * 60000));
     ics.push(
       'BEGIN:VEVENT',
