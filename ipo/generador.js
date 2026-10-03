@@ -1,6 +1,5 @@
 'use strict';
 const $ = id => document.getElementById(id);
-const TEMA = document.documentElement.dataset.tema || '1';
 const escapeHTML = text => String(text).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const shuffle = values => {
   const a = [...values];
@@ -11,7 +10,7 @@ const shuffle = values => {
   return a;
 };
 
-let activeScope = 'all';
+let activeTema = 'all'; // 'all', '1', '2', '3', 'clevertracker'
 let onlyFailed = false;
 let currentQuestion = null;
 let currentOrder = [];
@@ -25,13 +24,12 @@ let failedIds = new Set();
 let sessionHistory = [];
 
 function getMatchingPool() {
-  let pool = BANCO;
-  if (activeScope !== 'all') {
-    const scopeNum = Number(activeScope);
-    pool = pool.filter(q => q.bloque === scopeNum);
+  let pool = BANCO_GLOBAL;
+  if (activeTema !== 'all') {
+    pool = pool.filter(q => q.tema === activeTema);
   }
   if (onlyFailed) {
-    const subset = pool.filter(q => failedIds.has(q.id));
+    const subset = pool.filter(q => failedIds.has(q.globalId));
     if (subset.length) return subset;
     onlyFailed = false;
     if ($('filter-failed')) $('filter-failed').checked = false;
@@ -43,14 +41,14 @@ function nextRandomQuestion() {
   const pool = getMatchingPool();
   if (!pool || !pool.length) return;
 
-  let available = pool.filter(q => unseenIds.includes(q.id));
+  let available = pool.filter(q => unseenIds.includes(q.globalId));
   if (!available.length) {
-    unseenIds = pool.map(q => q.id);
+    unseenIds = pool.map(q => q.globalId);
     available = pool;
   }
 
   const selected = available[Math.floor(Math.random() * available.length)];
-  unseenIds = unseenIds.filter(id => id !== selected.id);
+  unseenIds = unseenIds.filter(id => id !== selected.globalId);
 
   currentQuestion = selected;
   currentOrder = shuffle([0, 1, 2, 3]);
@@ -64,71 +62,63 @@ function renderCurrent() {
   const q = currentQuestion;
   const isAnswered = currentAnswer !== null;
 
-  if ($('gen-block-badge')) $('gen-block-badge').textContent = BLOQUES[q.bloque] || 'General';
-  if ($('gen-ref-badge')) {
-    $('gen-ref-badge').textContent = q.pagina ? `pág. ${q.pagina}` : 'Caso real';
-  }
+  $('gen-topic-badge').textContent = q.temaTitulo;
+  $('gen-block-badge').textContent = q.bloqueNombre;
+  $('gen-ref-badge').textContent = q.pagina ? `pág. ${q.pagina}` : 'Caso real';
 
-  if ($('gen-prompt')) $('gen-prompt').textContent = q.enunciado;
+  $('gen-prompt').textContent = q.enunciado;
 
   const banner = $('gen-banner');
-  if (banner) {
+  if (isAnswered) {
+    const isCorrect = q.opciones[currentAnswer].correcta;
+    banner.hidden = false;
+    banner.className = `instant-banner ${isCorrect ? 'is-correct' : 'is-wrong'}`;
+    banner.innerHTML = isCorrect
+      ? `✓ ¡Correcto! ${escapeHTML(q.opciones[currentAnswer].explicacion)}`
+      : `✗ Incorrecto. La opción correcta está señalada en verde abajo.`;
+  } else {
+    banner.hidden = true;
+    banner.innerHTML = '';
+  }
+
+  $('gen-options').innerHTML = currentOrder.map((oi, idx) => {
+    const o = q.opciones[oi];
+    let optionClass = 'option';
+    let badgeHTML = '';
+    let explanationHTML = '';
+
     if (isAnswered) {
-      const isCorrect = q.opciones[currentAnswer].correcta;
-      banner.hidden = false;
-      banner.className = `instant-banner ${isCorrect ? 'is-correct' : 'is-wrong'}`;
-      banner.innerHTML = isCorrect
-        ? `✓ ¡Correcto! ${escapeHTML(q.opciones[currentAnswer].explicacion)}`
-        : `✗ Incorrecto. La opción correcta está señalada en verde abajo.`;
-    } else {
-      banner.hidden = true;
-      banner.innerHTML = '';
-    }
-  }
-
-  const optionsContainer = $('gen-options');
-  if (optionsContainer) {
-    optionsContainer.innerHTML = currentOrder.map((oi, idx) => {
-      const o = q.opciones[oi];
-      let optionClass = 'option';
-      let badgeHTML = '';
-      let explanationHTML = '';
-
-      if (isAnswered) {
-        optionClass += ' is-disabled';
-        if (currentAnswer === oi) {
-          if (o.correcta) {
-            optionClass += ' correct-choice';
-            badgeHTML = ' <span class="badge ok">✓ Tu respuesta</span>';
-          } else {
-            optionClass += ' wrong-choice';
-            badgeHTML = ' <span class="badge wrong">✗ Tu respuesta</span>';
-          }
-        } else if (o.correcta) {
-          optionClass += ' revealed-correct';
-          badgeHTML = ' <span class="badge ok">✓ Respuesta correcta</span>';
+      optionClass += ' is-disabled';
+      if (currentAnswer === oi) {
+        if (o.correcta) {
+          optionClass += ' correct-choice';
+          badgeHTML = ' <span class="badge ok">✓ Tu respuesta</span>';
+        } else {
+          optionClass += ' wrong-choice';
+          badgeHTML = ' <span class="badge wrong">✗ Tu respuesta</span>';
         }
-        explanationHTML = `<div class="option-feedback">${escapeHTML(o.explicacion)}</div>`;
+      } else if (o.correcta) {
+        optionClass += ' revealed-correct';
+        badgeHTML = ' <span class="badge ok">✓ Respuesta correcta</span>';
       }
+      explanationHTML = `<div class="option-feedback">${escapeHTML(o.explicacion)}</div>`;
+    }
 
-      return `<label class="${optionClass}">
-        <input type="radio" name="gen-opt" value="${oi}" ${currentAnswer === oi ? 'checked' : ''} ${isAnswered ? 'disabled' : ''}>
-        <div style="flex:1;">
-          <span><strong>${'ABCD'[idx]}.</strong> ${escapeHTML(o.texto)}${badgeHTML}</span>
-          ${explanationHTML}
-        </div>
-      </label>`;
-    }).join('');
-  }
+    return `<label class="${optionClass}">
+      <input type="radio" name="gen-opt" value="${oi}" ${currentAnswer === oi ? 'checked' : ''} ${isAnswered ? 'disabled' : ''}>
+      <div style="flex:1;">
+        <span><strong>${'ABCD'[idx]}.</strong> ${escapeHTML(o.texto)}${badgeHTML}</span>
+        ${explanationHTML}
+      </div>
+    </label>`;
+  }).join('');
 
   const nextBtn = $('btn-next');
-  if (nextBtn) {
-    if (isAnswered) {
-      nextBtn.classList.add('btn-next-random');
-      nextBtn.focus();
-    } else {
-      nextBtn.classList.remove('btn-next-random');
-    }
+  if (isAnswered) {
+    nextBtn.classList.add('btn-next-random');
+    nextBtn.focus();
+  } else {
+    nextBtn.classList.remove('btn-next-random');
   }
 
   updateStatsDisplay();
@@ -143,12 +133,12 @@ function handleAnswer(choiceIdx) {
     streak++;
     maxStreak = Math.max(maxStreak, streak);
     countCorrect++;
-    failedIds.delete(currentQuestion.id);
+    failedIds.delete(currentQuestion.globalId);
     triggerStreakBump();
   } else {
     streak = 0;
     countWrong++;
-    failedIds.add(currentQuestion.id);
+    failedIds.add(currentQuestion.globalId);
   }
 
   sessionHistory.unshift({
@@ -165,7 +155,7 @@ function handleAnswer(choiceIdx) {
 
 function triggerStreakBump() {
   const el = $('streak-val');
-  if (el && el.parentElement) {
+  if (el) {
     el.parentElement.classList.remove('bump');
     void el.parentElement.offsetWidth;
     el.parentElement.classList.add('bump');
@@ -173,9 +163,9 @@ function triggerStreakBump() {
 }
 
 function updateStatsDisplay() {
-  if ($('streak-val')) $('streak-val').textContent = streak;
-  if ($('correct-val')) $('correct-val').textContent = countCorrect;
-  if ($('wrong-val')) $('wrong-val').textContent = countWrong;
+  $('streak-val').textContent = streak;
+  $('correct-val').textContent = countCorrect;
+  $('wrong-val').textContent = countWrong;
   if ($('failed-count')) $('failed-count').textContent = failedIds.size;
   if ($('failed-box')) $('failed-box').hidden = failedIds.size === 0;
 }
@@ -198,7 +188,7 @@ function renderHistory() {
     return `<div class="history-item">
       <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
         <span class="badge ${isCor ? 'ok' : 'wrong'}">${isCor ? '✓ Acierto' : '✗ Fallo'}</span>
-        <small class="muted">${BLOQUES[q.bloque]} · ${q.pagina ? `pág. ${q.pagina}` : 'Caso real'}</small>
+        <small class="muted">${q.temaTitulo} · ${q.bloqueNombre}</small>
       </div>
       <h4>${escapeHTML(q.enunciado)}</h4>
       <p style="font-size:0.9rem; margin:4px 0;"><strong>Tu elección:</strong> ${escapeHTML(chosen.texto)}</p>
@@ -208,30 +198,26 @@ function renderHistory() {
 }
 
 // Event Listeners
-if ($('gen-options')) {
-  $('gen-options').onchange = e => {
-    if (e.target.name === 'gen-opt') {
-      handleAnswer(Number(e.target.value));
-    }
-  };
-}
+$('gen-options').onchange = e => {
+  if (e.target.name === 'gen-opt') {
+    handleAnswer(Number(e.target.value));
+  }
+};
 
-if ($('btn-next')) $('btn-next').onclick = nextRandomQuestion;
-if ($('btn-skip')) $('btn-skip').onclick = nextRandomQuestion;
+$('btn-next').onclick = nextRandomQuestion;
+$('btn-skip').onclick = nextRandomQuestion;
 
-if ($('btn-reset')) {
-  $('btn-reset').onclick = () => {
-    streak = 0;
-    countCorrect = 0;
-    countWrong = 0;
-    failedIds.clear();
-    unseenIds = [];
-    sessionHistory = [];
-    updateStatsDisplay();
-    renderHistory();
-    nextRandomQuestion();
-  };
-}
+$('btn-reset').onclick = () => {
+  streak = 0;
+  countCorrect = 0;
+  countWrong = 0;
+  failedIds.clear();
+  unseenIds = [];
+  sessionHistory = [];
+  updateStatsDisplay();
+  renderHistory();
+  nextRandomQuestion();
+};
 
 if ($('filter-failed')) {
   $('filter-failed').onchange = e => {
@@ -240,15 +226,15 @@ if ($('filter-failed')) {
   };
 }
 
-if ($('scope-selector')) {
-  $('scope-selector').onchange = e => {
-    activeScope = e.target.value;
+document.querySelectorAll('.pill-tab').forEach(tab => {
+  tab.onclick = () => {
+    document.querySelectorAll('.pill-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    activeTema = tab.dataset.tema;
     unseenIds = [];
-    if (currentAnswer === null) {
-      nextRandomQuestion();
-    }
+    nextRandomQuestion();
   };
-}
+});
 
 window.addEventListener('keydown', e => {
   if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;

@@ -2,16 +2,79 @@
 <html lang="es" data-tema="2">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tema 2 · Test exigente de IPO</title>
+<title>Tema 2 · Generador de preguntas aleatorias de IPO</title>
 <link rel="stylesheet" href="estilo.css">
 <main>
-  <header><a href="index.html">← Laboratorio de estudio</a><p class="eyebrow">TEMA 02 · EL FACTOR HUMANO</p><h1>Comprueba tu comprensión.</h1><p class="lead">Aplica los conceptos del tema y distingue las explicaciones que parecen similares.</p></header>
-  <section id="setup" class="card"><h2>Elige tu prueba</h2><p>Una respuesta correcta entre cuatro. Preguntas y opciones se barajan en cada intento. <strong>Interactividad inmediata:</strong> sabrás al instante si has acertado con su justificación razonada.</p><div class="grid"><label>Contenido<select id="scope"><option value="all">Examen global</option><option value="0">Modelos mentales</option><option value="1">Procesamiento y sentidos</option><option value="2">Percepción visual y atención</option><option value="3">Memoria sensorial y de trabajo</option><option value="4">Memoria a largo plazo y casos</option></select></label><label>Preguntas en esta sesión<select id="question-count"><option value="5">Ronda rápida · 5 preguntas</option><option value="10" selected>Sesión recomendada · 10 preguntas</option><option value="15">Práctica media · 15 preguntas</option><option value="all">Todas las preguntas</option></select></label></div><p class="muted">Avanza a tu ritmo. Sin números intimidantes: aprende en cada respuesta sin sobrecarga cognitiva.</p><button id="start">Comenzar prueba</button> <button id="resume" class="secondary" hidden>Continuar intento guardado</button><p id="storage-note" class="muted" role="status"></p></section>
-  <section id="exam" hidden aria-label="Examen"><div class="toolbar"><strong id="counter"></strong><span id="answered" aria-live="polite"></span></div><progress id="progress" max="40" value="0" aria-label="Preguntas respondidas"></progress><nav id="navigator" aria-label="Ir a una pregunta"></nav><form id="question" class="card"></form><div class="actions"><button id="prev" class="secondary">← Anterior</button><button id="next">Siguiente →</button><button id="finish" class="secondary">Terminar y corregir</button></div><div id="finish-check" class="card" hidden><p id="finish-message"></p><button id="confirm-finish">Sí, corregir ahora</button> <button id="keep-working" class="secondary">Seguir respondiendo</button></div></section>
-  <section id="results" hidden aria-labelledby="result-title"><div class="card"><span class="eyebrow">DIAGNÓSTICO DEL INTENTO</span><h2 id="result-title" tabindex="-1">Resultados</h2><div id="summary" class="stats"></div><p id="diagnosis"></p><div class="table-wrap"><table><caption>Rendimiento por apartado</caption><thead><tr><th>Apartado</th><th>Aciertos</th><th>Errores</th><th>En blanco</th></tr></thead><tbody id="breakdown"></tbody></table></div><p id="confidence-summary"></p><div class="actions"><button id="retry">Repetir errores, dudas y blancos</button><button id="new" class="secondary">Elegir otra prueba</button><button id="download" class="secondary">Descargar informe</button></div></div><div class="toolbar"><h2>Corrección razonada</h2><label class="inline"><input id="only-review" type="checkbox"> Solo pendientes de consolidar</label></div><p class="muted">Cada opción explica por qué encaja o falla. Las referencias usan la numeración del PDF. “Pendiente” incluye errores, blancos y aciertos sin confianza alta.</p><div id="review"></div></section>
-  <section id="history" class="card"><h2>Últimos intentos en este navegador</h2><div id="history-list"></div></section>
-  <footer>Fuente: IPO2627.pdf, tema II (pp. 49–115). Los casos son elaboraciones didácticas basadas en el tema. El guardado local depende del navegador y de la ruta de los archivos.</footer>
-  <noscript><p class="card">Activa JavaScript para realizar y corregir los tests.</p></noscript>
+  <header>
+    <a href="index.html">← Laboratorio de estudio</a>
+    <p class="eyebrow">TEMA 02 · EL FACTOR HUMANO (PÁGINAS 49–115)</p>
+    <h1>Generador de preguntas aleatorias</h1>
+    <p class="lead">Entrena con preguntas al azar sobre modelos mentales, sentidos, atención, percepción visual y memoria de trabajo y a largo plazo.</p>
+  </header>
+
+  <!-- Barra de control y estadísticas en vivo -->
+  <div class="gen-bar">
+    <div class="gen-filters">
+      <label for="scope-selector" style="font-size:0.9rem; font-weight:600;">Apartado:</label>
+      <select id="scope-selector">
+        <option value="all">🎲 Todos los apartados (40 preguntas)</option>
+        <option value="0">Modelos mentales</option>
+        <option value="1">Procesamiento y sentidos</option>
+        <option value="2">Percepción visual y atención</option>
+        <option value="3">Memoria sensorial y de trabajo</option>
+        <option value="4">Memoria a largo plazo y casos</option>
+      </select>
+    </div>
+    <div class="gen-stats">
+      <span class="streak-badge" title="Preguntas seguidas acertadas">🔥 Racha: <strong id="streak-val">0</strong></span>
+      <span class="badge ok">✓ <strong id="correct-val">0</strong></span>
+      <span class="badge wrong">✗ <strong id="wrong-val">0</strong></span>
+      <button id="btn-reset" class="btn-reset" title="Reiniciar marcador">↺ Reiniciar</button>
+    </div>
+  </div>
+
+  <!-- Tarjeta de la pregunta actual -->
+  <section class="card question-card" aria-label="Pregunta actual">
+    <div class="question-meta">
+      <span class="badge" id="gen-block-badge">Apartado</span>
+      <span class="badge" id="gen-ref-badge" style="background:var(--soft); color:var(--accent);">Referencia</span>
+      <div style="margin-left:auto;">
+        <label id="failed-box" class="inline" style="font-size:0.85rem; cursor:pointer;" hidden>
+          <input type="checkbox" id="filter-failed"> Priorizar fallos (<span id="failed-count">0</span>)
+        </label>
+      </div>
+    </div>
+
+    <h2 id="gen-prompt" style="font-size:1.22rem; margin:14px 0 18px; line-height:1.5;"></h2>
+
+    <div id="gen-banner" hidden></div>
+
+    <form id="gen-options" onsubmit="return false;" style="margin-top:16px;"></form>
+
+    <div class="gen-actions">
+      <button id="btn-next" class="btn-next-random" type="button">🎲 Siguiente pregunta aleatoria →</button>
+      <button id="btn-skip" class="btn-skip" type="button">Saltar / Otra pregunta ↻</button>
+      <span class="kbd-hint">Teclas: <kbd>1</kbd>-<kbd>4</kbd> responder · <kbd>Espacio</kbd> siguiente · <kbd>S</kbd> saltar</span>
+    </div>
+  </section>
+
+  <!-- Historial de la sesión -->
+  <details class="history-drawer">
+    <summary>Preguntas respondidas en esta sesión (<span id="history-count">0</span>) · Pulsa para repasar</summary>
+    <div class="history-drawer-content" id="history-list">
+      <p class="muted">Aún no has respondido ninguna pregunta en esta sesión.</p>
+    </div>
+  </details>
+
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px; flex-wrap:wrap; gap:12px;">
+    <a href="tema-3.html" class="button secondary">Pasar al Tema 3 →</a>
+    <a href="generador.html" class="button">Abrir generador global (130 preguntas) →</a>
+  </div>
+
+  <footer>
+    Fuente: <a href="../IPO2627.pdf" target="_blank" rel="noopener">IPO2627.pdf</a>, tema II (pp. 49–115). Banco de 40 preguntas de aplicación y contraste conceptual.
+  </footer>
+  <noscript><p class="card">Activa JavaScript para realizar las preguntas.</p></noscript>
 </main>
 <script src="preguntas-tema-2.js"></script>
 <script src="test.js"></script>

@@ -54,6 +54,7 @@
         viewLive: '↗ Live Demo',
         viewSource: '↗ Source Code',
         viewLab: '↗ Enter Study Lab',
+        viewGenerator: '🎲 Question Generator',
         viewUsability: '↗ Usability Study',
         viewArchitecture: '🔒 Architecture Spec',
         viewRepo: '↗ Repository',
@@ -95,7 +96,7 @@
           f2: 'Custom-trained CV & OCR models avoiding recurring third-party API dependencies.',
           f3: 'Flutter client (Riverpod/Hive) backed by PostgREST & PostgreSQL on Oracle Cloud with Row-Level Security.',
           viewAudit: '↗ Usability Audit',
-          viewTest: '↗ Usability Test'
+          viewTest: '🎲 Question Generator'
         },
         ipo: {
           tag: 'HCI / IPO · Active Recall',
@@ -221,6 +222,7 @@
         viewLive: '↗ Ver App',
         viewSource: '↗ Código Fuente',
         viewLab: '↗ Entrar al Laboratorio',
+        viewGenerator: '🎲 Generador de Preguntas',
         viewUsability: '↗ Informe de Usabilidad',
         viewArchitecture: '🔒 Especificación Técnica',
         viewRepo: '↗ Repositorio',
@@ -263,7 +265,7 @@
           f2: 'Modelos propios de visión por computador y OCR evitando llamadas recurrentes a APIs externas.',
           f3: 'Cliente Flutter (Riverpod/Hive) con backend PostgREST y PostgreSQL en Oracle Cloud con Row-Level Security.',
           viewAudit: '↗ Auditoría de Usabilidad',
-          viewTest: '↗ Test Interactivo'
+          viewTest: '🎲 Generador Aleatorio'
         },
         ipo: {
           tag: 'IPO / HCI · Recuperación Activa',

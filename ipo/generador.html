@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IPO · Generador de preguntas aleatorias</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<main>
+  <header>
+    <a href="index.html">← Laboratorio de estudio</a>
+    <span class="eyebrow">PRÁCTICA SIN LÍMITES · BANCO COMPLETO DE 130 PREGUNTAS</span>
+    <h1>Generador de preguntas aleatorias</h1>
+    <p class="lead">Entrena a tu ritmo sin la pereza de exámenes rígidos. Genera una pregunta al azar, responde y comprueba al instante si has acertado con su justificación razonada.</p>
+  </header>
+
+  <!-- Píldoras de filtrado por tema -->
+  <nav class="pill-tabs" aria-label="Seleccionar tema">
+    <button class="pill-tab active" data-tema="all">🎲 Todo el temario (130 preguntas)</button>
+    <button class="pill-tab" data-tema="1">Tema 1: Intro a IPO (40)</button>
+    <button class="pill-tab" data-tema="2">Tema 2: Factor humano (40)</button>
+    <button class="pill-tab" data-tema="3">Tema 3: Metáforas (40)</button>
+    <button class="pill-tab" data-tema="clevertracker">CleverTracker: Caso real (10)</button>
+  </nav>
+
+  <!-- Barra de control y estadísticas en vivo -->
+  <div class="gen-bar">
+    <div class="gen-stats">
+      <span class="streak-badge" title="Preguntas seguidas acertadas">🔥 Racha: <strong id="streak-val">0</strong></span>
+      <span class="badge ok">✓ <strong id="correct-val">0</strong> aciertos</span>
+      <span class="badge wrong">✗ <strong id="wrong-val">0</strong> fallos</span>
+      <button id="btn-reset" class="btn-reset" title="Reiniciar marcador">↺ Reiniciar</button>
+    </div>
+    <div id="failed-box" class="gen-filters" hidden>
+      <label class="inline" style="font-size:0.88rem; cursor:pointer;">
+        <input type="checkbox" id="filter-failed"> Priorizar fallos (<span id="failed-count">0</span>)
+      </label>
+    </div>
+  </div>
+
+  <!-- Tarjeta de la pregunta actual -->
+  <section class="card question-card" aria-label="Pregunta actual">
+    <div class="question-meta">
+      <span class="badge" id="gen-topic-badge">Tema</span>
+      <span class="badge" id="gen-block-badge">Bloque</span>
+      <span class="badge" id="gen-ref-badge" style="background:var(--soft); color:var(--accent);">Referencia</span>
+    </div>
+
+    <h2 id="gen-prompt" style="font-size:1.22rem; margin:14px 0 18px; line-height:1.5;"></h2>
+
+    <div id="gen-banner" hidden></div>
+
+    <form id="gen-options" onsubmit="return false;" style="margin-top:16px;"></form>
+
+    <div class="gen-actions">
+      <button id="btn-next" class="btn-next-random" type="button">🎲 Siguiente pregunta aleatoria →</button>
+      <button id="btn-skip" class="btn-skip" type="button">Saltar / Otra pregunta ↻</button>
+      <span class="kbd-hint">Teclas: <kbd>1</kbd>-<kbd>4</kbd> responder · <kbd>Espacio</kbd> siguiente · <kbd>S</kbd> saltar</span>
+    </div>
+  </section>
+
+  <!-- Historial de la sesión -->
+  <details class="history-drawer">
+    <summary>Preguntas respondidas en esta sesión (<span id="history-count">0</span>) · Pulsa para repasar</summary>
+    <div class="history-drawer-content" id="history-list">
+      <p class="muted">Aún no has respondido ninguna pregunta en esta sesión.</p>
+    </div>
+  </details>
+
+  <footer>
+    Basado en <a href="../IPO2627.pdf" target="_blank" rel="noopener">IPO2627.pdf</a> y en los casos prácticos de evaluación real. Generador interactivo local sin conexión.
+  </footer>
+</main>
+<script src="preguntas-globales.js"></script>
+<script src="generador.js"></script>
+</body>
+</html>
