@@ -427,7 +427,7 @@ function renderWeeklyPlanner() {
 
   // Barra de sincronización con Google Calendar y .ics
   let syncBarHtml = `
-    <div class="card" style="background:#f8fafc; border:1px solid var(--line); margin-bottom:24px;">
+    <div class="card" style="background:var(--surface-muted); margin-bottom:24px;">
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
         <div>
           <h4 style="margin:0 0 4px;">Sincronización con tu Calendario (Google Calendar & .ics)</h4>
@@ -680,7 +680,7 @@ function renderNotebookLMSchemaSection() {
       </div>
 
       <!-- SUBIDA DE ARCHIVO (FOTOGRAFÍA / DIAGRAMA / PDF) -->
-      <div style="border:2px dashed var(--line); border-radius:10px; padding:14px; text-align:center; margin-bottom:18px; background:#fafafa;">
+      <div style="border:2px dashed var(--border-strong); border-radius:10px; padding:14px; text-align:center; margin-bottom:18px; background:var(--surface-muted);">
         <div style="font-size:1.8rem; margin-bottom:4px;">📷 / 📄</div>
         <strong style="font-size:0.92rem; display:block;">¿Tienes tu esquema en papel o en un diagrama conceptual?</strong>
         <span class="muted" style="font-size:0.82rem; display:block; margin-bottom:8px;">Sube una foto de tu libreta, captura de Miro/Excalidraw o archivo .txt / .md / .pdf</span>
