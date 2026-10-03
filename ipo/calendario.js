@@ -11,8 +11,8 @@ const H_MIN = 4, H_MAX = 8, H_REC_MIN = 4, H_REC_MAX = 8;
 
 function calDefault() {
   return {
-    grupo: 'A',               // grupo de teoría (se deriva del subgrupo de prácticas)
-    sub: 1,                   // subgrupo de prácticas 1–4 (martes, A3-170)
+    grupo: 'A',               // grupo de TEORÍA elegido: A (mañanas) o B (tardes)
+    sub: 1,                   // subgrupo de PRÁCTICAS elegido: 1–4 (martes, A3-170). Independiente del grupo de teoría.
     horasSemanales: 6,
     email: '',
     sincronizado: false,
@@ -40,8 +40,10 @@ function calLoad() {
   if (!CAL.conf) CAL.conf = {};
   if (!CAL.bloques) CAL = Object.assign(calDefault(), CAL);
   // Migración de valores antiguos:
-  if (stored.sub == null) CAL.sub = (CAL.grupo === 'B' ? 3 : 1);
-  CAL.grupo = grupoDeSub(CAL.sub);
+  // (v1 acoplaba teoría y prácticas: G1–G2 ⇒ A, G3–G4 ⇒ B)
+  if (stored.sub == null && stored.grupo == null) { CAL.grupo = 'A'; CAL.sub = 1; }
+  else if (stored.sub == null) { CAL.sub = (CAL.grupo === 'B' ? 3 : 1); }
+  if (CAL.grupo !== 'A' && CAL.grupo !== 'B') CAL.grupo = 'A';
   const b = CAL.bloques;
   const esDefectoAntiguo = b && b.b1 && b.b1.dia === 3 && b.b1.hora === '14:00' &&
     b.b2 && b.b2.dia === 5 && b.b2.hora === '18:00' && b.b3 && b.b3.dia === 6 && b.b3.hora === '11:00';
@@ -83,16 +85,23 @@ const PRACTICAS_OFICIAL = {
   3: { dia: 2, ini: '12:30', fin: '14:30' },
   4: { dia: 2, ini: '15:30', fin: '17:30' }
 };
-function grupoDeSub(sub) { return Number(sub) <= 2 ? 'A' : 'B'; }
-function subActual() { return CAL.sub || (CAL.grupo === 'B' ? 3 : 1); }
-function grupoActual() { return grupoDeSub(subActual()); }
+function grupoActual() {
+  const g = String(CAL.grupo || 'A').toUpperCase();
+  return g === 'B' ? 'B' : 'A';
+}
+function subActual() {
+  const s = Number(CAL.sub);
+  return s >= 1 && s <= 4 ? s : (grupoActual() === 'B' ? 3 : 1);
+}
 function finUltimaTeoria() {
   // Última clase teórica de la semana: jueves (Grupo A 11:30 · Grupo B 16:30)
   return grupoActual() === 'B' ? '16:30' : '11:30';
 }
 function horarioOficial() {
+  // Teoría y prácticas se eligen por separado: el subgrupo de prácticas
+  // NO impone el grupo de teoría (ej. teoría A de mañanas + prácticas G4 de tarde).
+  const g = grupoActual();
   const sub = subActual();
-  const g = grupoDeSub(sub);
   const teoria = TEORIA_OFICIAL[g];
   const p = PRACTICAS_OFICIAL[sub];
   const pract = { dia: p.dia, ini: p.ini, fin: p.fin, tag: 'Práctica Lab A3-170 · G' + sub + ' (P1/P2)', aula: 'A3-170' };
@@ -383,12 +392,18 @@ function renderCalendario() {
           '<input type="range" id="cal-horas" min="2" max="10" step="0.5" value="' + CAL.horasSemanales + '">' +
           '<div class="muted" style="font-size:.8rem">Reparto auto: B1 ' + b.b1.dur + 'h · B2 ' + b.b2.dur + 'h · B3 ' + b.b3.dur + 'h' +
           (CAL.horasSemanales < H_REC_MIN || CAL.horasSemanales > H_REC_MAX ? ' · <b style="color:var(--warning)">fuera del rango pedagógico</b>' : '') + '</div></div>' +
-        '<div class="cal-ctl"><label>Subgrupo de prácticas · martes A3-170 (horario oficial UJA)</label>' +
+        '<div class="cal-ctl"><label>Grupo de teoría · Mié + Jue (A4-36, horario oficial UJA)</label>' +
           '<div class="cal-seg" style="flex-wrap:wrap">' +
-            [1, 2, 3, 4].map(s => '<button data-sub="' + s + '" class="' + (subActual() === s ? 'on' : '') + '" title="Grupo ' + grupoDeSub(s) + '">G' + s + ' · ' + PRACTICAS_OFICIAL[s].ini.slice(0, 5) + '</button>').join('') +
+            '<button data-teoria="A" class="' + (grupoActual() === 'A' ? 'on' : '') + '">A · mañanas (M. García Vega)</button>' +
+            '<button data-teoria="B" class="' + (grupoActual() === 'B' ? 'on' : '') + '">B · tardes (S. Jiménez Zafra)</button>' +
           '</div>' +
-          '<div class="muted" style="font-size:.8rem;margin-top:6px">G1 8:30–10:30 · G2 10:30–12:30 (teoría A) · G3 12:30–14:30 · G4 15:30–17:30 (teoría B).<br>' +
-          'Tu teoría (Grupo ' + grupoActual() + '): ' + (grupoActual() === 'A' ? 'Mié 11:30–12:30 + Jue 10:30–11:30 (M. García Vega)' : 'Mié 16:30–17:30 + Jue 15:30–16:30 (S. Jiménez Zafra)') + ' · A4-36</div></div>' +
+          '<div class="muted" style="font-size:.8rem;margin-top:6px">A: Mié 11:30–12:30 + Jue 10:30–11:30 · B: Mié 16:30–17:30 + Jue 15:30–16:30.</div></div>' +
+        '<div class="cal-ctl"><label>Subgrupo de prácticas · martes (A3-170, se elige aparte)</label>' +
+          '<div class="cal-seg" style="flex-wrap:wrap">' +
+            [1, 2, 3, 4].map(s => '<button data-sub="' + s + '" class="' + (subActual() === s ? 'on' : '') + '">G' + s + ' · ' + PRACTICAS_OFICIAL[s].ini.slice(0, 5) + '</button>').join('') +
+          '</div>' +
+          '<div class="muted" style="font-size:.8rem;margin-top:6px">G1 8:30–10:30 · G2 10:30–12:30 · G3 12:30–14:30 · G4 15:30–17:30.<br>' +
+          'Tu combinación: teoría ' + grupoActual() + ' + prácticas G' + subActual() + '.</div></div>' +
         '<div class="cal-ctl"><label>Ventana 24–48 h post-clase</label>' +
           '<div style="font-size:.9rem">' + (enVentana
             ? '✅ B1 a <b>' + Math.round(ventanaB1Horas()) + ' h</b> tras teoría (válido)'
@@ -514,10 +529,16 @@ function bindCalendario() {
       renderCalendario();
     };
   }
+  document.querySelectorAll('[data-teoria]').forEach(g => {
+    g.onclick = () => {
+      CAL.grupo = g.dataset.teoria === 'B' ? 'B' : 'A';
+      calSave(); renderCalendario();
+    };
+  });
   document.querySelectorAll('[data-sub]').forEach(g => {
     g.onclick = () => {
-      CAL.sub = Number(g.dataset.sub);
-      CAL.grupo = grupoDeSub(CAL.sub);
+      const s = Number(g.dataset.sub);
+      if (s >= 1 && s <= 4) CAL.sub = s;
       calSave(); renderCalendario();
     };
   });
