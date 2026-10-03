@@ -575,13 +575,14 @@ function bindCalendario() {
         } catch (e) {}
         if (p && !p.esquemaTexto) {
           calSave(); renderCalendario();
-          if (confirm('Estudio vinculado al horario oficial. Aún no tienes esquema de este tema. ¿Abrir el validador NotebookLM ahora?')) switchTab('tab-schema');
+          if (typeof switchTab === 'function' && confirm('Estudio vinculado al horario oficial. Aún no tienes esquema de este tema. ¿Abrir el validador NotebookLM ahora?')) switchTab('tab-schema');
           return;
         }
       } else if (k === 'b3') {
         conf.b3 = true;
         calSave(); renderCalendario();
         if (typeof switchTab === 'function') switchTab('tab-weekend');
+        else window.location.href = 'generador.html';
         return;
       } else {
         conf[k] = true;
@@ -592,7 +593,10 @@ function bindCalendario() {
     };
   });
   const goSch = document.getElementById('cal-goto-schema');
-  if (goSch) goSch.onclick = () => { if (typeof switchTab === 'function') switchTab('tab-schema'); };
+  if (goSch) goSch.onclick = () => {
+    if (typeof switchTab === 'function') switchTab('tab-schema');
+    else window.location.href = 'guia-estudio.html';
+  };
   document.querySelectorAll('[data-ev]').forEach(el => {
     el.onclick = () => {
       const k = el.dataset.ev;
