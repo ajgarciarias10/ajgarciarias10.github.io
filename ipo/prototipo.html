@@ -192,6 +192,7 @@
     <button class="tab-btn" data-tab="tab-planner">📅 Planificador & Calendario UJA (15 Semanas)</button>
     <button class="tab-btn" data-tab="tab-eval">🎓 Tiques y Evaluación (IPO2627)</button>
     <button class="tab-btn" data-tab="tab-architecture">🏛️ Arquitectura & Especificación</button>
+    <a href="guia-estudio.html" class="tab-btn" style="text-decoration:none; color:var(--accent);">📖 Guía Didáctica de Estudio →</a>
   </nav>
 
   <!-- TAB 1: DOMINIO Y PROGRESO POR TEMAS -->
@@ -242,6 +243,82 @@
             Exportar a mi calendario (.ics)
           </button>
         </div>
+      </div>
+
+      <!-- SECCIÓN RECORDATORIOS Y GOOGLE CALENDAR -->
+      <div class="card" style="background:var(--paper); border:1px solid var(--line); margin-bottom:24px;">
+        <span class="eyebrow" style="color:var(--accent);">RECORDATORIOS AUTOMÁTICOS & GOOGLE CALENDAR</span>
+        <h3 style="margin:4px 0 8px;">Que tu calendario te avise de cuándo estudiar</h3>
+        <p class="muted" style="margin:0 0 16px; font-size:0.9rem;">Elige tus días y horas de estudio preferidos para recibir notificaciones en tu móvil y tu cuenta institucional de la UJA.</p>
+
+        <form id="rec-ajustes" onsubmit="return false;" style="display:flex; flex-direction:column; gap:12px;">
+          <div>
+            <label style="font-size:0.88rem; font-weight:600; display:block; margin-bottom:4px;">Días habituales de estudio:</label>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <label class="inline" style="font-size:0.88rem;"><input type="checkbox" name="rec-dia" value="1" checked> L</label>
+              <label class="inline" style="font-size:0.88rem;"><input type="checkbox" name="rec-dia" value="2" checked> M</label>
+              <label class="inline" style="font-size:0.88rem;"><input type="checkbox" name="rec-dia" value="3" checked> X</label>
+              <label class="inline" style="font-size:0.88rem;"><input type="checkbox" name="rec-dia" value="4" checked> J</label>
+              <label class="inline" style="font-size:0.88rem;"><input type="checkbox" name="rec-dia" value="5" checked> V</label>
+              <label class="inline" style="font-size:0.88rem;"><input type="checkbox" name="rec-dia" value="6"> S</label>
+              <label class="inline" style="font-size:0.88rem;"><input type="checkbox" name="rec-dia" value="0"> D</label>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:12px;">
+            <label style="font-size:0.85rem;">Hora de inicio:
+              <input id="rec-hora" type="time" value="18:00" style="display:block; width:100%; margin-top:4px; padding:8px 10px; border:1px solid var(--line); border-radius:6px; font:inherit;">
+            </label>
+            <label style="font-size:0.85rem;">Minutos por sesión:
+              <input id="rec-minutos" type="number" min="15" max="90" step="5" value="30" style="display:block; width:100%; margin-top:4px; padding:8px 10px; border:1px solid var(--line); border-radius:6px; font:inherit;">
+            </label>
+            <label style="font-size:0.85rem;">Fecha del examen teórico:
+              <input id="rec-examen" type="date" value="2027-01-20" style="display:block; width:100%; margin-top:4px; padding:8px 10px; border:1px solid var(--line); border-radius:6px; font:inherit;">
+            </label>
+            <label style="font-size:0.85rem;">Cuenta UJA:
+              <input id="rec-email" type="email" placeholder="usuario@red.ujaen.es" style="display:block; width:100%; margin-top:4px; padding:8px 10px; border:1px solid var(--line); border-radius:6px; font:inherit;">
+            </label>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+            <button id="rec-google" type="button" class="button" style="display:inline-flex; align-items:center; gap:8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"/></svg>
+              Sincronizar con Google Calendar
+            </button>
+            <button id="rec-ics" type="button" class="button secondary">⬇️ Descargar .ics con alarmas</button>
+            <button id="rec-notif" type="button" class="button secondary">🔔 Activar avisos web</button>
+          </div>
+        </form>
+
+        <div style="margin-top:18px; padding-top:14px; border-top:1px solid var(--line);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+            <strong style="font-size:0.92rem;">He terminado de estudiar un tema hoy:</strong>
+            <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+              <select id="rec-tema" style="padding:6px 10px; font-size:0.85rem; width:auto;">
+                <option value="1">Tema 1 · Introducción a la IPO</option>
+                <option value="2">Tema 2 · El factor humano</option>
+                <option value="3">Tema 3 · Metáforas de interacción</option>
+                <option value="4">Tema 4 · Ingeniería de la interfaz</option>
+                <option value="5">Tema 5 · Internacionalización</option>
+                <option value="6">Tema 6 · El diseño gráfico</option>
+                <option value="7">Tema 7 · Estilos y paradigmas</option>
+                <option value="8">Tema 8 · Accesibilidad</option>
+                <option value="9">Tema 9 · Evaluación de la usabilidad</option>
+                <option value="10">Tema 10 · Estándares y guías de estilo</option>
+              </select>
+              <button id="rec-repasar" type="button" class="button" style="padding:6px 12px; font-size:0.85rem;">🔁 Programar repasos espaciados (1·3·7·16·35 días)</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;">
+          <strong style="font-size:0.88rem; color:var(--muted); text-transform:uppercase;">Próximos repasos programados:</strong>
+          <ul id="rec-pendientes" style="margin:6px 0; padding-left:20px; font-size:0.88rem;"></ul>
+          <p id="rec-pendientes-vacio" class="muted" style="margin:4px 0; font-size:0.85rem;">No hay repasos pendientes.</p>
+          <button id="rec-hechos" type="button" class="button secondary" style="font-size:0.82rem; padding:4px 10px; margin-top:6px;" hidden>✔ Marcar repasos de hoy como completados</button>
+        </div>
+
+        <p id="rec-estado" class="login-error-msg" style="background:#e0f2fe; color:#0369a1; border-color:#bae6fd;" hidden></p>
       </div>
 
       <div class="recommendation-card" style="margin-bottom:20px;">
@@ -341,6 +418,8 @@
   </footer>
 </main>
 
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="prototipo.js"></script>
+<script src="recordatorios.js"></script>
 </body>
 </html>

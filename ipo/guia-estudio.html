@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guía Didáctica de Estudio · Interacción Persona-Ordenador (UJA)</title>
+  <link rel="stylesheet" href="estilo.css">
+  <style>
+    .guide-hero {
+      background: linear-gradient(135deg, var(--soft) 0%, white 100%);
+      border: 2px solid var(--accent);
+      border-radius: 18px;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .pillar-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px;
+      border-left: 4px solid var(--accent);
+    }
+    .pillar-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      color: var(--accent);
+    }
+    .trap-box {
+      background: #fff1f2;
+      border-left: 4px solid #e11d48;
+      border-radius: 0 10px 10px 0;
+      padding: 10px 14px;
+      margin: 8px 0;
+      font-size: 0.88rem;
+      color: #881337;
+    }
+    .topic-guide-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+    .topic-guide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .study-steps-box {
+      background: var(--paper);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+    .phase-badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--accent);
+    }
+    .schedule-table th, .schedule-table td {
+      padding: 12px 14px;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <a href="index.html">← Laboratorio de estudio</a>
+    <span class="eyebrow">METODOLOGÍA DE APRENDIZAJE · UJA 2026–27</span>
+    <h1>Cómo estudiar IPO con éxito</h1>
+    <p class="lead">Estrategias basadas en la ciencia del aprendizaje para superar con nota el examen teórico (60%) y las 4 prácticas de laboratorio sin sobrecarga cognitiva ni memorización pasiva.</p>
+  </header>
+
+  <!-- HERO RESUMEN -->
+  <section class="guide-hero">
+    <span class="eyebrow" style="color:var(--accent); font-weight:800;">EL ERROR NÚMERO 1 EN IPO</span>
+    <h2 style="margin:8px 0 12px;">«Releer diapositivas crea una falsa ilusión de saber»</h2>
+    <p style="margin:0 0 14px;">En Interacción Persona-Ordenador, casi todas las opciones de examen suenan lógicas o razonables. Los exámenes de la Universidad de Jaén (diseñados por Salud Mª Jiménez Zafra y Manuel García Vega) <strong>no evalúan memorización de términos</strong>, sino <strong>contraste conceptual fino</strong>: saber por qué un principio se aplica en un caso y por qué otro parecido no es aplicable bajo esas condiciones.</p>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a href="generador.html" class="button">🎲 Practicar con el generador aleatorio →</a>
+      <a href="prototipo.html" class="button secondary">📅 Ver planificador y recordatorios UJA →</a>
+    </div>
+  </section>
+
+  <!-- 1. LOS 4 PILARES DEL APRENDIZAJE EFICAZ -->
+  <section class="card">
+    <h2>1. Los cuatro pilares de la ciencia del aprendizaje</h2>
+    <p>Para aprender el temario de IPO en menos tiempo y fijarlo en la memoria a largo plazo:</p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <h3>1. Recuperación Activa</h3>
+        <p style="font-size:0.88rem; margin:0;">Cierra los apuntes <strong>antes</strong> de contestar. El esfuerzo cerebral de recuperar un concepto refuerza las conexiones neuronales hasta 4 veces más que volver a leer el PDF.</p>
+      </div>
+
+      <div class="pillar-card">
+        <h3>2. Repetición Espaciada</h3>
+        <p style="font-size:0.88rem; margin:0;">El olvido sigue la curva de Ebbinghaus. Repasar en intervalos crecientes (<strong>1, 3, 7, 16 y 35 días</strong>) consolida la materia en la memoria semántica a largo plazo.</p>
+      </div>
+
+      <div class="pillar-card">
+        <h3>3. Práctica Intercalada</h3>
+        <p style="font-size:0.88rem; margin:0;">No hagas 40 preguntas seguidas de un mismo apartado. Mezclar preguntas de temas distintos (como hace el <em>Generador Global</em>) entrena a tu cerebro a diagnosticar qué concepto toca en cada momento.</p>
+      </div>
+
+      <div class="pillar-card">
+        <h3>4. Contraste de Distractores</h3>
+        <p style="font-size:0.88rem; margin:0;">Cuando falles una pregunta, no te limites a mirar cuál era la correcta. Pregúntate: <em>«¿Por qué esta opción falsa me pareció correcta y qué palabra la descarta?»</em>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. DESGLOSE DIDÁCTICO DE LOS 10 TEMAS Y TRAMPAS FRECUENTES -->
+  <section class="card">
+    <h2>2. Los 10 temas: Conceptos clave y trampas de examen</h2>
+    <p class="muted">El temario de <span class="code-pill">IPO2627.pdf</span> estructurado con sus conceptos críticos y las confusiones habituales que aparecen en los tests.</p>
+
+    <!-- TEMA 1 -->
+    <div class="topic-guide-card">
+      <div class="topic-guide-header">
+        <span class="eyebrow" style="color:var(--accent);">TEMA 01 · PÁGINAS 16–48 · LECCIÓN 1</span>
+        <span class="phase-badge">Fase Cimientos</span>
+      </div>
+      <h3 style="margin:0 0 6px;">Introducción a la IPO y Principios de Usabilidad</h3>
+      <p style="font-size:0.92rem; margin:0 0 8px;">Definición de IPO, componentes de la interacción, objetivos (seguridad, utilidad, efectividad, eficiencia, usabilidad) y principios fundamentales (FFCRRTAD: Facilidad de aprendizaje, Flexibilidad, Robustez).</p>
+      <div class="trap-box">
+        <strong>⚠️ Trampa conceptual típica:</strong> Confundir <em>usabilidad</em> con <em>accesibilidad</em> o <em>experiencia de usuario</em>. La usabilidad (ISO 9241-11) es efectividad, eficiencia y satisfacción para <strong>usuarios y tareas concretas en un contexto determinado</strong>. Además, la interacción no exige pulsar una tecla: un aviso del sistema al usuario ya constituye interacción.
+      </div>
+      <div class="study-steps-box">
+        <strong>💡 Cómo estudiarlo:</strong> Haz una tabla comparativa de los principios de aprendizaje (sintetizabilidad, familiaridad, generalizabilidad) vs flexibilidad (iniciativa del diálogo, multitarea, sustitución).
+      </div>
+    </div>
+
+    <!-- TEMA 2 -->
+    <div class="topic-guide-card">
+      <div class="topic-guide-header">
+        <span class="eyebrow" style="color:#0284c7;">TEMA 02 · PÁGINAS 49–115 · LECCIONES 2, 3 Y 4</span>
+        <span class="phase-badge">Fase Cimientos · El tema más largo</span>
+      </div>
+      <h3 style="margin:0 0 6px;">El Factor Humano (Modelos Mentales, Sentidos y Memoria)</h3>
+      <p style="font-size:0.92rem; margin:0 0 8px;">Procesamiento de información humana, memoria sensorial, memoria de trabajo (límite de Miller 7±2 / 4 chunks), memoria a largo plazo (semántica y episódica) y los 7 estadios de la acción de Norman.</p>
+      <div class="trap-box">
+        <strong>⚠️ Trampa conceptual típica:</strong> Confundir el <em>modelo mental del usuario</em> con el <em>modelo de diseño</em> (del desarrollador) o la <em>imagen del sistema</em> (la interfaz real). O confundir <em>reconocimiento</em> con <em>recuerdo</em> (los menús explotan el reconocimiento; la línea de comandos exige recuerdo).
+      </div>
+      <div class="study-steps-box">
+        <strong>💡 Cómo estudiarlo:</strong> Divídelo en 3 bloques (L2: sentidos; L3: visión y atención; L4: memoria y razonamiento). Para cada limitación cognitiva humana, deduce qué regla de diseño impone.
+      </div>
+    </div>
+
+    <!-- TEMA 3 -->
+    <div class="topic-guide-card">
+      <div class="topic-guide-header">
+        <span class="eyebrow" style="color:#7c3aed;">TEMA 03 · PÁGINAS 116–166 · LECCIÓN 5</span>
+        <span class="phase-badge">Fase Cimientos · Práctica 2</span>
+      </div>
+      <h3 style="margin:0 0 6px;">Metáforas de Interacción</h3>
+      <p style="font-size:0.92rem; margin:0 0 8px;">Metáforas verbales, visuales y globales. La metáfora del escritorio (WIMP). Metodología de diseño metafórico y análisis de dónde se rompe una metáfora.</p>
+      <div class="trap-box">
+        <strong>⚠️ Trampa conceptual típica:</strong> Creer que una metáfora debe reproducir la realidad al 100%. Toda metáfora tiene un límite donde deja de funcionar (ej: una papelera en el escritorio no se vacía sola ni huele mal). El fallo ocurre cuando la metáfora induce a expectativas falsas en el usuario.
+      </div>
+      <div class="study-steps-box">
+        <strong>💡 Cómo estudiarlo:</strong> Relaciónalo directamente con la <strong>Práctica 2</strong>: documenta exactamente el dominio de origen, el dominio de destino y qué aspectos se transfieren y cuáles no.
+      </div>
+    </div>
+
+    <!-- TEMA 4 -->
+    <div class="topic-guide-card">
+      <div class="topic-guide-header">
+        <span class="eyebrow" style="color:#d97706;">TEMA 04 · PÁGINAS 167–215 · LECCIONES 6 Y 7</span>
+        <span class="phase-badge">Fase Aplicación · Práctica 3</span>
+      </div>
+      <h3 style="margin:0 0 6px;">Ingeniería de la Interfaz y Proceso de Diseño</h3>
+      <p style="font-size:0.92rem; margin:0 0 8px;">Ciclo de vida del software interactivo, diseño centrado en el usuario (DCU), análisis de tareas (HTA), prototipos horizontales vs verticales, baja vs alta fidelidad.</p>
+      <div class="trap-box">
+        <strong>⚠️ Trampa conceptual típica:</strong> Confundir prototipo horizontal (cubre muchas funciones superficialmente) con vertical (profundiza en una sola función al detalle).
+      </div>
+    </div>
+
+    <!-- TEMA 5 -->
+    <div class="topic-guide-card">
+      <div class="topic-guide-header">
+        <span class="eyebrow" style="color:#059669;">TEMA 05 · PÁGINAS 216–255 · LECCIONES 8 Y 9</span>
+        <span class="phase-badge">Fase Aplicación · Práctica 4 (Obligatoria)</span>
+      </div>
+      <h3 style="margin:0 0 6px;">Internacionalización y Localización</h3>
+      <p style="font-size:0.92rem; margin:0 0 8px;">Diferencia entre internacionalización (i18n, preparar el software) y localización (l10n, adaptarlo culturalmente). Separadores de miles, fechas, monedas, dirección del texto (LTR/RTL) e iconografía cultural.</p>
+      <div class="trap-box">
+        <strong>⚠️ Trampa conceptual típica:</strong> Creer que internacionalizar es traducir textos. Traducir es solo una parte de la localización. La internacionalización consiste en diseñar el código para que soporte cualquier idioma y formato cultural sin reescribir la lógica.
+      </div>
+    </div>
+
+    <!-- TEMA 6 AL 10 RESUMIDOS -->
+    <div class="topic-guide-card">
+      <div class="topic-guide-header">
+        <span class="eyebrow" style="color:#db2777;">TEMAS 06 AL 10 · DISEÑO VISUAL, ESTILOS, ACCESIBILIDAD, EVALUACIÓN Y ESTÁNDARES</span>
+        <span class="phase-badge">Fase Integración</span>
+      </div>
+      <ul style="margin:0; padding-left:20px; font-size:0.9rem; line-height:1.7;">
+        <li><strong>Tema 6 (Diseño gráfico):</strong> Principios de la Gestalt (proximidad, semejanza, continuidad, cierre). <em>Regla de oro:</em> el color nunca debe ser el único canal para transmitir información.</li>
+        <li><strong>Tema 7 (Estilos y paradigmas):</strong> Menús, formularios, comandos, manipulación directa. Distinguir estilo (diálogo usuario-máquina) de paradigma (modelo conceptual como móvil o ubicuo).</li>
+        <li><strong>Tema 8 (Accesibilidad):</strong> Pautas WCAG (POUR: Perceptible, Operable, Comprensible, Robusto). Niveles A, AA y AAA. Ratios de contraste (4,5:1 normal y 3:1 texto grande para nivel AA).</li>
+        <li><strong>Tema 9 (Evaluación):</strong> Distinguir evaluación heurística (expertos sin usuarios), tests de usabilidad (con usuarios reales) y recorrido cognitivo (aprender sin ayuda).</li>
+        <li><strong>Tema 10 (Estándares):</strong> Normas ISO formales (de iure), estándares de facto y guías de plataforma (Material Design, Apple HIG).</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. CÓMO COMPAGINAR TEORÍA Y PRÁCTICAS -->
+  <section class="card">
+    <h2>3. Cómo compaginar teoría y prácticas</h2>
+    <p>Las 4 prácticas de laboratorio en el Aula A3-170 no son un trámite: son la <strong>teoría puesta en marcha</strong>. Si documentas bien cada decisión técnica, ya habrás estudiado la mitad del examen.</p>
+
+    <div class="table-wrap">
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>Práctica de Laboratorio</th>
+            <th>Temas que refuerza</th>
+            <th>Qué te van a preguntar en el examen final</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>P1 · Introducción</strong> (Semana 2)</td>
+            <td>Temas 1 y 2</td>
+            <td>Justificación de diseño mediante principios de Norman y heurísticas de Nielsen.</td>
+          </tr>
+          <tr>
+            <td><strong>P2 · Diseño de metáforas</strong> (Semana 5)</td>
+            <td>Tema 3</td>
+            <td>Identificar el dominio de origen, el de destino y exactamente dónde se rompe la metáfora.</td>
+          </tr>
+          <tr>
+            <td><strong>P3 · Diseño de la interfaz</strong> (Semana 7)</td>
+            <td>Temas 4 y 6</td>
+            <td>Jerarquía visual, leyes de Gestalt y prototipos de baja vs alta fidelidad.</td>
+          </tr>
+          <tr>
+            <td><strong>P4 · Internacionalización</strong> (Semana 9 · <span class="badge wrong">Obligatoria</span>)</td>
+            <td>Tema 5</td>
+            <td>Diferencias técnicas entre i18n y l10n, formatos locales y problemas de maquetación RTL.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="recommendation-card" style="margin-top:16px;">
+      <strong>📌 La técnica del «Diario de Decisiones»:</strong><br>
+      Durante cada práctica, anota en una hoja: <em>Decisión que tomo → Principio teórico del PDF en el que me baso → Número de página</em>. Al llegar a enero tendrás más de 20 casos prácticos propios grabados en la memoria, listos para bordar las preguntas de aplicación del examen.
+    </div>
+  </section>
+
+  <!-- 4. LA SEMANA TIPO (3 HORAS SIN AGOBIO) -->
+  <section class="card">
+    <h2>4. La semana tipo de estudio (3 horas sin sobrecarga)</h2>
+    <p>No necesitas sesiones maratonianas. El cerebro rinde al máximo en bloques cortos de 25–30 minutos:</p>
+
+    <div class="table-wrap">
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>Día</th>
+            <th>Bloque (25–30 minutos)</th>
+            <th>Objetivo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Lunes</strong></td>
+            <td>Lectura activa de la lección semanal</td>
+            <td>Anotar los conceptos clave y crear un esquema mental sin copiar texto literal.</td>
+          </tr>
+          <tr>
+            <td><strong>Martes</strong></td>
+            <td>Práctica de laboratorio + Tiques</td>
+            <td>Aprovechar la sesión de prácticas (1 tique) y defender el trabajo cuando toque (3 tiques).</td>
+          </tr>
+          <tr>
+            <td><strong>Miércoles</strong></td>
+            <td>Repasos espaciados programados</td>
+            <td>Resolver las preguntas pendientes que el calendario o el recordatorio te haya fijado.</td>
+          </tr>
+          <tr>
+            <td><strong>Jueves</strong></td>
+            <td>Generador de preguntas aleatorias</td>
+            <td>15 preguntas en el generador intercalado. Buscar el porqué de cada opción descartada.</td>
+          </tr>
+          <tr>
+            <td><strong>Viernes</strong></td>
+            <td>Sesión de «Priorizar fallos»</td>
+            <td>Volver a responder solo las preguntas que fallaste durante la semana hasta dominarlas.</td>
+          </tr>
+          <tr>
+            <td><strong>Sábado y Domingo</strong></td>
+            <td><strong>Descanso total</strong></td>
+            <td>El sueño y el descanso consolidan la memoria sináptica. No satures tu memoria de trabajo.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 5. CRONOGRAMA EN 4 FASES -->
+  <section class="card">
+    <h2>5. El cuatrimestre en cuatro fases</h2>
+    <ol class="steps">
+      <li><strong>Fase 1: Cimientos (Semanas 1 a 5 · Temas 1 a 3):</strong> Crea el hábito diario de 20 minutos y domina los modelos mentales y las metáforas.</li>
+      <li><strong>Fase 2: Aplicación (Semanas 6 a 10 · Temas 4 a 6):</strong> Conecta la teoría con las prácticas P3 y P4. Presta máxima atención a la Práctica 4 obligatoria.</li>
+      <li><strong>Fase 3: Integración (Semanas 11 a 15 · Temas 7 a 10):</strong> Utiliza el generador global mezclando todos los temas para habituarte al formato del examen final.</li>
+      <li><strong>Fase 4: Consolidación (Enero previo al examen):</strong> Deja de estudiar teoría nueva. Dedícate a hacer simulacros completos cronometrados y repasar los errores seguros.</li>
+    </ol>
+  </section>
+
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px; flex-wrap:wrap; gap:12px;">
+    <a href="generador.html" class="button">🎲 Abrir generador de preguntas aleatorias →</a>
+    <a href="prototipo.html" class="button secondary">📅 Configurar recordatorios y planificador →</a>
+  </div>
+
+  <footer>
+    Guía docente de apoyo para Interacción Persona-Ordenador · Grado en Ingeniería Informática · Universidad de Jaén.
+  </footer>
+</main>
+</body>
+</html>
