@@ -16,6 +16,7 @@
   </script>
 
   <link rel="stylesheet" href="estilo.css">
+  <link rel="stylesheet" href="calendario.css">
 </head>
 <body>
 
@@ -35,6 +36,9 @@
       <nav class="dock-nav" aria-label="Navegación principal">
         <button class="dock-nav-item active" data-tab="tab-semanal">
           <span>📅</span> Semanas
+        </button>
+        <button class="dock-nav-item" data-tab="tab-calendario">
+          <span>🗓️</span> Calendario
         </button>
         <button class="dock-nav-item" data-tab="tab-schema">
           <span>📝</span> Esquemas & NotebookLM
@@ -127,6 +131,11 @@
        ====================================================================== -->
   <section id="tab-semanal" class="tab-view">
     <div id="semanal-container"></div>
+  </section>
+
+  <!-- PESTAÑA CALENDARIO: vista semanal + sincronización (Sem 4 · Octubre) -->
+  <section id="tab-calendario" class="tab-view" hidden>
+    <div id="calendario-container"></div>
   </section>
 
   <!-- ======================================================================
@@ -342,6 +351,7 @@
 <script src="preguntas-globales.js"></script>
 <script src="datos-evaluacion.js"></script>
 <script src="recordatorios.js"></script>
+<script src="calendario.js"></script>
 <script src="prototipo.js"></script>
 </body>
 </html>
