@@ -318,6 +318,8 @@ function renderAuthBadge() {
       };
     }
   }
+
+  updateDockUserChip();
 }
 
 // ----------------------------------------------------------------------------
@@ -1497,11 +1499,11 @@ function renderTicketsSection() {
 }
 
 // ----------------------------------------------------------------------------
-// 12. GESTIÓN DE PESTAÑAS Y EVENTOS GLOBALES
+// 12. GESTIÓN DE PESTAÑAS, TEMA CLARO/OSCURO Y EVENTOS GLOBALES (2026 DOCK)
 // ----------------------------------------------------------------------------
 
 function switchTab(targetId) {
-  document.querySelectorAll('.tab-btn').forEach(b => {
+  document.querySelectorAll('.dock-nav-item, .tab-btn').forEach(b => {
     if (b.dataset.tab === targetId) b.classList.add('active');
     else b.classList.remove('active');
   });
@@ -1511,16 +1513,53 @@ function switchTab(targetId) {
   });
 }
 
+function initThemeSwitcher() {
+  const btn = document.getElementById('btn-theme-toggle');
+  if (!btn) return;
+
+  btn.onclick = () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+      (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const nextTheme = isDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', nextTheme);
+    localStorage.setItem('theme', nextTheme);
+  };
+}
+
+function updateDockUserChip() {
+  const chip = document.getElementById('dock-user-chip');
+  if (!chip) return;
+
+  if (currentUser) {
+    const primerNombre = (currentUser.nombre || 'Alumno').split(' ')[0];
+    chip.innerHTML = `
+      <img src="${currentUser.avatar}" alt="${currentUser.nombre}" class="dock-user-avatar">
+      <span class="dock-user-name">${primerNombre}</span>
+    `;
+    chip.title = `${currentUser.nombre} (${currentUser.email}) · ${currentUser.grupo}`;
+  } else {
+    chip.innerHTML = `
+      <span class="dock-pulse-dot" style="background:#f59e0b;"></span>
+      <span class="dock-user-name">Invitado</span>
+    `;
+    chip.title = 'Sesión no iniciada';
+  }
+}
+
 function setupGlobalEventListeners() {
-  document.querySelectorAll('.tab-btn').forEach(btn => {
+  document.querySelectorAll('.dock-nav-item, .tab-btn').forEach(btn => {
     btn.onclick = () => {
       const targetId = btn.dataset.tab;
       if (targetId) switchTab(targetId);
     };
   });
+
+  initThemeSwitcher();
 }
 
 // Inicialización automática
 document.addEventListener('DOMContentLoaded', () => {
   initApp();
+  updateDockUserChip();
 });
+

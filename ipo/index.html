@@ -1,26 +1,98 @@
 <!doctype html>
 <html lang="es">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IPO · Laboratorio de estudio y generador de preguntas</title>
-<link rel="stylesheet" href="estilo.css">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IPO · Laboratorio de estudio y generador de preguntas</title>
+
+  <!-- Script anti-parpadeo de tema (Zero-FOUC) estilo midu.dev -->
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       MENÚ FLOTANTE ESTILO 2026 (INSPIRACIÓN DOCK MIDU.DEV)
+       ====================================================================== -->
+  <header class="header-floating-2026" role="banner">
+    <div class="dock-container">
+      <a href="index.html" class="dock-brand" title="Inicio de IPO Study Lab">
+        <span class="dock-pulse-dot" aria-hidden="true"></span>
+        <span class="dock-brand-name"><strong>IPO</strong> · UJA</span>
+        <span class="dock-pill-tag">2026–27</span>
+      </a>
+
+      <nav class="dock-nav" aria-label="Navegación principal">
+        <a href="prototipo.html" class="dock-nav-item active">
+          <span>🏛️</span> Plataforma UJA
+        </a>
+        <a href="generador.html" class="dock-nav-item">
+          <span>🎲</span> Generador 130
+        </a>
+        <a href="guia-estudio.html" class="dock-nav-item">
+          <span>📖</span> Guía de Estudio
+        </a>
+        <a href="tema-1.html" class="dock-nav-item">
+          <span>Tema 1</span>
+        </a>
+        <a href="tema-2.html" class="dock-nav-item">
+          <span>Tema 2</span>
+        </a>
+        <a href="tema-3.html" class="dock-nav-item">
+          <span>Tema 3</span>
+        </a>
+      </nav>
+
+      <div class="dock-actions">
+        <!-- Conmutador Claro / Oscuro -->
+        <button type="button" class="theme-switcher-btn" id="btn-theme-toggle" aria-label="Alternar modo claro y oscuro" title="Cambiar a modo claro/oscuro">
+          <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+
+        <a href="prototipo.html" class="button" style="padding:5px 12px; font-size:0.82rem; border-radius:9999px;">
+          Entrar →
+        </a>
+      </div>
+    </div>
+  </header>
+
 <main>
   <!-- AVISO LEGAL Y COPYRIGHT DOCENTE INSTITUCIONAL -->
-  <div style="background:linear-gradient(135deg, #005043 0%, #006957 100%); color:white; border-radius:12px; padding:12px 18px; margin-bottom:20px; font-size:0.86rem; border-left:5px solid #f59e0b;">
-    <strong>Universidad de Jaén · Grado en Ingeniería Informática · IPO2627</strong><br>
-    Material docente oficial © UJA. Profesores responsables: <strong>Drª. Salud Mª Jiménez Zafra</strong> y <strong>Dr. Manuel García Vega</strong>. 
-    <span style="display:inline-block; background:rgba(245, 158, 11, 0.25); color:#fef3c7; border:1px solid #f59e0b; border-radius:4px; padding:1px 6px; font-weight:700; margin-left:6px;">Uso estrictamente docente y no comercial</span>
+  <div class="institutional-credit-card">
+    <div class="inst-credit-header">
+      <div class="inst-credit-badge">
+        <span>🏛️</span> Universidad de Jaén · Grado en Ingeniería Informática · IPO2627
+      </div>
+      <span class="inst-noncommercial-pill">Uso estrictamente docente y no comercial</span>
+    </div>
+    <p class="inst-credit-body">
+      Material docente oficial © UJA. Profesores responsables: <strong>Drª. Salud Mª Jiménez Zafra</strong> y <strong>Dr. Manuel García Vega</strong>. Prototipo de apoyo mnemotécnico al estudio.
+    </p>
   </div>
 
-  <header>
+  <header style="padding-top:0;">
     <span class="eyebrow">RECUPERACIÓN ACTIVA · IPO 2026–27</span>
     <h1>¿Lo entiendes<br>o te suena?</h1>
     <p class="lead">Pon a prueba lo que recuerdas después de cerrar el libro sin la pereza de exámenes rígidos.</p>
   </header>
 
   <!-- PLATAFORMA INSTITUCIONAL Y PLAN PEDAGÓGICO COMPLETO -->
-  <section class="card" style="border: 2px solid var(--accent); background: linear-gradient(180deg, var(--soft) 0%, white 100%);">
-    <span class="eyebrow" style="color:var(--accent); font-weight:800;">🏛️ PLATAFORMA INSTITUCIONAL UJA COMPLETA</span>
+  <section class="card" style="border: 2px solid var(--brand); background: linear-gradient(180deg, var(--brand-soft) 0%, var(--surface-card) 100%);">
+    <span class="eyebrow" style="color:var(--brand); font-weight:800;">🏛️ PLATAFORMA INSTITUCIONAL UJA COMPLETA</span>
     <h2>Plataforma de Estudio, Esquemas con NotebookLM y Evaluación Antiolvido</h2>
     <p>Alineada con las <strong>15 semanas</strong> y las <strong>21 lecciones</strong> oficiales de la UJA: inicio semanal con plan de estudio, verificador inteligente de esquemas conceptuales con NotebookLM, recordatorios en Google Calendar y sesión de fin de semana (test sin números intimidantes, preguntas cortas y ejercicios prácticos de examen).</p>
     <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
@@ -81,4 +153,19 @@
 
   <footer>Basado en <a href="../IPO2627.pdf" target="_blank" rel="noopener">IPO2627.pdf</a>. Material de práctica, no examen oficial. Funciona sin conexión.</footer>
 </main>
+
+<script>
+  // Conmutador de tema en página de inicio
+  const btnTheme = document.getElementById('btn-theme-toggle');
+  if (btnTheme) {
+    btnTheme.onclick = function() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+        (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      const nextTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('theme', nextTheme);
+    };
+  }
+</script>
+</body>
 </html>
