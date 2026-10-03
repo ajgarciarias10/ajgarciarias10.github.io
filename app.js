@@ -93,7 +93,9 @@
           desc: 'High-performance multiplatform nutrition, training, body composition and fasting analytics suite. Powered by an internal database of 681,000+ foods and custom-trained computer vision models for food plate recognition and nutrition label OCR.',
           f1: 'Proprietary food database with sub-50ms fuzzy text search.',
           f2: 'Custom-trained CV & OCR models avoiding recurring third-party API dependencies.',
-          f3: 'Flutter client (Riverpod/Hive) backed by PostgREST & PostgreSQL on Oracle Cloud with Row-Level Security.'
+          f3: 'Flutter client (Riverpod/Hive) backed by PostgREST & PostgreSQL on Oracle Cloud with Row-Level Security.',
+          viewAudit: '↗ Usability Audit',
+          viewTest: '↗ Usability Test'
         },
         ipo: {
           tag: 'HCI / IPO · Active Recall',
@@ -101,7 +103,7 @@
           meta: '2026–27 · Educational Platform',
           desc: 'Interactive active-recall laboratory for Human-Computer Interaction (Interacción Persona-Ordenador). Features tiered practice tests, reasoned error feedback, metacognitive certainty ratings, and a real-world usability teardown of F1-BUGAMBRA.',
           f1: 'Multi-chapter question banks (Topics 1, 2, 3) with conceptual contrast and cognitive error analysis.',
-          f2: 'Full usability report with before/after redesigns of F1-BUGAMBRA based on HCI principles.',
+          f2: 'Usability audits and interactive tests for production applications (F1-BUGAMBRA & CleverTracker).',
           f3: 'Local score tracking and spaced repetition review.'
         },
         clother: {
@@ -259,7 +261,9 @@
           desc: 'Suite multiplataforma de registro y analítica nutricional, entrenamiento, medidas corporales y ayuno. Respaldada por un catálogo propio de más de 681.000 productos y modelos de visión computacional entrenados localmente para reconocimiento de platos y OCR de tablas nutricionales.',
           f1: 'Base de datos propia de alimentos con búsqueda de texto difusa en menos de 50 ms.',
           f2: 'Modelos propios de visión por computador y OCR evitando llamadas recurrentes a APIs externas.',
-          f3: 'Cliente Flutter (Riverpod/Hive) con backend PostgREST y PostgreSQL en Oracle Cloud con Row-Level Security.'
+          f3: 'Cliente Flutter (Riverpod/Hive) con backend PostgREST y PostgreSQL en Oracle Cloud con Row-Level Security.',
+          viewAudit: '↗ Auditoría de Usabilidad',
+          viewTest: '↗ Test Interactivo'
         },
         ipo: {
           tag: 'IPO / HCI · Recuperación Activa',
@@ -267,7 +271,7 @@
           meta: '2026–27 · Plataforma Educativa',
           desc: 'Laboratorio de estudio interactivo para Interacción Persona-Ordenador basado en recuperación activa. Incluye bancos de test por temas con corrección razonada, niveles de certeza metacognitiva y una auditoría completa de usabilidad aplicada sobre F1-BUGAMBRA.',
           f1: 'Bancos de preguntas (Temas 1, 2 y 3) centrados en contraste conceptual y análisis de errores seguros.',
-          f2: 'Informe detallado de usabilidad con capturas antes/después y rediseño de pantallas de F1-BUGAMBRA.',
+          f2: 'Auditorías de usabilidad y tests interactivos sobre aplicaciones reales (F1-BUGAMBRA y CleverTracker).',
           f3: 'Registro local de progreso y refuerzo de conceptos dudosos.'
         },
         clother: {

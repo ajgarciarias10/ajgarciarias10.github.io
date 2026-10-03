@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informe de Usabilidad — CleverTracker vs. Principios de IPO</title>
+  <link rel="stylesheet" href="estilo.css">
+  <style>
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 18px 0 24px;
+    }
+    figure {
+      margin: 0;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      background: #0d141c;
+    }
+    figcaption {
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: white;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin: 18px 0;
+    }
+    .metric-box {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .metric-box .number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .metric-box .label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .metric-box .detail {
+      font-size: 0.88rem;
+      margin-top: 6px;
+      color: var(--ink);
+    }
+    .badge-critico {
+      background: #ffe4e6;
+      color: #9f1239;
+      font-weight: 750;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+    .badge-alto {
+      background: #fef3c7;
+      color: #92400e;
+      font-weight: 750;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+    .badge-medio {
+      background: #e0f2fe;
+      color: #0369a1;
+      font-weight: 750;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+    .badge-positivo {
+      background: #dcfce7;
+      color: #166534;
+      font-weight: 750;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+    .code-pill {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.88em;
+      background: var(--paper);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+    }
+    .recommendation-card {
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      background: var(--soft);
+      border-radius: 0 10px 10px 0;
+      margin: 12px 0 18px;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <a href="index.html">← Laboratorio de estudio</a>
+    <span class="eyebrow">AUDITORÍA DE USABILIDAD Y FACTORES HUMANOS · IPO 2026–27</span>
+    <h1>Evaluación de usabilidad de CleverTracker</h1>
+    <p class="lead">Análisis empírico y conceptual de la aplicación desplegada en <a href="https://clevertracker.143-47-57-36.sslip.io/" target="_blank" rel="noopener">https://clevertracker.143-47-57-36.sslip.io/</a> con los principios de <strong>Tema 1: Introducción a la IPO</strong> (pp. 16–48), <strong>Tema 2: El factor humano</strong> (pp. 49–115) y <strong>Tema 3: Metáforas de interacción</strong> (pp. 116–166).</p>
+  </header>
+
+  <!-- RESUMEN EJECUTIVO -->
+  <section class="card">
+    <h2>1. Resumen ejecutivo</h2>
+    <p>CleverTracker es una aplicación híbrida (PWA / Flutter Web) orientada al bienestar personal, control de macronutrientes, historial de entrenamientos y composición corporal mediante una filosofía <em>offline-first</em>. La evaluación en producción revela una identidad visual sólida y madura («bienestar editorial», paleta sobria, tipografía Plus Jakarta Sans), pero identifica barreras críticas de usabilidad, accesibilidad web y coherencia de modelo mental que merman la adopción y la autonomía del usuario.</p>
+
+    <div class="recommendation-card" style="margin: 18px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+      <div>
+        <strong style="color: var(--accent); font-size: 1.05rem;">¿Quieres ponerte a prueba sobre este caso?</strong><br>
+        <span style="font-size: 0.92rem; color: var(--muted);">Realiza el test interactivo con corrección inmediata, preguntas barajadas y justificación teórica de cada hallazgo.</span>
+      </div>
+      <a href="test-clevertracker.html" class="button">Hacer test interactivo →</a>
+    </div>
+
+    <div class="metric-grid">
+      <div class="metric-box">
+        <div class="number">2.8 MB</div>
+        <div class="label">Descarga inicial (Gzip)</div>
+        <div class="detail">CanvasKit WASM (1.5 MB) + main.dart.js (1.2 MB) antes del primer frame.</div>
+      </div>
+      <div class="metric-box">
+        <div class="number">0 Nodos</div>
+        <div class="label">Árbol semántico web</div>
+        <div class="detail">Canvas puro sin elementos accesibles nativos hasta pulsar placeholder oculto.</div>
+      </div>
+      <div class="metric-box">
+        <div class="number">100%</div>
+        <div class="label">Bloqueo por login</div>
+        <div class="detail">Acceso forzado con Google sin modo exploración ni vista previa previa.</div>
+      </div>
+      <div class="metric-box">
+        <div class="number">Offline-First</div>
+        <div class="label">Asimetría de datos</div>
+        <div class="detail">Promete restauración multidispositivo pero entreno y lectura no sincronizan.</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Principio de Usabilidad (IPO)</th>
+            <th>Diagnóstico en CleverTracker</th>
+            <th>Impacto en el usuario</th>
+            <th>Severidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Flexibilidad (p. 40)</strong><br>Iniciativa del diálogo y libertad</td>
+            <td>Muro de acceso estricto con cuenta Google (Auth Gate total sin modo invitado ni demo).</td>
+            <td>Barrera de entrada infranqueable; el usuario debe conceder datos sin evaluar la utilidad.</td>
+            <td><span class="badge-critico">Crítico</span></td>
+          </tr>
+          <tr>
+            <td><strong>Tiempo de respuesta (p. 45)</strong><br>Rendimiento y continuidad</td>
+            <td>Descarga masiva de CanvasKit + Dart JS. Pantalla blanca durante 2–5 segundos en conexiones medias.</td>
+            <td>Sensación de lentitud, interfaz no reactiva o caída del servicio en primera visita.</td>
+            <td><span class="badge-alto">Alto</span></td>
+          </tr>
+          <tr>
+            <td><strong>Consistencia y estándares (p. 42)</strong><br>Accesibilidad web nativa</td>
+            <td>Renderizado en Canvas con árbol semántico desactivado (<span class="code-pill">flt-semantics-placeholder</span>).</td>
+            <td>Inutilizable con lectores de pantalla (NVDA/TalkBack); navegación por teclado (Tab) entorpecida.</td>
+            <td><span class="badge-alto">Alto</span></td>
+          </tr>
+          <tr>
+            <td><strong>Disminución carga cognitiva (p. 47)</strong><br>Modelo mental vs. realidad</td>
+            <td>Promete «restaurar registros en otro dispositivo», pero las lecturas no sincronizan y Entreno es local.</td>
+            <td>Ruptura del modelo mental y desconfianza si el usuario pierde datos al cambiar de terminal.</td>
+            <td><span class="badge-alto">Alto</span></td>
+          </tr>
+          <tr>
+            <td><strong>Recuperabilidad y control (pp. 41, 44)</strong><br>Gestión de bloqueos y fallos</td>
+            <td>Si el popup de Google es bloqueado, el botón queda en «Conectando…» sin timeout ni cancelación.</td>
+            <td>Bloqueo de la interfaz que fuerza al usuario a refrescar la página manualmente.</td>
+            <td><span class="badge-medio">Medio</span></td>
+          </tr>
+          <tr>
+            <td><strong>Adecuación de tareas (p. 46)</strong><br>Presentación responsiva</td>
+            <td>Espacio negativo desproporcionado en la vista de escritorio (>820 px) en la tarjeta de bienvenida.</td>
+            <td>Jerarquía visual dispersa y desplazamiento del foco de acción fuera de la zona natural de Fitts.</td>
+            <td><span class="badge-medio">Medio</span></td>
+          </tr>
+          <tr>
+            <td><strong>Familiaridad y estética (p. 39)</strong><br>Identidad no clínica</td>
+            <td>Paleta mineral/vegetal refinada, tipografía Plus Jakarta Sans y texto tranquilizador de privacidad.</td>
+            <td>Sensación de profesionalidad, sosiego y respeto a los datos personales.</td>
+            <td><span class="badge-positivo">Fortaleza</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- EVIDENCIAS VISUALES -->
+  <section class="card">
+    <h2>2. Evidencias visuales: Adaptabilidad responsiva</h2>
+    <p>La pantalla de entrada de la aplicación ha sido capturada en dos condiciones de visualización: dispositivo móvil (412 × 915 px) y monitor de escritorio (1280 × 800 px).</p>
+
+    <div class="comparison">
+      <figure>
+        <img src="capturas-clevertracker/login-movil.png" alt="Pantalla de entrada CleverTracker en móvil">
+        <figcaption><strong>Figura 1 (Móvil · 412 px):</strong> Composición vertical compacta. La tarjeta de presentación ocupa el 50% superior y el panel de autenticación se sitúa en la mitad inferior, accesible con el pulgar.</figcaption>
+      </figure>
+      <figure>
+        <img src="capturas-clevertracker/login-desktop.png" alt="Pantalla de entrada CleverTracker en escritorio">
+        <figcaption><strong>Figura 2 (Escritorio · 1280 px):</strong> Distribución en 2 columnas (60% / 40%). Se aprecia un vacío central masivo en la tarjeta azul izquierda (<span class="code-pill">AppColors.ink</span>) y una concentración excesiva de elementos a la derecha.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- DETALLE DE HALLAZGOS Y EVALUACIÓN POR PRINCIPIOS -->
+  <section class="card">
+    <h2>3. Análisis detallado según los principios del temario de IPO</h2>
+
+    <!-- HALLAZGO 1 -->
+    <article>
+      <h3>3.1. Flexibilidad y Control: El muro de autenticación forzado (Tema 1, pp. 40–41)</h3>
+      <p><strong>El problema:</strong> En la URL pública <span class="code-pill">https://clevertracker.143-47-57-36.sslip.io/</span>, la primera interacción que encuentra cualquier visitante es un diálogo cerrado: o inicia sesión con una cuenta de Google o no puede interactuar con ninguna pantalla de la aplicación. No se ofrece:</p>
+      <ul>
+        <li>Un modo de prueba o demostración («Explorar catálogo de ejercicios» o «Probar diario con datos de ejemplo»).</li>
+        <li>Un recorrido visual explicativo (product tour) que muestre qué ventajas ofrece respecto a otras apps de salud.</li>
+        <li>Acceso sin cuenta local (*Guest Mode*), a pesar de que el motor de la app se basa en persistencia local Hive.</li>
+      </ul>
+      <p><strong>Fundamento teórico (Tema 1, p. 40 — Iniciativa del diálogo):</strong> El sistema no debe imponer una secuencia monolítica rígida al usuario. La iniciativa del diálogo debe ser mixta o compartida. Forzar un paso de identificación irreversible antes de aportar valor genera abandono inmediato en la primera fase del embudo de conversión.</p>
+      <div class="recommendation-card">
+        <strong>Propuesta de mejora:</strong> Habilitar un botón secundario <em>«Explorar como invitado»</em> que inicialice una caja Hive provisional con identificador local efímero. Al intentar sincronizar con la nube o cambiar de dispositivo, solicitar entonces la vinculación con Google.
+      </div>
+    </article>
+
+    <!-- HALLAZGO 2 -->
+    <article>
+      <h3>3.2. Tiempo de respuesta y rendimiento percibido en Flutter Web (Tema 1, p. 45)</h3>
+      <p><strong>El problema:</strong> La versión Web de CleverTracker se compila sobre el motor CanvasKit de Flutter. La inspección de red arroja las siguientes cargas antes de pintar el primer frame:</p>
+      <ul>
+        <li><span class="code-pill">canvaskit.wasm</span>: <strong>1.518,7 KB</strong> transferidos.</li>
+        <li><span class="code-pill">main.dart.js</span>: <strong>3.786 KB</strong> sin comprimir (1.192 KB gzipped).</li>
+        <li>Fuentes locales: <em>PlusJakartaSans-VariableFont_wght.ttf</em> cargada en múltiples instancias por pesos.</li>
+        <li>Tiempo de arranque en frío (DOMContentLoaded → First Frame): <strong>2.066 ms</strong> en red local de alta velocidad, escalando a <strong>5–14 segundos</strong> en conexiones 3G/4G simuladas (500 kB/s).</li>
+      </ul>
+      <p>Durante ese intervalo, la página HTML de entrada (<span class="code-pill">index.html</span>) muestra un fondo blanco liso sin ningún indicador nativo de carga. El usuario percibe una pantalla congelada o rota.</p>
+      <p><strong>Fundamento teórico (Tema 1, p. 45):</strong> <em>«La realimentación inmediata es indispensable para mantener el modelo de interacción. Tiempos superiores a 1 segundo rompen la sensación de flujo del usuario; superiores a 10 segundos provocan el abandono de la tarea»</em>.</p>
+      <div class="recommendation-card">
+        <strong>Propuesta de mejora:</strong> Incorporar en el HTML base un indicador visual nativo (logotipo SVG + barra de progreso CSS ligera de menos de 2 KB) que informe del arranque mientras se descargan los binarios WASM de Flutter.
+      </div>
+    </article>
+
+    <!-- HALLAZGO 3 -->
+    <article>
+      <h3>3.3. Consistencia y Accesibilidad: El árbol semántico ciego (Tema 1, p. 42 y Tema 2, pp. 60–85)</h3>
+      <p><strong>El problema:</strong> La auditoría del DOM con Puppeteer reveló que la pantalla no expone elementos semánticos estándar de HTML (<span class="code-pill">&lt;h1&gt;</span>, <span class="code-pill">&lt;button&gt;</span>, <span class="code-pill">&lt;p&gt;</span>). En su lugar, Flutter Web encapsula todo en un canvas WebGL dentro de un contenedor <span class="code-pill">&lt;flt-glass-pane&gt;</span>.</p>
+      <p>Para activar la accesibilidad, Flutter inyecta un único elemento de 1×1 píxeles:</p>
+      <pre class="code-pill">&lt;flt-semantics-placeholder role="button" aria-live="polite" tabindex="0" aria-label="Enable accessibility"&gt;&lt;/flt-semantics-placeholder&gt;</pre>
+      <p>Al pulsar la tecla <kbd>Tab</kbd>, el foco no salta al botón «Continuar con Google», sino a un contenedor genérico (<span class="code-pill">FLUTTER-VIEW</span>). Si un usuario invidente o con discapacidad motriz utiliza un lector de pantalla o un pulsador de asistencia, la página es completamente opaca.</p>
+      <p><strong>Fundamento teórico (Tema 1, p. 42 y Tema 2):</strong> Se vulnera el principio de <strong>consistencia externa</strong> (las expectativas del usuario sobre cómo funciona la web, el copiado de texto y la navegación asistida se rompen) y los factores fisiológicos y sensoriales del factor humano.</p>
+      <div class="recommendation-card">
+        <strong>Propuesta de mejora:</strong> Configurar en el punto de entrada de Flutter Web la activación forzada de accesibilidad semántica automática mediante <span class="code-pill">ensureSemantics()</span> o renderizar la pantalla inicial de autenticación en HTML/CSS nativo antes de arrancar el canvas.
+      </div>
+    </article>
+
+    <!-- HALLAZGO 4 -->
+    <article>
+      <h3>3.4. Carga cognitiva y modelo mental: Promesas versus realidad funcional (Tema 1, p. 47 y Tema 2, pp. 50–59)</h3>
+      <p><strong>El problema:</strong> El texto de la pantalla de bienvenida construye un modelo conceptual explícito en la mente del usuario:</p>
+      <blockquote>«Inicia sesión para separar tus registros, <strong>restaurarlos en otro dispositivo</strong> y continuar donde lo dejaste.»</blockquote>
+      <blockquote>«<strong>Nutrición, medidas y entrenamiento reunidos</strong> en una historia que solo tú puedes consultar.»</blockquote>
+      <p>Sin embargo, el análisis técnico del código fuente y los informes de arquitectura revelan tres inconsistencias severas con ese modelo mental:</p>
+      <ol class="steps">
+        <li><strong>Sincronización asimétrica:</strong> La aplicación escribe en el backend PostgREST pero no implementa la lectura/restauración del historial al arrancar sesión en un dispositivo nuevo. El usuario que inicia sesión en su segundo dispositivo se encuentra la app completamente vacía.</li>
+        <li><strong>Entreno no sale del navegador:</strong> La feature de Entreno vive exclusivamente en Hive local y muestra permanentemente la etiqueta <em>OFFLINE</em>; no realiza peticiones de sincronización con la base de datos central.</li>
+        <li><strong>Medidas corporales ocultas:</strong> La pestaña de «Medidas» fue retirada de la barra de navegación (<span class="code-pill">main_page.dart</span>), lo que contradice el subtítulo promocional que afirma reunir «Nutrición, medidas y entrenamiento».</li>
+      </ol>
+      <p><strong>Fundamento teórico (Tema 2, pp. 50–59 y Donald Norman):</strong> Existe una <em>brecha de ejecución y de evaluación</em>. El modelo mental del usuario, inducido por la interfaz, asume que sus datos están a salvo en la nube. La realidad operativa contradice esta creencia, lo que puede provocar frustración extrema y sensación de pérdida accidental de datos personales.</p>
+    </article>
+
+    <!-- HALLAZGO 5 -->
+    <article>
+      <h3>3.5. Recuperabilidad y gestión de errores en autenticación (Tema 1, pp. 41, 44)</h3>
+      <p><strong>El problema:</strong> Cuando el usuario pulsa «Continuar con Google», el botón pasa a estado <span class="code-pill">_loading = true</span> («Conectando…»). Si el navegador tiene activado un bloqueador de popups estricto o si la ventana emergente de autenticación es interceptada por el cortafuegos, el callback de Firebase en ocasiones no emite la excepción <span class="code-pill">popup-closed-by-user</span> de inmediato.</p>
+      <p>Como resultado, el botón permanece indefinidamente deshabilitado en gris («Conectando…») sin ofrecer una vía de escape, cancelar la operación o reintentar sin recargar la página.</p>
+      <p><strong>Fundamento teórico (Tema 1, p. 41 — Control del usuario y p. 44 — Recuperabilidad):</strong> Toda acción potencialmente bloqueante debe ofrecer un mecanismo explícito de interrupción (botón cancelar o timeout con mensaje accionable).</p>
+    </article>
+
+    <!-- HALLAZGO 6 -->
+    <article>
+      <h3>3.6. Ergonomía visual y Ley de Fitts en escritorio (Tema 2, pp. 78–82 y Tema 3)</h3>
+      <p><strong>El problema:</strong> En resoluciones panorámicas (>820 px), el diseño aplica un contenedor con <span class="code-pill">minHeight: 620</span> para la tarjeta informativa azul oscura y coloca el botón de acción en la columna derecha. Esto genera:</p>
+      <ul>
+        <li>Un enorme vacío visual en el centro de la tarjeta izquierda.</li>
+        <li>Una separación de más de 600 píxeles entre la marca de identidad (arriba a la izquierda) y el punto de acción (a la derecha).</li>
+        <li>Un botón de Google que, según la Ley de Fitts (<span class="code-pill">T = a + b log2(D/W + 1)</span>), requiere un recorrido motor innecesariamente largo desde el foco natural de lectura occidental (esquina superior izquierda hacia el centro).</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- FORTALEZAS -->
+  <section class="card">
+    <h2>4. Aspectos que la aplicación cumple con solvencia (Fortalezas)</h2>
+    <p>A pesar de las áreas de mejora detectadas, CleverTracker demuestra un estándar técnico y de diseño superior a la media en múltiples aspectos clave:</p>
+    <ul>
+      <li><strong>Identidad y estética editorial (Tema 1, p. 39):</strong> El diseño rehúye el aspecto de software médico o de gimnasio comercial agresivo. El uso de tonos minerales (<span class="code-pill">#14201C</span>), acento verde vegetal (<span class="code-pill">#C8F169</span>) y la tipografía <em>Plus Jakarta Sans</em> transmite orden, calma y enfoque profesional.</li>
+      <li><strong>Transparencia ética y reducción de ansiedad (Tema 2, p. 95):</strong> El texto informativo inferior —<em>«Usamos la cuenta únicamente para identificar tus datos. CleverTracker no publica nada en Google»</em>— neutraliza de inmediato una de las principales objeciones de privacidad del usuario respecto a OAuth.</li>
+      <li><strong>Inmediatez en local (Offline-first):</strong> El uso de cajas locales Hive para el registro diario evita los retardos perceptivos típicos de las arquitecturas cliente-servidor puras, logrando un guardado instantáneo cuando el usuario está dentro de la aplicación.</li>
+      <li><strong>Adaptabilidad estructural responsiva:</strong> La arquitectura de navegación implementada en <span class="code-pill">main_page.dart</span> conmuta elegantemente entre <span class="code-pill">NavigationBar</span> inferior en pantallas móviles y <span class="code-pill">NavigationRail</span> vertical en pantallas anchas, evitando estirar controles móviles en monitor.</li>
+    </ul>
+  </section>
+
+  <!-- TABLA DE CORRESPONDENCIA CON EL TEMARIO -->
+  <section class="card">
+    <h2>5. Matriz de correspondencia con el temario oficial de IPO</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Hallazgo / Característica evaluada</th>
+            <th>Principio / Concepto teórico</th>
+            <th>Referencia en temario (IPO2627.pdf)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ausencia de modo invitado / login forzado</td>
+            <td>Flexibilidad — Iniciativa del diálogo; Control del usuario</td>
+            <td>Tema 1, p. 40; p. 41</td>
+          </tr>
+          <tr>
+            <td>Carga lenta de CanvasKit y pantalla blanca inicial</td>
+            <td>Tiempo de respuesta; Realimentación de estado</td>
+            <td>Tema 1, p. 45; Tema 2, p. 88</td>
+          </tr>
+          <tr>
+            <td>Canvas sin nodos DOM accesibles nativos</td>
+            <td>Consistencia externa; Factores sensoriales y accesibilidad</td>
+            <td>Tema 1, p. 42; Tema 2, pp. 60–65</td>
+          </tr>
+          <tr>
+            <td>Promesa de restauración vs. persistencia local</td>
+            <td>Modelo mental del usuario vs. modelo conceptual de diseño</td>
+            <td>Tema 2, pp. 50–56</td>
+          </tr>
+          <tr>
+            <td>Botón «Conectando…» bloqueado sin timeout</td>
+            <td>Recuperabilidad; Cierre de tareas no bloqueante</td>
+            <td>Tema 1, p. 44; p. 46</td>
+          </tr>
+          <tr>
+            <td>Desconexión visual y Ley de Fitts en escritorio</td>
+            <td>Ergonomía, agrupamiento perceptivo (Gestalt) y Fitts</td>
+            <td>Tema 2, pp. 78–82</td>
+          </tr>
+          <tr>
+            <td>Traducción de códigos de error de Firebase</td>
+            <td>Recuperabilidad — Mensajes orientados a la acción</td>
+            <td>Tema 1, p. 44</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PLAN DE ACCIÓN PRIORIZADO -->
+  <section class="card">
+    <h2>6. Plan de acción priorizado para CleverTracker</h2>
+    <ol class="steps">
+      <li><strong>Fase Inmediata (Prioridad Alta):</strong>
+        <ul>
+          <li>Añadir en <span class="code-pill">web/index.html</span> un contenedor de carga nativo con SVG ligero y spinner CSS visible desde el milisegundo 0.</li>
+          <li>Incorporar un botón secundario <em>«Modo Exploración / Invitado»</em> en la pantalla de bienvenida que permita probar el diario de comidas sin cuenta.</li>
+          <li>Forzar la inicialización semántica de accesibilidad en el bootstrap web de Flutter.</li>
+        </ul>
+      </li>
+      <li><strong>Fase de Consolidación (Prioridad Media):</strong>
+        <ul>
+          <li>Alinear los textos de la pantalla de bienvenida con el estado real del producto: o bien activar la sincronización bidireccional y la pestaña de Medidas, o ajustar el texto para no prometer restauración en nube ni medidas corporales hasta que estén operativas.</li>
+          <li>Implementar un temporizador de seguridad de 10 segundos en el botón de Google para revertir el estado de carga y ofrecer opción de reintento si el popup no responde.</li>
+        </ul>
+      </li>
+      <li><strong>Fase de Maduración (Prioridad Baja / Ergonomía):</strong>
+        <ul>
+          <li>Rediseñar la tarjeta de bienvenida en escritorio reduciendo la altura mínima fija y balanceando la posición del botón de login mediante una tarjeta centrada o una composición de hero compacta.</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <footer>
+    Informe elaborado conforme al temario docente de Interacción Persona-Ordenador (Grado en Ingeniería Informática, 2026–27). Mediciones empíricas realizadas sobre Chromium y Firefox contra el despliegue en producción <a href="https://clevertracker.143-47-57-36.sslip.io/" target="_blank" rel="noopener">https://clevertracker.143-47-57-36.sslip.io/</a>.
+  </footer>
+</main>
+</body>
+</html>
