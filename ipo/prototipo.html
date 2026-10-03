@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IPO · Prototipo de Plataforma Institucional UJA</title>
+  <link rel="stylesheet" href="estilo.css">
+  <style>
+    .login-card {
+      background: white;
+      border: 2px solid var(--accent);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 14px rgba(0, 105, 87, 0.08);
+    }
+    .user-badge-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .user-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+    }
+    .user-email {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, monospace;
+    }
+    .user-meta {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .login-error-msg {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      margin-top: 12px;
+    }
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 8px;
+      margin-bottom: 24px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tab-btn:hover {
+      background: var(--soft);
+      color: var(--accent);
+    }
+    .tab-btn.active {
+      background: var(--soft);
+      color: var(--accent);
+      border-bottom: 3px solid var(--accent);
+      border-radius: 8px 8px 0 0;
+    }
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .topic-mastery-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      display: flex;
+      flex-direction: column;
+    }
+    .mastery-progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 6px 0 12px;
+    }
+    .mastery-progress-fill {
+      height: 100%;
+      transition: width 0.4s ease;
+    }
+    .topic-stats-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--muted);
+      background: var(--paper);
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+    .timeline-row {
+      display: flex;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: flex-start;
+    }
+    .timeline-week {
+      min-width: 95px;
+      font-size: 0.88rem;
+    }
+    .timeline-week strong {
+      display: block;
+      color: var(--accent);
+    }
+    .timeline-week span {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .timeline-content {
+      flex: 1;
+    }
+    .timeline-milestone {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 0.78rem;
+      font-weight: 750;
+      background: #fef3c7;
+      color: #92400e;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .kpi-box {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .kpi-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1.1;
+    }
+    .kpi-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <a href="index.html">← Laboratorio de estudio</a>
+    <span class="eyebrow">PROPUESTA DE DISEÑO & PROTOTIPO FUNCIONAL · UNIVERSIDAD DE JAÉN</span>
+    <h1>Plataforma de estudio y preparación de IPO</h1>
+    <p class="lead">Diseño integral con autenticación institucional de la UJA (<span style="font-family:monospace; color:var(--accent);">@red.ujaen.es</span>), analítica de dominio de los 10 temas, planificador cuatrimestral y banco masivo de preguntas.</p>
+  </header>
+
+  <!-- SECCIÓN DE AUTENTICACIÓN INSTITUCIONAL -->
+  <section id="auth-section"></section>
+
+  <!-- PESTAÑAS DE NAVEGACIÓN DEL PROTOTIPO -->
+  <nav class="tabs-nav" aria-label="Secciones del prototipo">
+    <button class="tab-btn active" data-tab="tab-mastery">📊 Dominio por Temas (10 Temas)</button>
+    <button class="tab-btn" data-tab="tab-planner">📅 Planificador & Calendario UJA (15 Semanas)</button>
+    <button class="tab-btn" data-tab="tab-eval">🎓 Tiques y Evaluación (IPO2627)</button>
+    <button class="tab-btn" data-tab="tab-architecture">🏛️ Arquitectura & Especificación</button>
+  </nav>
+
+  <!-- TAB 1: DOMINIO Y PROGRESO POR TEMAS -->
+  <section id="tab-mastery" class="tab-view">
+    <div class="kpi-row">
+      <div class="kpi-box">
+        <div class="kpi-num" id="global-mastery-val">0%</div>
+        <div class="kpi-label">Dominio global del temario (10 Temas)</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-num">130</div>
+        <div class="kpi-label">Preguntas activas en el banco (Meta: ~700)</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-num" id="tiques-count">0 / 50</div>
+        <div class="kpi-label">Tiques de clase obtenidos (100% participación)</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-num" id="exam-countdown">—</div>
+        <div class="kpi-label">Cuenta atrás para el examen teórico</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <div>
+          <h2 style="margin:0 0 4px;">Progreso de aprendizaje por tema</h2>
+          <p class="muted" style="margin:0; font-size:0.9rem;">El dominio se calcula como <strong>Cobertura (preguntas vistas) × Solidez (retención y aciertos netos)</strong>.</p>
+        </div>
+        <a href="generador.html" class="button">🎲 Abrir generador global de preguntas →</a>
+      </div>
+
+      <div class="topics-grid" id="temas-mastery-grid"></div>
+    </div>
+  </section>
+
+  <!-- TAB 2: PLANIFICADOR & CALENDARIO UJA -->
+  <section id="tab-planner" class="tab-view" hidden>
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; margin-bottom:18px;">
+        <div>
+          <h2 style="margin:0 0 4px;">Calendario cuatrimestral de estudio (2026–27)</h2>
+          <p class="muted" style="margin:0;">Alineado con las <strong>21 lecciones teóricas</strong> y las <strong>4 prácticas de laboratorio</strong> de la UJA.</p>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button id="btn-export-ics" class="button" style="display:inline-flex; align-items:center; gap:8px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Exportar a mi calendario (.ics)
+          </button>
+        </div>
+      </div>
+
+      <div class="recommendation-card" style="margin-bottom:20px;">
+        <strong>💡 ¿Cómo funciona la exportación?</strong><br>
+        Al pulsar el botón se descarga un archivo <code>.ics</code> estándar compatible con Google Calendar, Apple Calendar y Outlook con todos los repasos y entregas programadas sin necesidad de solicitar permisos invasivos en tu cuenta de Google.
+      </div>
+
+      <div id="cronograma-list"></div>
+    </div>
+  </section>
+
+  <!-- TAB 3: TIQUES Y EVALUACIÓN SEGÚN EL PDF -->
+  <section id="tab-eval" class="tab-view" hidden>
+    <div class="card">
+      <h2>Criterios oficiales de evaluación (IPO2627.pdf)</h2>
+      <p>La calificación final de la asignatura de Interacción Persona-Ordenador se compone de cuatro bloques:</p>
+      
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin:18px 0;">
+        <div class="metric-box">
+          <div class="number">60%</div>
+          <div class="label">Examen teórico final</div>
+          <div class="detail">Obligatorio obtener al menos un <strong>5,0 sobre 10</strong> para promediar.</div>
+        </div>
+        <div class="metric-box">
+          <div class="number">30%</div>
+          <div class="label">Prácticas en laboratorio</div>
+          <div class="detail">Obligatorio entregar y exponer al menos 2 prácticas. La <strong>Práctica 4 (Internacionalización) es obligatoria</strong>.</div>
+        </div>
+        <div class="metric-box">
+          <div class="number">5%</div>
+          <div class="label">Seminarios y ejercicios</div>
+          <div class="detail">Resolución de problemas en clase y entregas en PLATEA.</div>
+        </div>
+        <div class="metric-box">
+          <div class="number">5%</div>
+          <div class="label">Asistencia y participación</div>
+          <div class="detail">Sistema de tiques: <strong>50 tiques = 100%</strong> de este bloque (con opción a puntos extra).</div>
+        </div>
+      </div>
+
+      <div class="card" style="background:var(--soft); border-color:#bbf7d0; margin-top:20px;">
+        <h3>Sistema de Tiques de Participación (Gamificación)</h3>
+        <p>En clase puedes acumular tiques de las siguientes formas:</p>
+        <ul style="padding-left:20px;">
+          <li>Sesión completa de prácticas: <strong>1 tique</strong></li>
+          <li>Exposición y defensa de prácticas: <strong>3 tiques</strong></li>
+          <li>Teoría en días aleatorios: <strong>11 tiques en total</strong></li>
+          <li>Salir a la pizarra o destacar en una pregunta: <strong>1 tique</strong></li>
+          <li>Asistir a tutoría con dudas fundadas: <strong>1 tique</strong></li>
+        </ul>
+        <div style="display:flex; align-items:center; gap:12px; margin-top:14px;">
+          <button id="btn-add-tique" class="button">+1 Tique conseguido en clase</button>
+          <span class="muted">Tus tiques se guardan automáticamente en tu perfil institucional.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 4: ARQUITECTURA & ESPECIFICACIÓN TÉCNICA -->
+  <section id="tab-architecture" class="tab-view" hidden>
+    <div class="card">
+      <h2>Especificación técnica de la solución propuesta por Claude</h2>
+      <p>Para construir la versión final en producción sobre GitHub Pages conservando la privacidad y rendimiento:</p>
+
+      <ol class="steps">
+        <li><strong>Arquitectura Local-First con Sincronización Opcional:</strong>
+          <ul>
+            <li>La fuente de verdad inmediata es el navegador (IndexedDB). Permite estudiar en el tren o biblioteca sin cobertura.</li>
+            <li>Al iniciar sesión con la cuenta institucional de la UJA (<span class="code-pill">@red.ujaen.es</span>), los registros locales se envían de forma idempotente a una base de datos segura (Postgres con RLS en Supabase).</li>
+          </ul>
+        </li>
+        <li><strong>Validación Estricta de Cuentas Universitarias:</strong>
+          <ul>
+            <li>En el cliente se utiliza Google Identity Services con el parámetro sugerido <span class="code-pill">hd: 'red.ujaen.es'</span>.</li>
+            <li>En el servidor (Supabase Auth / Postgres Trigger), se comprueba con expresión regular que el correo termine en <span class="code-pill">@(red\.)?ujaen\.es$</span> antes de insertar el usuario.</li>
+          </ul>
+        </li>
+        <li><strong>Algoritmo de Repetición Espaciada Adaptativo (SM-2 Modificado):</strong>
+          <ul>
+            <li>Cálculo de intervalo basado en acierto, nivel de certeza (seguro, dudo, azar) y tiempo de respuesta.</li>
+            <li>Horizonte de examen: ningún intervalo de repaso se programa más allá de la fecha del examen oficial.</li>
+            <li>Detección de conceptos mal aprendidos: un fallo cometido con certeza alta se programa con máxima prioridad de refuerzo.</li>
+          </ul>
+        </li>
+        <li><strong>Ampliación Modular del Banco a ~700 Preguntas:</strong>
+          <ul>
+            <li>Estructura JSON estática versionada en Git (<span class="code-pill">/data/tema-01.json</span> a <span class="code-pill">/data/tema-10.json</span>).</li>
+            <li>Metadatos taxonómicos: nivel de Bloom (Recordar, Comprender, Aplicar, Analizar) y referencia exacta a las diapositivas de <span class="code-pill">IPO2627.pdf</span>.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    Plataforma de estudio para Interacción Persona-Ordenador · Grado en Ingeniería Informática · Universidad de Jaén.
+  </footer>
+</main>
+
+<script src="prototipo.js"></script>
+</body>
+</html>
