@@ -1,666 +1,294 @@
 'use strict';
 /* ============================================================================
-   IPO · CALENDARIO Y SINCRONIZACIÓN SEMANAL (Semana 4/5 · Octubre)
-   Regla innegociable: Estudio Activo / Esquema 24–48 h tras la clase teórica.
-   Sin B1 vinculado → "Riesgo de Curva del Olvido" + Bloque 3 (finde) bloqueado.
-   Vanilla JS reactivo + localStorage. Estética espacial chill intacta.
+   IPO · Calendario semanal
+   Clases oficiales (curso.js · IPO2627.pdf p. 15) según tu grupo de teoría y
+   subgrupo de prácticas, tus bloques de estudio y exportación .ics del curso.
    ========================================================================== */
 
-const CAL_KEY = 'ipo_cal_sync_v1';
-const H_MIN = 4, H_MAX = 8, H_REC_MIN = 4, H_REC_MAX = 8;
+const $ = id => document.getElementById(id);
+const esc = t => String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-function calDefault() {
+const CAL_KEY = 'ipo_calendario_v2';
+const DIAS_CORTOS = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+const DIAS_LARGOS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+const H_INI = 8, H_FIN = 21, FILA = 44;
+
+/* Horario oficial EPS Jaén 2026–27 */
+const TEORIA = {
+  A: { profe: 'Manuel García Vega', mie: ['11:30', '12:30'], jue: ['10:30', '11:30'] },
+  B: { profe: 'Salud Mª Jiménez Zafra', mie: ['16:30', '17:30'], jue: ['15:30', '16:30'] }
+};
+const PRACTICAS = { 1: ['08:30', '10:30'], 2: ['10:30', '12:30'], 3: ['12:30', '14:30'], 4: ['15:30', '17:30'] };
+
+const BLOQUES_INICIALES = [
+  { dia: 5, hora: '18:00', dur: 1.5, titulo: 'Repaso tras la clase' },
+  { dia: 6, hora: '11:00', dur: 1.5, titulo: 'Practicar con el generador' },
+  { dia: 7, hora: '11:00', dur: 1, titulo: 'Demostrar competencias' }
+];
+
+/* ---------- Estado ---------- */
+
+function cargar() {
+  let e = {};
+  try { e = JSON.parse(localStorage.getItem(CAL_KEY) || '{}'); } catch (err) { e = {}; }
+  if (!e.grupo) {
+    // Hereda grupo y subgrupo del calendario anterior si existían
+    try {
+      const viejo = JSON.parse(localStorage.getItem('ipo_cal_sync_v1') || '{}');
+      if (viejo.grupo) e.grupo = viejo.grupo;
+      if (viejo.sub) e.sub = viejo.sub;
+    } catch (err) { /* nada */ }
+  }
   return {
-    grupo: 'A',               // grupo de TEORÍA elegido: A (mañanas) o B (tardes)
-    sub: 1,                   // subgrupo de PRÁCTICAS elegido: 1–4 (martes, A3-170). Independiente del grupo de teoría.
-    horasSemanales: 6,
-    email: '',
-    sincronizado: false,
-    calendarId: null,
-    semanaVista: typeof semanaDelCurso === 'function' ? semanaDelCurso() : 5, // semana real del curso (curso.js)
-    bloques: {
-      // B1 anclado en ventana 24–48 h tras la última teoría del jueves:
-      // Grupo A (Jue 11:30 → Vie 18:00 = 30.5 h) · Grupo B (Jue 16:30 → Vie 18:00 = 25.5 h).
-      b1: { dia: 5, hora: '18:00', dur: 2.0,  titulo: 'Bloque 1 · Post-clase inmediata', desc: 'Destilación de notas y resolución de dudas (máx. 48 h tras teoría).' },
-      b2: { dia: 6, hora: '11:00', dur: 2.0,  titulo: 'Bloque 2 · Síntesis conceptual',   desc: 'Síntesis + validación con NotebookLM (fin de semana).' },
-      b3: { dia: 7, hora: '11:00', dur: 2.0,  titulo: 'Bloque 3 · Antiolvido + examen',   desc: 'Sesión antiolvido y ejercicios prácticos (domingo).' }
-    },
-    // confirmaciones por semana: { "4": { b1:false, b2:false, b3:false } }
-    conf: {},
-    gcalLog: []               // eventos "insertados" en Google Calendar (mock + real)
+    grupo: e.grupo === 'B' ? 'B' : 'A',
+    sub: [1, 2, 3, 4].includes(Number(e.sub)) ? Number(e.sub) : (e.grupo === 'B' ? 3 : 1),
+    bloques: Array.isArray(e.bloques) ? e.bloques : BLOQUES_INICIALES.map(b => ({ ...b }))
   };
 }
 
-let CAL = calDefault();
+let EST = cargar();
+let semana = semanaDelCurso();
 
-function calLoad() {
-  let stored = {};
-  try { stored = JSON.parse(localStorage.getItem(CAL_KEY) || '{}'); } catch (e) { stored = {}; }
-  CAL = Object.assign(calDefault(), stored);
-  if (!CAL.conf) CAL.conf = {};
-  if (!CAL.bloques) CAL = Object.assign(calDefault(), CAL);
-  // Migración de valores antiguos:
-  // (v1 acoplaba teoría y prácticas: G1–G2 ⇒ A, G3–G4 ⇒ B)
-  if (stored.sub == null && stored.grupo == null) { CAL.grupo = 'A'; CAL.sub = 1; }
-  else if (stored.sub == null) { CAL.sub = (CAL.grupo === 'B' ? 3 : 1); }
-  if (CAL.grupo !== 'A' && CAL.grupo !== 'B') CAL.grupo = 'A';
-  const b = CAL.bloques;
-  const esDefectoAntiguo = b && b.b1 && b.b1.dia === 3 && b.b1.hora === '14:00' &&
-    b.b2 && b.b2.dia === 5 && b.b2.hora === '18:00' && b.b3 && b.b3.dia === 6 && b.b3.hora === '11:00';
-  if (esDefectoAntiguo) {
-    const d = calDefault().bloques;
-    CAL.bloques = JSON.parse(JSON.stringify(d));
-    aplicarHoras(CAL.horasSemanales || 6);
+function guardar() {
+  try { localStorage.setItem(CAL_KEY, JSON.stringify(EST)); } catch (err) { /* sin almacenamiento */ }
+}
+
+/* ---------- Utilidades de fecha ---------- */
+
+const diaDeSemana = (sem, dia) => new Date(lunesDeSemana(sem).getTime() + (dia - 1) * DIA_MS);
+const aMin = hm => { const [h, m] = hm.split(':').map(Number); return h * 60 + m; };
+const horas = (a, b) => (aMin(b) - aMin(a)) / 60;
+const sumarHoras = (hm, h) => { const t = aMin(hm) + Math.round(h * 60); return `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`; };
+const fmtDur = h => (h < 1 ? `${Math.round(h * 60)} min` : h % 1 ? `${Math.floor(h)} h ${Math.round((h % 1) * 60)} min` : `${h} h`);
+const FECHA_DM = new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'short' });
+
+/* Eventos oficiales de una semana para el grupo elegido. */
+function eventosSemana(sem) {
+  const ev = [];
+  for (let dia = 1; dia <= 7; dia++) {
+    const iso = fechaISO(diaDeSemana(sem, dia));
+    const libre = DIAS_SIN_CLASE[iso];
+    const teoria = SESIONES_TEORIA.find(c => c.fecha === iso);
+    if (teoria) {
+      const [ini, fin] = dia === 3 ? TEORIA[EST.grupo].mie : TEORIA[EST.grupo].jue;
+      ev.push({
+        tipo: 'teoria', dia, ini, fin, iso,
+        titulo: teoria.tema ? `Tema ${teoria.tema} · ${teoria.leccion}` : teoria.contenido,
+        detalle: teoria.tema ? teoria.contenido : 'Teoría',
+        lugar: 'A4-36', tema: teoria.tema
+      });
+    }
+    const pract = SESIONES_PRACTICAS.find(c => c.fecha === iso);
+    if (pract) {
+      const [ini, fin] = PRACTICAS[EST.sub];
+      const [nombre, ...resto] = pract.contenido.split(' · ');
+      ev.push({ tipo: 'practica', dia, ini, fin, iso, titulo: nombre, detalle: resto.join(' · ') || 'Laboratorio', lugar: `A3-170 · G${EST.sub}` });
+    }
+    if (libre) ev.push({ tipo: 'libre', dia, iso, titulo: libre });
   }
-}
-function calSave() {
-  try { localStorage.setItem(CAL_KEY, JSON.stringify(CAL)); } catch (e) {}
-}
-function calConf(sem) {
-  sem = String(sem);
-  if (!CAL.conf[sem]) CAL.conf[sem] = { b1: false, b2: false, b3: false };
-  return CAL.conf[sem];
+  return ev;
 }
 
-/* ---------- Horario oficial UJA 2026-27 (fuente: EPS Jaén + IPO2627.pdf) ----------
-   Teoría (Aula A4-36):
-     Grupo A — Dr. Manuel García Vega: Mié 11:30–12:30 + Jue 10:30–11:30
-     Grupo B — Dra. Salud Mª Jiménez Zafra: Mié 16:30–17:30 + Jue 15:30–16:30
-   Prácticas (Lab A3-170, martes):
-     G1 08:30–10:30 y G2 10:30–12:30 (teoría A) · G3 12:30–14:30 y G4 15:30–17:30 (teoría B)
-   Horario lectivo: Lun 2026-09-07 → Vie 2026-12-18. */
-const TEORIA_OFICIAL = {
-  A: [
-    { dia: 3, ini: '11:30', fin: '12:30', tag: 'Teoría IPO · A4-36 (M. García Vega)', aula: 'A4-36' },
-    { dia: 4, ini: '10:30', fin: '11:30', tag: 'Teoría IPO · A4-36 (M. García Vega)', aula: 'A4-36' }
-  ],
-  B: [
-    { dia: 3, ini: '16:30', fin: '17:30', tag: 'Teoría IPO · A4-36 (S. Jiménez Zafra)', aula: 'A4-36' },
-    { dia: 4, ini: '15:30', fin: '16:30', tag: 'Teoría IPO · A4-36 (S. Jiménez Zafra)', aula: 'A4-36' }
-  ]
-};
-const PRACTICAS_OFICIAL = {
-  1: { dia: 2, ini: '08:30', fin: '10:30' },
-  2: { dia: 2, ini: '10:30', fin: '12:30' },
-  3: { dia: 2, ini: '12:30', fin: '14:30' },
-  4: { dia: 2, ini: '15:30', fin: '17:30' }
-};
-function grupoActual() {
-  const g = String(CAL.grupo || 'A').toUpperCase();
-  return g === 'B' ? 'B' : 'A';
-}
-function subActual() {
-  const s = Number(CAL.sub);
-  return s >= 1 && s <= 4 ? s : (grupoActual() === 'B' ? 3 : 1);
-}
-function finUltimaTeoria() {
-  // Última clase teórica de la semana: jueves (Grupo A 11:30 · Grupo B 16:30)
-  return grupoActual() === 'B' ? '16:30' : '11:30';
-}
-function horarioOficial() {
-  // Teoría y prácticas se eligen por separado: el subgrupo de prácticas
-  // NO impone el grupo de teoría (ej. teoría A de mañanas + prácticas G4 de tarde).
-  const g = grupoActual();
-  const sub = subActual();
-  const teoria = TEORIA_OFICIAL[g];
-  const p = PRACTICAS_OFICIAL[sub];
-  const pract = { dia: p.dia, ini: p.ini, fin: p.fin, tag: 'Práctica Lab A3-170 · G' + sub + '', aula: 'A3-170' };
-  return { teoria, pract, grupo: g, sub };
-}
-/* Lunes real de la semana N (Sem 1 = Lun 2026-09-07) */
-function lunesSemana(sem) {
-  const d = new Date(2026, 8, 7);
-  d.setDate(d.getDate() + (Number(sem) - 1) * 7);
-  return d;
-}
-function fechaDia(sem, dia) {
-  const d = lunesSemana(sem);
-  d.setDate(d.getDate() + (dia - 1));
-  return d;
-}
-const MESES_ES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
-function etiqFecha(d) { return d.getDate() + ' ' + MESES_ES[d.getMonth()]; }
-function rangoSemana(sem) {
-  return 'Lun ' + etiqFecha(fechaDia(sem, 1)) + ' – Dom ' + etiqFecha(fechaDia(sem, 7)) + ' 2026';
-}
-function hmToMin(hm) { const [h, m] = hm.split(':').map(Number); return h * 60 + m; }
-function durHoras(ini, fin) { return (hmToMin(fin) - hmToMin(ini)) / 60; }
-/* Distancia en horas entre el fin de la última teoría (Jue) y el inicio de B1 */
-function ventanaB1Horas() {
-  const finTeoria = 4 * 24 * 60 + hmToMin(finUltimaTeoria()); // día 4 (jueves)
-  const b = CAL.bloques.b1;
-  const iniB1 = b.dia * 24 * 60 + hmToMin(b.hora);
-  let d = iniB1 - finTeoria;
-  if (d < 0) d += 7 * 24 * 60;
-  return d / 60;
-}
-function b1EnVentana() {
-  const h = ventanaB1Horas();
-  return h >= 24 && h <= 48;
+/* El primer repaso conviene entre 24 y 48 h después de la última clase de teoría de la semana. */
+function enVentana(bloque, sem) {
+  const clases = eventosSemana(sem).filter(e => e.tipo === 'teoria');
+  if (!clases.length) return false;
+  const ult = clases[clases.length - 1];
+  const dif = ((bloque.dia - 1) * 24 + aMin(bloque.hora) / 60) - ((ult.dia - 1) * 24 + aMin(ult.fin) / 60);
+  return dif >= 24 && dif <= 48;
 }
 
-/* ---------- Motor de reparto 4–8 h en 3 bloques ---------- */
-function distribuirHoras(H) {
-  H = Math.max(2, Math.min(10, Number(H) || 6));
-  // Proporción pedagógica 37.5 / 37.5 / 25, con suelos y techos por bloque.
-  // Se redondea a pasos de 30 min y se corrige el redondeo sobre el Bloque 3
-  // para que la suma sea EXACTAMENTE H.
-  let b1 = H * 0.375, b2 = H * 0.375, b3 = H * 0.25;
-  b1 = Math.max(1.5, Math.min(2.5, b1));
-  b2 = Math.max(1.5, Math.min(2.5, b2));
-  b3 = Math.max(1.0, Math.min(2.5, b3));
-  const suma = b1 + b2 + b3, k = H / suma;
-  const r = v => Math.round(v * k * 2) / 2; // pasos de 30 min
-  let r1 = r(b1), r2 = r(b2);
-  let r3 = Math.round((H - r1 - r2) * 2) / 2;
-  // Salvaguarda: B3 siempre entre 1 y 2.5 h; si el ajuste lo saca de rango,
-  // se compensa contra B1/B2.
-  if (r3 < 1 || r3 > 2.5) {
-    r3 = Math.max(1, Math.min(2.5, r3));
-    const resto = Math.round((H - r3) * 2) / 2;
-    r1 = Math.round((resto / 2) * 2) / 2;
-    r2 = resto - r1;
+/* ---------- Render ---------- */
+
+function renderCabecera() {
+  const lunes = lunesDeSemana(semana);
+  const domingo = new Date(lunes.getTime() + 6 * DIA_MS);
+  const actual = semana === semanaDelCurso();
+  $('cal-semana').innerHTML = `Semana ${semana}<span>${esc(FECHA_DM.format(lunes))} – ${esc(FECHA_DM.format(domingo))}${actual ? ' · esta semana' : ''}</span>`;
+  $('cal-prev').disabled = semana <= 1;
+  $('cal-next').disabled = semana >= 15;
+  $('cal-hoy').hidden = actual;
+
+  document.querySelectorAll('[data-grupo]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.grupo === EST.grupo)));
+  document.querySelectorAll('[data-sub]').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.sub) === EST.sub)));
+  const t = TEORIA[EST.grupo];
+  $('cal-grupo-info').textContent = `Teoría con ${t.profe}: miércoles ${t.mie.join('–')} y jueves ${t.jue.join('–')} (A4-36). Prácticas G${EST.sub}: martes ${PRACTICAS[EST.sub].join('–')} (A3-170).`;
+}
+
+function renderResumen() {
+  const ev = eventosSemana(semana);
+  const hoy = fechaISO(new Date());
+  const items = ev.slice().sort((a, b) => a.dia - b.dia || (a.ini ? aMin(a.ini) : 0) - (b.ini ? aMin(b.ini) : 0));
+
+  $('cal-clases').innerHTML = items.length ? items.map(e => {
+    const dia = `${DIAS_CORTOS[e.dia - 1]} ${diaDeSemana(semana, e.dia).getDate()}`;
+    if (e.tipo === 'libre') {
+      return `<li class="agenda-item is-free"><span class="agenda-when"><strong>${dia}</strong>Festivo</span><span class="agenda-dot libre"></span><span class="agenda-what"><strong>Sin clase</strong>${esc(e.titulo)}</span></li>`;
+    }
+    return `<li class="agenda-item ${e.iso < hoy ? 'is-past' : ''} ${e.iso === hoy ? 'is-today' : ''}">
+      <span class="agenda-when"><strong>${dia}</strong>${e.ini}–${e.fin}</span>
+      <span class="agenda-dot ${e.tipo}"></span>
+      <span class="agenda-what"><strong>${esc(e.titulo)}</strong>${esc(e.detalle)} · ${esc(e.lugar)}</span>
+    </li>`;
+  }).join('') : '<li class="muted">No hay clases esta semana.</li>';
+
+  // Qué estudiar: temas que se dan esta semana
+  const temas = [...new Set(ev.filter(e => e.tema).map(e => e.tema))];
+  const comp = leerCompetencias();
+  $('cal-estudiar').innerHTML = temas.length
+    ? temas.map(t => {
+      const info = TEMAS_CURSO[t];
+      const hechas = Object.keys(comp[t] || {}).length;
+      return `<li class="study-item">
+        <div><strong>Tema ${t} · ${esc(info.titulo)}</strong><span>pp. ${info.paginas} · estudiado antes del ${esc(FECHA_CORTA.format(objetivoDeTema(t)))}</span></div>
+        ${info.pagina ? `<span class="badge ${hechas >= 5 ? 'ok' : ''}">${hechas}/5 competencias</span>` : '<span class="badge">Sin banco aún</span>'}
+      </li>`;
+    }).join('') +
+      `<li class="study-actions"><a class="button" href="ponte-al-dia.html">Demostrar competencias</a>${temas.filter(t => TEMAS_CURSO[t].pagina).map(t => `<a class="button secondary" href="${TEMAS_CURSO[t].pagina}">Practicar Tema ${t}</a>`).join('')}</li>`
+    : '<li class="muted">Esta semana no hay teoría nueva: aprovecha para repasar en <a href="ponte-al-dia.html">Ponte al día</a>.</li>';
+}
+
+function renderRejilla() {
+  const ev = eventosSemana(semana);
+  const hoy = fechaISO(new Date());
+  const top = hm => (aMin(hm) / 60 - H_INI) * FILA;
+  const alto = h => Math.max(30, h * FILA - 4);
+
+  let html = '<div class="wk-corner"></div>';
+  for (let d = 1; d <= 7; d++) {
+    const f = diaDeSemana(semana, d);
+    const libre = ev.find(e => e.tipo === 'libre' && e.dia === d);
+    html += `<div class="wk-day ${fechaISO(f) === hoy ? 'is-today' : ''}"><span>${DIAS_CORTOS[d - 1]}</span><strong>${f.getDate()}</strong>${libre ? `<em>${esc(libre.titulo)}</em>` : ''}</div>`;
   }
-  return { b1: r1, b2: r2, b3: r3 };
-}
-function aplicarHoras(H) {
-  const d = distribuirHoras(H);
-  CAL.horasSemanales = H;
-  CAL.bloques.b1.dur = d.b1;
-  CAL.bloques.b2.dur = d.b2;
-  CAL.bloques.b3.dur = d.b3;
-  calSave();
-}
-
-/* ---------- Estado temporal: semanas / temas ---------- */
-function crono() {
-  if (typeof CRONOGRAMA_SEMANAS !== 'undefined') return CRONOGRAMA_SEMANAS;
-  return [
-    { semana: 1, leccion: 'L1', tema: 1 }, { semana: 2, leccion: 'L2', tema: 2 },
-    { semana: 3, leccion: 'L3', tema: 2 }, { semana: 4, leccion: 'L4', tema: 2 },
-    { semana: 5, leccion: 'L5', tema: 3 }, { semana: 6, leccion: 'L6', tema: 4 }
-  ];
-}
-function semanaActiva() {
-  try {
-    const s = JSON.parse(localStorage.getItem('ipo_uja_settings_v2') || '{}');
-    if (s.semanaActual) return Number(s.semanaActual);
-  } catch (e) {}
-  return CAL.semanaVista || 4;
-}
-/* «Teoría: Tema 4 (L7, mié) y Tema 5 (L8, jue)» según la planificación oficial */
-function temasDeLaSemana(sem) {
-  const ini = fechaISO(fechaDia(sem, 1)), fin = fechaISO(fechaDia(sem, 7));
-  const clases = SESIONES_TEORIA.filter(c => c.fecha >= ini && c.fecha <= fin);
-  if (!clases.length) return 'Sin clases de teoría esta semana';
-  const dia = c => ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'][desdeISO(c.fecha).getDay()];
-  return 'Teoría: ' + clases.map(c => (c.tema ? 'Tema ' + c.tema + ' (' + c.leccion + ', ' + dia(c) + ')' : c.contenido + ' (' + dia(c) + ')')).join(' y ');
-}
-function temaDeSemana(sem) {
-  const c = crono().find(x => x.semana === sem);
-  return c ? c.tema : 2;
-}
-function progresoTema(tid) {
-  try {
-    const p = JSON.parse(localStorage.getItem('ipo_uja_progress_v2') || '{}');
-    return p[String(tid)] || p[tid] || null;
-  } catch (e) { return null; }
-}
-function estadoSemana(sem) {
-  const act = semanaActiva();
-  if (sem === act) return 'now';
-  if (sem > act) return 'upcoming';
-  // pasadas: check o deuda de repaso
-  const tid = temaDeSemana(sem);
-  const p = progresoTema(tid);
-  if (!p) return 'debt';
-  if (p.testAntiolvido) return 'done';
-  if (sem === 1) return 'done'; // Tema 1 superado al 100%
-  return 'debt';
-}
-function riesgoOlvidO(sem) {
-  // Regla innegociable: sin B1 confirmado → riesgo + B3 bloqueado
-  const c = calConf(sem);
-  if (c.b1) return false;
-  if (sem < semanaActiva()) {
-    const tid = temaDeSemana(sem);
-    const p = progresoTema(tid);
-    if (p && p.testAntiolvido && p.esquemaValidado) return false;
-    return true;
+  html += '<div class="wk-hours">' + Array.from({ length: H_FIN - H_INI }, (_, i) => `<span>${H_INI + i}:00</span>`).join('') + '</div>';
+  for (let d = 1; d <= 7; d++) {
+    const f = diaDeSemana(semana, d);
+    const oficiales = ev.filter(e => e.dia === d && e.tipo !== 'libre').map(e =>
+      `<div class="wk-ev ${e.tipo}" style="top:${top(e.ini)}px;height:${alto(horas(e.ini, e.fin))}px" title="${esc(e.titulo + ' · ' + e.detalle)}">
+        <strong>${esc(e.titulo)}</strong><span>${e.ini}–${e.fin} · ${esc(e.lugar)}</span></div>`).join('');
+    const bloques = EST.bloques.map((b, i) => ({ b, i })).filter(x => x.b.dia === d).map(({ b, i }) =>
+      `<button type="button" class="wk-ev estudio" style="top:${top(b.hora)}px;height:${alto(b.dur)}px" data-bloque="${i}" title="Editar bloque">
+        <strong>${esc(b.titulo)}</strong><span>${b.hora}–${sumarHoras(b.hora, b.dur)}</span></button>`).join('');
+    const libre = ev.some(e => e.tipo === 'libre' && e.dia === d);
+    html += `<div class="wk-col ${fechaISO(f) === hoy ? 'is-today' : ''} ${libre ? 'is-free' : ''}">${oficiales}${bloques}</div>`;
   }
-  return !b1EnVentana() || !c.b1 ? true : false;
-}
-// Expuesto para bloquear la pestaña Antiolvido / fin de semana
-window.IPO_CalWeekendBlocked = function () {
-  const sem = semanaActiva();
-  return riesgoOlvidO(sem);
-};
+  const grid = $('cal-grid');
+  grid.innerHTML = html;
+  grid.style.setProperty('--wk-alto', `${(H_FIN - H_INI) * FILA}px`);
+  grid.style.setProperty('--wk-fila', `${FILA}px`);
 
-/* ---------- Google Calendar: mock reactivo + GIS si existe ---------- */
-function validarEmailUJA(email) {
-  const d = (email.split('@')[1] || '').toLowerCase();
-  return d === 'red.ujaen.es' || d === 'ujaen.es';
-}
-function eventosInstitucionales() {
-  const { teoria, pract } = horarioOficial();
-  return [
-    ...teoria.map((t, i) => ({ id: 'uja-teoria-' + i, kind: 'clase', ...t })),
-    { id: 'uja-pract', kind: 'pract', ...pract }
-  ];
-}
-function eventosEstudioGCal() {
-  const sem = semanaActiva();
-  const avisos = [{ method: 'popup', minutes: 10 }, { method: 'email', minutes: 60 }];
-  return ['b1', 'b2', 'b3'].map(k => {
-    const b = CAL.bloques[k];
-    return {
-      summary: '📚 IPO · ' + b.titulo + ' (Sem ' + sem + ')',
-      dia: b.dia, hora: b.hora, dur: b.dur,
-      description: b.desc + ' · Repaso espaciado 1/3/7/16/35 días.',
-      reminders: avisos, timeZone: 'Europe/Madrid'
+  grid.querySelectorAll('[data-bloque]').forEach(el => {
+    el.onclick = () => {
+      const fila = document.querySelector(`[data-fila="${el.dataset.bloque}"]`);
+      if (!fila) return;
+      fila.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      fila.querySelector('input').focus({ preventScroll: true });
     };
   });
 }
-async function sincronizarGoogle(email) {
-  if (!validarEmailUJA(email)) {
-    return { ok: false, error: 'Usa tu cuenta oficial @red.ujaen.es (alumnado) o @ujaen.es (PDI).' };
-  }
-  CAL.email = email.trim().toLowerCase();
-  // Intento real GIS si está cargado; si no, mock con latencia
-  try {
-    if (window.google && window.google.accounts && window.google.accounts.oauth2) {
-      // Token client genérico; si falla, caemos al mock sin romper
-      await new Promise((res) => setTimeout(res, 400));
-    } else {
-      await new Promise((res) => setTimeout(res, 900));
-    }
-  } catch (e) {}
-  CAL.sincronizado = true;
-  CAL.calendarId = CAL.calendarId || ('ipo-' + CAL.email.replace(/[^a-z0-9]/gi, '').slice(0, 12));
-  const leidos = eventosInstitucionales();
-  const creados = eventosEstudioGCal();
-  CAL.gcalLog = creados.map(e => e.summary + ' · ' + diaNombre(e.dia) + ' ' + e.hora + ' (' + e.dur + 'h, avisos 10min+60min)');
-  CAL._leidos = leidos.length;
-  calSave();
-  try {
-    const s = JSON.parse(localStorage.getItem('ipo_uja_settings_v2') || '{}');
-    s.semanaActual = semanaActiva();
-    localStorage.setItem('ipo_uja_settings_v2', JSON.stringify(s));
-  } catch (e) {}
-  return { ok: true, leidos: leidos.length, creados: creados.length };
+
+function renderBloques() {
+  const opcionesDia = sel => DIAS_LARGOS.map((n, i) => `<option value="${i + 1}" ${sel === i + 1 ? 'selected' : ''}>${n}</option>`).join('');
+  const opcionesDur = sel => [0.5, 1, 1.5, 2, 2.5, 3].map(h => `<option value="${h}" ${sel === h ? 'selected' : ''}>${fmtDur(h)}</option>`).join('');
+
+  $('cal-bloques').innerHTML = EST.bloques.length ? EST.bloques.map((b, i) => `
+    <li class="block-row" data-fila="${i}">
+      <input type="text" value="${esc(b.titulo)}" data-campo="titulo" aria-label="Nombre del bloque">
+      <select data-campo="dia" aria-label="Día">${opcionesDia(b.dia)}</select>
+      <input type="time" value="${b.hora}" data-campo="hora" aria-label="Hora de inicio">
+      <select data-campo="dur" aria-label="Duración">${opcionesDur(b.dur)}</select>
+      <span class="block-flag">${enVentana(b, semana) ? '<span class="badge ok" title="Entre 24 y 48 h después de la última clase de teoría de la semana">24–48 h tras clase</span>' : ''}</span>
+      <button type="button" class="icon-btn" data-quitar="${i}" aria-label="Quitar este bloque">×</button>
+    </li>`).join('') : '<li class="muted">No tienes bloques de estudio. Añade uno.</li>';
+
+  const total = EST.bloques.reduce((s, b) => s + b.dur, 0);
+  $('cal-total').textContent = `${fmtDur(total)} de estudio a la semana`;
+
+  $('cal-bloques').querySelectorAll('[data-campo]').forEach(inp => {
+    inp.onchange = () => {
+      const b = EST.bloques[Number(inp.closest('[data-fila]').dataset.fila)];
+      const c = inp.dataset.campo;
+      if (c === 'titulo') b.titulo = inp.value.trim() || 'Estudio';
+      if (c === 'dia') b.dia = Number(inp.value);
+      if (c === 'hora') b.hora = inp.value || '18:00';
+      if (c === 'dur') b.dur = Number(inp.value);
+      guardar();
+      renderRejilla();
+      renderBloques();
+    };
+  });
+  $('cal-bloques').querySelectorAll('[data-quitar]').forEach(btn => {
+    btn.onclick = () => {
+      EST.bloques.splice(Number(btn.dataset.quitar), 1);
+      guardar();
+      renderRejilla();
+      renderBloques();
+    };
+  });
 }
 
-/* ---------- .ics con los 3 bloques + repaso espaciado ---------- */
+function render() {
+  renderCabecera();
+  renderResumen();
+  renderRejilla();
+  renderBloques();
+}
+
+/* ---------- Exportar .ics del curso completo ---------- */
+
 function descargarICS() {
-  const pad = n => String(n).padStart(2, '0');
+  const local = (iso, hm) => iso.replace(/-/g, '') + 'T' + hm.replace(':', '') + '00';
   const stamp = new Date().toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z';
-  const L = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//UJA//IPO Calendario Semanal//ES',
-    'CALSCALE:GREGORIAN', 'X-WR-CALNAME:IPO UJA · Estudio Semanal (Sem ' + semanaActiva() + ')'];
-  const base = lunesSemana(semanaActiva()); // lunes real de la semana vista (2026)
-  const addEv = (dia, hora, dur, titulo, desc) => {
-    const [H, M] = hora.split(':').map(Number);
-    const d0 = new Date(base); d0.setDate(base.getDate() + (dia - 1)); d0.setHours(H, M, 0, 0);
-    const d1 = new Date(d0.getTime() + dur * 3600000);
-    const f = d => d.getUTCFullYear() + pad(d.getUTCMonth() + 1) + pad(d.getUTCDate()) + 'T' + pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + '00Z';
-    L.push('BEGIN:VEVENT', 'UID:ipo-cal-' + dia + '-' + hora.replace(':', '') + '@ujaen.es', 'DTSTAMP:' + stamp,
-      'DTSTART:' + f(d0), 'DTEND:' + f(d1), 'SUMMARY:' + titulo, 'DESCRIPTION:' + desc,
-      'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:' + titulo, 'TRIGGER:-PT10M', 'END:VALARM', 'END:VEVENT');
+  const limpiar = t => String(t).replace(/[\\,;]/g, m => '\\' + m).replace(/\n/g, '\\n');
+  const L = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//IPO Study Lab//Calendario 2026-27//ES', 'CALSCALE:GREGORIAN',
+    'X-WR-CALNAME:IPO 2026–27', 'X-WR-TIMEZONE:Europe/Madrid',
+    'BEGIN:VTIMEZONE', 'TZID:Europe/Madrid',
+    'BEGIN:DAYLIGHT', 'TZOFFSETFROM:+0100', 'TZOFFSETTO:+0200', 'TZNAME:CEST', 'DTSTART:19700329T020000', 'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU', 'END:DAYLIGHT',
+    'BEGIN:STANDARD', 'TZOFFSETFROM:+0200', 'TZOFFSETTO:+0100', 'TZNAME:CET', 'DTSTART:19701025T030000', 'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU', 'END:STANDARD',
+    'END:VTIMEZONE'];
+  let n = 0;
+  const evento = (iso, ini, fin, titulo, desc, lugar, rrule) => {
+    L.push('BEGIN:VEVENT', `UID:ipo-${iso}-${ini.replace(':', '')}-${n++}@ipo-study-lab`, `DTSTAMP:${stamp}`,
+      `DTSTART;TZID=Europe/Madrid:${local(iso, ini)}`, `DTEND;TZID=Europe/Madrid:${local(iso, fin)}`,
+      `SUMMARY:${limpiar(titulo)}`, `DESCRIPTION:${limpiar(desc)}`);
+    if (lugar) L.push(`LOCATION:${limpiar(lugar)}`);
+    if (rrule) L.push(rrule);
+    L.push('BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${limpiar(titulo)}`, 'TRIGGER:-PT15M', 'END:VALARM', 'END:VEVENT');
   };
-  const { teoria, pract } = horarioOficial();
-  teoria.forEach(t => addEv(t.dia, t.ini, durHoras(t.ini, t.fin), 'IPO UJA · Clase oficial (' + t.tag + ')', 'Docencia presencial EPS Jaen (A4-36). Ancla 24-48h.'));
-  addEv(pract.dia, pract.ini, durHoras(pract.ini, pract.fin), 'IPO UJA · ' + pract.tag, pract.aula + '. Prácticas de laboratorio (martes).');
-  ['b1', 'b2', 'b3'].forEach(k => {
-    const b = CAL.bloques[k];
-    addEv(b.dia, b.hora, b.dur, 'Estudio IPO · ' + b.titulo, b.desc);
+
+  for (let s = 1; s <= 15; s++) {
+    eventosSemana(s).filter(e => e.tipo !== 'libre').forEach(e => evento(e.iso, e.ini, e.fin, `IPO · ${e.titulo}: ${e.detalle}`, `${e.titulo} · ${e.detalle}`, `EPS Jaén · ${e.lugar}`));
+  }
+  // Bloques de estudio: cada semana desde la actual hasta el fin de la docencia
+  const desde = semanaDelCurso();
+  EST.bloques.forEach(b => {
+    evento(fechaISO(diaDeSemana(desde, b.dia)), b.hora, sumarHoras(b.hora, b.dur), `Estudio IPO · ${b.titulo}`, 'Bloque de estudio · IPO Study Lab', '',
+      `RRULE:FREQ=WEEKLY;UNTIL=${fechaISO(CURSO_FIN).replace(/-/g, '')}T225959Z`);
   });
   L.push('END:VCALENDAR');
+
   const blob = new Blob([L.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'IPO-UJA-Semana-' + semanaActiva() + '-estudio.ics';
+  a.download = `IPO-2026-27-teoria-${EST.grupo}-practicas-G${EST.sub}.ics`;
   a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 1500);
 }
 
-/* ---------- Render ---------- */
-const DIAS = ['LUN', 'MAR', 'MIÉ', 'JUE', 'VIE', 'SÁB', 'DOM'];
-function diaNombre(d) { return ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'][d - 1]; }
-function esc(msg) { return String(msg).replace(/</g, '&lt;'); }
+/* ---------- Controles ---------- */
 
-function renderCalendario() {
-  const host = document.getElementById('calendario-container');
-  if (!host) return;
-  const sem = semanaActiva();
-  const vista = CAL.semanaVista || sem;
-  const { teoria, pract } = horarioOficial();
-  const conf = calConf(vista);
-  const riesgo = riesgoOlvidO(vista);
-  const enVentana = b1EnVentana();
-  const b = CAL.bloques;
-  const tid = temaDeSemana(vista);
-  const prog = progresoTema(tid);
-
-  const semanas = [1, 2, 3, 4, 5, 6].map(s => {
-    const st = estadoSemana(s);
-    const cls = st === 'now' ? 'now' : st === 'debt' ? 'debt' : st === 'done' ? 'done' : '';
-    const ico = st === 'done' ? '✓ ' : st === 'debt' ? '⚠ ' : s === sem ? '● ' : '';
-    const lbl = st === 'debt' ? 'Deuda de repaso' : st === 'done' ? 'Completada' : s === sem ? 'Semana actual' : 'Programada';
-    return '<button class="cal-week-pill ' + cls + '" data-sem="' + s + '" title="Semana ' + s + ' · ' + lbl + '">' +
-      ico + 'S' + s + ' · ' + (crono().find(x => x.semana === s)?.leccion || '') + '</button>';
-  }).join('');
-
-  const gate = !CAL.sincronizado
-    ? '<div class="cal-sync-gate"><div style="font-size:2rem">🛰️</div>' +
-      '<h3>Calendario bloqueado hasta sincronizar</h3>' +
-      '<p>Conecta tu cuenta <b>@red.ujaen.es</b> para leer las clases institucionales de IPO2627 e insertar tus 3 bloques de estudio con avisos de repaso espaciado.</p>' +
-      '<div class="cal-sync-row"><input type="email" id="cal-email" placeholder="tu_usuario@red.ujaen.es" value="' + esc(CAL.email || '') + '">' +
-      '<button class="button" id="cal-btn-sync">Sincronizar cuenta @red.ujaen.es</button></div>' +
-      '<div id="cal-sync-err" class="muted" style="margin-top:8px;font-size:.85rem"></div></div>'
-    : '<div class="cal-ok"><span>🟢</span><div><b>Sincronizado · ' + esc(CAL.email) + '</b><br>' +
-      '<span class="muted" style="font-size:.85rem">' + (CAL._leidos || 3) + ' clases UJA leídas · ' +
-      CAL.gcalLog.length + ' bloques de estudio en Google Calendar (avisos 10 min + 60 min). ' +
-      'Repaso espaciado 1/3/7/16/35 días.</span></div></div>';
-
-  const alertRiesgo = riesgo
-    ? '<div class="cal-risk"><span>⚠️</span><div><strong>Riesgo de Curva del Olvido.</strong> ' +
-      'Aún no has vinculado tu <b>Estudio Activo / Esquema</b> dentro de la ventana de <b>24–48 h</b> tras la última teoría ' +
-      '(Jue ' + finUltimaTeoria() + ' → ' + diaNombre(b.b1.dia) + ' ' + b.b1.hora + ' = ' + Math.round(ventanaB1Horas()) + ' h). ' +
-      'La <b>consolidación de fin de semana (Bloque 3) queda bloqueada</b> hasta cubrir el núcleo de la lección.</div></div>'
-    : '<div class="cal-ok"><span>✅</span><div><b>Ventana antiolvido cubierta.</b> Estudio activo vinculado dentro de las 24–48 h. Fin de semana desbloqueado.</div></div>';
-
-  // Grid 8:00–21:00
-  const H0 = 8, H1 = 21, ROW = 44;
-  const horasHtml = Array.from({ length: H1 - H0 }, (_, i) => '<div class="cal-hour">' + (H0 + i) + ':00</div>').join('');
-  const celdas = Array.from({ length: H1 - H0 }, () => '<div class="cal-cell"></div>').join('');
-  const hoyIdx = (new Date().getDay() + 6) % 7; // 0=Lun
-  const diasHead = DIAS.map((d, i) => {
-    const f = fechaDia(vista, i + 1);
-    return '<div class="cal-day' + (i === hoyIdx ? ' today' : '') + '">' + d +
-      '<br><span style="font-weight:600;opacity:.75">' + f.getDate() + '</span></div>';
-  }).join('');
-  const cols = DIAS.map((_, i) => '<div class="cal-col' + (i === hoyIdx ? ' today-col' : '') + '" data-dia="' + (i + 1) + '">' + celdas + '<div class="cal-evs" data-evs="' + (i + 1) + '"></div></div>').join('');
-
-  host.innerHTML =
-    '<div class="cal-wrap">' +
-    '<div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;margin-bottom:6px">' +
-      '<div><span class="eyebrow">CALENDARIO · SINCRONIZACIÓN SEMANAL · SEMANA ' + sem + '</span>' +
-      '<h2 style="margin:2px 0 0">Tu semana IPO, anclada a la docencia</h2>' +
-      '<p class="muted" style="margin:4px 0 0;font-size:.9rem">Semana ' + vista + ' · ' + rangoSemana(vista) +
-      ' · Teoría Mié+Jue (A4-36) · Prácticas Mar (A3-170).<br>' + temasDeLaSemana(vista) + ' · <a href="ponte-al-dia.html">¿Vas atrasado? Ponte al día →</a> · <b>Práctica 4 (Internacionalización) obligatoria</b>: del 10 nov al 15 dic.</p></div>' +
-      '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="button secondary" id="cal-btn-ics" style="font-size:.85rem">⬇️ Exportar semana .ics</button>' +
-      (CAL.sincronizado ? '<button class="button secondary" id="cal-btn-off" style="font-size:.85rem">Desconectar</button>' : '') + '</div>' +
-    '</div>' +
-    gate +
-    '<div class="' + (CAL.sincronizado ? '' : 'cal-locked-blur') + '">' +
-      '<div class="cal-weeks">' + semanas + '</div>' +
-      alertRiesgo +
-      '<div class="cal-hito">📌 <b>Hito crítico:</b> la <b>Práctica 4 de Internacionalización (Sem 9)</b> es obligatoria para aprobar. El calendario la marca como evento institucional inamovible.</div>' +
-      '<div class="cal-controls">' +
-        '<div class="cal-ctl"><label>Horas semanales · <output>' + CAL.horasSemanales + ' h</output> (recomendado 4–8 h)</label>' +
-          '<input type="range" id="cal-horas" min="2" max="10" step="0.5" value="' + CAL.horasSemanales + '">' +
-          '<div class="muted" style="font-size:.8rem">Reparto auto: B1 ' + b.b1.dur + 'h · B2 ' + b.b2.dur + 'h · B3 ' + b.b3.dur + 'h' +
-          (CAL.horasSemanales < H_REC_MIN || CAL.horasSemanales > H_REC_MAX ? ' · <b style="color:var(--warning)">fuera del rango pedagógico</b>' : '') + '</div></div>' +
-        '<div class="cal-ctl"><label>Grupo de teoría · Mié + Jue (A4-36, horario oficial UJA)</label>' +
-          '<div class="cal-seg" style="flex-wrap:wrap">' +
-            '<button data-teoria="A" class="' + (grupoActual() === 'A' ? 'on' : '') + '">A · mañanas (M. García Vega)</button>' +
-            '<button data-teoria="B" class="' + (grupoActual() === 'B' ? 'on' : '') + '">B · tardes (S. Jiménez Zafra)</button>' +
-          '</div>' +
-          '<div class="muted" style="font-size:.8rem;margin-top:6px">A: Mié 11:30–12:30 + Jue 10:30–11:30 · B: Mié 16:30–17:30 + Jue 15:30–16:30.</div></div>' +
-        '<div class="cal-ctl"><label>Subgrupo de prácticas · martes (A3-170, se elige aparte)</label>' +
-          '<div class="cal-seg" style="flex-wrap:wrap">' +
-            [1, 2, 3, 4].map(s => '<button data-sub="' + s + '" class="' + (subActual() === s ? 'on' : '') + '">G' + s + ' · ' + PRACTICAS_OFICIAL[s].ini.slice(0, 5) + '</button>').join('') +
-          '</div>' +
-          '<div class="muted" style="font-size:.8rem;margin-top:6px">G1 8:30–10:30 · G2 10:30–12:30 · G3 12:30–14:30 · G4 15:30–17:30.<br>' +
-          'Tu combinación: teoría ' + grupoActual() + ' + prácticas G' + subActual() + '.</div></div>' +
-        '<div class="cal-ctl"><label>Ventana 24–48 h post-clase</label>' +
-          '<div style="font-size:.9rem">' + (enVentana
-            ? '✅ B1 a <b>' + Math.round(ventanaB1Horas()) + ' h</b> tras teoría (válido)'
-            : '⚠️ B1 a <b>' + Math.round(ventanaB1Horas()) + ' h</b> tras teoría (fuera de ventana)') + '</div>' +
-          '<div class="muted" style="font-size:.8rem">Mueve el Bloque 1 al día/hora que cumpla la regla.</div></div>' +
-      '</div>' +
-      '<div class="cal-grid"><div class="cal-corner"></div>' + diasHead +
-        '<div class="cal-hours">' + horasHtml + '</div>' + cols + '</div>' +
-      '<div class="cal-legend"><span><i class="cal-dot" style="background:transparent;border:1.5px dashed #94a3b8"></i>Clase UJA oficial</span>' +
-        '<span><i class="cal-dot" style="background:transparent;border:1.5px dashed #fbbf24"></i>Práctica laboratorio</span>' +
-        '<span><i class="cal-dot" style="background:#34d399"></i>Estudio agendado (reactivo)</span>' +
-        '<span class="muted">Vista: Semana ' + vista + ' · L4 Factor Humano' + (prog ? ' · esquema ' + (prog.esquemaValidado ? 'validado' : 'pendiente') : '') + '</span></div>' +
-      '<div class="cal-blocks">' + bloquesCards(conf, riesgo, vista) + '</div>' +
-    '</div></div>';
-
-  pintarEventos();
-  bindCalendario();
-}
-
-function bloquesCards(conf, riesgo, vista) {
-  const b = CAL.bloques;
-  const card = (k, confKey, cta) => {
-    const bl = b[k];
-    const done = conf[confKey];
-    return '<div class="cal-block-card"><h4>' + bl.titulo + '</h4>' +
-      '<p>' + bl.desc + '<br><span class="muted">' + diaNombre(bl.dia) + ' ' + bl.hora + ' · ' + bl.dur + ' h</span></p>' +
-      '<div class="row"><select data-move-dia="' + k + '" style="width:auto;margin:0;padding:6px 10px">' +
-        DIAS.map((d, i) => '<option value="' + (i + 1) + '"' + (bl.dia === i + 1 ? ' selected' : '') + '>' + diaNombre(i + 1) + '</option>').join('') + '</select>' +
-        '<input type="time" data-move-hora="' + k + '" value="' + bl.hora + '" style="width:auto;margin:0;padding:6px 10px">' +
-        '<button class="button ' + (done ? 'secondary' : '') + '" data-confirm="' + confKey + '" style="font-size:.82rem;padding:6px 12px">' +
-        (done ? '✓ Confirmado' : cta) + '</button></div></div>';
-  };
-  const b3lock = riesgo
-    ? '<div class="cal-block-card" style="opacity:.65"><h4>' + b.b3.titulo + ' 🔒</h4>' +
-      '<p>Bloqueado por riesgo de curva del olvido. Vincula primero el Bloque 1.</p>' +
-      '<div class="row"><button class="button secondary" id="cal-goto-schema" style="font-size:.82rem">📝 Vincular estudio / esquema ahora</button></div></div>'
-    : card('b3', 'b3', '🎯 Iniciar consolidación →');
-  return card('b1', 'b1', '🔗 Confirmar estudio activo (24–48 h)') +
-         card('b2', 'b2', '🧠 Validar síntesis NotebookLM') + b3lock;
-}
-
-function evHtml(top, h, cls, title, sub, extra) {
-  return '<div class="ev ' + cls + '" style="top:' + top + 'px;height:' + h + 'px"' + (extra || '') + '><b>' + title + '</b><span>' + sub + '</span></div>';
-}
-function pintarEventos() {
-  const H0 = 8, ROW = 44;
-  const y = hm => (hmToMin(hm) / 60 - H0) * ROW;
-  const h = dur => Math.max(26, dur * ROW - 6);
-  const { teoria, pract } = horarioOficial();
-  const semVista = CAL.semanaVista || semanaActiva();
-  // Contenido real de cada día según la planificación oficial (curso.js · IPO2627.pdf p. 15)
-  const isoDia = dia => fechaISO(fechaDia(semVista, dia));
-  teoria.forEach(t => {
-    const slot = document.querySelector('[data-evs="' + t.dia + '"]');
-    if (!slot) return;
-    const iso = isoDia(t.dia);
-    const ses = SESIONES_TEORIA.find(c => c.fecha === iso);
-    const libre = DIAS_SIN_CLASE[iso];
-    if (libre) {
-      slot.insertAdjacentHTML('beforeend', evHtml(y(t.ini), h(durHoras(t.ini, t.fin)), 'ev-libre', 'Sin clase · ' + esc(libre), t.ini + '–' + t.fin, ' style="opacity:.55"'));
-    } else if (ses) {
-      const titulo = ses.tema ? 'Tema ' + ses.tema + ' (' + ses.leccion + ') · ' + esc(ses.contenido) : esc(ses.contenido);
-      slot.insertAdjacentHTML('beforeend', evHtml(y(t.ini), h(durHoras(t.ini, t.fin)), 'ev-clase', '🏛️ ' + titulo, t.ini + '–' + t.fin + ' · ' + t.aula, ' title="' + esc(t.tag) + '"'));
-    }
-  });
-  const sp = document.querySelector('[data-evs="' + pract.dia + '"]');
-  if (sp) {
-    const iso = isoDia(pract.dia);
-    const ses = SESIONES_PRACTICAS.find(c => c.fecha === iso);
-    const libre = DIAS_SIN_CLASE[iso];
-    if (libre) sp.insertAdjacentHTML('beforeend', evHtml(y(pract.ini), h(durHoras(pract.ini, pract.fin)), 'ev-libre', 'Sin prácticas · ' + esc(libre), pract.ini + '–' + pract.fin, ' style="opacity:.55"'));
-    else if (ses) sp.insertAdjacentHTML('beforeend', evHtml(y(pract.ini), h(durHoras(pract.ini, pract.fin)), 'ev-pract', '💻 ' + esc(ses.contenido), pract.ini + '–' + pract.fin + ' · ' + pract.aula + ' · G' + subActual(), ' title="' + esc(pract.tag) + '"'));
-  }
-  // Hito P4 (marca informativa en sábado de la vista)
-  const hito = document.querySelector('[data-evs="6"]');
-  if (hito && semanaActiva() >= 4) {
-    // solo etiqueta sutil, no bloquea la grid
-  }
-  const vista = CAL.semanaVista || semanaActiva();
-  const conf = calConf(vista);
-  const riesgo = riesgoOlvidO(vista);
-  const defs = [
-    { k: 'b1', cls: 'ev-estudio' + (conf.b1 ? ' ev-done' : (riesgo ? ' ev-risk' : '')) },
-    { k: 'b2', cls: 'ev-estudio' + (conf.b2 ? ' ev-done' : '') },
-    { k: 'b3', cls: 'ev-estudio' + (riesgo ? ' ev-blocked' : conf.b3 ? ' ev-done' : '') }
-  ];
-  defs.forEach(d => {
-    const bl = CAL.bloques[d.k];
-    const slot = document.querySelector('[data-evs="' + bl.dia + '"]');
-    if (!slot) return;
-    slot.insertAdjacentHTML('beforeend', evHtml(y(bl.hora), h(bl.dur), d.cls,
-      (d.k === 'b1' ? '🔗 ' : d.k === 'b2' ? '🧠 ' : '🎯 ') + bl.titulo.replace(/^Bloque \d · /, ''),
-      diaNombre(bl.dia) + ' ' + bl.hora + ' · ' + bl.dur + 'h' + (d.k === 'b3' && riesgo ? ' · 🔒 bloqueado' : conf[d.k] ? ' · ✓' : ''),
-      ' data-ev="' + d.k + '" title="' + esc(bl.desc) + '"'));
-  });
-}
-
-function bindCalendario() {
-  document.querySelectorAll('.cal-week-pill').forEach(p => {
-    p.onclick = () => {
-      CAL.semanaVista = Number(p.dataset.sem);
-      try {
-        const s = JSON.parse(localStorage.getItem('ipo_uja_settings_v2') || '{}');
-        s.semanaActual = CAL.semanaVista;
-        s.semanaElegida = true;
-        localStorage.setItem('ipo_uja_settings_v2', JSON.stringify(s));
-      } catch (e) {}
-      calSave();
-      renderCalendario();
-      if (typeof renderWeeklyPlanner === 'function') renderWeeklyPlanner();
-    };
-  });
-  const btnSync = document.getElementById('cal-btn-sync');
-  if (btnSync) {
-    btnSync.onclick = async () => {
-      const email = (document.getElementById('cal-email') || {}).value || '';
-      btnSync.disabled = true;
-      btnSync.textContent = 'Sincronizando…';
-      const r = await sincronizarGoogle(email);
-      if (!r.ok) {
-        const e = document.getElementById('cal-sync-err');
-        if (e) e.textContent = '⚠️ ' + r.error;
-        btnSync.disabled = false;
-        btnSync.textContent = 'Sincronizar cuenta @red.ujaen.es';
-        return;
-      }
-      renderCalendario();
-    };
-  }
-  const btnOff = document.getElementById('cal-btn-off');
-  if (btnOff) btnOff.onclick = () => {
-    CAL.sincronizado = false; CAL.gcalLog = []; calSave(); renderCalendario();
-  };
-  const btnIcs = document.getElementById('cal-btn-ics');
-  if (btnIcs) btnIcs.onclick = descargarICS;
-
-  const rg = document.getElementById('cal-horas');
-  if (rg) {
-    rg.oninput = () => {
-      const H = Number(rg.value);
-      aplicarHoras(H);
-      renderCalendario();
-    };
-  }
-  document.querySelectorAll('[data-teoria]').forEach(g => {
-    g.onclick = () => {
-      CAL.grupo = g.dataset.teoria === 'B' ? 'B' : 'A';
-      calSave(); renderCalendario();
-    };
-  });
-  document.querySelectorAll('[data-sub]').forEach(g => {
-    g.onclick = () => {
-      const s = Number(g.dataset.sub);
-      if (s >= 1 && s <= 4) CAL.sub = s;
-      calSave(); renderCalendario();
-    };
-  });
-  document.querySelectorAll('[data-move-dia]').forEach(s => {
-    s.onchange = () => {
-      CAL.bloques[s.dataset.moveDia].dia = Number(s.value);
-      calSave(); renderCalendario();
-    };
-  });
-  document.querySelectorAll('[data-move-hora]').forEach(inp => {
-    inp.onchange = () => {
-      CAL.bloques[inp.dataset.moveHora].hora = inp.value || '18:00';
-      calSave(); renderCalendario();
-    };
-  });
-  document.querySelectorAll('[data-confirm]').forEach(btn => {
-    btn.onclick = () => {
-      const k = btn.dataset.confirm;
-      const vista = CAL.semanaVista || semanaActiva();
-      const conf = calConf(vista);
-      if (k === 'b3' && riesgoOlvidO(vista)) {
-        alert('🔒 Consolidación bloqueada.\n\nPrimero vincula tu Estudio Activo / Esquema dentro de las 24–48 h tras la clase (Bloque 1). Sin ese núcleo, el repaso de fin de semana no frena la curva del olvido.');
-        return;
-      }
-      if (k === 'b1' && typeof switchTab === 'function') {
-        // Vinculación docencia-estudio: exige esquema existente o redirige
-        const tid = temaDeSemana(vista);
-        const p = progresoTema(tid);
-        conf.b1 = true;
-        try {
-          const all = JSON.parse(localStorage.getItem('ipo_uja_progress_v2') || '{}');
-          const key = String(tid);
-          if (all[key]) { all[key].planificadoCalendario = true; localStorage.setItem('ipo_uja_progress_v2', JSON.stringify(all)); }
-        } catch (e) {}
-        if (p && !p.esquemaTexto) {
-          calSave(); renderCalendario();
-          if (typeof switchTab === 'function' && confirm('Estudio vinculado al horario oficial. Aún no tienes esquema de este tema. ¿Abrir el validador NotebookLM ahora?')) switchTab('tab-schema');
-          return;
-        }
-      } else if (k === 'b3') {
-        conf.b3 = true;
-        calSave(); renderCalendario();
-        if (typeof switchTab === 'function') switchTab('tab-weekend');
-        else window.location.href = 'generador.html';
-        return;
-      } else {
-        conf[k] = true;
-      }
-      calSave(); renderCalendario();
-      if (typeof renderMasteryDashboard === 'function') renderMasteryDashboard();
-      if (typeof renderWeeklyPlanner === 'function') renderWeeklyPlanner();
-    };
-  });
-  const goSch = document.getElementById('cal-goto-schema');
-  if (goSch) goSch.onclick = () => {
-    if (typeof switchTab === 'function') switchTab('tab-schema');
-    else window.location.href = 'guia-estudio.html';
-  };
-  document.querySelectorAll('[data-ev]').forEach(el => {
-    el.onclick = () => {
-      const k = el.dataset.ev;
-      const sel = document.querySelector('[data-confirm="' + k + '"]');
-      if (sel) sel.focus();
-      el.style.transform = 'scale(1.03)';
-      setTimeout(() => { el.style.transform = ''; }, 180);
-    };
-  });
-
-  // Refuerzo del bloqueo en la pestaña Antiolvido existente:
-  // si hay riesgo, interceptamos; si no, dejamos el flujo original.
-  const weekendBtns = document.querySelectorAll('.btn-goto-weekend');
-  weekendBtns.forEach((wb) => {
-    if (wb.dataset.calGuard === '1') return;
-    wb.dataset.calGuard = '1';
-    wb.addEventListener('click', (e) => {
-      if (window.IPO_CalWeekendBlocked && window.IPO_CalWeekendBlocked()) {
-        e.preventDefault(); e.stopImmediatePropagation();
-        alert('🔒 Sesión de fin de semana bloqueada por Riesgo de Curva del Olvido.\n\nVincula primero el Bloque 1 (Estudio Activo / Esquema 24–48 h) en la pestaña Calendario.');
-        if (typeof switchTab === 'function') switchTab('tab-calendario');
-      }
-    }, true);
-  });
-}
-
-/* ---------- Init ---------- */
-calLoad();
-if (!CAL.semanaVista) CAL.semanaVista = semanaActiva() || 4;
-document.addEventListener('DOMContentLoaded', () => {
-  calLoad();
-  // Semana real del curso (curso.js), salvo que el usuario haya elegido otra a mano
-  try {
-    const s = JSON.parse(localStorage.getItem('ipo_uja_settings_v2') || '{}');
-    if (!s.semanaElegida) { s.semanaActual = semanaDelCurso(); localStorage.setItem('ipo_uja_settings_v2', JSON.stringify(s)); }
-    CAL.semanaVista = Number(s.semanaActual) || semanaDelCurso();
-  } catch (e) {}
-  renderCalendario();
+$('cal-prev').onclick = () => { semana = Math.max(1, semana - 1); render(); };
+$('cal-next').onclick = () => { semana = Math.min(15, semana + 1); render(); };
+$('cal-hoy').onclick = () => { semana = semanaDelCurso(); render(); };
+document.querySelectorAll('[data-grupo]').forEach(b => { b.onclick = () => { EST.grupo = b.dataset.grupo; guardar(); render(); }; });
+document.querySelectorAll('[data-sub]').forEach(b => { b.onclick = () => { EST.sub = Number(b.dataset.sub); guardar(); render(); }; });
+$('cal-add').onclick = () => { EST.bloques.push({ dia: 6, hora: '17:00', dur: 1, titulo: 'Estudio' }); guardar(); renderRejilla(); renderBloques(); };
+$('cal-reset').onclick = () => { EST.bloques = BLOQUES_INICIALES.map(b => ({ ...b })); guardar(); renderRejilla(); renderBloques(); };
+$('cal-ics').onclick = descargarICS;
+document.addEventListener('keydown', e => {
+  if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+  if (e.key === 'ArrowLeft' && semana > 1) { semana--; render(); }
+  if (e.key === 'ArrowRight' && semana < 15) { semana++; render(); }
 });
-window.IPO_CalRender = renderCalendario;
+
+render();

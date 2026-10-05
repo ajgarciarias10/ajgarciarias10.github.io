@@ -279,6 +279,12 @@ window.addEventListener('keydown', e => {
   }
 });
 
+// Desplegable de apartados generado desde el propio banco (evita etiquetas desalineadas)
+if ($('scope-selector')) {
+  $('scope-selector').innerHTML = `<option value="all">Todos (${BANCO.length} preguntas)</option>` +
+    BLOQUES.map((nombre, i) => `<option value="${i}">${escapeHTML(nombre)} (${BANCO.filter(q => q.bloque === i).length})</option>`).join('');
+}
+
 // Start: ?apartado=N abre directamente ese apartado (enlace desde «Ponte al día»)
 const apartadoURL = new URLSearchParams(location.search).get('apartado');
 if (apartadoURL !== null && BLOQUES[Number(apartadoURL)] && $('scope-selector')) {

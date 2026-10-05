@@ -3,66 +3,92 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IPO · Calendario semanal de estudio · UJA</title>
+  <title>Calendario · IPO</title>
   <script src="nav.js"></script>
-
   <link rel="stylesheet" href="estilo.css">
   <link rel="stylesheet" href="calendario.css">
 </head>
 <body>
-
 <main>
-  <!-- AVISO LEGAL Y COPYRIGHT DOCENTE INSTITUCIONAL -->
-  <div class="institutional-credit-card">
-    <div class="inst-credit-header">
-      <div class="inst-credit-badge">
-        <span>🏛️</span> Universidad de Jaén · Grado en Ingeniería Informática · IPO2627
-      </div>
-      <span class="inst-noncommercial-pill">Uso estrictamente docente y no comercial</span>
+  <header>
+    <span class="eyebrow">Curso 2026–27 · EPS Jaén</span>
+    <h1>Calendario</h1>
+    <p class="lead">Qué se da en cada clase según la planificación oficial, tus prácticas y tus bloques de estudio, semana a semana.</p>
+  </header>
+
+  <!-- Navegación de semanas + grupo -->
+  <div class="cal-toolbar">
+    <div class="week-nav">
+      <button type="button" class="icon-btn" id="cal-prev" aria-label="Semana anterior">‹</button>
+      <div class="week-label" id="cal-semana" aria-live="polite"></div>
+      <button type="button" class="icon-btn" id="cal-next" aria-label="Semana siguiente">›</button>
+      <button type="button" class="button secondary small" id="cal-hoy">Hoy</button>
     </div>
-    <p class="inst-credit-body">
-      Horario oficial del curso 2026–27 (EPS Jaén): teoría Mié+Jue en A4-36 y prácticas los martes en el laboratorio A3-170.
-      Material docente oficial © UJA. Profesores responsables: <strong>Drª. Salud Mª Jiménez Zafra</strong> y <strong>Dr. Manuel García Vega</strong>.
-    </p>
+    <div class="cal-groups">
+      <div class="seg" role="group" aria-label="Grupo de teoría">
+        <span class="seg-label">Teoría</span>
+        <button type="button" data-grupo="A">A</button>
+        <button type="button" data-grupo="B">B</button>
+      </div>
+      <div class="seg" role="group" aria-label="Subgrupo de prácticas">
+        <span class="seg-label">Prácticas</span>
+        <button type="button" data-sub="1">G1</button>
+        <button type="button" data-sub="2">G2</button>
+        <button type="button" data-sub="3">G3</button>
+        <button type="button" data-sub="4">G4</button>
+      </div>
+    </div>
+  </div>
+  <p class="muted cal-info" id="cal-grupo-info"></p>
+
+  <!-- Resumen de la semana -->
+  <div class="cal-summary">
+    <section class="card">
+      <h2>Esta semana en clase</h2>
+      <ul class="agenda" id="cal-clases"></ul>
+    </section>
+    <section class="card">
+      <h2>Qué estudiar</h2>
+      <ul class="study" id="cal-estudiar"></ul>
+    </section>
   </div>
 
-  <section class="hero-human-section">
-    <div class="hero-badge-pill">
-      <span>🗓️</span>
-      <span id="cal-week-label">Calendario semanal · 2026–27</span>
+  <!-- Rejilla semanal (escritorio) -->
+  <section class="card cal-board" aria-label="Vista semanal">
+    <div class="cal-legend">
+      <span><i class="teoria"></i>Teoría</span>
+      <span><i class="practica"></i>Prácticas</span>
+      <span><i class="estudio"></i>Tu estudio</span>
     </div>
-
-    <h1 style="margin:8px 0 12px;">
-      Tu semana IPO,<br>
-      <span class="gradient-text">anclada a la docencia oficial.</span>
-    </h1>
-
-    <p class="lead">
-      El estudio activo vive a 24–48 horas de la clase: vincula tu esquema tras la teoría del jueves
-      y desbloquea la consolidación del fin de semana. Sin atajos contra la curva del olvido.
-    </p>
+    <div class="wk-scroll"><div class="wk-grid" id="cal-grid"></div></div>
   </section>
 
-  <!-- MÓDULO DE CALENDARIO Y SINCRONIZACIÓN SEMANAL -->
-  <div id="calendario-container"></div>
-
-  <footer>
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+  <!-- Bloques de estudio -->
+  <section class="card">
+    <div class="section-head">
       <div>
-        <strong>Interacción Persona-Ordenador · Grado en Ingeniería Informática</strong><br>
-        <span class="muted">Universidad de Jaén · Escuela Politécnica Superior · Material de uso estrictamente docente.</span>
-      </div>
-      <div>
-        <a href="guia-estudio.html">Guía de Estudio</a> ·
-        <a href="generador.html">Generador Global</a> ·
-        <a href="../IPO2627.pdf" target="_blank" rel="noopener">IPO2627.pdf</a>
+        <h2>Tus bloques de estudio</h2>
+        <p class="muted" style="margin:0;">Se repiten cada semana. Pon el primero entre 24 y 48 h después de la clase del jueves: es cuando más rinde el repaso. <span id="cal-total"></span>.</p>
       </div>
     </div>
-  </footer>
+    <ul class="blocks" id="cal-bloques"></ul>
+    <div class="actions">
+      <button type="button" class="secondary" id="cal-add">Añadir bloque</button>
+      <button type="button" class="ghost" id="cal-reset">Volver a los bloques sugeridos</button>
+    </div>
+  </section>
+
+  <!-- Exportar -->
+  <section class="card">
+    <h2>Llévalo a tu calendario</h2>
+    <p class="muted">Descarga todas las clases del cuatrimestre de tu grupo, con su tema, y tus bloques de estudio. En Google Calendar: <em>Configuración → Importar y exportar → Importar</em>.</p>
+    <div class="actions"><button type="button" id="cal-ics">Descargar el curso completo (.ics)</button></div>
+  </section>
+
+  <footer>Horario y planificación según IPO2627.pdf (pp. 3–4 y 15). Tus grupos y bloques se guardan solo en este navegador.</footer>
 </main>
 
 <script src="curso.js"></script>
 <script src="calendario.js"></script>
-<script>document.getElementById('cal-week-label').textContent = 'Calendario semanal · Semana ' + semanaDelCurso() + ' · En clase: Tema ' + temaProfesor();</script>
 </body>
 </html>

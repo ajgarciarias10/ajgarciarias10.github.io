@@ -2,35 +2,27 @@
 <html lang="es" data-tema="4">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tema 4 · Generador de preguntas aleatorias de IPO</title>
+<title>Ingeniería de la interfaz · IPO</title>
 <script src="nav.js"></script>
 <link rel="stylesheet" href="estilo.css">
 <main>
   <header>
-    <a href="index.html">← Laboratorio de estudio</a>
-    <p class="eyebrow">TEMA 04 · INGENIERÍA DE LA INTERFAZ (PÁGINAS 167–222)</p>
-    <h1>Generador de preguntas aleatorias</h1>
-    <p class="lead">Practica con preguntas al azar sobre el diseño centrado en el usuario, el análisis de tareas (análisis jerárquico y GOMS) y el paso de sketch a wireframe, mockup y prototipo.</p>
+    <span class="eyebrow">Tema 4 · pp. 167–222</span>
+    <h1>Ingeniería de la interfaz</h1>
+    <p class="lead">Análisis de tareas, análisis jerárquico y GOMS, y el paso de sketch a wireframe, mockup y prototipo. Preguntas al azar con la explicación de cada opción.</p>
   </header>
 
   <!-- Barra de control y estadísticas en vivo -->
   <div class="gen-bar">
     <div class="gen-filters">
-      <label for="scope-selector" style="font-size:0.9rem; font-weight:600;">Apartado:</label>
-      <select id="scope-selector">
-        <option value="all">🎲 Todos los apartados (40 preguntas)</option>
-        <option value="0">Ingeniería de la interfaz</option>
-        <option value="1">Análisis de tareas</option>
-        <option value="2">Análisis jerárquico y GOMS</option>
-        <option value="3">Sketch y wireframe</option>
-        <option value="4">Mockups y prototipos</option>
-      </select>
+      <label for="scope-selector" class="muted" style="font-size:0.88rem;">Apartado</label>
+      <select id="scope-selector"></select>
     </div>
     <div class="gen-stats">
-      <span class="streak-badge" title="Preguntas seguidas acertadas">🔥 Racha: <strong id="streak-val">0</strong></span>
+      <span class="streak-badge" title="Preguntas seguidas acertadas">Racha <strong id="streak-val">0</strong></span>
       <span class="badge ok">✓ <strong id="correct-val">0</strong></span>
       <span class="badge wrong">✗ <strong id="wrong-val">0</strong></span>
-      <button id="btn-reset" class="btn-reset" title="Reiniciar marcador">↺ Reiniciar</button>
+      <button id="btn-reset" class="btn-reset" title="Reiniciar marcador">Reiniciar</button>
     </div>
   </div>
 
@@ -53,8 +45,8 @@
     <form id="gen-options" onsubmit="return false;" style="margin-top:16px;"></form>
 
     <div class="gen-actions">
-      <button id="btn-next" class="btn-next-random" type="button">🎲 Siguiente pregunta aleatoria →</button>
-      <button id="btn-skip" class="btn-skip" type="button">Saltar / Otra pregunta ↻</button>
+      <button id="btn-next" class="btn-next-random" type="button">Siguiente pregunta</button>
+      <button id="btn-skip" class="btn-skip" type="button">Saltar</button>
       <span class="kbd-hint">Teclas: <kbd>1</kbd>-<kbd>4</kbd> responder · <kbd>Espacio</kbd> siguiente · <kbd>S</kbd> saltar</span>
     </div>
   </section>
@@ -67,13 +59,13 @@
     </div>
   </details>
 
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px; flex-wrap:wrap; gap:12px;">
+  <div class="actions" style="justify-content:space-between; margin-top:24px;">
     <a href="ponte-al-dia.html" class="button secondary">Demostrar competencias →</a>
-    <a href="generador.html" class="button">Abrir generador global (170 preguntas) →</a>
+    <a href="generador.html" class="button">Mezclar todos los temas</a>
   </div>
 
   <footer>
-    Fuente: <a href="../IPO2627.pdf" target="_blank" rel="noopener">IPO2627.pdf</a>, tema IV (pp. 167–222). Banco de 40 preguntas sobre ingeniería de la interfaz.
+    Fuente: IPO2627.pdf, tema IV (pp. 167–222). Banco de 40 preguntas sobre ingeniería de la interfaz.
   </footer>
   <noscript><p class="card">Activa JavaScript para realizar las preguntas.</p></noscript>
 </main>

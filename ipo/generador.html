@@ -3,36 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IPO · Generador de preguntas aleatorias</title>
+  <title>Practicar · IPO</title>
   <script src="nav.js"></script>
 <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 <main>
   <header>
-    <a href="index.html">← Laboratorio de estudio</a>
-    <span class="eyebrow">PRÁCTICA SIN LÍMITES · BANCO COMPLETO DE 170 PREGUNTAS</span>
-    <h1>Generador de preguntas aleatorias</h1>
-    <p class="lead">Entrena a tu ritmo sin la pereza de exámenes rígidos. Genera una pregunta al azar, responde y comprueba al instante si has acertado con su justificación razonada.</p>
+    <span class="eyebrow">Banco completo · 170 preguntas</span>
+    <h1>Practicar</h1>
+    <p class="lead">Preguntas al azar de todo el temario o de un tema. Responde y comprueba al instante por qué cada opción es correcta o no.</p>
   </header>
 
   <!-- Píldoras de filtrado por tema -->
   <nav class="pill-tabs" aria-label="Seleccionar tema">
-    <button class="pill-tab active" data-tema="all">🎲 Todo el temario (170 preguntas)</button>
-    <button class="pill-tab" data-tema="1">Tema 1: Intro a IPO (40)</button>
-    <button class="pill-tab" data-tema="2">Tema 2: Factor humano (40)</button>
-    <button class="pill-tab" data-tema="3">Tema 3: Metáforas (40)</button>
-    <button class="pill-tab" data-tema="4">Tema 4: Ingeniería de la interfaz (40)</button>
-    <button class="pill-tab" data-tema="clevertracker">CleverTracker: Caso real (10)</button>
+    <button class="pill-tab active" data-tema="all">Todo (170)</button>
+    <button class="pill-tab" data-tema="1">Tema 1</button>
+    <button class="pill-tab" data-tema="2">Tema 2</button>
+    <button class="pill-tab" data-tema="3">Tema 3</button>
+    <button class="pill-tab" data-tema="4">Tema 4</button>
+    <button class="pill-tab" data-tema="clevertracker">CleverTracker</button>
   </nav>
 
   <!-- Barra de control y estadísticas en vivo -->
   <div class="gen-bar">
     <div class="gen-stats">
-      <span class="streak-badge" title="Preguntas seguidas acertadas">🔥 Racha: <strong id="streak-val">0</strong></span>
-      <span class="badge ok">✓ <strong id="correct-val">0</strong> aciertos</span>
-      <span class="badge wrong">✗ <strong id="wrong-val">0</strong> fallos</span>
-      <button id="btn-reset" class="btn-reset" title="Reiniciar marcador">↺ Reiniciar</button>
+      <span class="streak-badge" title="Preguntas seguidas acertadas">Racha <strong id="streak-val">0</strong></span>
+      <span class="badge ok">✓ <strong id="correct-val">0</strong></span>
+      <span class="badge wrong">✗ <strong id="wrong-val">0</strong></span>
+      <button id="btn-reset" class="btn-reset" title="Reiniciar marcador">Reiniciar</button>
     </div>
     <div id="failed-box" class="gen-filters" hidden>
       <label class="inline" style="font-size:0.88rem; cursor:pointer;">
@@ -56,8 +55,8 @@
     <form id="gen-options" onsubmit="return false;" style="margin-top:16px;"></form>
 
     <div class="gen-actions">
-      <button id="btn-next" class="btn-next-random" type="button">🎲 Siguiente pregunta aleatoria →</button>
-      <button id="btn-skip" class="btn-skip" type="button">Saltar / Otra pregunta ↻</button>
+      <button id="btn-next" class="btn-next-random" type="button">Siguiente pregunta</button>
+      <button id="btn-skip" class="btn-skip" type="button">Saltar</button>
       <span class="kbd-hint">Teclas: <kbd>1</kbd>-<kbd>4</kbd> responder · <kbd>Espacio</kbd> siguiente · <kbd>S</kbd> saltar</span>
     </div>
   </section>
@@ -71,7 +70,7 @@
   </details>
 
   <footer>
-    Basado en <a href="../IPO2627.pdf" target="_blank" rel="noopener">IPO2627.pdf</a> y en los casos prácticos de evaluación real. Generador interactivo local sin conexión.
+    Basado en IPO2627.pdf y en los casos prácticos de evaluación real. Generador interactivo local sin conexión.
   </footer>
 </main>
 <script src="preguntas-globales.js"></script>

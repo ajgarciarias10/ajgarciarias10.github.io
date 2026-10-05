@@ -2,35 +2,27 @@
 <html lang="es" data-tema="clevertracker">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Caso Práctico · Generador de preguntas de CleverTracker</title>
+<title>Test de CleverTracker · IPO</title>
 <script src="nav.js"></script>
 <link rel="stylesheet" href="estilo.css">
 <main>
   <header>
-    <a href="index.html">← Laboratorio de estudio</a>
-    <p class="eyebrow">CASO PRÁCTICO · AUDITORÍA DE CLEVERTRACKER</p>
-    <h1>Generador de preguntas aleatorias</h1>
-    <p class="lead">Practica sin agobio ni exámenes rígidos: genera preguntas al azar de la auditoría en vivo de CleverTracker y comprueba al instante tu comprensión con feedback razonado.</p>
+    <span class="eyebrow">Caso práctico</span>
+    <h1>Test de CleverTracker</h1>
+    <p class="lead">Preguntas sobre la auditoría de usabilidad de CleverTracker, con la explicación de cada opción.</p>
   </header>
 
   <!-- Barra de control y estadísticas en vivo -->
   <div class="gen-bar">
     <div class="gen-filters">
       <label for="scope-selector" style="font-size:0.9rem; font-weight:600;">Categoría:</label>
-      <select id="scope-selector">
-        <option value="all">🎲 Todas las categorías (al azar)</option>
-        <option value="0">Acceso y Control del Usuario</option>
-        <option value="1">Rendimiento Percibido y CanvasKit</option>
-        <option value="2">Accesibilidad y Factores Sensoriales</option>
-        <option value="3">Modelo Mental y Persistencia</option>
-        <option value="4">Ergonomía, Gestalt y Fitts</option>
-      </select>
+      <select id="scope-selector"></select>
     </div>
     <div class="gen-stats">
-      <span class="streak-badge" title="Preguntas seguidas acertadas">🔥 Racha: <strong id="streak-val">0</strong></span>
+      <span class="streak-badge" title="Preguntas seguidas acertadas">Racha <strong id="streak-val">0</strong></span>
       <span class="badge ok">✓ <strong id="correct-val">0</strong></span>
       <span class="badge wrong">✗ <strong id="wrong-val">0</strong></span>
-      <button id="btn-reset" class="btn-reset" title="Reiniciar marcador">↺ Reiniciar</button>
+      <button id="btn-reset" class="btn-reset" title="Reiniciar marcador">Reiniciar</button>
     </div>
   </div>
 
@@ -53,8 +45,8 @@
     <form id="gen-options" onsubmit="return false;" style="margin-top:16px;"></form>
 
     <div class="gen-actions">
-      <button id="btn-next" class="btn-next-random" type="button">🎲 Siguiente pregunta aleatoria →</button>
-      <button id="btn-skip" class="btn-skip" type="button">Saltar / Otra pregunta ↻</button>
+      <button id="btn-next" class="btn-next-random" type="button">Siguiente pregunta</button>
+      <button id="btn-skip" class="btn-skip" type="button">Saltar</button>
       <span class="kbd-hint">Teclas: <kbd>1</kbd>-<kbd>4</kbd> responder · <kbd>Espacio</kbd> siguiente · <kbd>S</kbd> saltar</span>
     </div>
   </section>
@@ -67,13 +59,13 @@
     </div>
   </details>
 
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px; flex-wrap:wrap; gap:12px;">
-    <a href="usabilidad-clevertracker.html" class="button secondary">Consultar informe completo de usabilidad →</a>
-    <a href="generador.html" class="button">Abrir generador global (170 preguntas) →</a>
+  <div class="actions" style="justify-content:space-between; margin-top:24px;">
+    <a href="usabilidad-clevertracker.html" class="button secondary">Leer el informe</a>
+    <a href="generador.html" class="button">Mezclar todos los temas</a>
   </div>
 
   <footer>
-    Basado en el <a href="usabilidad-clevertracker.html">Informe de Usabilidad de CleverTracker</a> y en <a href="../IPO2627.pdf" target="_blank" rel="noopener">IPO2627.pdf</a>.
+    Basado en el <a href="usabilidad-clevertracker.html">Informe de Usabilidad de CleverTracker</a> y en IPO2627.pdf.
   </footer>
   <noscript><p class="card">Activa JavaScript para realizar el test interactivo.</p></noscript>
 </main>

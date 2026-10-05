@@ -2,35 +2,27 @@
 <html lang="es" data-tema="3">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tema 3 · Generador de preguntas aleatorias de IPO</title>
+<title>Metáforas · IPO</title>
 <script src="nav.js"></script>
 <link rel="stylesheet" href="estilo.css">
 <main>
   <header>
-    <a href="index.html">← Laboratorio de estudio</a>
-    <p class="eyebrow">TEMA 03 · METÁFORAS DE INTERACCIÓN (PÁGINAS 116–166)</p>
-    <h1>Generador de preguntas aleatorias</h1>
-    <p class="lead">Practica con preguntas al azar sobre metáforas verbales, visuales y globales, el modelo del escritorio y la metodología de diseño metafórico.</p>
+    <span class="eyebrow">Tema 3 · pp. 116–166</span>
+    <h1>Metáforas</h1>
+    <p class="lead">Metáforas verbales, visuales y globales, el escritorio y cómo crear una metáfora. Preguntas al azar con la explicación de cada opción.</p>
   </header>
 
   <!-- Barra de control y estadísticas en vivo -->
   <div class="gen-bar">
     <div class="gen-filters">
-      <label for="scope-selector" style="font-size:0.9rem; font-weight:600;">Apartado:</label>
-      <select id="scope-selector">
-        <option value="all">🎲 Todos los apartados (40 preguntas)</option>
-        <option value="0">Metáforas verbales</option>
-        <option value="1">Metáforas visuales</option>
-        <option value="2">Metáfora del escritorio</option>
-        <option value="3">Metáforas globales</option>
-        <option value="4">Metodología de diseño</option>
-      </select>
+      <label for="scope-selector" class="muted" style="font-size:0.88rem;">Apartado</label>
+      <select id="scope-selector"></select>
     </div>
     <div class="gen-stats">
-      <span class="streak-badge" title="Preguntas seguidas acertadas">🔥 Racha: <strong id="streak-val">0</strong></span>
+      <span class="streak-badge" title="Preguntas seguidas acertadas">Racha <strong id="streak-val">0</strong></span>
       <span class="badge ok">✓ <strong id="correct-val">0</strong></span>
       <span class="badge wrong">✗ <strong id="wrong-val">0</strong></span>
-      <button id="btn-reset" class="btn-reset" title="Reiniciar marcador">↺ Reiniciar</button>
+      <button id="btn-reset" class="btn-reset" title="Reiniciar marcador">Reiniciar</button>
     </div>
   </div>
 
@@ -53,8 +45,8 @@
     <form id="gen-options" onsubmit="return false;" style="margin-top:16px;"></form>
 
     <div class="gen-actions">
-      <button id="btn-next" class="btn-next-random" type="button">🎲 Siguiente pregunta aleatoria →</button>
-      <button id="btn-skip" class="btn-skip" type="button">Saltar / Otra pregunta ↻</button>
+      <button id="btn-next" class="btn-next-random" type="button">Siguiente pregunta</button>
+      <button id="btn-skip" class="btn-skip" type="button">Saltar</button>
       <span class="kbd-hint">Teclas: <kbd>1</kbd>-<kbd>4</kbd> responder · <kbd>Espacio</kbd> siguiente · <kbd>S</kbd> saltar</span>
     </div>
   </section>
@@ -67,13 +59,13 @@
     </div>
   </details>
 
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px; flex-wrap:wrap; gap:12px;">
-    <a href="tema-4.html" class="button secondary">Pasar al Tema 4 →</a>
-    <a href="generador.html" class="button">Abrir generador global (170 preguntas) →</a>
+  <div class="actions" style="justify-content:space-between; margin-top:24px;">
+    <a href="tema-4.html" class="button secondary">Tema 4 →</a>
+    <a href="generador.html" class="button">Mezclar todos los temas</a>
   </div>
 
   <footer>
-    Fuente: <a href="../IPO2627.pdf" target="_blank" rel="noopener">IPO2627.pdf</a>, tema III (pp. 116–166). Banco de 40 preguntas sobre metáforas de interacción.
+    Fuente: IPO2627.pdf, tema III (pp. 116–166). Banco de 40 preguntas sobre metáforas de interacción.
   </footer>
   <noscript><p class="card">Activa JavaScript para realizar las preguntas.</p></noscript>
 </main>

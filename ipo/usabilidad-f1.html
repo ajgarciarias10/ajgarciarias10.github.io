@@ -16,7 +16,7 @@
   <section class="card">
     <h2>Resumen ejecutivo</h2>
     <p>La aplicación tiene una base sólida (clasificación pública, adaptación móvil, PWA instalable), pero presenta fallos que contradicen los principios de usabilidad del tema 1. Se han corregido los más críticos: mensajes de error técnicos, navegación con estado recuperable, foco visible, modales accesibles y distinción entre fallo de red y datos vacíos.</p>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Principio (Tema 1)</th><th>Estado antes</th><th>Estado después</th><th>Gravedad</th></tr></thead>
       <tbody>
         <tr><td>Recuperabilidad (p. 44) — corregir acción errónea</td><td>Errores Firebase sin guía de recuperación</td><td>Mensajes orientados a la acción + mostar/ocultar contraseña</td><td class="wrong">Crítico</td></tr>
@@ -28,7 +28,7 @@
         <tr><td>Adecuación de tareas (p. 46) — tareas en la forma que el usuario quiere</td><td>Recargar pierde pestaña y temporada</td><td>URL con <code>?tab=…&temporada=…</code> persistente</td><td class="ok">Medio</td></tr>
         <tr><td>Disminución de carga cognitiva (p. 47) — reconocimiento vs. recuerdo</td><td>Etiquetas no asociadas a campos</td><td><code><label for></code>, <code>autocomplete</code>, foco visible</td><td class="wrong">Medio</td></tr>
       </tbody>
-    </table>
+    </table></div>
   </section>
 
   <section class="card">
@@ -110,7 +110,7 @@
 
   <section class="card">
     <h2>Cómo se relaciona cada corrección con el temario</h2>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Corrección</th><th>Concepto del Tema 1</th><th>Diapositiva / Página</th></tr></thead>
       <tbody>
         <tr><td>authFeedback.ts</td><td>Recuperabilidad: permitir corregir acción reconocida como errónea</td><td>p. 44</td></tr>
@@ -122,7 +122,7 @@
         <tr><td>:focus-visible global</td><td>Consistencia: mecanismos uniformes</td><td>p. 42</td></tr>
         <tr><td>Mensajes role="status/alert"</td><td>Recuperabilidad + Control: realimentación clara</td><td>pp. 41, 44</td></tr>
       </tbody>
-    </table>
+    </table></div>
   </section>
 
   <section class="card">
@@ -141,7 +141,7 @@
   </section>
 
   <footer>
-    Basado en <a href="../../IPO2627.pdf" target="_blank" rel="noopener">IPO2627.pdf</a>, Tema I (pp. 16–48). Capturas obtenidas con Playwright/Chromium contra <code>npm run dev</code> local. No es una auditoría formal ni sustituye pruebas con usuarios reales.
+    Basado en IPO2627.pdf, Tema I (pp. 16–48). Capturas obtenidas con Playwright/Chromium contra <code>npm run dev</code> local. No es una auditoría formal ni sustituye pruebas con usuarios reales.
   </footer>
 </main>
 </html>
