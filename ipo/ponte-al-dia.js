@@ -57,8 +57,10 @@ const temaCompleto = t => { const e = estadoTema(t); return e.total > 0 && e.hec
 /* Fechas objetivo: reparte los temas pendientes según su extensión. */
 function planificar(pendientes) {
   const hoy = hoySinHora();
-  let meta = new Date(finDelTemaActual().getTime() - DIA_MS); // domingo antes del cambio de tema
-  const minimo = new Date(hoy.getTime() + Math.max(2, pendientes.length * 2) * DIA_MS);
+  // Meta: el domingo en que debe estar estudiado el tema que se da ahora,
+  // pero con al menos 3 días por tema pendiente para que sea realista.
+  let meta = objetivoDeTema(temaProfesor());
+  const minimo = new Date(hoy.getTime() + Math.max(3, pendientes.length * 3) * DIA_MS);
   if (meta < minimo) meta = minimo;
 
   const dias = Math.round((meta - hoy) / DIA_MS);
@@ -79,7 +81,8 @@ function renderCabecera(prof, atrasados, dias) {
   $('today-strip').innerHTML =
     `<span>Hoy, <strong>${esc(FECHA_LARGA.format(new Date()))}</strong></span>` +
     `<span>Semana <strong>${sem}</strong> del curso</span>` +
-    `<span>En clase: <strong>Tema ${prof}</strong></span>`;
+    `<span>En clase: <strong>Tema ${prof}</strong></span>` +
+    proximasClases(1).map(c => `<span>Próxima clase: <strong>${esc(FECHA_CORTA.format(desdeISO(c.fecha)))}</strong> · ${c.tema ? `Tema ${c.tema} (${c.leccion})` : esc(c.contenido)}</span>`).join('');
 
   let total = 0, hechas = 0;
   atrasados.forEach(t => { const e = estadoTema(t); total += e.total; hechas += e.hechas; });
@@ -107,10 +110,28 @@ function renderSelectorProfesor(prof) {
     `<option value="${t}" ${Number(t) === prof ? 'selected' : ''}>Tema ${t}</option>`).join('');
   sel.onchange = () => {
     const elegido = Number(sel.value);
-    const porFecha = (CRONOGRAMA_SEMANAS.find(c => c.semana === semanaDelCurso()) || {}).tema;
-    fijarTemaProfesor(elegido === porFecha ? null : elegido);
+    fijarTemaProfesor(elegido === temaProfesorPorFecha() ? null : elegido);
     render();
   };
+}
+
+/* «Se dio en clase el 17 sep – 24 sep (L2–L4)» */
+function cuandoSeDio(t) {
+  const ses = sesionesDeTema(t);
+  if (!ses.length) return '';
+  const f = c => FECHA_CORTA.format(desdeISO(c.fecha));
+  const lecs = [...new Set(ses.map(c => c.leccion))];
+  const rango = ses.length > 1 ? `${f(ses[0])} – ${f(ses[ses.length - 1])}` : f(ses[0]);
+  return `${rango} · ${lecs.length > 1 ? lecs[0] + '–' + lecs[lecs.length - 1] : lecs[0]}`;
+}
+
+/* Lista de clases del tema con su fecha: las dadas, marcadas. */
+function htmlClases(t) {
+  const hoy = fechaISO(new Date());
+  return '<ul class="concept-list">' + sesionesDeTema(t).map(c => {
+    const dada = c.fecha <= hoy;
+    return `<li style="display:flex;gap:10px;"><span class="badge ${dada ? 'ok' : 'brand'}" style="min-width:92px;justify-content:center;">${esc(FECHA_CORTA.format(desdeISO(c.fecha)))}</span><span><strong>${c.leccion}</strong> · ${esc(c.contenido)}${dada ? '' : ' <span class="muted">(próxima)</span>'}</span></li>`;
+  }).join('') + '</ul>';
 }
 
 function htmlCompetencias(estado) {
@@ -161,7 +182,7 @@ function render() {
       <article class="card route-card">
         <div class="route-head">
           <div>
-            <span class="route-meta">Tema ${t} · pp. ${info.paginas} · ${e.hechas}/${e.total} competencias</span>
+            <span class="route-meta">Tema ${t} · pp. ${info.paginas} · dado en clase: ${cuandoSeDio(t)} · ${e.hechas}/${e.total} competencias</span>
             <h3>${esc(info.titulo)}</h3>
           </div>
           ${etiqueta || ''}
@@ -176,16 +197,17 @@ function render() {
   const infoProf = TEMAS_CURSO[prof];
   const eProf = estadoTema(prof);
   const profCompleto = temaCompleto(prof);
-  const domingo = new Date(lunesDeSemana(semanaDelCurso()).getTime() + 6 * DIA_MS);
+  const domingo = objetivoDeTema(prof);
+  const quedanClases = sesionesDeTema(prof).some(c => c.fecha > fechaISO(new Date()));
   let cuerpoProf, accionesProf;
   if (tieneBanco(prof)) {
-    cuerpoProf = `<p class="muted" style="margin:14px 0 0;font-size:.9rem;">Es el tema de esta semana: ve a clase, estúdialo y demuestra sus competencias antes del ${esc(FECHA_CORTA.format(domingo))}.</p>` + htmlCompetencias(eProf);
+    cuerpoProf = `<p class="muted" style="margin:14px 0 0;font-size:.9rem;">${quedanClases ? 'Aún queda clase de este tema: ve, estúdialo' : 'Ya se ha terminado de dar en clase: estúdialo'} y demuestra sus competencias antes del ${esc(FECHA_CORTA.format(domingo))}.</p>` + htmlClases(prof) + htmlCompetencias(eProf);
     accionesProf = profCompleto
       ? `<a class="button secondary" href="${infoProf.pagina}">Seguir practicando</a>`
       : `<button type="button" data-prueba="${prof}">${eProf.hechas ? `Demostrar las ${eProf.total - eProf.hechas} restantes` : 'Demostrar competencias'}</button>
          <a class="button ghost" href="${infoProf.pagina}">Practicar antes →</a>`;
   } else {
-    cuerpoProf = `<p class="muted" style="margin:14px 0 0;font-size:.9rem;">Ve a clase aunque aún estés recuperando: este tema lo sigues en directo. Marca cada concepto cuando lo entiendas.</p>` + (eProf.total ? htmlConceptos(prof, eProf) : '');
+    cuerpoProf = `<p class="muted" style="margin:14px 0 0;font-size:.9rem;">Ve a clase aunque aún estés recuperando: este tema lo sigues en directo. Marca cada concepto cuando lo entiendas.</p>` + htmlClases(prof) + (eProf.total ? htmlConceptos(prof, eProf) : '');
     accionesProf = `<a class="button ghost" href="calendario.html">Planificar la semana →</a>`;
   }
   pasos.push(`<li class="route-step ${profCompleto ? 'is-done' : 'is-class'}">
@@ -202,6 +224,25 @@ function render() {
       <div class="actions">${accionesProf}</div>
     </article>
   </li>`);
+
+  // Siguiente tema según la planificación oficial
+  const sigTema = prof + 1;
+  const clasesSig = sesionesDeTema(sigTema);
+  if (TEMAS_CURSO[sigTema] && clasesSig.length) {
+    pasos.push(`<li class="route-step">
+      <span class="route-marker">${sigTema}</span>
+      <article class="card route-card" style="opacity:.7;">
+        <div class="route-head">
+          <div>
+            <span class="route-meta">Tema ${sigTema} · pp. ${TEMAS_CURSO[sigTema].paginas} · próximo en clase</span>
+            <h3>${esc(TEMAS_CURSO[sigTema].titulo)}</h3>
+          </div>
+          <span class="badge">Empieza ${esc(FECHA_CORTA.format(desdeISO(clasesSig[0].fecha)))}</span>
+        </div>
+        ${htmlClases(sigTema)}
+      </article>
+    </li>`);
+  }
 
   $('route').innerHTML = pasos.join('');
 

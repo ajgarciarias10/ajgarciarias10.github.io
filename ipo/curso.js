@@ -13,32 +13,73 @@ const TEMAS_CURSO = {
   2: { titulo: 'El factor humano', paginas: '49–115', peso: 67, pagina: 'tema-2.html' },
   3: { titulo: 'Metáforas', paginas: '116–166', peso: 51, pagina: 'tema-3.html' },
   4: { titulo: 'Ingeniería de la interfaz', paginas: '167–222', peso: 56, pagina: 'tema-4.html' },
-  5: { titulo: 'Internacionalización y localización', paginas: '216–255', peso: 40 },
-  6: { titulo: 'Diseño gráfico en interfaces', paginas: '256–310', peso: 55 },
-  7: { titulo: 'Estilos y paradigmas de interacción', paginas: '311–350', peso: 40 },
-  8: { titulo: 'Accesibilidad web', paginas: '351–390', peso: 40 },
-  9: { titulo: 'Evaluación de la usabilidad', paginas: '391–445', peso: 55 },
-  10: { titulo: 'Estándares y guías de estilo', paginas: '446–480', peso: 35 }
+  5: { titulo: 'Internacionalización', paginas: '223–284', peso: 62 },
+  6: { titulo: 'El diseño gráfico', paginas: '285–349', peso: 65 },
+  7: { titulo: 'Estilos y paradigmas', paginas: '350–406', peso: 57 },
+  8: { titulo: 'Accesibilidad', paginas: '407–456', peso: 50 },
+  9: { titulo: 'Evaluación', paginas: '457–515', peso: 59 },
+  10: { titulo: 'Estándares y guías de estilo', paginas: '516–602', peso: 87 }
 };
 
-/* Qué tema se imparte en clase cada semana lectiva. */
-const CRONOGRAMA_SEMANAS = [
-  { semana: 1, leccion: 'L1', tema: 1 },
-  { semana: 2, leccion: 'L2', tema: 2 },
-  { semana: 3, leccion: 'L3', tema: 2 },
-  { semana: 4, leccion: 'L4-L5', tema: 3 },
-  { semana: 5, leccion: 'L6', tema: 4 },
-  { semana: 6, leccion: 'L7', tema: 4 },
-  { semana: 7, leccion: 'L8', tema: 5 },
-  { semana: 8, leccion: 'L9', tema: 5 },
-  { semana: 9, leccion: 'L10', tema: 6 },
-  { semana: 10, leccion: 'L11-L12', tema: 6 },
-  { semana: 11, leccion: 'L13-L14', tema: 7 },
-  { semana: 12, leccion: 'L15-L16', tema: 8 },
-  { semana: 13, leccion: 'L17-L18', tema: 9 },
-  { semana: 14, leccion: 'L19', tema: 9 },
-  { semana: 15, leccion: 'L20-L21', tema: 10 }
+/* Planificación oficial de teoría (IPO2627.pdf, p. 15): cada clase con su tema y lección.
+   Miércoles y jueves; los días sin clase (inauguración, festivos) no aparecen. */
+const SESIONES_TEORIA = [
+  { fecha: '2026-09-09', tema: 1, leccion: 'L1', contenido: 'Presentación e Introducción a la IPO' },
+  { fecha: '2026-09-10', tema: 1, leccion: 'L1', contenido: 'Introducción a la IPO' },
+  { fecha: '2026-09-17', tema: 2, leccion: 'L2', contenido: 'El modelo mental y modelo de procesamiento' },
+  { fecha: '2026-09-23', tema: 2, leccion: 'L3', contenido: 'Los sentidos' },
+  { fecha: '2026-09-24', tema: 2, leccion: 'L4', contenido: 'El modelo de memoria' },
+  { fecha: '2026-09-30', tema: 3, leccion: 'L5', contenido: 'Metáforas' },
+  { fecha: '2026-10-01', tema: 4, leccion: 'L6', contenido: 'Ingeniería de la interfaz → Análisis de tareas. Implementación' },
+  { fecha: '2026-10-07', tema: 4, leccion: 'L7', contenido: 'Prototipos → Conclusiones' },
+  { fecha: '2026-10-08', tema: 5, leccion: 'L8', contenido: 'Internacionalización → Esquemas de codificación Unicode' },
+  { fecha: '2026-10-14', tema: 5, leccion: 'L9', contenido: 'Zonas de internacionalización → Conclusiones' },
+  { fecha: '2026-10-15', tema: 6, leccion: 'L10', contenido: 'El diseño gráfico → Elementos de la imagen. La composición' },
+  { fecha: '2026-10-21', tema: 6, leccion: 'L11', contenido: 'Uso del color' },
+  { fecha: '2026-10-22', tema: 6, leccion: 'L12', contenido: 'Técnicas de diseño gráfico → Conclusiones' },
+  { fecha: '2026-10-28', tema: 7, leccion: 'L13', contenido: 'Estilos y paradigmas → Ejemplo: Microsoft Agent' },
+  { fecha: '2026-10-29', tema: 7, leccion: 'L14', contenido: 'Paradigmas de interacción → Conclusiones' },
+  { fecha: '2026-11-04', tema: 8, leccion: 'L15', contenido: 'Accesibilidad → Ceguera. Recomendaciones' },
+  { fecha: '2026-11-05', tema: 8, leccion: 'L16', contenido: 'Discapacidades auditivas → Conclusiones' },
+  { fecha: '2026-11-11', tema: 9, leccion: 'L17', contenido: 'Evaluación → Inspección: inspección de estándares' },
+  { fecha: '2026-11-12', tema: 9, leccion: 'L18', contenido: 'Inspección: indagación' },
+  { fecha: '2026-11-18', tema: 9, leccion: 'L19', contenido: 'Inspección: test → Conclusiones' },
+  { fecha: '2026-11-19', tema: 10, leccion: 'L20', contenido: 'Estándares y guías de estilo → Estándares de facto' },
+  { fecha: '2026-11-26', tema: 10, leccion: 'L21', contenido: 'Guías de estilo → Conclusiones' },
+  { fecha: '2026-12-02', tema: null, leccion: '', contenido: 'Ejercicios de examen' }
 ];
+
+/* Prácticas de laboratorio (martes, A3-170), misma fuente. */
+const SESIONES_PRACTICAS = [
+  { fecha: '2026-09-15', contenido: 'Práctica 1 · Introducción (Tema I)' },
+  { fecha: '2026-09-22', contenido: 'Práctica 1 · Introducción' },
+  { fecha: '2026-09-29', contenido: 'Práctica 1 · Introducción · Evaluación' },
+  { fecha: '2026-10-06', contenido: 'Práctica 2 · Metáforas (Tema III)' },
+  { fecha: '2026-10-13', contenido: 'Práctica 2 · Metáforas · Evaluación' },
+  { fecha: '2026-10-20', contenido: 'Práctica 3 · Diseño de la interfaz (Tema IV)' },
+  { fecha: '2026-10-27', contenido: 'Práctica 3 · Diseño de la interfaz' },
+  { fecha: '2026-11-03', contenido: 'Práctica 3 · Diseño de la interfaz · Evaluación' },
+  { fecha: '2026-11-10', contenido: 'Práctica 4 · Internacionalización (Tema V) · obligatoria' },
+  { fecha: '2026-11-17', contenido: 'Práctica 4 · Internacionalización' },
+  { fecha: '2026-11-24', contenido: 'Práctica 4 · Internacionalización' },
+  { fecha: '2026-12-01', contenido: 'Práctica 4 · Internacionalización' },
+  { fecha: '2026-12-15', contenido: 'Práctica 4 · Internacionalización · Evaluación' }
+];
+
+/* Días sin clase que marca la planificación. */
+const DIAS_SIN_CLASE = {
+  '2026-09-16': 'Inauguración del curso',
+  '2026-10-12': 'El Pilar',
+  '2026-10-19': 'San Lucas',
+  '2026-11-02': 'Todos los Santos',
+  '2026-11-25': 'Santa Catalina',
+  '2026-12-07': 'Constitución',
+  '2026-12-08': 'Inmaculada',
+  '2026-12-09': 'TC × 5'
+};
+
+const fechaISO = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const desdeISO = iso => { const [y, m, d] = iso.split('-').map(Number); return new Date(y, m - 1, d); };
 
 const CURSO_OVERRIDE_KEY = 'ipo_tema_profesor_override';
 const DIA_MS = 86400000;
@@ -56,14 +97,48 @@ function lunesDeSemana(sem) {
   return new Date(CURSO_INICIO.getTime() + (sem - 1) * 7 * DIA_MS);
 }
 
-/* Tema en clase hoy. Se puede corregir a mano si el profesor va adelantado o retrasado. */
+/* Qué tema se imparte cada semana (último tema dado en la semana), para el calendario. */
+const CRONOGRAMA_SEMANAS = Array.from({ length: 15 }, (_, i) => {
+  const sem = i + 1;
+  const ini = fechaISO(lunesDeSemana(sem));
+  const fin = fechaISO(new Date(lunesDeSemana(sem).getTime() + 6 * DIA_MS));
+  const clases = SESIONES_TEORIA.filter(s => s.tema && s.fecha >= ini && s.fecha <= fin);
+  return { semana: sem, leccion: clases.map(c => c.leccion).join('-'), tema: clases.length ? clases[clases.length - 1].tema : null };
+}).map((c, i, arr) => c.tema ? c : Object.assign(c, { tema: (arr.slice(0, i).reverse().find(x => x.tema) || { tema: 10 }).tema }));
+
+/* Clases de teoría ya dadas hasta hoy (incluido). */
+function clasesDadas(d = new Date()) {
+  const hoy = fechaISO(d);
+  return SESIONES_TEORIA.filter(s => s.tema && s.fecha <= hoy);
+}
+
+function proximasClases(n = 2, d = new Date()) {
+  const hoy = fechaISO(d);
+  return SESIONES_TEORIA.filter(s => s.fecha > hoy).slice(0, n);
+}
+
+function proximaPractica(d = new Date()) {
+  const hoy = fechaISO(d);
+  return SESIONES_PRACTICAS.find(s => s.fecha >= hoy) || null;
+}
+
+function sesionesDeTema(t) {
+  return SESIONES_TEORIA.filter(s => s.tema === t);
+}
+
+/* Tema en clase hoy: el de la última clase de teoría dada. Se puede corregir a mano. */
 function temaProfesor(d = new Date()) {
   try {
     const manual = Number(localStorage.getItem(CURSO_OVERRIDE_KEY));
     if (manual >= 1 && manual <= 10) return manual;
   } catch (e) { /* sin almacenamiento */ }
-  const fila = CRONOGRAMA_SEMANAS.find(c => c.semana === semanaDelCurso(d));
-  return fila ? fila.tema : 1;
+  const dadas = clasesDadas(d);
+  return dadas.length ? dadas[dadas.length - 1].tema : 1;
+}
+
+function temaProfesorPorFecha(d = new Date()) {
+  const dadas = clasesDadas(d);
+  return dadas.length ? dadas[dadas.length - 1].tema : 1;
 }
 
 function fijarTemaProfesor(tema) {
@@ -73,11 +148,19 @@ function fijarTemaProfesor(tema) {
   } catch (e) { /* sin almacenamiento */ }
 }
 
-/* Lunes en que el profesor pasa al tema siguiente (meta para estar al día). */
-function finDelTemaActual(d = new Date()) {
+/* Domingo de la semana en que se da la última clase del tema: fecha para tenerlo estudiado. */
+function objetivoDeTema(t) {
+  const ses = sesionesDeTema(t);
+  if (!ses.length) return CURSO_FIN;
+  const ultima = desdeISO(ses[ses.length - 1].fecha);
+  return new Date(ultima.getTime() + ((7 - ultima.getDay()) % 7) * DIA_MS);
+}
+
+/* Fecha en que empieza el tema siguiente al que se da ahora. */
+function inicioDelSiguienteTema(d = new Date()) {
   const t = temaProfesor(d);
-  const siguiente = CRONOGRAMA_SEMANAS.find(c => c.tema > t && c.semana > semanaDelCurso(d));
-  return siguiente ? lunesDeSemana(siguiente.semana) : CURSO_FIN;
+  const sig = SESIONES_TEORIA.find(s => s.tema && s.tema > t);
+  return sig ? desdeISO(sig.fecha) : CURSO_FIN;
 }
 
 const FECHA_LARGA = new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });

@@ -104,7 +104,7 @@ function horarioOficial() {
   const sub = subActual();
   const teoria = TEORIA_OFICIAL[g];
   const p = PRACTICAS_OFICIAL[sub];
-  const pract = { dia: p.dia, ini: p.ini, fin: p.fin, tag: 'Práctica Lab A3-170 · G' + sub + ' (P1/P2)', aula: 'A3-170' };
+  const pract = { dia: p.dia, ini: p.ini, fin: p.fin, tag: 'Práctica Lab A3-170 · G' + sub + '', aula: 'A3-170' };
   return { teoria, pract, grupo: g, sub };
 }
 /* Lunes real de la semana N (Sem 1 = Lun 2026-09-07) */
@@ -187,6 +187,14 @@ function semanaActiva() {
     if (s.semanaActual) return Number(s.semanaActual);
   } catch (e) {}
   return CAL.semanaVista || 4;
+}
+/* «Teoría: Tema 4 (L7, mié) y Tema 5 (L8, jue)» según la planificación oficial */
+function temasDeLaSemana(sem) {
+  const ini = fechaISO(fechaDia(sem, 1)), fin = fechaISO(fechaDia(sem, 7));
+  const clases = SESIONES_TEORIA.filter(c => c.fecha >= ini && c.fecha <= fin);
+  if (!clases.length) return 'Sin clases de teoría esta semana';
+  const dia = c => ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'][desdeISO(c.fecha).getDay()];
+  return 'Teoría: ' + clases.map(c => (c.tema ? 'Tema ' + c.tema + ' (' + c.leccion + ', ' + dia(c) + ')' : c.contenido + ' (' + dia(c) + ')')).join(' y ');
 }
 function temaDeSemana(sem) {
   const c = crono().find(x => x.semana === sem);
@@ -300,7 +308,7 @@ function descargarICS() {
   };
   const { teoria, pract } = horarioOficial();
   teoria.forEach(t => addEv(t.dia, t.ini, durHoras(t.ini, t.fin), 'IPO UJA · Clase oficial (' + t.tag + ')', 'Docencia presencial EPS Jaen (A4-36). Ancla 24-48h.'));
-  addEv(pract.dia, pract.ini, durHoras(pract.ini, pract.fin), 'IPO UJA · ' + pract.tag, pract.aula + '. P1/P2 iniciadas (martes).');
+  addEv(pract.dia, pract.ini, durHoras(pract.ini, pract.fin), 'IPO UJA · ' + pract.tag, pract.aula + '. Prácticas de laboratorio (martes).');
   ['b1', 'b2', 'b3'].forEach(k => {
     const b = CAL.bloques[k];
     addEv(b.dia, b.hora, b.dur, 'Estudio IPO · ' + b.titulo, b.desc);
@@ -378,7 +386,7 @@ function renderCalendario() {
       '<div><span class="eyebrow">CALENDARIO · SINCRONIZACIÓN SEMANAL · SEMANA ' + sem + '</span>' +
       '<h2 style="margin:2px 0 0">Tu semana IPO, anclada a la docencia</h2>' +
       '<p class="muted" style="margin:4px 0 0;font-size:.9rem">Semana ' + vista + ' · ' + rangoSemana(vista) +
-      ' · Teoría Mié+Jue (A4-36) · Prácticas Mar (A3-170).<br>En clase: Tema ' + temaDeSemana(vista) + ' · <a href="ponte-al-dia.html">¿Vas atrasado? Ponte al día →</a> · <b>Práctica 4 i18n obligatoria</b> (Sem 9).</p></div>' +
+      ' · Teoría Mié+Jue (A4-36) · Prácticas Mar (A3-170).<br>' + temasDeLaSemana(vista) + ' · <a href="ponte-al-dia.html">¿Vas atrasado? Ponte al día →</a> · <b>Práctica 4 (Internacionalización) obligatoria</b>: del 10 nov al 15 dic.</p></div>' +
       '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="button secondary" id="cal-btn-ics" style="font-size:.85rem">⬇️ Exportar semana .ics</button>' +
       (CAL.sincronizado ? '<button class="button secondary" id="cal-btn-off" style="font-size:.85rem">Desconectar</button>' : '') + '</div>' +
     '</div>' +
@@ -453,12 +461,30 @@ function pintarEventos() {
   const y = hm => (hmToMin(hm) / 60 - H0) * ROW;
   const h = dur => Math.max(26, dur * ROW - 6);
   const { teoria, pract } = horarioOficial();
+  const semVista = CAL.semanaVista || semanaActiva();
+  // Contenido real de cada día según la planificación oficial (curso.js · IPO2627.pdf p. 15)
+  const isoDia = dia => fechaISO(fechaDia(semVista, dia));
   teoria.forEach(t => {
     const slot = document.querySelector('[data-evs="' + t.dia + '"]');
-    if (slot) slot.insertAdjacentHTML('beforeend', evHtml(y(t.ini), h(durHoras(t.ini, t.fin)), 'ev-clase', '🏛️ Clase UJA · ' + t.tag, t.ini + '–' + t.fin + ' · ' + t.aula, ' title="Docencia oficial presencial (EPS Jaén, curso 2026-27). Ancla 24–48 h."'));
+    if (!slot) return;
+    const iso = isoDia(t.dia);
+    const ses = SESIONES_TEORIA.find(c => c.fecha === iso);
+    const libre = DIAS_SIN_CLASE[iso];
+    if (libre) {
+      slot.insertAdjacentHTML('beforeend', evHtml(y(t.ini), h(durHoras(t.ini, t.fin)), 'ev-libre', 'Sin clase · ' + esc(libre), t.ini + '–' + t.fin, ' style="opacity:.55"'));
+    } else if (ses) {
+      const titulo = ses.tema ? 'Tema ' + ses.tema + ' (' + ses.leccion + ') · ' + esc(ses.contenido) : esc(ses.contenido);
+      slot.insertAdjacentHTML('beforeend', evHtml(y(t.ini), h(durHoras(t.ini, t.fin)), 'ev-clase', '🏛️ ' + titulo, t.ini + '–' + t.fin + ' · ' + t.aula, ' title="' + esc(t.tag) + '"'));
+    }
   });
   const sp = document.querySelector('[data-evs="' + pract.dia + '"]');
-  if (sp) sp.insertAdjacentHTML('beforeend', evHtml(y(pract.ini), h(durHoras(pract.ini, pract.fin)), 'ev-pract', '💻 ' + pract.tag, pract.ini + '–' + pract.fin + ' · ' + pract.aula, ' title="P1/P2 ya iniciadas en el A3-170 (martes)."'));
+  if (sp) {
+    const iso = isoDia(pract.dia);
+    const ses = SESIONES_PRACTICAS.find(c => c.fecha === iso);
+    const libre = DIAS_SIN_CLASE[iso];
+    if (libre) sp.insertAdjacentHTML('beforeend', evHtml(y(pract.ini), h(durHoras(pract.ini, pract.fin)), 'ev-libre', 'Sin prácticas · ' + esc(libre), pract.ini + '–' + pract.fin, ' style="opacity:.55"'));
+    else if (ses) sp.insertAdjacentHTML('beforeend', evHtml(y(pract.ini), h(durHoras(pract.ini, pract.fin)), 'ev-pract', '💻 ' + esc(ses.contenido), pract.ini + '–' + pract.fin + ' · ' + pract.aula + ' · G' + subActual(), ' title="' + esc(pract.tag) + '"'));
+  }
   // Hito P4 (marca informativa en sábado de la vista)
   const hito = document.querySelector('[data-evs="6"]');
   if (hito && semanaActiva() >= 4) {

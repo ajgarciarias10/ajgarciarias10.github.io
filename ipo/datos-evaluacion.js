@@ -171,7 +171,7 @@ const ESQUEMAS_TEMARIO = {
   5: {
     titulo: 'Tema 5 · Internacionalización y localización',
     lecciones: [8, 9],
-    paginas: '216–255',
+    paginas: '223–284',
     conceptosClave: [
       'Diferencia entre Internacionalización (i18n) y Localización (l10n)',
       'Catálogos de recursos externos (Gettext, .po / .mo, JSON de internacionalización)',
@@ -208,7 +208,7 @@ const ESQUEMAS_TEMARIO = {
   6: {
     titulo: 'Tema 6 · El diseño gráfico en interfaces',
     lecciones: [10, 11, 12],
-    paginas: '256–310',
+    paginas: '285–349',
     conceptosClave: [
       'Leyes de la percepción visual de la Gestalt (Proximidad, Semejanza, Continuidad, Cierre, Región Común, Conectividad)',
       'Teoría del color: Rueda de color, contraste cromático, luminosidad, connotaciones culturales',
@@ -244,7 +244,7 @@ const ESQUEMAS_TEMARIO = {
   7: {
     titulo: 'Tema 7 · Estilos y paradigmas de interacción',
     lecciones: [13, 14],
-    paginas: '311–350',
+    paginas: '350–406',
     conceptosClave: [
       'Estilos de interacción clásicos: CLI (línea de comandos), Menús desplegables, Formularios, Lenguaje natural',
       'Manipulación Directa (Ben Shneiderman): Representación continua de objetos de interés, acciones rápidas reversibles e incrementales con impacto inmediato visible',
@@ -272,7 +272,7 @@ const ESQUEMAS_TEMARIO = {
   8: {
     titulo: 'Tema 8 · Accesibilidad web y diseño para todos',
     lecciones: [15, 16],
-    paginas: '351–390',
+    paginas: '407–456',
     conceptosClave: [
       'Iniciativa W3C / WAI (Web Accessibility Initiative)',
       'Pautas WCAG (Web Content Accessibility Guidelines) versiones 2.1 / 2.2',
@@ -307,7 +307,7 @@ const ESQUEMAS_TEMARIO = {
   9: {
     titulo: 'Tema 9 · Evaluación de la usabilidad',
     lecciones: [17, 18, 19],
-    paginas: '391–445',
+    paginas: '457–515',
     conceptosClave: [
       'Taxonomía de métodos: Sin usuarios (Inspección / Analíticos) vs Con usuarios (Empíricos)',
       'Evaluación Heurística de Nielsen (10 principios heurísticos, 3 a 5 evaluadores expertos)',
@@ -350,7 +350,7 @@ const ESQUEMAS_TEMARIO = {
   10: {
     titulo: 'Tema 10 · Estándares y guías de estilo',
     lecciones: [20, 21],
-    paginas: '446–480',
+    paginas: '516–602',
     conceptosClave: [
       'Diferencia entre Estándar (norma formal vinculante internacional), Guía de estilo (documento de diseño corporativo) y Pauta (recomendación)',
       'Familia de normas ISO 9241 (Ergonomía de la interacción persona-sistema): Parte 11 (Usabilidad), Parte 210 (Diseño Centrado en el Usuario)',

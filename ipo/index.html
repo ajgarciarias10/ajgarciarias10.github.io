@@ -102,7 +102,8 @@
     document.getElementById('today-strip').innerHTML =
       '<span>Hoy, <strong>' + FECHA_LARGA.format(new Date()) + '</strong></span>' +
       '<span>Semana <strong>' + semanaDelCurso() + '</strong></span>' +
-      '<span>En clase: <strong>Tema ' + prof + '</strong></span>';
+      '<span>En clase: <strong>Tema ' + prof + '</strong></span>' +
+      proximasClases(1).map(function (c) { return '<span>Próxima clase: <strong>' + FECHA_CORTA.format(desdeISO(c.fecha)) + '</strong> · ' + (c.tema ? 'Tema ' + c.tema + ' (' + c.leccion + ') ' + c.contenido : c.contenido) + '</span>'; }).join('');
 
     var atrasados = [];
     for (var t = 1; t < prof; t++) atrasados.push(t);
@@ -121,9 +122,11 @@
       cta.textContent = 'Ver mi ruta';
     } else {
       title.textContent = 'La clase va por el Tema ' + prof + '. ¿Y tú?';
-      text.textContent = 'Si empiezas ahora, demuestra las competencias de ' +
+      var sig = SESIONES_TEORIA.find(function (c) { return c.tema === prof + 1; });
+      text.textContent = 'Recupera ' +
         (pendientes.length === 1 ? 'el Tema ' + pendientes[0] : 'los temas ' + pendientes.join(', ').replace(/, (\d+)$/, ' y $1')) +
-        ' antes del ' + FECHA_CORTA.format(new Date(finDelTemaActual().getTime() - DIA_MS)) + ' para no quedarte atrás.';
+        ' demostrando sus competencias, y ten el Tema ' + prof + ' estudiado antes del ' + FECHA_CORTA.format(objetivoDeTema(prof)) + '.' +
+        (sig ? ' El ' + FECHA_CORTA.format(desdeISO(sig.fecha)) + ' empieza el Tema ' + sig.tema + '.' : '');
       cta.textContent = pendientes.length === atrasados.length ? 'Empezar desde cero' : 'Continuar la ruta';
     }
 
