@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ponte al día · IPO</title>
+  <script src="nav.js"></script>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<main>
+  <header>
+    <div class="today-strip" id="today-strip"></div>
+    <h1 id="pad-title">Ponte al día</h1>
+    <p class="lead" id="pad-lead">Empiezas ahora, pero la clase ya va avanzada. Demuestra que dominas cada competencia de los temas anteriores y llega al tema actual sin lagunas.</p>
+
+    <div class="progress" aria-hidden="true"><span id="pad-bar" style="width:0%"></span></div>
+    <div class="stat-row">
+      <div class="stat"><div class="num" id="st-comp">0/15</div><div class="lbl">competencias demostradas</div></div>
+      <div class="stat"><div class="num" id="st-temas">0</div><div class="lbl">temas por demostrar</div></div>
+      <div class="stat"><div class="num" id="st-dias">0</div><div class="lbl">días para ponerte al día</div></div>
+    </div>
+  </header>
+
+  <div class="section-title" style="margin-top:24px;">
+    <h2>Tu ruta</h2>
+    <label class="prof-select">El profesor va por el
+      <select id="prof-tema" aria-label="Tema que se imparte ahora en clase"></select>
+    </label>
+  </div>
+
+  <ol class="route" id="route"></ol>
+
+  <section class="card" style="margin-top:40px;">
+    <h2>Cómo funciona</h2>
+    <ol class="steps">
+      <li>Cada tema tiene <strong>5 competencias</strong> (sus apartados). Para demostrar una, aciertas <strong>2 preguntas seguidas de ese apartado</strong> sin consultar apuntes.</li>
+      <li>Si fallas, repasa ese apartado con el generador del tema y vuelve: la prueba solo te pregunta lo que aún no has demostrado.</li>
+      <li>Las fechas objetivo reparten los temas pendientes según su extensión, para que estés al día antes de que el profesor cambie de tema.</li>
+      <li>Mientras tanto, <strong>no faltes a clase</strong>: el tema actual se estudia esa misma semana y también tiene su prueba, con objetivo el domingo.</li>
+    </ol>
+  </section>
+
+  <footer>Tu progreso se guarda solo en este navegador. Banco de preguntas basado en IPO2627.pdf · Material de práctica, no examen oficial.</footer>
+</main>
+
+<dialog class="quiz" id="quiz" aria-labelledby="quiz-title">
+  <div class="quiz-head">
+    <strong id="quiz-title" style="font-family:var(--font-display); font-weight:600;">Prueba</strong>
+    <div class="progress" aria-hidden="true"><span id="quiz-bar" style="width:0%"></span></div>
+    <span class="muted" id="quiz-count" style="font-size:.85rem;"></span>
+    <button type="button" class="quiz-close" id="quiz-close" aria-label="Cerrar la prueba">×</button>
+  </div>
+  <div class="quiz-body" id="quiz-body"></div>
+  <div class="quiz-foot" id="quiz-foot"></div>
+</dialog>
+
+<script src="curso.js"></script>
+<script src="datos-evaluacion.js"></script>
+<script src="preguntas-globales.js"></script>
+<script src="ponte-al-dia.js"></script>
+</body>
+</html>

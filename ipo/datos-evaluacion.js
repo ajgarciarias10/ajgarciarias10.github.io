@@ -134,7 +134,7 @@ const ESQUEMAS_TEMARIO = {
   4: {
     titulo: 'Tema 4 · Ingeniería de la interfaz y diseño centrado en el usuario',
     lecciones: [6, 7],
-    paginas: '167–215',
+    paginas: '167–222',
     conceptosClave: [
       'Ciclo de vida de la interfaz (Hartson y Hix en estrella, modelo en espiral)',
       'Diseño Centrado en el Usuario (DCU / ISO 9241-210): Contexto, Requisitos, Diseño, Evaluación',

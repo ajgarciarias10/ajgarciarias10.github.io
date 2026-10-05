@@ -3,169 +3,138 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IPO · Laboratorio de estudio y generador de preguntas</title>
-
-  <!-- Script anti-parpadeo de tema (Zero-FOUC) estilo midu.dev -->
-  <script>
-    (function() {
-      var stored = localStorage.getItem('theme');
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var theme = stored || (prefersDark ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
-    })();
-  </script>
-
+  <title>IPO Study Lab</title>
+  <script src="nav.js"></script>
   <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-
-  <!-- ======================================================================
-       MENÚ FLOTANTE ESTILO 2026 (INSPIRACIÓN DOCK MIDU.DEV)
-       ====================================================================== -->
-  <header class="header-floating-2026" role="banner">
-    <div class="dock-container">
-      <a href="index.html" class="dock-brand" title="Inicio de IPO Study Lab">
-        <span class="dock-pulse-dot" aria-hidden="true"></span>
-        <span class="dock-brand-name"><strong>IPO</strong> · UJA</span>
-        <span class="dock-pill-tag">2026–27</span>
-      </a>
-
-      <nav class="dock-nav" aria-label="Navegación principal">
-        <a href="calendario.html" class="dock-nav-item active">
-          <span>🗓️</span> Calendario
-        </a>
-        <a href="generador.html" class="dock-nav-item">
-          <span>🎲</span> Generador 130
-        </a>
-        <a href="guia-estudio.html" class="dock-nav-item">
-          <span>📖</span> Guía de Estudio
-        </a>
-        <a href="tema-1.html" class="dock-nav-item">
-          <span>Tema 1</span>
-        </a>
-        <a href="tema-2.html" class="dock-nav-item">
-          <span>Tema 2</span>
-        </a>
-        <a href="tema-3.html" class="dock-nav-item">
-          <span>Tema 3</span>
-        </a>
-      </nav>
-
-      <div class="dock-actions">
-        <!-- Conmutador Claro / Oscuro -->
-        <button type="button" class="theme-switcher-btn" id="btn-theme-toggle" aria-label="Alternar modo claro y oscuro" title="Cambiar a modo claro/oscuro">
-          <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-          </svg>
-          <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-          </svg>
-        </button>
-
-        <a href="calendario.html" class="button" style="padding:5px 12px; font-size:0.82rem; border-radius:9999px;">
-          Entrar →
-        </a>
-      </div>
-    </div>
-  </header>
-
 <main>
-  <!-- AVISO LEGAL Y COPYRIGHT DOCENTE INSTITUCIONAL -->
-  <div class="institutional-credit-card">
-    <div class="inst-credit-header">
-      <div class="inst-credit-badge">
-        <span>🏛️</span> Universidad de Jaén · Grado en Ingeniería Informática · IPO2627
+  <section class="hero">
+    <div class="today-strip" id="today-strip"></div>
+    <h1>¿Lo entiendes <span class="gradient-text">o solo te suena?</span></h1>
+    <p class="lead">Practica IPO cerrando el libro: preguntas de aplicación con corrección al instante, una ruta para ponerte al día y un plan semanal anclado a las clases.</p>
+  </section>
+
+  <!-- Ponte al día: lo primero que ve quien empieza tarde -->
+  <section class="catchup-panel" aria-labelledby="catchup-title">
+    <div>
+      <span class="eyebrow">Ponte al día</span>
+      <h2 id="catchup-title" style="margin-top:6px;">Cargando…</h2>
+      <p class="muted" id="catchup-text" style="margin-bottom:0;"></p>
+      <div class="actions">
+        <a class="button" href="ponte-al-dia.html" id="catchup-cta">Empezar la ruta</a>
       </div>
-      <span class="inst-noncommercial-pill">Uso estrictamente docente y no comercial</span>
     </div>
-    <p class="inst-credit-body">
-      Material docente oficial © UJA. Profesores responsables: <strong>Drª. Salud Mª Jiménez Zafra</strong> y <strong>Dr. Manuel García Vega</strong>. Prototipo de apoyo mnemotécnico al estudio.
-    </p>
+    <ol class="orbit" id="catchup-orbit" aria-label="Progreso por temas"></ol>
+  </section>
+
+  <div class="section-title">
+    <h2>Practica por tema</h2>
+    <a href="generador.html">Todas mezcladas →</a>
+  </div>
+  <div class="grid">
+    <a class="tile" href="tema-1.html">
+      <span class="eyebrow">Tema 1 · pp. 16–48</span>
+      <h3>Introducción a la IPO</h3>
+      <p>Fundamentos, interfaces, disciplinas y principios de usabilidad.</p>
+      <span class="tile-foot">40 preguntas →</span>
+    </a>
+    <a class="tile" href="tema-2.html">
+      <span class="eyebrow">Tema 2 · pp. 49–115</span>
+      <h3>El factor humano</h3>
+      <p>Modelos mentales, sentidos, percepción, atención y memoria.</p>
+      <span class="tile-foot">40 preguntas →</span>
+    </a>
+    <a class="tile" href="tema-3.html">
+      <span class="eyebrow">Tema 3 · pp. 116–166</span>
+      <h3>Metáforas</h3>
+      <p>Metáforas verbales, visuales y globales; el escritorio y su metodología.</p>
+      <span class="tile-foot">40 preguntas →</span>
+    </a>
+    <a class="tile" href="tema-4.html">
+      <span class="eyebrow">Tema 4 · pp. 167–222</span>
+      <h3>Ingeniería de la interfaz</h3>
+      <p>Análisis de tareas, análisis jerárquico y GOMS; sketch, wireframe, mockup y prototipo.</p>
+      <span class="tile-foot">40 preguntas →</span>
+    </a>
   </div>
 
-  <header style="padding-top:0;">
-    <span class="eyebrow">RECUPERACIÓN ACTIVA · IPO 2026–27</span>
-    <h1>¿Lo entiendes<br>o te suena?</h1>
-    <p class="lead">Pon a prueba lo que recuerdas después de cerrar el libro sin la pereza de exámenes rígidos.</p>
-  </header>
+  <div class="section-title">
+    <h2>Herramientas</h2>
+  </div>
+  <div class="grid">
+    <a class="tile" href="calendario.html">
+      <h3>Calendario semanal</h3>
+      <p>Horario real de la EPS, tus bloques de estudio y sincronización con Google Calendar.</p>
+    </a>
+    <a class="tile" href="guia-estudio.html">
+      <h3>Guía de estudio</h3>
+      <p>Qué entra en cada tema, trampas habituales y cómo estudiarlo.</p>
+    </a>
+    <a class="tile" href="usabilidad-clevertracker.html">
+      <h3>Informe · CleverTracker</h3>
+      <p>Auditoría de usabilidad de una PWA real, con su propio test en Practicar.</p>
+    </a>
+    <a class="tile" href="usabilidad-f1.html">
+      <h3>Informe · F1-BUGAMBRA</h3>
+      <p>Principios del Tema 1 aplicados con capturas antes y después.</p>
+    </a>
+  </div>
 
-  <!-- PLATAFORMA INSTITUCIONAL Y PLAN PEDAGÓGICO COMPLETO -->
-  <section class="card" style="border: 2px solid var(--brand); background: linear-gradient(180deg, var(--brand-soft) 0%, var(--surface-card) 100%);">
-    <span class="eyebrow" style="color:var(--brand); font-weight:800;">🗓️ CALENDARIO SEMANAL UJA · CURSO 2026–27</span>
-    <h2>Tu semana IPO, anclada a la docencia oficial</h2>
-    <p>Horario real de la EPS de Jaén (teoría Mié+Jue en A4-36, prácticas los martes en el A3-170): elige tu grupo y subgrupo, reparte tus horas de estudio (4–8 h) y sincroniza tus bloques con Google Calendar. Sin estudio vinculado en 24–48 h, no hay consolidación de fin de semana.</p>
-    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
-      <a class="button" href="calendario.html" style="font-size:1.02rem;">🗓️ Abrir mi calendario semanal →</a>
-      <a class="button secondary" href="generador.html">🎲 Generador aleatorio global (130 preguntas) →</a>
-      <a class="button secondary" href="guia-estudio.html">📖 Guía didáctica de estudio →</a>
-      <a class="button secondary" href="test-clevertracker.html">Generador CleverTracker →</a>
-    </div>
-  </section>
-
-  <section class="card">
-    <span class="eyebrow">TEMA 01 · PÁGINAS 16–48</span>
-    <h2>Introducción a la IPO</h2>
-    <p>40 preguntas de aplicación sobre fundamentos de interacción, interfaces de usuario, disciplinas y principios de usabilidad. Modo generador aleatorio con retroalimentación inmediata.</p>
-    <a class="button" href="tema-1.html">Entrar al generador del tema 1 →</a>
-  </section>
-
-  <section class="card">
-    <span class="eyebrow">TEMA 02 · PÁGINAS 49–115</span>
-    <h2>El factor humano</h2>
-    <p>40 preguntas de contraste conceptual sobre modelos mentales, canales sensoriales, visión, atención y memoria de trabajo. Corrección instantánea con explicación.</p>
-    <a class="button" href="tema-2.html">Entrar al generador del tema 2 →</a>
-  </section>
-
-  <section class="card">
-    <span class="eyebrow">TEMA 03 · PÁGINAS 116–166</span>
-    <h2>Metáforas</h2>
-    <p>40 preguntas sobre metáforas verbales, visuales y globales, el modelo del escritorio y la metodología de diseño metafórico.</p>
-    <a class="button" href="tema-3.html">Entrar al generador del tema 3 →</a>
-  </section>
-
-  <section class="card">
-    <span class="eyebrow">AUDITORÍA EN VIVO · PWA WEB</span>
-    <h2>Informe de usabilidad — CleverTracker</h2>
-    <p>Evaluación empírica y conceptual de la aplicación desplegada en producción. Análisis de barreras de entrada, rendimiento CanvasKit en Flutter Web, accesibilidad y modelo mental.</p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;">
-      <a class="button" href="usabilidad-clevertracker.html">Ver informe CleverTracker →</a>
-      <a class="button secondary" href="test-clevertracker.html">Generador CleverTracker →</a>
-    </div>
-  </section>
-
-  <section class="card">
-    <span class="eyebrow">PRÁCTICA APLICADA</span>
-    <h2>Informe de usabilidad — F1-BUGAMBRA</h2>
-    <p>Evaluación real de la aplicación con los principios del Tema 1. Capturas antes/después, correspondencia con diapositivas y código corregido.</p>
-    <a class="button" href="usabilidad-f1.html">Ver informe →</a>
-  </section>
-
-  <section class="card">
-    <h2>Cómo comprobar tu aprendizaje</h2>
-    <ol class="steps">
-      <li>Usa el <strong>generador de preguntas aleatorias</strong> para sesiones cortas y sin fricción (de 5 a 10 minutos).</li>
-      <li>Antes de marcar, intenta formular mentalmente la razón por la que descartas las opciones parecidas.</li>
-      <li>Al responder, atiende especialmente a las explicaciones de las opciones que falles o en las que hayas dudado.</li>
-      <li>Utiliza la casilla <strong>«Priorizar fallos»</strong> en el generador para consolidar tus puntos débiles mediante repetición espaciada.</li>
-    </ol>
-  </section>
-
-  <footer>Basado en <a href="../IPO2627.pdf" target="_blank" rel="noopener">IPO2627.pdf</a>. Material de práctica, no examen oficial. Funciona sin conexión.</footer>
+  <footer>
+    <p class="credit-note" style="margin:0 0 6px;">Universidad de Jaén · Grado en Ingeniería Informática · IPO 2026–27. Material docente © UJA — profesores responsables: Drª. Salud Mª Jiménez Zafra y Dr. Manuel García Vega. Uso exclusivamente docente y no comercial.</p>
+    Basado en <a href="../IPO2627.pdf" target="_blank" rel="noopener">IPO2627.pdf</a>. Material de práctica, no examen oficial. Funciona sin conexión.
+  </footer>
 </main>
 
+<script src="curso.js"></script>
 <script>
-  // Conmutador de tema en página de inicio
-  const btnTheme = document.getElementById('btn-theme-toggle');
-  if (btnTheme) {
-    btnTheme.onclick = function() {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
-        (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      const nextTheme = isDark ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', nextTheme);
-      localStorage.setItem('theme', nextTheme);
-    };
-  }
+  (function () {
+    var prof = temaProfesor();
+    var comp = leerCompetencias();
+    var CON_BANCO = { 1: true, 2: true, 3: true, 4: true };
+    function hecho(t) {
+      if (!CON_BANCO[t]) return false;
+      var c = comp[t] || {};
+      return [0, 1, 2, 3, 4].every(function (i) { return c[i]; });
+    }
+
+    document.getElementById('today-strip').innerHTML =
+      '<span>Hoy, <strong>' + FECHA_LARGA.format(new Date()) + '</strong></span>' +
+      '<span>Semana <strong>' + semanaDelCurso() + '</strong></span>' +
+      '<span>En clase: <strong>Tema ' + prof + '</strong></span>';
+
+    var atrasados = [];
+    for (var t = 1; t < prof; t++) atrasados.push(t);
+    var pendientes = atrasados.filter(function (t) { return !hecho(t); });
+
+    var title = document.getElementById('catchup-title');
+    var text = document.getElementById('catchup-text');
+    var cta = document.getElementById('catchup-cta');
+    if (!atrasados.length) {
+      title.textContent = 'Vas al día';
+      text.textContent = 'La clase está en el Tema 1. Empieza desde el principio.';
+      cta.textContent = 'Ver la ruta';
+    } else if (!pendientes.length) {
+      title.textContent = 'Estás al día con la clase';
+      text.textContent = 'Has demostrado las competencias de los temas 1–' + (prof - 1) + '. Céntrate en el Tema ' + prof + '.';
+      cta.textContent = 'Ver mi ruta';
+    } else {
+      title.textContent = 'La clase va por el Tema ' + prof + '. ¿Y tú?';
+      text.textContent = 'Si empiezas ahora, demuestra las competencias de ' +
+        (pendientes.length === 1 ? 'el Tema ' + pendientes[0] : 'los temas ' + pendientes.join(', ').replace(/, (\d+)$/, ' y $1')) +
+        ' antes del ' + FECHA_CORTA.format(new Date(finDelTemaActual().getTime() - DIA_MS)) + ' para no quedarte atrás.';
+      cta.textContent = pendientes.length === atrasados.length ? 'Empezar desde cero' : 'Continuar la ruta';
+    }
+
+    var orbit = '';
+    var hasta = Math.max(prof + 1, 5);
+    for (var i = 1; i <= hasta; i++) {
+      var cls = i === prof ? 'now' : (i < prof ? (hecho(i) ? 'done' : 'debt') : '');
+      orbit += '<li class="' + cls + '"><span class="node"></span>T' + i + '</li>';
+    }
+    document.getElementById('catchup-orbit').innerHTML = orbit;
+  })();
 </script>
 </body>
 </html>

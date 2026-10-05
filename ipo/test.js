@@ -279,5 +279,10 @@ window.addEventListener('keydown', e => {
   }
 });
 
-// Start
+// Start: ?apartado=N abre directamente ese apartado (enlace desde «Ponte al día»)
+const apartadoURL = new URLSearchParams(location.search).get('apartado');
+if (apartadoURL !== null && BLOQUES[Number(apartadoURL)] && $('scope-selector')) {
+  activeScope = apartadoURL;
+  $('scope-selector').value = apartadoURL;
+}
 nextRandomQuestion();

@@ -4,68 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>IPO · Calendario semanal de estudio · UJA</title>
-
-  <!-- Script anti-parpadeo de tema (Zero-FOUC) estilo midu.dev -->
-  <script>
-    (function() {
-      var stored = localStorage.getItem('theme');
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var theme = stored || (prefersDark ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
-    })();
-  </script>
+  <script src="nav.js"></script>
 
   <link rel="stylesheet" href="estilo.css">
   <link rel="stylesheet" href="calendario.css">
 </head>
 <body>
-
-  <!-- MENÚ FLOTANTE ESTILO 2026 (DOCK) -->
-  <header class="header-floating-2026" role="banner">
-    <div class="dock-container">
-      <a href="index.html" class="dock-brand" title="Inicio de IPO Study Lab">
-        <span class="dock-pulse-dot" aria-hidden="true"></span>
-        <span class="dock-brand-name"><strong>IPO</strong> · UJA</span>
-        <span class="dock-pill-tag">2026–27</span>
-      </a>
-
-      <nav class="dock-nav" aria-label="Navegación principal">
-        <a href="index.html" class="dock-nav-item">
-          <span>🏠</span> Inicio
-        </a>
-        <a href="calendario.html" class="dock-nav-item active" aria-current="page">
-          <span>🗓️</span> Calendario
-        </a>
-        <a href="generador.html" class="dock-nav-item">
-          <span>🎲</span> Generador 130
-        </a>
-        <a href="guia-estudio.html" class="dock-nav-item">
-          <span>📖</span> Guía
-        </a>
-        <a href="tema-1.html" class="dock-nav-item">
-          <span>Tema 1</span>
-        </a>
-        <a href="tema-2.html" class="dock-nav-item">
-          <span>Tema 2</span>
-        </a>
-        <a href="tema-3.html" class="dock-nav-item">
-          <span>Tema 3</span>
-        </a>
-      </nav>
-
-      <div class="dock-actions">
-        <button type="button" class="theme-switcher-btn" id="btn-theme-toggle" aria-label="Alternar modo claro y oscuro" title="Cambiar a modo claro/oscuro">
-          <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-          </svg>
-          <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
 
 <main>
   <!-- AVISO LEGAL Y COPYRIGHT DOCENTE INSTITUCIONAL -->
@@ -85,7 +29,7 @@
   <section class="hero-human-section">
     <div class="hero-badge-pill">
       <span>🗓️</span>
-      <span>Calendario semanal · Octubre 2026 · Semana 4</span>
+      <span id="cal-week-label">Calendario semanal · 2026–27</span>
     </div>
 
     <h1 style="margin:8px 0 12px;">
@@ -117,19 +61,8 @@
   </footer>
 </main>
 
-<script>
-  // Conmutador de tema
-  const btnTheme = document.getElementById('btn-theme-toggle');
-  if (btnTheme) {
-    btnTheme.onclick = function() {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
-        (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      const nextTheme = isDark ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', nextTheme);
-      localStorage.setItem('theme', nextTheme);
-    };
-  }
-</script>
+<script src="curso.js"></script>
 <script src="calendario.js"></script>
+<script>document.getElementById('cal-week-label').textContent = 'Calendario semanal · Semana ' + semanaDelCurso() + ' · En clase: Tema ' + temaProfesor();</script>
 </body>
 </html>

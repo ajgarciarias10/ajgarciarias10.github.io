@@ -1,4 +1,4 @@
-/* Banco Global de 130 preguntas compilado para el Generador Aleatorio de IPO */
+/* Banco Global de 170 preguntas compilado para el Generador Aleatorio de IPO */
 const BANCO_GLOBAL = [
   {
     "globalId": 1,
@@ -3716,6 +3716,1246 @@ const BANCO_GLOBAL = [
       {
         "texto": "Porque ninguna persona reconoce un portapapeles como objeto.",
         "explicacion": "La crítica se dirige a su cobertura funcional, no a una incomprensión absoluta.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 131,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Ingeniería de la interfaz",
+    "pagina": 170,
+    "enunciado": "Un equipo defiende que su aplicación se valorará bien porque su arquitectura interna es impecable, aunque la interfaz se decidirá más adelante. ¿Qué objeción plantea el tema?",
+    "opciones": [
+      {
+        "texto": "Al usuario no le interesa la estructura interna, sino cómo usar la aplicación; la interfaz determina en gran medida su impresión.",
+        "explicacion": "La página 170 afirma ambas ideas: la interfaz condiciona la percepción del usuario y este se fija en cómo usarla.",
+        "correcta": true
+      },
+      {
+        "texto": "La arquitectura interna es lo que más valora el usuario, así que el planteamiento es correcto.",
+        "explicacion": "El tema dice justo lo contrario: el usuario no está interesado en la estructura interna.",
+        "correcta": false
+      },
+      {
+        "texto": "La interfaz solo importa en aplicaciones de entretenimiento, no en sistemas profesionales.",
+        "explicacion": "El tema no limita la importancia de la interfaz a un tipo de aplicación.",
+        "correcta": false
+      },
+      {
+        "texto": "La interfaz únicamente influye en la estética, no en la percepción que el usuario tiene de la aplicación.",
+        "explicacion": "La página 170 subraya que la interfaz determina en gran medida esa percepción.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 132,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Ingeniería de la interfaz",
+    "pagina": 171,
+    "enunciado": "Una aplicación ya tiene la especificación, el diseño y el código casi terminados, y ahora se quiere replantear por completo cómo interactúa el usuario. ¿Qué cabe esperar según el tema?",
+    "opciones": [
+      {
+        "texto": "Que sea muy difícil cambiar la interacción y la presentación, salvo pequeños detalles.",
+        "explicacion": "La página 171 advierte de que, en ese punto, solo suelen poder cambiarse detalles menores.",
+        "correcta": true
+      },
+      {
+        "texto": "Que el cambio sea sencillo porque la interfaz es una capa independiente del resto.",
+        "explicacion": "El tema explica que, hecha así, la interfaz queda muy ligada al diseño de datos y funciones.",
+        "correcta": false
+      },
+      {
+        "texto": "Que basta con cambiar los colores para adaptar la interacción a los usuarios.",
+        "explicacion": "Cambiar la apariencia no replantea la interacción, que es lo que resulta difícil de modificar.",
+        "correcta": false
+      },
+      {
+        "texto": "Que el replanteamiento sea innecesario, porque la interfaz se diseña siempre al final.",
+        "explicacion": "Precisamente el tema critica dejar el diseño de la interfaz para el final.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 133,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Ingeniería de la interfaz",
+    "pagina": 171,
+    "enunciado": "¿Qué consecuencia atribuye el tema a diseñar primero los datos y las funciones y la interfaz después?",
+    "opciones": [
+      {
+        "texto": "Interfaces muy dependientes del diseño de los datos y las funciones, sin tener en cuenta al usuario que las usará.",
+        "explicacion": "Es la consecuencia descrita en la página 171.",
+        "correcta": true
+      },
+      {
+        "texto": "Interfaces más consistentes con el modelo mental del usuario.",
+        "explicacion": "Al no considerar al usuario desde el principio, ocurre lo contrario.",
+        "correcta": false
+      },
+      {
+        "texto": "Interfaces más fáciles de traducir a otros idiomas.",
+        "explicacion": "El tema no relaciona este orden de trabajo con la internacionalización.",
+        "correcta": false
+      },
+      {
+        "texto": "Interfaces que se pueden cambiar por completo sin coste al final del desarrollo.",
+        "explicacion": "La página 171 dice que, al final, solo se pueden cambiar pequeños detalles.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 134,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Ingeniería de la interfaz",
+    "pagina": 172,
+    "enunciado": "¿Qué orden de trabajo propone el tema para desarrollar un sistema interactivo?",
+    "opciones": [
+      {
+        "texto": "Partir de una idea clara de la interfaz y de las interacciones, y después desarrollar las especificaciones funcionales que guíen el diseño.",
+        "explicacion": "Es la conclusión que extrae la página 172.",
+        "correcta": true
+      },
+      {
+        "texto": "Especificar, diseñar funciones y datos, programar y, al terminar, diseñar la interfaz.",
+        "explicacion": "La página 172 rechaza explícitamente este orden.",
+        "correcta": false
+      },
+      {
+        "texto": "Programar primero un prototipo funcional completo y decidir la interfaz según cómo haya quedado el código.",
+        "explicacion": "Subordina la interfaz al código, que es lo que el tema quiere evitar.",
+        "correcta": false
+      },
+      {
+        "texto": "Diseñar la interfaz y las funciones por separado, sin que una guíe a la otra.",
+        "explicacion": "El tema pide que la idea de la interfaz guíe las especificaciones funcionales.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 135,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Ingeniería de la interfaz",
+    "pagina": 173,
+    "enunciado": "Un jefe de proyecto pregunta si las técnicas de Ingeniería del Software sirven para sistemas interactivos. ¿Qué respuesta da el tema?",
+    "opciones": [
+      {
+        "texto": "Sí, pero modificando algunos aspectos de los métodos de diseño clásico para adaptarlos a estos sistemas.",
+        "explicacion": "La página 173 lo plantea así.",
+        "correcta": true
+      },
+      {
+        "texto": "No; los sistemas interactivos requieren abandonar por completo la Ingeniería del Software.",
+        "explicacion": "El tema no las descarta: las adapta.",
+        "correcta": false
+      },
+      {
+        "texto": "Sí, y deben aplicarse sin ningún cambio respecto al diseño clásico.",
+        "explicacion": "La página 173 indica que hay que modificar algunos aspectos.",
+        "correcta": false
+      },
+      {
+        "texto": "Solo en la fase de programación, nunca en el diseño.",
+        "explicacion": "El tema habla de adaptar los métodos de diseño.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 136,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Ingeniería de la interfaz",
+    "pagina": 173,
+    "enunciado": "¿Qué conjunto de aspectos añade el tema al desarrollo de sistemas interactivos frente al diseño clásico?",
+    "opciones": [
+      {
+        "texto": "Captura de requisitos de interacción, análisis de tareas, realización de prototipos y evaluación.",
+        "explicacion": "Son los cuatro aspectos que enumera la página 173.",
+        "correcta": true
+      },
+      {
+        "texto": "Optimización del compilador, normalización de la base de datos y despliegue.",
+        "explicacion": "Son tareas técnicas que no aparecen entre los aspectos de interacción.",
+        "correcta": false
+      },
+      {
+        "texto": "Elección del lenguaje de programación, licencias y presupuesto.",
+        "explicacion": "El tema no menciona estos aspectos en este punto.",
+        "correcta": false
+      },
+      {
+        "texto": "Únicamente la evaluación final con usuarios, una vez terminado el producto.",
+        "explicacion": "La evaluación es solo uno de los aspectos, y no se reduce al final.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 137,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Ingeniería de la interfaz",
+    "pagina": 222,
+    "enunciado": "Durante el diseño, un equipo enseña al usuario las pantallas terminadas solo para que dé su aprobación. ¿Qué conclusión del tema incumple?",
+    "opciones": [
+      {
+        "texto": "Que el usuario debe tomar parte en el diseño y no ser un mero espectador.",
+        "explicacion": "La página 222 lo recoge entre las conclusiones del tema.",
+        "correcta": true
+      },
+      {
+        "texto": "Que el usuario solo debe intervenir cuando el producto esté a la venta.",
+        "explicacion": "El tema pide justo lo contrario: que participe en el diseño.",
+        "correcta": false
+      },
+      {
+        "texto": "Que la evaluación del diseño no tiene importancia.",
+        "explicacion": "La página 222 dice que la evaluación del diseño tiene gran importancia.",
+        "correcta": false
+      },
+      {
+        "texto": "Que no existen metodologías ni notaciones para el diseño.",
+        "explicacion": "El tema afirma que existen y que deben utilizarse.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 138,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Ingeniería de la interfaz",
+    "pagina": 187,
+    "enunciado": "Ya están modeladas las tareas y toca implementarlas. ¿Cuál de estas listas recoge factores que el tema pide tener en cuenta?",
+    "opciones": [
+      {
+        "texto": "Tipos de interacción, principios y guías de estilo, gestión de entradas, diseño de la presentación y gestión de errores.",
+        "explicacion": "Son los factores que enumera la página 187.",
+        "correcta": true
+      },
+      {
+        "texto": "Solo la velocidad del procesador y el tamaño del ejecutable.",
+        "explicacion": "No forman parte de los factores de implementación de tareas del tema.",
+        "correcta": false
+      },
+      {
+        "texto": "Únicamente la paleta de colores y el logotipo.",
+        "explicacion": "Son aspectos visuales parciales; el tema incluye interacción, entradas y errores.",
+        "correcta": false
+      },
+      {
+        "texto": "El precio de venta y la campaña de marketing.",
+        "explicacion": "Son decisiones comerciales, ajenas a la implementación de las tareas.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 139,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Análisis de tareas",
+    "pagina": 175,
+    "enunciado": "Según el tema, ¿qué es una tarea?",
+    "opciones": [
+      {
+        "texto": "Una unidad significativa de trabajo en la actividad de una persona sobre una aplicación.",
+        "explicacion": "Es la definición de la página 175.",
+        "correcta": true
+      },
+      {
+        "texto": "Cualquier función interna del código, aunque el usuario no la perciba.",
+        "explicacion": "La tarea se define desde la actividad de la persona, no desde el código.",
+        "correcta": false
+      },
+      {
+        "texto": "Un botón concreto de la interfaz.",
+        "explicacion": "Un botón es un elemento de la interfaz, no una unidad de trabajo.",
+        "correcta": false
+      },
+      {
+        "texto": "Un error que comete el usuario al usar el sistema.",
+        "explicacion": "Los errores no definen el concepto de tarea.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 140,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Análisis de tareas",
+    "pagina": 175,
+    "enunciado": "¿Qué beneficios atribuye el tema al análisis de tareas?",
+    "opciones": [
+      {
+        "texto": "Un diseño consistente con el modelo conceptual del usuario, y facilitar el análisis y la evaluación de la usabilidad.",
+        "explicacion": "La página 175 menciona ambos, además de poder predecir el rendimiento e identificar problemas de uso.",
+        "correcta": true
+      },
+      {
+        "texto": "Eliminar la necesidad de evaluar la usabilidad.",
+        "explicacion": "Al contrario: el análisis facilita esa evaluación.",
+        "correcta": false
+      },
+      {
+        "texto": "Reducir el tamaño del código fuente.",
+        "explicacion": "El tema no menciona este beneficio.",
+        "correcta": false
+      },
+      {
+        "texto": "Garantizar que el sistema no tendrá nunca errores de programación.",
+        "explicacion": "El análisis de tareas trata del uso, no de la corrección del código.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 141,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Análisis de tareas",
+    "pagina": 176,
+    "enunciado": "Una analista solo recopila el vocabulario y los símbolos que usan los usuarios en su trabajo. ¿Qué le falta para completar el análisis de tareas descrito en el tema?",
+    "opciones": [
+      {
+        "texto": "Qué información necesita el usuario para hacer la tarea y cómo se realiza actualmente.",
+        "explicacion": "La página 176 incluye el qué, los elementos (terminología y símbolos) y el cómo.",
+        "correcta": true
+      },
+      {
+        "texto": "Nada: la terminología del dominio es todo lo que estudia el análisis de tareas.",
+        "explicacion": "La terminología es solo una de las tres partes.",
+        "correcta": false
+      },
+      {
+        "texto": "El presupuesto del proyecto y el lenguaje de programación.",
+        "explicacion": "No forman parte del análisis de tareas.",
+        "correcta": false
+      },
+      {
+        "texto": "Los colores corporativos de la empresa.",
+        "explicacion": "Es un aspecto visual, no un componente del análisis de tareas.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 142,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Análisis de tareas",
+    "pagina": 181,
+    "enunciado": "Un equipo quiere identificar qué conocimiento necesita el usuario para hacer una tarea y cómo tiene organizado ese conocimiento. ¿Qué método de análisis de tareas usa?",
+    "opciones": [
+      {
+        "texto": "Análisis basado en conocimiento.",
+        "explicacion": "La página 181 lo define exactamente así.",
+        "correcta": true
+      },
+      {
+        "texto": "Descomposición de tareas.",
+        "explicacion": "Esta estudia cómo dividir una tarea en otras más simples.",
+        "correcta": false
+      },
+      {
+        "texto": "Análisis de relaciones entre entidades.",
+        "explicacion": "Es la aproximación orientada a objetos: actores, objetos, relaciones y acciones.",
+        "correcta": false
+      },
+      {
+        "texto": "Creación de un mockup.",
+        "explicacion": "Es una técnica de representación visual, no un método de análisis de tareas.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 143,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Análisis de tareas",
+    "pagina": 178,
+    "enunciado": "En el ejemplo de la grabación telemática de televisión, ¿cómo se clasifica «grabar una película esta noche y no estoy en casa»?",
+    "opciones": [
+      {
+        "texto": "Como un objetivo del usuario.",
+        "explicacion": "La página 178 lo incluye entre los objetivos del usuario.",
+        "correcta": true
+      },
+      {
+        "texto": "Como información requerida.",
+        "explicacion": "La información requerida son datos como la lista de programas o el canal.",
+        "correcta": false
+      },
+      {
+        "texto": "Como una acción necesaria.",
+        "explicacion": "Las acciones son pasos como iniciar la grabación.",
+        "correcta": false
+      },
+      {
+        "texto": "Como un operador de GOMS.",
+        "explicacion": "Los operadores son acciones básicas, y este ejemplo no usa GOMS.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 144,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Análisis de tareas",
+    "pagina": 179,
+    "enunciado": "En el mismo ejemplo de grabación, ¿qué se clasifica como «información requerida»?",
+    "opciones": [
+      {
+        "texto": "El tiempo de inicio, la duración y el canal.",
+        "explicacion": "La página 179 lo incluye junto a la lista de programas y el día de la semana.",
+        "correcta": true
+      },
+      {
+        "texto": "Ver un programa concreto.",
+        "explicacion": "Es un objetivo del usuario.",
+        "correcta": false
+      },
+      {
+        "texto": "Iniciar el proceso de grabación.",
+        "explicacion": "Es una acción necesaria.",
+        "correcta": false
+      },
+      {
+        "texto": "Comprobar que no se ha llegado al límite de programas.",
+        "explicacion": "Es una acción necesaria.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 145,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Análisis de tareas",
+    "pagina": 180,
+    "enunciado": "En el ejemplo de grabación, «comprobar que no se ha llegado al límite de programas» es…",
+    "opciones": [
+      {
+        "texto": "Una acción necesaria para cumplir el objetivo.",
+        "explicacion": "La página 180 la recoge entre las acciones necesarias.",
+        "correcta": true
+      },
+      {
+        "texto": "Un objetivo del usuario.",
+        "explicacion": "El usuario no quiere comprobar límites: quiere grabar un programa.",
+        "correcta": false
+      },
+      {
+        "texto": "Información requerida.",
+        "explicacion": "Es algo que hay que hacer, no un dato que se necesita.",
+        "correcta": false
+      },
+      {
+        "texto": "Una regla de selección de GOMS.",
+        "explicacion": "El ejemplo no usa GOMS; es una acción del análisis.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 146,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Análisis de tareas",
+    "pagina": 181,
+    "enunciado": "Un análisis se centra en los actores y los objetos del dominio, las relaciones entre ellos y las acciones que pueden realizar. ¿Qué método es?",
+    "opciones": [
+      {
+        "texto": "Análisis de relaciones entre entidades.",
+        "explicacion": "La página 181 lo describe como una aproximación orientada a objetos.",
+        "correcta": true
+      },
+      {
+        "texto": "Análisis basado en conocimiento.",
+        "explicacion": "Este se centra en el conocimiento del usuario y su organización.",
+        "correcta": false
+      },
+      {
+        "texto": "Descomposición de tareas.",
+        "explicacion": "Esta divide tareas en otras más simples.",
+        "correcta": false
+      },
+      {
+        "texto": "Wireframing.",
+        "explicacion": "Es una técnica de diseño de pantallas, no un método de análisis de tareas.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 147,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Análisis jerárquico y GOMS",
+    "pagina": 182,
+    "enunciado": "En un diagrama de análisis jerárquico, una subtarea lleva un asterisco (*) en la esquina. ¿Qué indica?",
+    "opciones": [
+      {
+        "texto": "Iteración: la subtarea se repite.",
+        "explicacion": "La página 182 usa el asterisco para la iteración de tareas.",
+        "correcta": true
+      },
+      {
+        "texto": "Selección: se elige una entre varias alternativas.",
+        "explicacion": "La selección se marca con un pequeño círculo.",
+        "correcta": false
+      },
+      {
+        "texto": "Tarea unitaria que no se descompone más.",
+        "explicacion": "La tarea unitaria se marca con una doble línea inferior.",
+        "correcta": false
+      },
+      {
+        "texto": "Que la subtarea es opcional y puede eliminarse del diagrama.",
+        "explicacion": "Esa notación no aparece en el tema.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 148,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Análisis jerárquico y GOMS",
+    "pagina": 182,
+    "enunciado": "Dos subtareas del mismo nivel llevan un pequeño círculo en la esquina. ¿Cómo se interpreta?",
+    "opciones": [
+      {
+        "texto": "Como selección de tareas: se realiza una de las alternativas.",
+        "explicacion": "La página 182 asocia el círculo a la selección.",
+        "correcta": true
+      },
+      {
+        "texto": "Como secuencia: se hacen todas, de izquierda a derecha.",
+        "explicacion": "La secuencia se representa con cajas sin marca.",
+        "correcta": false
+      },
+      {
+        "texto": "Como iteración de ambas.",
+        "explicacion": "La iteración se marca con asterisco.",
+        "correcta": false
+      },
+      {
+        "texto": "Como tareas que el sistema hace sin intervención del usuario.",
+        "explicacion": "El tema no da ese significado al círculo.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 149,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Análisis jerárquico y GOMS",
+    "pagina": 183,
+    "enunciado": "En el ejemplo «Hacer té», varias cajas (por ejemplo, 1.1 «llenar el cazo») tienen una doble línea debajo. ¿Qué significa?",
+    "opciones": [
+      {
+        "texto": "Que son tareas unitarias, que no se descomponen más.",
+        "explicacion": "La página 182 define esa notación como tarea unitaria.",
+        "correcta": true
+      },
+      {
+        "texto": "Que deben repetirse hasta que hierva el agua.",
+        "explicacion": "La repetición se indicaría con un asterisco.",
+        "correcta": false
+      },
+      {
+        "texto": "Que son alternativas excluyentes.",
+        "explicacion": "Las alternativas se marcan con un círculo.",
+        "correcta": false
+      },
+      {
+        "texto": "Que son tareas que el usuario puede saltarse.",
+        "explicacion": "La doble línea no indica que la tarea sea opcional.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 150,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Análisis jerárquico y GOMS",
+    "pagina": 183,
+    "enunciado": "El plan 0 de «Hacer té» dice: «hacer 1; al mismo tiempo, si tetera llena, hacer 2; 3-4-5; después de 4-5 min, hacer 6». ¿Qué aporta este plan al árbol?",
+    "opciones": [
+      {
+        "texto": "El orden y las condiciones en que se ejecutan las subtareas del objetivo 0.",
+        "explicacion": "Sin el plan, el árbol solo enumera subtareas; el plan indica cuándo y en qué orden se hacen.",
+        "correcta": true
+      },
+      {
+        "texto": "La lista de materiales necesarios para hacer el té.",
+        "explicacion": "El plan no describe recursos, sino el orden de ejecución.",
+        "correcta": false
+      },
+      {
+        "texto": "Que todas las subtareas se hacen siempre en el orden 1-2-3-4-5-6, sin condiciones.",
+        "explicacion": "La tarea 2 depende de una condición (si la tetera está llena).",
+        "correcta": false
+      },
+      {
+        "texto": "La descomposición interna de la tarea 1 «calentar agua».",
+        "explicacion": "Esa la describe el plan 1, no el plan 0.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 151,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Análisis jerárquico y GOMS",
+    "pagina": 183,
+    "enunciado": "Según el plan 1 de «Hacer té», ¿cuándo se ejecuta la subtarea 1.5 «apagar fuego»?",
+    "opciones": [
+      {
+        "texto": "Cuando hierve el agua, después de 1.1-1.2-1.3-1.4.",
+        "explicacion": "El plan 1 dice «hacer 1.1-1.2-1.3-1.4; cuando hierva el agua, hacer 1.5».",
+        "correcta": true
+      },
+      {
+        "texto": "Antes de llenar el cazo.",
+        "explicacion": "Contradice la secuencia del plan 1.",
+        "correcta": false
+      },
+      {
+        "texto": "A la vez que se sirve el té (tarea 6).",
+        "explicacion": "La tarea 6 pertenece al plan 0 y ocurre después.",
+        "correcta": false
+      },
+      {
+        "texto": "Solo si la tetera estaba llena.",
+        "explicacion": "Esa condición afecta a la tarea 2 del plan 0, no a la 1.5.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 152,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Análisis jerárquico y GOMS",
+    "pagina": 184,
+    "enunciado": "¿Qué es GOMS, según el tema?",
+    "opciones": [
+      {
+        "texto": "Una familia de técnicas de Card, Moran y Newell (1983) para modelar las tareas desde el punto de vista humano: objetivos, operadores, métodos y reglas de selección.",
+        "explicacion": "La página 184 da esta definición y el significado del acrónimo.",
+        "correcta": true
+      },
+      {
+        "texto": "Un lenguaje de programación de interfaces gráficas.",
+        "explicacion": "GOMS es una técnica de modelado, no un lenguaje de programación.",
+        "correcta": false
+      },
+      {
+        "texto": "Una norma ISO de accesibilidad web.",
+        "explicacion": "El tema no lo presenta como norma de accesibilidad.",
+        "correcta": false
+      },
+      {
+        "texto": "Una herramienta para crear mockups de alta fidelidad.",
+        "explicacion": "Las herramientas de mockups son otras (Photoshop, Illustrator…).",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 153,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Análisis jerárquico y GOMS",
+    "pagina": 185,
+    "enunciado": "Un usuario puede cerrar una ventana con Alt-F4 o con Archivo › Cerrar. En GOMS, ¿qué son estas dos formas?",
+    "opciones": [
+      {
+        "texto": "Métodos: alternativas distintas para conseguir el mismo objetivo.",
+        "explicacion": "La página 185 usa este mismo ejemplo para ilustrar los métodos.",
+        "correcta": true
+      },
+      {
+        "texto": "Objetivos: lo que el usuario pretende conseguir.",
+        "explicacion": "El objetivo es cerrar la ventana; estas son formas de lograrlo.",
+        "correcta": false
+      },
+      {
+        "texto": "Reglas de selección.",
+        "explicacion": "Las reglas deciden cuál de los métodos se usa.",
+        "correcta": false
+      },
+      {
+        "texto": "Tareas unitarias de un análisis jerárquico.",
+        "explicacion": "Es terminología de otra notación.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 154,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Análisis jerárquico y GOMS",
+    "pagina": 186,
+    "enunciado": "En el ejemplo GOMS, aparece «IF (USUARIO-EXPERTO) USAR-MÉTODO-TECLADO ELSE USAR-MÉTODO-RATÓN». ¿Qué elemento es?",
+    "opciones": [
+      {
+        "texto": "Una regla de selección: elige entre las alternativas para alcanzar el objetivo.",
+        "explicacion": "La página 186 la presenta como Rule 1.",
+        "correcta": true
+      },
+      {
+        "texto": "Un operador.",
+        "explicacion": "Los operadores son acciones básicas como pulsar teclas.",
+        "correcta": false
+      },
+      {
+        "texto": "Un objetivo.",
+        "explicacion": "El objetivo del ejemplo es CERRAR-VENTANA.",
+        "correcta": false
+      },
+      {
+        "texto": "Un plan de análisis jerárquico.",
+        "explicacion": "Es GOMS, no la notación de análisis jerárquico.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 155,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Sketch y wireframe",
+    "pagina": 191,
+    "enunciado": "En el primer sketch de una app, el equipo dedica la mañana a elegir los colores hexadecimales exactos de cada botón. ¿Qué se desvía de lo que propone el tema?",
+    "opciones": [
+      {
+        "texto": "El sketch debe reflejar ideas generales con trazos rápidos, no detalles finales.",
+        "explicacion": "Las páginas 190–191 lo presentan como una idea inicial rápida, a modo de tormenta de ideas.",
+        "correcta": true
+      },
+      {
+        "texto": "Nada: el sketch es la fase donde se fija la paleta definitiva.",
+        "explicacion": "La paleta y los detalles visuales se definen en el mockup.",
+        "correcta": false
+      },
+      {
+        "texto": "El sketch debería hacerse directamente en código.",
+        "explicacion": "El tema lo describe con lápiz y papel.",
+        "correcta": false
+      },
+      {
+        "texto": "El sketch debe hacerse solo cuando el prototipo está terminado.",
+        "explicacion": "Es la primera fase, no la última.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 156,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Sketch y wireframe",
+    "pagina": 191,
+    "enunciado": "¿Qué ideas debe recoger un sketch según el tema?",
+    "opciones": [
+      {
+        "texto": "Dónde irán los elementos característicos (como el logo), la navegación, la ayuda, los servicios de redes sociales y las áreas de contenido.",
+        "explicacion": "Es la lista de la página 191.",
+        "correcta": true
+      },
+      {
+        "texto": "El código CSS definitivo de cada componente.",
+        "explicacion": "Corresponde a fases mucho más avanzadas.",
+        "correcta": false
+      },
+      {
+        "texto": "Las pruebas de rendimiento del servidor.",
+        "explicacion": "No forma parte del boceto de la interfaz.",
+        "correcta": false
+      },
+      {
+        "texto": "Los textos legales definitivos de la aplicación.",
+        "explicacion": "El sketch trabaja ideas generales, no contenidos definitivos.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 157,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Sketch y wireframe",
+    "pagina": 193,
+    "enunciado": "Mientras bocetan, una estudiante escribe notas al margen explicando por qué descartó cada idea. ¿Cómo lo valora el tema?",
+    "opciones": [
+      {
+        "texto": "Positivamente: documentar con anotaciones al margen es recomendable y puede servir para otras interfaces.",
+        "explicacion": "La página 193 lo recomienda expresamente.",
+        "correcta": true
+      },
+      {
+        "texto": "Negativamente: el sketch no debe llevar ninguna anotación.",
+        "explicacion": "El tema pide documentar lo hecho con anotaciones.",
+        "correcta": false
+      },
+      {
+        "texto": "Es irrelevante, porque los sketches se tiran al terminar.",
+        "explicacion": "El tema dice que las anotaciones pueden reutilizarse en otras interfaces.",
+        "correcta": false
+      },
+      {
+        "texto": "Solo es válido si las notas se pasan a un documento formal antes de seguir.",
+        "explicacion": "El tema no exige ese paso.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 158,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Sketch y wireframe",
+    "pagina": 194,
+    "enunciado": "¿Qué frase resume mejor el enfoque de un wireframe?",
+    "opciones": [
+      {
+        "texto": "Se centra en «qué hace la pantalla, no cómo se ve».",
+        "explicacion": "Es la formulación literal de la página 194.",
+        "correcta": true
+      },
+      {
+        "texto": "Se centra en el aspecto visual final con colores y tipografías.",
+        "explicacion": "Eso corresponde al mockup; el wireframe carece de estilo.",
+        "correcta": false
+      },
+      {
+        "texto": "Es un programa navegable para hacer pruebas con usuarios.",
+        "explicacion": "Eso describe un prototipo.",
+        "correcta": false
+      },
+      {
+        "texto": "Es un análisis de las tareas que hace el usuario.",
+        "explicacion": "Es una fase de diseño de pantallas, no de análisis de tareas.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 159,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Sketch y wireframe",
+    "pagina": 197,
+    "enunciado": "Un wireframe usa tres familias tipográficas, los colores corporativos y fotos reales. ¿Qué consejo del tema incumple?",
+    "opciones": [
+      {
+        "texto": "No usar colores (solo tonos de gris) ni imágenes, y usar un solo tipo de letra, aunque sea en varios tamaños.",
+        "explicacion": "Son los consejos de la página 197.",
+        "correcta": true
+      },
+      {
+        "texto": "Ninguno: un wireframe debe parecerse al máximo al producto final.",
+        "explicacion": "Ese es el papel del mockup de alta fidelidad.",
+        "correcta": false
+      },
+      {
+        "texto": "Que el wireframe debe ser siempre a color para distinguir zonas.",
+        "explicacion": "El tema pide tonos de gris.",
+        "correcta": false
+      },
+      {
+        "texto": "Que nunca debe incluir logo ni navegación.",
+        "explicacion": "El tema cita el logo y la navegación como elementos habituales.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 160,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Sketch y wireframe",
+    "pagina": 198,
+    "enunciado": "¿Por qué el tema propone rejillas de 960 puntos para diseñar en monitor?",
+    "opciones": [
+      {
+        "texto": "Porque 960 es divisible entre 1, 2, 3, 4, 5, 6 y 12, y permite subdividir cómodamente en columnas.",
+        "explicacion": "Es la justificación de la página 198.",
+        "correcta": true
+      },
+      {
+        "texto": "Porque es la resolución exacta de todos los monitores.",
+        "explicacion": "El tema no lo justifica así.",
+        "correcta": false
+      },
+      {
+        "texto": "Porque obliga a usar exactamente 7 columnas.",
+        "explicacion": "960 no es divisible entre 7.",
+        "correcta": false
+      },
+      {
+        "texto": "Porque así se evita tener que diseñar para móvil.",
+        "explicacion": "El tema pide también wireframes para dispositivos pequeños.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 161,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Sketch y wireframe",
+    "pagina": 202,
+    "enunciado": "Un equipo debe hacer wireframes de una web responsive. ¿Por dónde recomienda empezar el tema?",
+    "opciones": [
+      {
+        "texto": "Por los anchos estrechos: móvil, después tableta y después escritorio.",
+        "explicacion": "La página 202 recomienda empezar por el dispositivo más pequeño.",
+        "correcta": true
+      },
+      {
+        "texto": "Por el escritorio, y adaptarlo después reduciendo.",
+        "explicacion": "Es el orden contrario al recomendado.",
+        "correcta": false
+      },
+      {
+        "texto": "Solo por el escritorio: el resto lo ajustan los programadores.",
+        "explicacion": "El tema dice que no se debe dejar el diseño a los programadores.",
+        "correcta": false
+      },
+      {
+        "texto": "Por la tableta, porque es el tamaño intermedio.",
+        "explicacion": "El tema indica empezar por el más pequeño.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 162,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Sketch y wireframe",
+    "pagina": 200,
+    "enunciado": "Con el armazón del wireframe ya hecho, ¿cómo se crea la jerarquía de la información?",
+    "opciones": [
+      {
+        "texto": "Con la tipografía: distintos tamaños de fuente, negritas y subrayados para diferenciar niveles.",
+        "explicacion": "Es lo que indica la página 200.",
+        "correcta": true
+      },
+      {
+        "texto": "Con colores distintos para cada nivel de información.",
+        "explicacion": "El wireframe no usa colores.",
+        "correcta": false
+      },
+      {
+        "texto": "Con fotografías que señalen lo más importante.",
+        "explicacion": "El wireframe evita las imágenes.",
+        "correcta": false
+      },
+      {
+        "texto": "Con animaciones que llamen la atención.",
+        "explicacion": "El tema no lo propone para un wireframe.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 163,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Mockups y prototipos",
+    "pagina": 190,
+    "enunciado": "¿En qué se diferencia el prototipo de sketches, wireframes y mockups, según el tema?",
+    "opciones": [
+      {
+        "texto": "Los otros tres son más creativos y abstractos; el prototipo lleva las ideas a la vida y es necesario para las pruebas de usabilidad.",
+        "explicacion": "Es la comparación de la página 190.",
+        "correcta": true
+      },
+      {
+        "texto": "El prototipo es más abstracto que el sketch.",
+        "explicacion": "Es al revés: el prototipo es el más concreto.",
+        "correcta": false
+      },
+      {
+        "texto": "El prototipo no sirve para probar la experiencia de usuario.",
+        "explicacion": "El tema dice que es necesario precisamente para eso.",
+        "correcta": false
+      },
+      {
+        "texto": "El prototipo es siempre la primera fase del diseño.",
+        "explicacion": "Suele ser la última de las cuatro fases.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 164,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Mockups y prototipos",
+    "pagina": 205,
+    "enunciado": "Un equipo prepara rápido una maqueta intermedia para discutir el estilo, sin buscar todavía el acabado final. ¿Qué tipo de mockup es?",
+    "opciones": [
+      {
+        "texto": "De media fidelidad: transitorio, sin perder demasiado tiempo.",
+        "explicacion": "La página 205 la distingue de la de alta fidelidad, que es casi el producto final.",
+        "correcta": true
+      },
+      {
+        "texto": "De alta fidelidad.",
+        "explicacion": "La alta fidelidad es casi el producto final.",
+        "correcta": false
+      },
+      {
+        "texto": "Un wireframe.",
+        "explicacion": "El wireframe no incluye estilo visual.",
+        "correcta": false
+      },
+      {
+        "texto": "Un prototipo navegable.",
+        "explicacion": "El prototipo es interactivo; el mockup suele ser estático.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 165,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Mockups y prototipos",
+    "pagina": 206,
+    "enunciado": "¿Qué afirmación sobre los mockups es correcta?",
+    "opciones": [
+      {
+        "texto": "Suelen ser estáticos e incluyen detalles visuales como colores y tipografía; sus textos e imágenes no tienen por qué ser definitivos.",
+        "explicacion": "Es lo que describe la página 206.",
+        "correcta": true
+      },
+      {
+        "texto": "Son siempre navegables y permiten probar la validación de formularios.",
+        "explicacion": "Eso corresponde al prototipo.",
+        "correcta": false
+      },
+      {
+        "texto": "No incluyen colores ni tipografías.",
+        "explicacion": "Eso describe un wireframe.",
+        "correcta": false
+      },
+      {
+        "texto": "Exigen que todos los textos e imágenes sean ya los definitivos.",
+        "explicacion": "La página 206 dice que no tienen por qué serlo.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 166,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Mockups y prototipos",
+    "pagina": 209,
+    "enunciado": "¿Cuál de estos es un punto fuerte del mockup, según el tema?",
+    "opciones": [
+      {
+        "texto": "Permite probar el diseño antes de escribir código y ayuda a crear el libro de estilo.",
+        "explicacion": "Ambos aparecen entre los puntos fuertes de la página 209.",
+        "correcta": true
+      },
+      {
+        "texto": "Sustituye por completo las pruebas de usabilidad con prototipos.",
+        "explicacion": "El tema reserva las pruebas de usabilidad a los prototipos.",
+        "correcta": false
+      },
+      {
+        "texto": "Es más difícil de presentar a quien no es diseñador.",
+        "explicacion": "Es al revés: es más fácil de presentar, sobre todo en alta fidelidad.",
+        "correcta": false
+      },
+      {
+        "texto": "Hace los cambios de diseño más rígidos.",
+        "explicacion": "El tema dice que es flexible y facilita los cambios.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 167,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Mockups y prototipos",
+    "pagina": 210,
+    "enunciado": "Un mockup tiene bordes redondeados con degradado y transparencia que no aportan nada y complican el CSS, y además no se alinea a ninguna rejilla. ¿Qué indica el tema?",
+    "opciones": [
+      {
+        "texto": "Son puntos débiles: demasiados efectos y detalles, y no usar rejillas ni alinear bien los elementos.",
+        "explicacion": "La página 210 recoge ambos como errores.",
+        "correcta": true
+      },
+      {
+        "texto": "Son buenas prácticas, porque hacen el mockup más realista.",
+        "explicacion": "El tema pide quitar lo que no aporta valor o dificulta el código.",
+        "correcta": false
+      },
+      {
+        "texto": "Solo sería un problema si el mockup fuera de baja fidelidad.",
+        "explicacion": "El tema no hace esa distinción.",
+        "correcta": false
+      },
+      {
+        "texto": "No importa, porque la alineación se decide en el prototipo.",
+        "explicacion": "No usar rejillas es un punto débil del propio mockup.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 168,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Mockups y prototipos",
+    "pagina": 216,
+    "enunciado": "¿Qué permite un prototipo que no permite un mockup estático?",
+    "opciones": [
+      {
+        "texto": "Navegar y probar la interacción: botones, validación de formularios, iconos y transiciones.",
+        "explicacion": "La página 216 dice que los prototipos son navegables y prueban la interacción.",
+        "correcta": true
+      },
+      {
+        "texto": "Ver la paleta de colores.",
+        "explicacion": "Un mockup ya incluye colores.",
+        "correcta": false
+      },
+      {
+        "texto": "Ver la tipografía.",
+        "explicacion": "Un mockup ya incluye tipografía.",
+        "correcta": false
+      },
+      {
+        "texto": "Distribuir el espacio de la pantalla.",
+        "explicacion": "Eso ya se trabaja en el wireframe.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 169,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Mockups y prototipos",
+    "pagina": 216,
+    "enunciado": "¿En qué tipo de proyecto se podría prescindir del prototipo, según el tema?",
+    "opciones": [
+      {
+        "texto": "En un blog o una web sencilla.",
+        "explicacion": "La página 216 lo admite en esos casos, frente a apps, videojuegos o grandes webs.",
+        "correcta": true
+      },
+      {
+        "texto": "En un videojuego.",
+        "explicacion": "El tema lo pone como ejemplo de proyecto donde el prototipo es muy útil.",
+        "correcta": false
+      },
+      {
+        "texto": "En una app compleja.",
+        "explicacion": "Es un caso en el que el prototipo resulta de gran utilidad.",
+        "correcta": false
+      },
+      {
+        "texto": "En una web grande con muchas secciones.",
+        "explicacion": "El tema lo cita entre los proyectos que sí lo necesitan.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 170,
+    "tema": "4",
+    "temaTitulo": "Tema 4 · Ingeniería de la interfaz",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Mockups y prototipos",
+    "pagina": 217,
+    "enunciado": "Al crear un prototipo, ¿qué recomienda el tema?",
+    "opciones": [
+      {
+        "texto": "Que intervengan diseño, cliente y desarrollo, y diseñar a tamaño real incluyendo la estructura de navegación.",
+        "explicacion": "Son recomendaciones de la página 217.",
+        "correcta": true
+      },
+      {
+        "texto": "Que lo haga solo el equipo de desarrollo, sin el cliente.",
+        "explicacion": "El tema pide la participación del cliente y de diseño.",
+        "correcta": false
+      },
+      {
+        "texto": "Diseñarlo a escala reducida y sin navegación para ahorrar tiempo.",
+        "explicacion": "El tema pide tamaño real y estructura de navegación.",
+        "correcta": false
+      },
+      {
+        "texto": "Que cada sección pueda tener un objetivo ambiguo para dar libertad al usuario.",
+        "explicacion": "El objetivo de cada sección debe quedar claro.",
         "correcta": false
       }
     ]

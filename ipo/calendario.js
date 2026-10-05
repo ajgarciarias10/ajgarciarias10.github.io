@@ -17,7 +17,7 @@ function calDefault() {
     email: '',
     sincronizado: false,
     calendarId: null,
-    semanaVista: 4,           // curso ya en desarrollo: Semana 4 (Lun 28 sep – Dom 4 oct 2026)
+    semanaVista: typeof semanaDelCurso === 'function' ? semanaDelCurso() : 5, // semana real del curso (curso.js)
     bloques: {
       // B1 anclado en ventana 24–48 h tras la última teoría del jueves:
       // Grupo A (Jue 11:30 → Vie 18:00 = 30.5 h) · Grupo B (Jue 16:30 → Vie 18:00 = 25.5 h).
@@ -375,10 +375,10 @@ function renderCalendario() {
   host.innerHTML =
     '<div class="cal-wrap">' +
     '<div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;margin-bottom:6px">' +
-      '<div><span class="eyebrow">CALENDARIO · SINCRONIZACIÓN SEMANAL · OCTUBRE (SEM ' + sem + ')</span>' +
+      '<div><span class="eyebrow">CALENDARIO · SINCRONIZACIÓN SEMANAL · SEMANA ' + sem + '</span>' +
       '<h2 style="margin:2px 0 0">Tu semana IPO, anclada a la docencia</h2>' +
       '<p class="muted" style="margin:4px 0 0;font-size:.9rem">Semana ' + vista + ' · ' + rangoSemana(vista) +
-      ' · Teoría Mié+Jue (A4-36) · Prácticas Mar (A3-170).<br>Tema 1 superado (100%) · Tema 2 en repaso activo · P1/P2 en laboratorio · <b>Práctica 4 i18n obligatoria</b> (Sem 9).</p></div>' +
+      ' · Teoría Mié+Jue (A4-36) · Prácticas Mar (A3-170).<br>En clase: Tema ' + temaDeSemana(vista) + ' · <a href="ponte-al-dia.html">¿Vas atrasado? Ponte al día →</a> · <b>Práctica 4 i18n obligatoria</b> (Sem 9).</p></div>' +
       '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="button secondary" id="cal-btn-ics" style="font-size:.85rem">⬇️ Exportar semana .ics</button>' +
       (CAL.sincronizado ? '<button class="button secondary" id="cal-btn-off" style="font-size:.85rem">Desconectar</button>' : '') + '</div>' +
     '</div>' +
@@ -490,6 +490,7 @@ function bindCalendario() {
       try {
         const s = JSON.parse(localStorage.getItem('ipo_uja_settings_v2') || '{}');
         s.semanaActual = CAL.semanaVista;
+        s.semanaElegida = true;
         localStorage.setItem('ipo_uja_settings_v2', JSON.stringify(s));
       } catch (e) {}
       calSave();
@@ -628,11 +629,11 @@ calLoad();
 if (!CAL.semanaVista) CAL.semanaVista = semanaActiva() || 4;
 document.addEventListener('DOMContentLoaded', () => {
   calLoad();
-  // El curso ya va por la Semana 4: no pisar la semana elegida por el usuario
+  // Semana real del curso (curso.js), salvo que el usuario haya elegido otra a mano
   try {
     const s = JSON.parse(localStorage.getItem('ipo_uja_settings_v2') || '{}');
-    if (!s.semanaActual) { s.semanaActual = 4; localStorage.setItem('ipo_uja_settings_v2', JSON.stringify(s)); }
-    CAL.semanaVista = Number(s.semanaActual) || 4;
+    if (!s.semanaElegida) { s.semanaActual = semanaDelCurso(); localStorage.setItem('ipo_uja_settings_v2', JSON.stringify(s)); }
+    CAL.semanaVista = Number(s.semanaActual) || semanaDelCurso();
   } catch (e) {}
   renderCalendario();
 });
