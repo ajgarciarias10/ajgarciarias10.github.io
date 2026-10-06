@@ -170,7 +170,7 @@ function render() {
       const restantes = e.total - e.hechas;
       acciones = completo
         ? `<a class="button secondary" href="${info.pagina}">Seguir practicando</a>`
-        : `<button type="button" data-prueba="${t}">${e.hechas ? `Demostrar las ${restantes} restantes` : 'Demostrar competencias'}</button>
+        : `<button type="button" data-prueba="${t}">${e.hechas ? `Continuar el test del tema` : 'Hacer test de 40 preguntas'}</button>
            <a class="button ghost" href="${info.pagina}">Repasar antes →</a>`;
     } else {
       cuerpo = `<p class="muted" style="margin:14px 0 0;font-size:.9rem;">Este tema aún no tiene banco de preguntas. Estúdialo con la guía y marca cada concepto cuando sepas explicarlo sin apuntes.</p>` + htmlConceptos(t, e);
@@ -204,7 +204,7 @@ function render() {
     cuerpoProf = `<p class="muted" style="margin:14px 0 0;font-size:.9rem;">${quedanClases ? 'Aún queda clase de este tema: ve, estúdialo' : 'Ya se ha terminado de dar en clase: estúdialo'} y demuestra sus competencias antes del ${esc(FECHA_CORTA.format(domingo))}.</p>` + htmlClases(prof) + htmlCompetencias(eProf);
     accionesProf = profCompleto
       ? `<a class="button secondary" href="${infoProf.pagina}">Seguir practicando</a>`
-      : `<button type="button" data-prueba="${prof}">${eProf.hechas ? `Demostrar las ${eProf.total - eProf.hechas} restantes` : 'Demostrar competencias'}</button>
+      : `<button type="button" data-prueba="${prof}">${eProf.hechas ? `Demostrar las ${eProf.total - eProf.hechas} restantes` : 'Hacer test de 40 preguntas'}</button>
          <a class="button ghost" href="${infoProf.pagina}">Practicar antes →</a>`;
   } else {
     cuerpoProf = `<p class="muted" style="margin:14px 0 0;font-size:.9rem;">Ve a clase aunque aún estés recuperando: este tema lo sigues en directo. Marca cada concepto cuando lo entiendas.</p>` + htmlClases(prof) + (eProf.total ? htmlConceptos(prof, eProf) : '');
@@ -263,145 +263,8 @@ function render() {
   });
 }
 
-/* ---------- Prueba de competencias ---------- */
-
-let prueba = null;
-
+/* All topic assessments use the saved 40-question test. */
 function abrirPrueba(tema) {
-  const comp = leerCompetencias()[tema] || {};
-  const preguntas = [];
-  COMPETENCIAS[tema].forEach((_, bloque) => {
-    if (comp[bloque]) return;
-    const pool = BANCO_GLOBAL.filter(q => Number(q.tema) === tema && q.bloqueIndex === bloque);
-    barajar(pool).slice(0, PREGUNTAS_POR_COMPETENCIA).forEach(q => preguntas.push(q));
-  });
-  if (!preguntas.length) return;
-
-  prueba = { tema, preguntas: barajar(preguntas), i: 0, orden: [], respuesta: null, aciertos: {} };
-  $('quiz-title').textContent = `Tema ${tema} · Prueba`;
-  $('quiz').showModal();
-  pintarPregunta();
+  location.href = TEMAS_CURSO[tema].pagina || `generador.html?tema=${tema}`;
 }
-
-function pintarPregunta() {
-  const p = prueba;
-  const q = p.preguntas[p.i];
-  if (p.respuesta === null) p.orden = barajar([0, 1, 2, 3]);
-  const total = p.preguntas.length;
-
-  $('quiz-count').textContent = `${p.i + 1}/${total}`;
-  $('quiz-bar').style.width = `${Math.round(100 * (p.i + (p.respuesta !== null ? 1 : 0)) / total)}%`;
-
-  const respondida = p.respuesta !== null;
-  const opciones = p.orden.map((oi, idx) => {
-    const o = q.opciones[oi];
-    let cls = 'option';
-    let fb = '';
-    if (respondida) {
-      cls += ' is-disabled';
-      if (oi === p.respuesta) cls += o.correcta ? ' correct-choice' : ' wrong-choice';
-      else if (o.correcta) cls += ' revealed-correct';
-      if (oi === p.respuesta || o.correcta) fb = `<div class="option-feedback">${esc(o.explicacion)}</div>`;
-    }
-    return `<label class="${cls}">
-      <input type="radio" name="q" value="${oi}" ${oi === p.respuesta ? 'checked' : ''} ${respondida ? 'disabled' : ''}>
-      <div><strong>${'ABCD'[idx]}.</strong> ${esc(o.texto)}${fb}</div>
-    </label>`;
-  }).join('');
-
-  $('quiz-body').innerHTML =
-    `<span class="badge">${esc(q.bloqueNombre)}</span>
-     <h3>${esc(q.enunciado)}</h3>
-     <form id="quiz-form" onsubmit="return false;">${opciones}</form>`;
-
-  $('quiz-form').onchange = e => {
-    if (e.target.name !== 'q' || p.respuesta !== null) return;
-    p.respuesta = Number(e.target.value);
-    const ok = q.opciones[p.respuesta].correcta;
-    p.aciertos[q.bloqueIndex] = (p.aciertos[q.bloqueIndex] || 0) + (ok ? 1 : 0);
-    pintarPregunta();
-  };
-
-  const ultima = p.i === total - 1;
-  $('quiz-foot').innerHTML = respondida
-    ? `<button type="button" id="quiz-next">${ultima ? 'Ver resultado' : 'Siguiente →'}</button>`
-    : '<span class="muted" style="font-size:.82rem;">Responde sin mirar apuntes · teclas 1–4</span>';
-  if (respondida) {
-    $('quiz-next').onclick = siguientePregunta;
-    $('quiz-next').focus();
-  }
-}
-
-function siguientePregunta() {
-  if (prueba.i < prueba.preguntas.length - 1) {
-    prueba.i++;
-    prueba.respuesta = null;
-    pintarPregunta();
-  } else {
-    terminarPrueba();
-  }
-}
-
-function terminarPrueba() {
-  const p = prueba;
-  const tema = p.tema;
-  const todas = leerCompetencias();
-  const comp = todas[tema] || {};
-  const hoy = new Date().toLocaleDateString('sv-SE'); // AAAA-MM-DD local
-
-  const evaluados = [...new Set(p.preguntas.map(q => q.bloqueIndex))].sort((a, b) => a - b);
-  const nuevas = [];
-  const fallidas = [];
-  evaluados.forEach(b => {
-    const n = p.preguntas.filter(q => q.bloqueIndex === b).length;
-    if ((p.aciertos[b] || 0) === n) { comp[b] = hoy; nuevas.push(b); } else fallidas.push(b);
-  });
-  todas[tema] = comp;
-  guardarCompetencias(todas);
-  if (temaCompleto(tema)) marcarTemaSuperadoEnCalendario(tema);
-
-  const totalAciertos = Object.values(p.aciertos).reduce((s, n) => s + n, 0);
-  const completo = temaCompleto(tema);
-  const info = TEMAS_CURSO[tema];
-
-  $('quiz-count').textContent = '';
-  $('quiz-bar').style.width = '100%';
-  $('quiz-body').innerHTML =
-    `<div class="result-hero">
-       <div class="num">${totalAciertos}/${p.preguntas.length}</div>
-       <p class="muted">${completo ? `Tema ${tema} demostrado por completo.` : `${nuevas.length} competencia${nuevas.length === 1 ? '' : 's'} nueva${nuevas.length === 1 ? '' : 's'} demostrada${nuevas.length === 1 ? '' : 's'}.`}</p>
-     </div>
-     <ul class="skills">${evaluados.map(b =>
-       `<li class="${nuevas.includes(b) ? 'ok' : 'fail'}"><span class="chk">${nuevas.includes(b) ? '✓' : ''}</span>
-         <span style="flex:1">${esc(COMPETENCIAS[tema][b])}</span>
-         ${nuevas.includes(b) ? '' : `<a href="${info.pagina}?apartado=${b}" style="font-size:.8rem;white-space:nowrap;">Repasar →</a>`}
-       </li>`).join('')}</ul>
-     ${fallidas.length ? '<p class="muted" style="font-size:.88rem;margin-top:14px;">Repasa los apartados marcados con el generador del tema y vuelve a intentarlo: solo se te preguntará lo pendiente.</p>' : ''}`;
-
-  $('quiz-foot').innerHTML = fallidas.length
-    ? `<button type="button" class="secondary" id="quiz-done">Cerrar</button><button type="button" id="quiz-retry">Reintentar lo pendiente</button>`
-    : `<button type="button" id="quiz-done">${completo ? 'Siguiente tema →' : 'Cerrar'}</button>`;
-  $('quiz-done').onclick = () => { $('quiz').close(); };
-  if ($('quiz-retry')) $('quiz-retry').onclick = () => abrirPrueba(tema);
-
-  prueba = null;
-  render();
-}
-
-$('quiz-close').onclick = () => $('quiz').close();
-$('quiz').addEventListener('close', () => {
-  prueba = null;
-  const sig = document.querySelector('.route-step.is-next');
-  if (sig) sig.scrollIntoView({ behavior: 'smooth', block: 'center' });
-});
-
-document.addEventListener('keydown', e => {
-  if (!prueba || !$('quiz').open) return;
-  const n = ['1', '2', '3', '4'].indexOf(e.key);
-  if (n !== -1 && prueba.respuesta === null) {
-    const input = $('quiz-form').querySelectorAll('input')[n];
-    if (input) { input.checked = true; input.dispatchEvent(new Event('change', { bubbles: true })); }
-  }
-});
-
 render();

@@ -9,7 +9,7 @@
   <header>
     <span class="eyebrow">Tema 4 · pp. 167–222</span>
     <h1>Ingeniería de la interfaz</h1>
-    <p class="lead">Análisis de tareas, análisis jerárquico y GOMS, y el paso de sketch a wireframe, mockup y prototipo. Preguntas al azar con la explicación de cada opción.</p>
+    <p class="lead">Análisis de tareas, análisis jerárquico y GOMS, y el paso de sketch a wireframe, mockup y prototipo. Tests de hasta 40 preguntas con sesión guardada y repaso de errores.</p>
   </header>
 
   <!-- Barra de control y estadísticas en vivo -->
@@ -22,7 +22,7 @@
       <span class="streak-badge" title="Preguntas seguidas acertadas">Racha <strong id="streak-val">0</strong></span>
       <span class="badge ok">✓ <strong id="correct-val">0</strong></span>
       <span class="badge wrong">✗ <strong id="wrong-val">0</strong></span>
-      <button id="btn-reset" class="btn-reset" title="Reiniciar marcador">Reiniciar</button>
+      <button id="btn-reset" class="btn-reset" title="Iniciar otro test al terminar el actual">Reiniciar</button>
     </div>
   </div>
 
@@ -33,7 +33,7 @@
       <span class="badge" id="gen-ref-badge" style="background:var(--soft); color:var(--accent);">Referencia</span>
       <div style="margin-left:auto;">
         <label id="failed-box" class="inline" style="font-size:0.85rem; cursor:pointer;" hidden>
-          <input type="checkbox" id="filter-failed"> Priorizar fallos (<span id="failed-count">0</span>)
+          <input type="checkbox" id="filter-failed"> Solo errores pendientes (<span id="failed-count">0</span>)
         </label>
       </div>
     </div>
@@ -70,5 +70,7 @@
   <noscript><p class="card">Activa JavaScript para realizar las preguntas.</p></noscript>
 </main>
 <script src="preguntas-tema-4.js"></script>
+<script src="curso.js"></script>
+<script src="progreso.js"></script>
 <script src="test.js"></script>
 </html>

@@ -12,7 +12,7 @@
   <header>
     <span class="eyebrow">Banco completo · 170 preguntas</span>
     <h1>Practicar</h1>
-    <p class="lead">Preguntas al azar de todo el temario o de un tema. Responde y comprueba al instante por qué cada opción es correcta o no.</p>
+    <p class="lead">Tests de hasta 40 preguntas de todo el banco o de un tema. Continúa donde lo dejaste y repasa los errores sin repetir tus aciertos.</p>
   </header>
 
   <!-- Píldoras de filtrado por tema -->
@@ -31,11 +31,11 @@
       <span class="streak-badge" title="Preguntas seguidas acertadas">Racha <strong id="streak-val">0</strong></span>
       <span class="badge ok">✓ <strong id="correct-val">0</strong></span>
       <span class="badge wrong">✗ <strong id="wrong-val">0</strong></span>
-      <button id="btn-reset" class="btn-reset" title="Reiniciar marcador">Reiniciar</button>
+      <button id="btn-reset" class="btn-reset" title="Iniciar otro test al terminar el actual">Reiniciar</button>
     </div>
     <div id="failed-box" class="gen-filters" hidden>
       <label class="inline" style="font-size:0.88rem; cursor:pointer;">
-        <input type="checkbox" id="filter-failed"> Priorizar fallos (<span id="failed-count">0</span>)
+        <input type="checkbox" id="filter-failed"> Solo errores pendientes (<span id="failed-count">0</span>)
       </label>
     </div>
   </div>
@@ -74,6 +74,9 @@
   </footer>
 </main>
 <script src="preguntas-globales.js"></script>
-<script src="generador.js"></script>
+<script src="curso.js"></script>
+<script src="progreso.js"></script>
+<script src="test.js"></script>
+<script src="repasos-semanales.js"></script>
 </body>
 </html>

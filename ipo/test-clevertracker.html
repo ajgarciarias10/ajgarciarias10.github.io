@@ -22,7 +22,7 @@
       <span class="streak-badge" title="Preguntas seguidas acertadas">Racha <strong id="streak-val">0</strong></span>
       <span class="badge ok">✓ <strong id="correct-val">0</strong></span>
       <span class="badge wrong">✗ <strong id="wrong-val">0</strong></span>
-      <button id="btn-reset" class="btn-reset" title="Reiniciar marcador">Reiniciar</button>
+      <button id="btn-reset" class="btn-reset" title="Iniciar otro test al terminar el actual">Reiniciar</button>
     </div>
   </div>
 
@@ -33,7 +33,7 @@
       <span class="badge" id="gen-ref-badge" style="background:var(--soft); color:var(--accent);">Referencia</span>
       <div style="margin-left:auto;">
         <label id="failed-box" class="inline" style="font-size:0.85rem; cursor:pointer;" hidden>
-          <input type="checkbox" id="filter-failed"> Priorizar fallos (<span id="failed-count">0</span>)
+          <input type="checkbox" id="filter-failed"> Solo errores pendientes (<span id="failed-count">0</span>)
         </label>
       </div>
     </div>
@@ -70,5 +70,7 @@
   <noscript><p class="card">Activa JavaScript para realizar el test interactivo.</p></noscript>
 </main>
 <script src="preguntas-clevertracker.js"></script>
+<script src="curso.js"></script>
+<script src="progreso.js"></script>
 <script src="test.js"></script>
 </html>

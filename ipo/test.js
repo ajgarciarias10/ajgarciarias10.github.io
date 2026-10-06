@@ -11,60 +11,83 @@ const shuffle = values => {
   return a;
 };
 
+const isGlobal = typeof BANCO_GLOBAL !== 'undefined';
+const QUESTIONS = isGlobal ? BANCO_GLOBAL.map(q => ({ ...q, bloque: q.bloqueIndex }))
+  : BANCO.map(q => ({ ...q, tema: TEMA }));
 let activeScope = 'all';
-let onlyFailed = false;
+let activeTema = isGlobal ? (new URLSearchParams(location.search).get('tema') || 'all') : TEMA;
+let onlyFailed = new URLSearchParams(location.search).get('fallos') === '1';
 let currentQuestion = null;
 let currentOrder = [];
 let currentAnswer = null;
-let unseenIds = [];
 let streak = 0;
-let maxStreak = 0;
 let countCorrect = 0;
 let countWrong = 0;
 let failedIds = new Set();
 let sessionHistory = [];
-
+let session;
+const labelBlock = q => isGlobal ? q.bloqueNombre : BLOQUES[q.bloque];
 function getMatchingPool() {
-  let pool = BANCO;
-  if (activeScope !== 'all') {
-    const scopeNum = Number(activeScope);
-    pool = pool.filter(q => q.bloque === scopeNum);
-  }
-  if (onlyFailed) {
-    const subset = pool.filter(q => failedIds.has(q.id));
-    if (subset.length) return subset;
-    onlyFailed = false;
-    if ($('filter-failed')) $('filter-failed').checked = false;
-  }
-  return pool;
+  return QUESTIONS.filter(q => (activeTema === 'all' || String(q.tema) === activeTema) &&
+    (activeScope === 'all' || q.bloque === Number(activeScope)));
 }
-
-function nextRandomQuestion() {
-  const pool = getMatchingPool();
-  if (!pool || !pool.length) return;
-
-  let available = pool.filter(q => unseenIds.includes(q.id));
-  if (!available.length) {
-    unseenIds = pool.map(q => q.id);
-    available = pool;
+function sessionKey() { return JSON.stringify([isGlobal ? 'global' : TEMA, activeTema, activeScope, onlyFailed]); }
+function openSession(fresh = false) {
+  session = IPOStudy.session(sessionKey(), getMatchingPool(), onlyFailed, fresh);
+  syncSession();
+}
+function syncSession() {
+  sessionHistory = session.responses.map((answer, i) => {
+    const question = QUESTIONS.find(q => IPOStudy.identity(q) === session.ids[i]);
+    return question && { question, order: session.orders[i], answer, isCorrect: question.opciones[answer].correcta };
+  }).filter(Boolean).reverse();
+  countCorrect = sessionHistory.filter(e => e.isCorrect).length;
+  countWrong = sessionHistory.length - countCorrect;
+  streak = 0;
+  for (const entry of sessionHistory) { if (!entry.isCorrect) break; streak++; }
+  failedIds = new Set(IPOStudy.eligible(getMatchingPool(), true).map(q => q.id ?? q.globalId));
+  currentQuestion = QUESTIONS.find(q => IPOStudy.identity(q) === session.ids[session.index]);
+  currentOrder = session.orders[session.index] || [];
+  currentAnswer = session.responses[session.index] ?? null;
+  renderHistory();
+  updateStatsDisplay();
+  renderProgress();
+  if (currentQuestion) renderCurrent();
+  else {
+    $('gen-prompt').textContent = 'No quedan preguntas disponibles en este filtro.';
+    $('gen-options').innerHTML = '';
+    $('gen-banner').hidden = true;
   }
-
-  const selected = available[Math.floor(Math.random() * available.length)];
-  unseenIds = unseenIds.filter(id => id !== selected.id);
-
-  currentQuestion = selected;
-  currentOrder = shuffle([0, 1, 2, 3]);
-  currentAnswer = null;
-
-  renderCurrent();
+  $('btn-next').disabled = !currentQuestion || currentAnswer === null || session.completed;
+  $('btn-next').textContent = session.completed ? 'Test terminado' : 'Siguiente pregunta';
+}
+function nextRandomQuestion() {
+  if (!session || currentAnswer === null || session.completed) return;
+  session.index++;
+  IPOStudy.save();
+  syncSession();
+}
+function renderProgress() {
+  const answered = session.responses.length;
+  $('test-progress').textContent = `Test: ${answered}/${session.ids.length} respuestas · ${countCorrect} aciertos · ${countWrong} fallos`;
+  $('test-save').textContent = IPOStudy.storageOK
+    ? 'Sesión guardada en este navegador. Puedes salir y continuar aquí.'
+    : 'No se ha podido guardar: el almacenamiento del navegador no está disponible.';
+  $('test-status').textContent = session.completed
+    ? 'Test terminado. Los aciertos no se repetirán; puedes iniciar otro test con preguntas nuevas y errores pendientes.'
+    : session.ids.length < 40 ? `Hay ${session.ids.length} preguntas disponibles de las 40 previstas, sin repetir aciertos.` : 'Responde las 40 preguntas. El repaso se registra al terminar.';
+  $('btn-reset').textContent = 'Nuevo test';
+  $('btn-reset').disabled = session.ids.length > 0 && !session.completed;
+  document.querySelectorAll('.pill-tab').forEach(t => t.classList.toggle('active', t.dataset.tema === activeTema));
 }
 
 function renderCurrent() {
   if (!currentQuestion) return;
   const q = currentQuestion;
+  if ($('gen-topic-badge')) $('gen-topic-badge').textContent = q.temaTitulo || `Tema ${q.tema}`;
   const isAnswered = currentAnswer !== null;
 
-  if ($('gen-block-badge')) $('gen-block-badge').textContent = BLOQUES[q.bloque] || 'General';
+  if ($('gen-block-badge')) $('gen-block-badge').textContent = labelBlock(q) || 'General';
   if ($('gen-ref-badge')) {
     $('gen-ref-badge').textContent = q.pagina ? `pág. ${q.pagina}` : 'Caso real';
   }
@@ -136,31 +159,23 @@ function renderCurrent() {
 
 function handleAnswer(choiceIdx) {
   if (currentAnswer !== null || !currentQuestion) return;
-  currentAnswer = choiceIdx;
-  const isCorrect = currentQuestion.opciones[choiceIdx].correcta;
-
-  if (isCorrect) {
-    streak++;
-    maxStreak = Math.max(maxStreak, streak);
-    countCorrect++;
-    failedIds.delete(currentQuestion.id);
-    triggerStreakBump();
-  } else {
-    streak = 0;
-    countWrong++;
-    failedIds.add(currentQuestion.id);
+  IPOStudy.answer(session, currentQuestion, choiceIdx);
+  syncSession();
+  if (session.completed) {
+    const competencies = leerCompetencias();
+    const themes = [...new Set(sessionHistory.map(e => e.question.tema))];
+    themes.filter(t => Number(t)).forEach(t => {
+      const comp = competencies[t] ||= {};
+      const blocks = [...new Set(QUESTIONS.filter(q => q.tema === t).map(q => q.bloque))];
+      blocks.forEach(b => {
+        const entries = sessionHistory.filter(e => e.question.tema === t && e.question.bloque === b);
+        if (entries.length >= 2 && entries.every(e => e.isCorrect)) comp[b] = fechaISO(new Date());
+      });
+      if (blocks.every(b => comp[b])) marcarTemaSuperadoEnCalendario(t);
+    });
+    guardarCompetencias(competencies);
   }
-
-  sessionHistory.unshift({
-    question: currentQuestion,
-    order: currentOrder,
-    answer: choiceIdx,
-    isCorrect,
-    time: Date.now()
-  });
-
-  renderCurrent();
-  renderHistory();
+  syncSession();
 }
 
 function triggerStreakBump() {
@@ -198,7 +213,7 @@ function renderHistory() {
     return `<div class="history-item">
       <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
         <span class="badge ${isCor ? 'ok' : 'wrong'}">${isCor ? '✓ Acierto' : '✗ Fallo'}</span>
-        <small class="muted">${BLOQUES[q.bloque]} · ${q.pagina ? `pág. ${q.pagina}` : 'Caso real'}</small>
+        <small class="muted">${escapeHTML(labelBlock(q))} · ${q.pagina ? `pág. ${q.pagina}` : 'Caso real'}</small>
       </div>
       <h4>${escapeHTML(q.enunciado)}</h4>
       <p style="font-size:0.9rem; margin:4px 0;"><strong>Tu elección:</strong> ${escapeHTML(chosen.texto)}</p>
@@ -207,88 +222,41 @@ function renderHistory() {
   }).join('');
 }
 
-// Event Listeners
-if ($('gen-options')) {
-  $('gen-options').onchange = e => {
-    if (e.target.name === 'gen-opt') {
-      handleAnswer(Number(e.target.value));
-    }
-  };
-}
-
-if ($('btn-next')) $('btn-next').onclick = nextRandomQuestion;
-if ($('btn-skip')) $('btn-skip').onclick = nextRandomQuestion;
-
-if ($('btn-reset')) {
-  $('btn-reset').onclick = () => {
-    streak = 0;
-    countCorrect = 0;
-    countWrong = 0;
-    failedIds.clear();
-    unseenIds = [];
-    sessionHistory = [];
-    updateStatsDisplay();
-    renderHistory();
-    nextRandomQuestion();
-  };
-}
-
-if ($('filter-failed')) {
-  $('filter-failed').onchange = e => {
-    onlyFailed = e.target.checked;
-    nextRandomQuestion();
-  };
-}
-
+// All navigation preserves the current test; unanswered questions cannot be skipped.
+$('gen-options').onchange = e => {
+  if (e.target.name === 'gen-opt') handleAnswer(Number(e.target.value));
+};
+$('btn-next').onclick = nextRandomQuestion;
+$('btn-skip').hidden = true;
+$('btn-reset').onclick = () => openSession(true);
+if ($('filter-failed')) $('filter-failed').checked = onlyFailed;
+if ($('filter-failed')) $('filter-failed').onchange = e => {
+  onlyFailed = e.target.checked;
+  openSession();
+};
 if ($('scope-selector')) {
-  $('scope-selector').onchange = e => {
-    activeScope = e.target.value;
-    unseenIds = [];
-    if (currentAnswer === null) {
-      nextRandomQuestion();
-    }
-  };
+  $('scope-selector').innerHTML = '<option value="all">Todos los apartados</option>' +
+    BLOQUES.map((name, i) => `<option value="${i}">${escapeHTML(name)}</option>`).join('');
+  const scope = new URLSearchParams(location.search).get('apartado');
+  if (scope !== null && BLOQUES[Number(scope)]) activeScope = scope;
+  $('scope-selector').value = activeScope;
+  $('scope-selector').onchange = e => { activeScope = e.target.value; openSession(); };
 }
-
+document.querySelectorAll('.pill-tab').forEach(tab => {
+  tab.onclick = () => { activeTema = tab.dataset.tema; openSession(); };
+});
 window.addEventListener('keydown', e => {
-  if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
-  const key = e.key.toLowerCase();
-
-  if (currentAnswer === null) {
-    let optIdx = -1;
-    if (['1', 'a'].includes(key)) optIdx = 0;
-    else if (['2', 'b'].includes(key)) optIdx = 1;
-    else if (['3', 'c'].includes(key)) optIdx = 2;
-    else if (['4', 'd'].includes(key)) optIdx = 3;
-
-    if (optIdx !== -1 && currentOrder[optIdx] !== undefined) {
-      e.preventDefault();
-      handleAnswer(currentOrder[optIdx]);
-      return;
-    }
-  }
-
-  if (key === ' ' || key === 'enter') {
-    if (currentAnswer !== null) {
-      e.preventDefault();
-      nextRandomQuestion();
-    }
-  } else if (key === 's' || key === 'r') {
-    e.preventDefault();
-    nextRandomQuestion();
+  if (['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(document.activeElement.tagName)) return;
+  const i = ['1', '2', '3', '4'].indexOf(e.key);
+  if (i !== -1 && currentAnswer === null && currentOrder[i] !== undefined) {
+    e.preventDefault(); handleAnswer(currentOrder[i]);
+  } else if ((e.key === ' ' || e.key === 'Enter') && currentAnswer !== null) {
+    e.preventDefault(); nextRandomQuestion();
   }
 });
-
-// Desplegable de apartados generado desde el propio banco (evita etiquetas desalineadas)
-if ($('scope-selector')) {
-  $('scope-selector').innerHTML = `<option value="all">Todos (${BANCO.length} preguntas)</option>` +
-    BLOQUES.map((nombre, i) => `<option value="${i}">${escapeHTML(nombre)} (${BANCO.filter(q => q.bloque === i).length})</option>`).join('');
-}
-
-// Start: ?apartado=N abre directamente ese apartado (enlace desde «Ponte al día»)
-const apartadoURL = new URLSearchParams(location.search).get('apartado');
-if (apartadoURL !== null && BLOQUES[Number(apartadoURL)] && $('scope-selector')) {
-  activeScope = apartadoURL;
-  $('scope-selector').value = apartadoURL;
-}
-nextRandomQuestion();
+const progress = document.createElement('section');
+progress.className = 'card';
+progress.innerHTML = '<p id="test-progress" role="status" aria-live="polite"></p><p id="test-status"></p><small id="test-save" class="muted"></small>';
+document.querySelector('.gen-bar').before(progress);
+document.querySelectorAll('.kbd-hint').forEach(el => { el.textContent = 'Teclas: 1–4 responder · Espacio siguiente'; });
+openSession();

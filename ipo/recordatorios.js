@@ -117,7 +117,7 @@ function repasoAEvento(r, indice) {
   return {
     clave: r.clave,
     titulo: `🔁 IPO · Repaso ${indice} — Tema ${r.tema}`,
-    descripcion: `${r.titulo}\nCierra apuntes (3 min recuerdo). Luego 10 preguntas aleatorias en IPO Study Lab con «Priorizar fallos».\n${URL_GENERADOR}`,
+    descripcion: `${r.titulo}\nCierra apuntes (3 min recuerdo). Luego un test de hasta 40 preguntas en IPO Study Lab y repaso de los errores.\n${URL_GENERADOR}?tema=${r.tema}`,
     fecha: r.fecha,
     hora: estadoRec.ajustes.hora,
     minutos: RECORDATORIOS_CONFIG.MINUTOS_REPASO
@@ -370,6 +370,10 @@ function renderRecordatorios() {
     proximos.forEach(r => {
       const li = document.createElement('li');
       li.textContent = `${r.fecha <= hoyLocal() ? '🔴 Hoy' : r.fecha} · Tema ${r.tema} — ${r.titulo}`;
+      const enlace = document.createElement('a');
+      enlace.href = `generador.html?tema=${r.tema}`;
+      enlace.textContent = ' · Hacer o continuar test';
+      li.append(enlace);
       lista.append(li);
     });
     if ($rec('rec-pendientes-vacio')) $rec('rec-pendientes-vacio').hidden = proximos.length > 0;
