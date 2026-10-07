@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calendario · IPO</title>
   <script src="nav.js"></script>
+<script src="cuenta-config.js"></script>
+<script src="cuenta-datos.js"></script>
+<script src="cuenta-drive.js"></script>
+<script src="cuenta.js"></script>
   <link rel="stylesheet" href="estilo.css">
   <link rel="stylesheet" href="calendario.css">
 </head>
@@ -16,7 +20,49 @@
     <p class="lead">Qué se da en cada clase según la planificación oficial, tus prácticas y tus bloques de estudio, semana a semana.</p>
   </header>
 
-  <!-- Navegación de semanas + grupo -->
+  <section class="card" id="planificador">
+    <h2>Tu plan de estudio, de clase al examen</h2>
+    <p class="muted">El primer repaso trabaja la teoría; los siguientes incorporan tests del tema. Puedes mover cada sesión o añadir otras. Los viajes desplazan el estudio al siguiente hueco libre.</p>
+    <form id="plan-ajustes" class="plan-form">
+      <label>Sesiones después de cada clase <input id="plan-cantidad" type="number" min="0" max="6" required></label>
+      <label>Días entre repasos <input id="plan-separacion" type="number" min="1" max="14" required></label>
+      <label>Hora habitual <input id="plan-hora" type="time" min="08:00" max="20:00" required></label>
+      <label>Minutos por sesión <input id="plan-minutos" type="number" min="15" max="60" step="15" required></label>
+      <label>Inicio del repaso de exámenes <input id="plan-inicio" type="date" min="2026-09-07" max="2027-07-30"></label>
+      <label>Fecha de tu examen <input id="plan-examen" type="date" min="2026-09-08" max="2027-07-31"></label>
+      <fieldset class="plan-days"><legend>Días de estudio en época de exámenes</legend>
+        <label><input type="checkbox" name="plan-dia" value="1"> Lun</label>
+        <label><input type="checkbox" name="plan-dia" value="2"> Mar</label>
+        <label><input type="checkbox" name="plan-dia" value="3"> Mié</label>
+        <label><input type="checkbox" name="plan-dia" value="4"> Jue</label>
+        <label><input type="checkbox" name="plan-dia" value="5"> Vie</label>
+        <label><input type="checkbox" name="plan-dia" value="6"> Sáb</label>
+        <label><input type="checkbox" name="plan-dia" value="7"> Dom</label>
+      </fieldset>
+      <button type="submit">Guardar y distribuir el estudio</button>
+    </form>
+    <p class="muted">La fecha del examen la eliges tú: no presupone una convocatoria oficial. El plan incluye repaso por temas, tests y un simulacro mixto cada tres sesiones.</p>
+    <div class="cal-summary">
+      <form id="plan-viaje" class="plan-form">
+        <h3>Viaje o días sin disponibilidad</h3>
+        <label>Desde <input id="viaje-desde" type="date" min="2026-09-07" max="2027-07-31" required></label>
+        <label>Hasta <input id="viaje-hasta" type="date" min="2026-09-07" max="2027-07-31" required></label>
+        <button type="submit" class="secondary">Reservar estos días</button>
+        <ul id="plan-viajes" class="plan-wide"></ul>
+      </form>
+      <form id="plan-extra" class="plan-form">
+        <h3>Añadir una sesión puntual</h3>
+        <label>Fecha <input id="extra-fecha" type="date" min="2026-09-07" max="2027-07-30" required></label>
+        <label>Hora <input id="extra-hora" type="time" min="08:00" max="20:00" value="18:00" required></label>
+        <label>Actividad <select id="extra-tipo"><option value="teoria">Repaso teórico</option><option value="test">Test del tema</option><option value="simulacro">Simulacro mixto</option></select></label>
+        <label>Tema <select id="extra-tema"></select></label>
+        <button type="submit" class="secondary">Añadir sesión</button>
+      </form>
+    </div>
+    <p id="plan-aviso" role="status" aria-live="polite"></p>
+  </section>
+
+    <!-- Navegación de semanas + grupo -->
   <div class="cal-toolbar">
     <div class="week-nav">
       <button type="button" class="icon-btn" id="cal-prev" aria-label="Semana anterior">‹</button>
@@ -53,6 +99,12 @@
     </section>
   </div>
 
+  <section class="card" aria-label="Línea temporal de estudio">
+    <h2>Línea temporal de esta semana</h2>
+    <p class="muted" id="plan-resumen"></p>
+    <ol id="plan-timeline" class="plan-timeline"></ol>
+  </section>
+
   <!-- Rejilla semanal (escritorio) -->
   <section class="card cal-board" aria-label="Vista semanal">
     <div class="cal-legend">
@@ -68,7 +120,7 @@
     <div class="section-head">
       <div>
         <h2>Tus bloques de estudio</h2>
-        <p class="muted" style="margin:0;">Se repiten cada semana. Pon el primero entre 24 y 48 h después de la clase del jueves: es cuando más rinde el repaso. <span id="cal-total"></span>.</p>
+        <p class="muted" style="margin:0;">Se repiten cada semana. Son huecos de estudio adicionales al plan de arriba y se mantienen durante los exámenes. Los días reservados por viajes se omiten. <span id="cal-total"></span>.</p>
       </div>
     </div>
     <ul class="blocks" id="cal-bloques"></ul>
@@ -85,13 +137,16 @@
     <div class="actions"><button type="button" id="cal-ics">Descargar el curso completo (.ics)</button></div>
   </section>
 
-  <footer>Horario y planificación según IPO2627.pdf (pp. 3–4 y 15). Tus grupos y bloques se guardan solo en este navegador.</footer>
+  <footer>Horario y planificación según IPO2627.pdf (pp. 3–4 y 15). Tu plan, grupos y bloques se guardan en tu Drive al conectar la cuenta; sin conexión de cuenta, solo en este navegador.</footer>
 </main>
 
-<script src="curso.js"></script>
-<script src="calendario.js"></script>
-<script src="preguntas-globales.js"></script>
-<script src="progreso.js"></script>
-<script src="repasos-semanales.js"></script>
+<script type="text/plain" data-ipo-script="curso.js"></script>
+<script type="text/plain" data-ipo-script="plan-estudio.js"></script>
+<script type="text/plain" data-ipo-script="calendario.js"></script>
+<script type="text/plain" data-ipo-script="preguntas-globales.js"></script>
+<script type="text/plain" data-ipo-script="progreso.js"></script>
+<script type="text/plain" data-ipo-script="planificador.js"></script>
+<script type="text/plain" data-ipo-script="repasos-semanales.js"></script>
+<script src="cuenta-arranque.js"></script>
 </body>
 </html>

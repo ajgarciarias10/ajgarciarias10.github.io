@@ -5,7 +5,7 @@ window.IPOStudy = (() => {
   let storageOK = true;
   let data;
   try {
-    data = JSON.parse(localStorage.getItem(KEY) || 'null');
+    data = JSON.parse((window.IPOStorage || localStorage).getItem(KEY) || 'null');
   } catch (_) { storageOK = false; }
   if (!data || data.version !== 1 || !data.answers || !data.sessions || !data.weeks) {
     data = { version: 1, answers: {}, sessions: {}, weeks: {} };
@@ -17,7 +17,7 @@ window.IPOStudy = (() => {
     return fechaISO(monday);
   };
   const save = () => {
-    try { localStorage.setItem(KEY, JSON.stringify(data)); storageOK = true; }
+    try { (window.IPOStorage || localStorage).setItem(KEY, JSON.stringify(data)); storageOK = true; }
     catch (_) { storageOK = false; }
   };
   const eligible = (pool, failed = false) => pool.filter(q => {
@@ -72,13 +72,13 @@ window.IPOStudy = (() => {
       });
       // Finish due reminders only for themes actually covered by this test.
       try {
-        const reminders = JSON.parse(localStorage.getItem('ipo_recordatorios_v1') || 'null');
+        const reminders = JSON.parse((window.IPOStorage || localStorage).getItem('ipo_recordatorios_v1') || 'null');
         if (reminders && Array.isArray(reminders.repasos)) {
           const themes = new Set(s.ids.map(id => JSON.parse(id)[0]));
           reminders.repasos.forEach(r => {
             if (themes.has(String(r.tema)) && r.fecha <= fechaISO(new Date())) r.hecho = true;
           });
-          localStorage.setItem('ipo_recordatorios_v1', JSON.stringify(reminders));
+          (window.IPOStorage || localStorage).setItem('ipo_recordatorios_v1', JSON.stringify(reminders));
         }
       } catch (_) { /* Keep quiz usable without reminder storage. */ }
     }

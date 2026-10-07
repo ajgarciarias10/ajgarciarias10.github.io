@@ -1013,3 +1013,8 @@ dialog.quiz::backdrop { background: rgba(4, 5, 12, 0.6); backdrop-filter: blur(4
 .weekly-table { overflow-x:auto; }
 .weekly-table table { width:100%; border-collapse:collapse; }
 .weekly-table th, .weekly-table td { text-align:left; padding:10px; border-bottom:1px solid var(--line, #334155); }
+
+.account-panel { border: 1px solid var(--border); }
+.account-panel > strong { display: block; overflow-wrap: anywhere; }
+.account-panel [data-status] { font-size: .9rem; color: var(--text-muted); margin: 8px 0 12px; }
+.account-panel .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }

@@ -14,7 +14,8 @@
     { href: 'tema-1.html', label: 'Temas', match: ['tema-1.html', 'tema-2.html', 'tema-3.html', 'tema-4.html'] },
     { href: 'generador.html', label: 'Practicar', match: ['generador.html', 'test-clevertracker.html'] },
     { href: 'guia-estudio.html', label: 'Guía' },
-    { href: 'calendario.html', label: 'Calendario' }
+    { href: 'calendario.html', label: 'Calendario' },
+    { href: 'cuenta.html', label: 'Mi cuenta' }
   ];
 
   function pageName() {

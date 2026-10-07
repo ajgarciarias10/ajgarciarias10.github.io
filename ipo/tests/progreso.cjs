@@ -95,7 +95,7 @@ test('all six quiz pages render, reject skipping, finish and resume with saved a
     const context = vm.createContext({ document, location: { search: '' }, URLSearchParams, Date, Math, JSON, Set, Event,
       localStorage: { getItem: k => store.get(k) || null, setItem: (k, v) => store.set(k, v) } });
     context.window = context; context.addEventListener = () => {}; context.dispatchEvent = () => {};
-    const scripts = [...html.matchAll(/<script src="([^"]+)"/g)].map(m => m[1]).filter(f => f !== 'nav.js' && f !== 'repasos-semanales.js');
+    const scripts = [...html.matchAll(/<script (?:src|type="text\/plain" data-ipo-script)="([^"]+)"/g)].map(m => m[1]).filter(f => f !== 'nav.js' && f !== 'repasos-semanales.js' && !f.startsWith('cuenta-') && f !== 'cuenta.js');
     scripts.forEach(file => vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context));
     if (!scripts.includes('preguntas-globales.js')) vm.runInContext(fs.readFileSync(path.join(root, 'preguntas-globales.js'), 'utf8'), context);
     vm.runInContext(fs.readFileSync(path.join(root, 'repasos-semanales.js'), 'utf8'), context);

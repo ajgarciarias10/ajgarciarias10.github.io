@@ -129,7 +129,7 @@ function sesionesDeTema(t) {
 /* Tema en clase hoy: el de la última clase de teoría dada. Se puede corregir a mano. */
 function temaProfesor(d = new Date()) {
   try {
-    const manual = Number(localStorage.getItem(CURSO_OVERRIDE_KEY));
+    const manual = Number((window.IPOStorage || localStorage).getItem(CURSO_OVERRIDE_KEY));
     if (manual >= 1 && manual <= 10) return manual;
   } catch (e) { /* sin almacenamiento */ }
   const dadas = clasesDadas(d);
@@ -143,8 +143,8 @@ function temaProfesorPorFecha(d = new Date()) {
 
 function fijarTemaProfesor(tema) {
   try {
-    if (tema) localStorage.setItem(CURSO_OVERRIDE_KEY, String(tema));
-    else localStorage.removeItem(CURSO_OVERRIDE_KEY);
+    if (tema) (window.IPOStorage || localStorage).setItem(CURSO_OVERRIDE_KEY, String(tema));
+    else (window.IPOStorage || localStorage).removeItem(CURSO_OVERRIDE_KEY);
   } catch (e) { /* sin almacenamiento */ }
 }
 
@@ -170,18 +170,18 @@ const FECHA_CORTA = new Intl.DateTimeFormat('es-ES', { weekday: 'short', day: 'n
 const COMP_KEY = 'ipo_competencias_v1';
 
 function leerCompetencias() {
-  try { return JSON.parse(localStorage.getItem(COMP_KEY) || '{}'); } catch (e) { return {}; }
+  try { return JSON.parse((window.IPOStorage || localStorage).getItem(COMP_KEY) || '{}'); } catch (e) { return {}; }
 }
 
 function guardarCompetencias(c) {
-  try { localStorage.setItem(COMP_KEY, JSON.stringify(c)); } catch (e) { /* sin almacenamiento */ }
+  try { (window.IPOStorage || localStorage).setItem(COMP_KEY, JSON.stringify(c)); } catch (e) { /* sin almacenamiento */ }
 }
 
 /* Marca el tema como superado en el progreso que lee el calendario. */
 function marcarTemaSuperadoEnCalendario(tema) {
   try {
-    const p = JSON.parse(localStorage.getItem('ipo_uja_progress_v2') || '{}');
+    const p = JSON.parse((window.IPOStorage || localStorage).getItem('ipo_uja_progress_v2') || '{}');
     p[String(tema)] = Object.assign({}, p[String(tema)], { testAntiolvido: true });
-    localStorage.setItem('ipo_uja_progress_v2', JSON.stringify(p));
+    (window.IPOStorage || localStorage).setItem('ipo_uja_progress_v2', JSON.stringify(p));
   } catch (e) { /* sin almacenamiento */ }
 }

@@ -34,10 +34,10 @@ const tieneBanco = t => Array.isArray(COMPETENCIAS[t]);
 const conceptosDe = t => (typeof ESQUEMAS_TEMARIO !== 'undefined' && ESQUEMAS_TEMARIO[t]) ? ESQUEMAS_TEMARIO[t].conceptosClave : [];
 
 function leerConceptos() {
-  try { return JSON.parse(localStorage.getItem(CONCEPTOS_KEY) || '{}'); } catch (e) { return {}; }
+  try { return JSON.parse((window.IPOStorage || localStorage).getItem(CONCEPTOS_KEY) || '{}'); } catch (e) { return {}; }
 }
 function guardarConceptos(c) {
-  try { localStorage.setItem(CONCEPTOS_KEY, JSON.stringify(c)); } catch (e) { /* sin almacenamiento */ }
+  try { (window.IPOStorage || localStorage).setItem(CONCEPTOS_KEY, JSON.stringify(c)); } catch (e) { /* sin almacenamiento */ }
 }
 
 /* Estado de un tema: { total, hechas, items:[{nombre, ok}] } */

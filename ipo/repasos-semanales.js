@@ -9,9 +9,9 @@
     const thisWeek = IPOStudy.week();
     const records = IPOStudy.data.weeks[thisWeek] || {};
     let due = [];
-    try { due = JSON.parse(localStorage.getItem('ipo_recordatorios_v1') || '{}').repasos || []; } catch (_) {}
+    try { due = JSON.parse((window.IPOStorage || localStorage).getItem('ipo_recordatorios_v1') || '{}').repasos || []; } catch (_) {}
     const themes = Object.keys(TEMAS_CURSO).filter(t => Number(t) <= temaProfesor());
-    panel.innerHTML = `<h2>Tu repaso semanal</h2><p class="muted">Semana del ${escape(thisWeek)} · Un test por tema visto en clase. Cada respuesta y sesión se guardan en este navegador.</p>` +
+    panel.innerHTML = `<h2>Tu repaso semanal</h2><p class="muted">Semana del ${escape(thisWeek)} · Un test por tema visto en clase. Cada respuesta y sesión se guardan; el panel de cuenta indica si están sincronizadas con tu Drive.</p>` +
       '<div class="weekly-review-grid">' + themes.map(t => {
         const pool = bank.filter(q => String(q.tema) === t);
         const available = IPOStudy.eligible(pool).length;

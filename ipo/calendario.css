@@ -262,3 +262,20 @@
   .block-row .icon-btn { grid-area: x; }
   .agenda-item { grid-template-columns: 76px 10px 1fr; gap: 10px; }
 }
+
+/* Plan y línea temporal, visibles también en móvil. */
+.plan-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 18px 0; align-items: end; }
+.plan-form label, .plan-move label { display: flex; flex-direction: column; gap: 6px; font-size: .88rem; }
+.plan-form input, .plan-form select, .plan-move input { width: 100%; min-width: 0; box-sizing: border-box; }
+.plan-days, .plan-wide, .plan-form h3 { grid-column: 1 / -1; }
+.plan-days { display: flex; flex-wrap: wrap; gap: 14px; border: 1px solid var(--border); border-radius: 10px; }
+.plan-days label { flex-direction: row; align-items: center; }
+.plan-days input { width: auto; }
+.plan-timeline { list-style: none; padding: 0; margin: 0; }
+.plan-entry { display: flex; flex-direction: column; gap: 8px; border-left: 3px solid var(--success); padding: 14px 18px; margin: 18px 0; background: var(--success-soft); border-radius: 0 12px 12px 0; }
+.plan-entry.clase { border-color: var(--brand); background: var(--brand-soft); }
+.plan-entry.done { border-color: var(--border); background: var(--surface-muted); }
+.plan-entry time { font-size: .82rem; color: var(--text-muted); }
+.plan-entry .badge { align-self: start; }
+.plan-move { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
+@media (max-width: 600px) { .plan-form { grid-template-columns: 1fr; } .plan-move label { flex: 1 1 120px; } .plan-entry { padding: 12px; } }

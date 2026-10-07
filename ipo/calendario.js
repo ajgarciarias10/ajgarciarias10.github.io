@@ -30,11 +30,11 @@ const BLOQUES_INICIALES = [
 
 function cargar() {
   let e = {};
-  try { e = JSON.parse(localStorage.getItem(CAL_KEY) || '{}'); } catch (err) { e = {}; }
+  try { e = JSON.parse((window.IPOStorage || localStorage).getItem(CAL_KEY) || '{}'); } catch (err) { e = {}; }
   if (!e.grupo) {
     // Hereda grupo y subgrupo del calendario anterior si existían
     try {
-      const viejo = JSON.parse(localStorage.getItem('ipo_cal_sync_v1') || '{}');
+      const viejo = JSON.parse((window.IPOStorage || localStorage).getItem('ipo_cal_sync_v1') || '{}');
       if (viejo.grupo) e.grupo = viejo.grupo;
       if (viejo.sub) e.sub = viejo.sub;
     } catch (err) { /* nada */ }
@@ -47,10 +47,23 @@ function cargar() {
 }
 
 let EST = cargar();
-let semana = semanaDelCurso();
+function maxSemana() {
+  const fin = IPOPlan.state.examen || '2027-01-31';
+  return Math.max(15, Math.ceil((desdeISO(fin) - CURSO_INICIO + DIA_MS) / (7 * DIA_MS)));
+}
+function semanaActual() {
+  return Math.max(1, Math.min(maxSemana(), Math.floor((hoySinHora() - CURSO_INICIO) / (7 * DIA_MS)) + 1));
+}
+let semana = semanaActual();
+function bloquesSemana(sem) {
+  return EST.bloques.map((b, i) => ({ b, i })).filter(({ b }) => {
+    const iso = fechaISO(diaDeSemana(sem, b.dia));
+    return (!IPOPlan.state.examen || iso < IPOPlan.state.examen) && !IPOPlan.state.viajes.some(v => iso >= v.desde && iso <= v.hasta);
+  });
+}
 
 function guardar() {
-  try { localStorage.setItem(CAL_KEY, JSON.stringify(EST)); } catch (err) { /* sin almacenamiento */ }
+  try { (window.IPOStorage || localStorage).setItem(CAL_KEY, JSON.stringify(EST)); } catch (err) { /* sin almacenamiento */ }
 }
 
 /* ---------- Utilidades de fecha ---------- */
@@ -103,10 +116,10 @@ function enVentana(bloque, sem) {
 function renderCabecera() {
   const lunes = lunesDeSemana(semana);
   const domingo = new Date(lunes.getTime() + 6 * DIA_MS);
-  const actual = semana === semanaDelCurso();
+  const actual = semana === semanaActual();
   $('cal-semana').innerHTML = `Semana ${semana}<span>${esc(FECHA_DM.format(lunes))} – ${esc(FECHA_DM.format(domingo))}${actual ? ' · esta semana' : ''}</span>`;
   $('cal-prev').disabled = semana <= 1;
-  $('cal-next').disabled = semana >= 15;
+  $('cal-next').disabled = semana >= maxSemana();
   $('cal-hoy').hidden = actual;
 
   document.querySelectorAll('[data-grupo]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.grupo === EST.grupo)));
@@ -166,11 +179,13 @@ function renderRejilla() {
     const oficiales = ev.filter(e => e.dia === d && e.tipo !== 'libre').map(e =>
       `<div class="wk-ev ${e.tipo}" style="top:${top(e.ini)}px;height:${alto(horas(e.ini, e.fin))}px" title="${esc(e.titulo + ' · ' + e.detalle)}">
         <strong>${esc(e.titulo)}</strong><span>${e.ini}–${e.fin} · ${esc(e.lugar)}</span></div>`).join('');
-    const bloques = EST.bloques.map((b, i) => ({ b, i })).filter(x => x.b.dia === d).map(({ b, i }) =>
+    const bloques = bloquesSemana(semana).filter(x => x.b.dia === d).map(({ b, i }) =>
       `<button type="button" class="wk-ev estudio" style="top:${top(b.hora)}px;height:${alto(b.dur)}px" data-bloque="${i}" title="Editar bloque">
         <strong>${esc(b.titulo)}</strong><span>${b.hora}–${sumarHoras(b.hora, b.dur)}</span></button>`).join('');
+    const planificados = IPOPlan.generate({ grupo: EST.grupo, sub: EST.sub, bloques: EST.bloques }).filter(s => s.fecha === fechaISO(f) && !s.pendiente).map(s =>
+      `<div class="wk-ev estudio" style="top:${top(s.hora)}px;height:${alto(s.minutos / 60)}px" title="${esc(s.titulo)}"><strong>${esc(s.titulo)}</strong><span>${s.hora} · ${s.minutos} min</span></div>`).join('');
     const libre = ev.some(e => e.tipo === 'libre' && e.dia === d);
-    html += `<div class="wk-col ${fechaISO(f) === hoy ? 'is-today' : ''} ${libre ? 'is-free' : ''}">${oficiales}${bloques}</div>`;
+    html += `<div class="wk-col ${fechaISO(f) === hoy ? 'is-today' : ''} ${libre ? 'is-free' : ''}">${oficiales}${bloques}${planificados}</div>`;
   }
   const grid = $('cal-grid');
   grid.innerHTML = html;
@@ -215,6 +230,7 @@ function renderBloques() {
       guardar();
       renderRejilla();
       renderBloques();
+      if (window.renderPlan) window.renderPlan();
     };
   });
   $('cal-bloques').querySelectorAll('[data-quitar]').forEach(btn => {
@@ -223,15 +239,18 @@ function renderBloques() {
       guardar();
       renderRejilla();
       renderBloques();
+      if (window.renderPlan) window.renderPlan();
     };
   });
 }
 
 function render() {
+  semana = Math.min(semana, maxSemana());
   renderCabecera();
   renderResumen();
   renderRejilla();
   renderBloques();
+  if (window.renderPlan) window.renderPlan();
 }
 
 /* ---------- Exportar .ics del curso completo ---------- */
@@ -259,11 +278,14 @@ function descargarICS() {
   for (let s = 1; s <= 15; s++) {
     eventosSemana(s).filter(e => e.tipo !== 'libre').forEach(e => evento(e.iso, e.ini, e.fin, `IPO · ${e.titulo}: ${e.detalle}`, `${e.titulo} · ${e.detalle}`, `EPS Jaén · ${e.lugar}`));
   }
-  // Bloques de estudio: cada semana desde la actual hasta el fin de la docencia
-  const desde = semanaDelCurso();
-  EST.bloques.forEach(b => {
-    evento(fechaISO(diaDeSemana(desde, b.dia)), b.hora, sumarHoras(b.hora, b.dur), `Estudio IPO · ${b.titulo}`, 'Bloque de estudio · IPO Study Lab', '',
-      `RRULE:FREQ=WEEKLY;UNTIL=${fechaISO(CURSO_FIN).replace(/-/g, '')}T225959Z`);
+  // Exportar ocurrencias concretas: conservan viajes, movimientos y examen.
+  for (let sem = 1; sem <= maxSemana(); sem++) {
+    bloquesSemana(sem).forEach(({ b }) => {
+      evento(fechaISO(diaDeSemana(sem, b.dia)), b.hora, sumarHoras(b.hora, b.dur), `Estudio IPO · ${b.titulo}`, 'Bloque semanal de estudio', '');
+    });
+  }
+  IPOPlan.generate({ grupo: EST.grupo, sub: EST.sub, bloques: EST.bloques }).filter(s => !s.pendiente).forEach(s => {
+    evento(s.fecha, s.hora, sumarHoras(s.hora, s.minutos / 60), `IPO · ${s.titulo}`, `Actividad: ${s.tipo} · Tema: ${s.tema}${s.hecha ? ' · Completada' : ''}`, '');
   });
   L.push('END:VCALENDAR');
 
@@ -278,17 +300,17 @@ function descargarICS() {
 /* ---------- Controles ---------- */
 
 $('cal-prev').onclick = () => { semana = Math.max(1, semana - 1); render(); };
-$('cal-next').onclick = () => { semana = Math.min(15, semana + 1); render(); };
-$('cal-hoy').onclick = () => { semana = semanaDelCurso(); render(); };
+$('cal-next').onclick = () => { semana = Math.min(maxSemana(), semana + 1); render(); };
+$('cal-hoy').onclick = () => { semana = semanaActual(); render(); };
 document.querySelectorAll('[data-grupo]').forEach(b => { b.onclick = () => { EST.grupo = b.dataset.grupo; guardar(); render(); }; });
 document.querySelectorAll('[data-sub]').forEach(b => { b.onclick = () => { EST.sub = Number(b.dataset.sub); guardar(); render(); }; });
-$('cal-add').onclick = () => { EST.bloques.push({ dia: 6, hora: '17:00', dur: 1, titulo: 'Estudio' }); guardar(); renderRejilla(); renderBloques(); };
-$('cal-reset').onclick = () => { EST.bloques = BLOQUES_INICIALES.map(b => ({ ...b })); guardar(); renderRejilla(); renderBloques(); };
+$('cal-add').onclick = () => { EST.bloques.push({ dia: 6, hora: '17:00', dur: 1, titulo: 'Estudio' }); guardar(); render(); };
+$('cal-reset').onclick = () => { EST.bloques = BLOQUES_INICIALES.map(b => ({ ...b })); guardar(); render(); };
 $('cal-ics').onclick = descargarICS;
 document.addEventListener('keydown', e => {
   if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
   if (e.key === 'ArrowLeft' && semana > 1) { semana--; render(); }
-  if (e.key === 'ArrowRight' && semana < 15) { semana++; render(); }
+  if (e.key === 'ArrowRight' && semana < maxSemana()) { semana++; render(); }
 });
 
 render();

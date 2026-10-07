@@ -41,14 +41,14 @@ let estadoRec = {
 
 function cargarRecordatorios() {
   try {
-    const raw = localStorage.getItem(RECORDATORIOS_KEY);
+    const raw = (window.IPOStorage || localStorage).getItem(RECORDATORIOS_KEY);
     if (raw) estadoRec = Object.assign(estadoRec, JSON.parse(raw));
   } catch (e) {}
 }
 
 function guardarRecordatorios() {
   try {
-    localStorage.setItem(RECORDATORIOS_KEY, JSON.stringify(estadoRec));
+    (window.IPOStorage || localStorage).setItem(RECORDATORIOS_KEY, JSON.stringify(estadoRec));
   } catch (e) {}
 }
 
