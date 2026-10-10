@@ -67,17 +67,70 @@ function nextRandomQuestion() {
   IPOStudy.save();
   syncSession();
 }
+function exportCurrentTestJSON() {
+  const testData = {
+    fecha: new Date().toISOString(),
+    tema: activeTema,
+    apartado: activeScope,
+    total: session ? session.ids.length : 0,
+    contestadas: session ? session.responses.length : 0,
+    aciertos: countCorrect,
+    fallos: countWrong,
+    nota: session ? Number(((countCorrect / (session.ids.length || 1)) * 10).toFixed(1)) : 0,
+    completado: Boolean(session?.completed),
+    preguntas: session ? session.ids.map((id, i) => {
+      const q = QUESTIONS.find(item => IPOStudy.identity(item) === id);
+      const resp = session.responses[i];
+      return {
+        enunciado: q ? q.enunciado : id,
+        tema: q ? q.tema : '',
+        apartado: q ? labelBlock(q) : '',
+        respuestaElegida: resp !== undefined && q?.opciones[resp] ? q.opciones[resp].texto : null,
+        esCorrecta: resp !== undefined && q?.opciones[resp] ? Boolean(q.opciones[resp].correcta) : false,
+        explicacion: resp !== undefined && q?.opciones[resp] ? q.opciones[resp].explicacion : ''
+      };
+    }) : []
+  };
+  const blob = new Blob([JSON.stringify(testData, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `test-ipo-${activeTema}-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
 function renderProgress() {
-  const answered = session.responses.length;
-  $('test-progress').textContent = `Test: ${answered}/${session.ids.length} respuestas · ${countCorrect} aciertos · ${countWrong} fallos`;
-  $('test-save').textContent = IPOStudy.storageOK
-    ? 'Sesión guardada en este navegador. Puedes salir y continuar aquí.'
-    : 'No se ha podido guardar: el almacenamiento del navegador no está disponible.';
-  $('test-status').textContent = session.completed
+  const answered = session ? session.responses.length : 0;
+  if ($('test-progress')) $('test-progress').textContent = `Test: ${answered}/${session.ids.length} respuestas · ${countCorrect} aciertos · ${countWrong} fallos`;
+  if ($('test-save')) {
+    const driveStatus = window.IPOAccount?.user ? ' · Sincronizado con Drive' : '';
+    $('test-save').textContent = IPOStudy.storageOK
+      ? `Sesión guardada en este navegador${driveStatus}. Puedes salir y continuar aquí.`
+      : 'No se ha podido guardar: el almacenamiento del navegador no está disponible.';
+  }
+  if ($('test-status')) $('test-status').textContent = session.completed
     ? 'Test terminado. Los aciertos no se repetirán; puedes iniciar otro test con preguntas nuevas y errores pendientes.'
     : session.ids.length < 40 ? `Hay ${session.ids.length} preguntas disponibles de las 40 previstas, sin repetir aciertos.` : 'Responde las 40 preguntas. El repaso se registra al terminar.';
-  $('btn-reset').textContent = 'Nuevo test';
-  $('btn-reset').disabled = session.ids.length > 0 && !session.completed;
+  if ($('btn-reset')) {
+    $('btn-reset').textContent = 'Nuevo test';
+    $('btn-reset').disabled = session.ids.length > 0 && !session.completed;
+  }
+  if ($('btn-download-test')) {
+    $('btn-download-test').hidden = answered === 0;
+  }
+  if ($('test-completed-banner')) {
+    $('test-completed-banner').hidden = !session.completed;
+    if (session.completed) {
+      $('test-completed-banner').innerHTML = `<h3 style="margin-top:0;">🎉 ¡Test completado!</h3>` +
+        `<p style="margin:6px 0;"><strong>Calificación:</strong> ${(countCorrect / (session.ids.length || 1) * 10).toFixed(1)} / 10 · ${countCorrect} de ${session.ids.length} aciertos (${Math.round((countCorrect / (session.ids.length || 1)) * 100)}%)</p>` +
+        `<p class="muted" style="margin:4px 0 12px; font-size:0.9rem;">✓ Test guardado en tu historial y almacenamiento.${window.IPOAccount?.user ? ' Sincronizado con tu Google Drive.' : ' Conecta Drive para sincronizarlo entre tus dispositivos.'}</p>` +
+        `<div class="actions" style="margin-top:10px;"><button type="button" id="btn-banner-download">Descargar informe del test (JSON)</button>` +
+        (window.IPOAccount?.user ? `<button type="button" class="secondary" id="btn-banner-sync">Sincronizar con Drive</button>` : `<a href="cuenta.html" class="button secondary">Conectar Google Drive</a>`) +
+        `</div>`;
+      if ($('btn-banner-download')) $('btn-banner-download').onclick = exportCurrentTestJSON;
+      if ($('btn-banner-sync')) $('btn-banner-sync').onclick = () => { window.IPOAccount?.flush?.(); };
+    }
+  }
   document.querySelectorAll('.pill-tab').forEach(t => t.classList.toggle('active', t.dataset.tema === activeTema));
 }
 
@@ -256,7 +309,24 @@ window.addEventListener('keydown', e => {
 });
 const progress = document.createElement('section');
 progress.className = 'card';
-progress.innerHTML = '<p id="test-progress" role="status" aria-live="polite"></p><p id="test-status"></p><small id="test-save" class="muted"></small>';
+progress.innerHTML = '<p id="test-progress" role="status" aria-live="polite"></p><p id="test-status"></p>' +
+  '<div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:8px 0;">' +
+  '<button type="button" id="btn-save-test" class="button secondary" style="font-size:0.85rem; padding:5px 12px;">💾 Guardar test en Drive</button>' +
+  '<button type="button" id="btn-download-test" class="button secondary" style="font-size:0.85rem; padding:5px 12px;" hidden>📥 Descargar test realizado</button>' +
+  '</div>' +
+  '<div id="test-completed-banner" style="margin-top:12px; padding:12px; border-radius:8px; border:1px solid var(--border); background:var(--soft);" hidden></div>' +
+  '<small id="test-save" class="muted"></small>';
 document.querySelector('.gen-bar').before(progress);
+if ($('btn-save-test')) {
+  $('btn-save-test').onclick = () => {
+    if (session) {
+      IPOStudy.saveCurrentTest(session);
+      IPOStudy.save();
+      window.IPOAccount?.flush?.();
+      if ($('test-save')) $('test-save').textContent = '✓ Test guardado correctamente en tu navegador y sincronizado con Drive.';
+    }
+  };
+}
+if ($('btn-download-test')) $('btn-download-test').onclick = exportCurrentTestJSON;
 document.querySelectorAll('.kbd-hint').forEach(el => { el.textContent = 'Teclas: 1–4 responder · Espacio siguiente'; });
 openSession();

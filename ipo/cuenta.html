@@ -12,6 +12,43 @@
 </head>
 <body><main>
   <header><span class="eyebrow">IPO · UJA</span><h1>Tu progreso te pertenece</h1><p class="lead">Conecta tu correo institucional y recupera tu estudio desde otro dispositivo.</p></header>
+  <section class="card" id="config-drive-card">
+    <h2>Configuración de Google Drive</h2>
+    <p>Puedes sincronizar automáticamente tus tests, respuestas y calendario conectando tu Google Drive institucional (o cuenta personal de Google). Solo se requiere el <strong>Client ID</strong> público de Google Cloud Console (OAuth 2.0 Web Application).</p>
+    <div style="margin:16px 0;">
+      <label for="input-client-id" style="display:block; font-weight:600; margin-bottom:6px;">Google OAuth Client ID</label>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <input type="text" id="input-client-id" placeholder="Ej: 123456789-abcdef.apps.googleusercontent.com" style="flex:1; min-width:280px; padding:9px 12px; border-radius:6px; border:1px solid var(--border); font-family:monospace; font-size:0.9rem;">
+        <button type="button" id="btn-save-client-id">Guardar Client ID</button>
+      </div>
+      <p id="client-id-msg" class="muted" style="margin-top:8px; font-size:0.85rem;"></p>
+    </div>
+    <details style="margin-top:12px;">
+      <summary style="cursor:pointer; font-weight:600;">¿Cómo obtener tu propio Client ID gratuito de Google Drive?</summary>
+      <ol style="margin-top:8px; line-height:1.6; font-size:0.9rem; padding-left:20px;">
+        <li>Entra en <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a> y crea un proyecto.</li>
+        <li>Habilita <strong>Google Drive API</strong> en APIs y servicios → Biblioteca.</li>
+        <li>En Pantalla de consentimiento OAuth, selecciona Usuarios externos (o de tu organización UJA) y añade el ámbito <code>https://www.googleapis.com/auth/drive.appdata</code>.</li>
+        <li>En Credenciales → Crear credenciales → ID de cliente OAuth → Tipo: <strong>Aplicación web</strong>.</li>
+        <li>En Orígenes autorizados de JavaScript, añade la URL donde abres esta web (ej: <code>https://ajgarciarias10.github.io</code> o <code>http://localhost:8080</code>).</li>
+        <li>Pega el Client ID generado en el campo superior y pulsa Guardar.</li>
+      </ol>
+    </details>
+  </section>
+
+  <section class="card" id="backup-card">
+    <h2>Copias de seguridad de tus tests y progreso</h2>
+    <p>También puedes descargar tu progreso y todos tus tests realizados como archivo JSON para guardarlos directamente en tu Google Drive, enviártelos por correo o restaurarlos en cualquier momento.</p>
+    <div class="actions">
+      <button type="button" id="btn-descargar-todo">Descargar mi progreso completo (JSON)</button>
+      <button type="button" class="secondary" id="btn-descargar-tests">Descargar historial de tests realizados (JSON)</button>
+      <label class="button ghost" style="cursor:pointer; display:inline-flex; align-items:center;">
+        Restaurar copia JSON <input type="file" id="file-restaurar" accept=".json" style="display:none;">
+      </label>
+    </div>
+    <p id="backup-msg" class="muted" style="margin-top:8px; font-size:0.85rem;"></p>
+  </section>
+
   <section class="card"><h2>Guardado en tu propio Drive</h2>
     <p>Tu plan de estudio, sesiones, tests, errores y competencias se guardan en el espacio privado de esta aplicación en tu Google Drive institucional. El responsable de esta web no recibe ni almacena tu progreso.</p>
     <p>La aplicación solo pide acceso a sus propios datos privados de Drive y a tu correo para identificar tu cuenta. No tiene acceso a tus documentos ni a tus mensajes.</p>
@@ -21,4 +58,74 @@
     <div class="actions"><a class="button" href="calendario.html">Mi plan de estudio</a><a class="button secondary" href="index.html">Seguir estudiando</a></div>
   </section>
   <footer>Proyecto gratuito de apoyo al estudio. Puedes seguir estudiando sin conectar Drive; en ese caso el progreso se conserva solo en este navegador.</footer>
+</main>
+<script>
+  (() => {
+    const input = document.getElementById('input-client-id');
+    const btnSave = document.getElementById('btn-save-client-id');
+    const msg = document.getElementById('client-id-msg');
+    if (input) {
+      input.value = window.IPO_CUENTA_CONFIG?.googleClientId || '';
+      btnSave.onclick = () => {
+        const val = input.value.trim();
+        window.IPO_CUENTA_CONFIG.googleClientId = val;
+        msg.textContent = val ? '✓ Client ID guardado correctamente. Ya puedes pulsar Conectar Google Drive arriba.' : 'Client ID eliminado.';
+        msg.style.color = 'var(--ok, #10b981)';
+        setTimeout(() => location.reload(), 1200);
+      };
+    }
+    const btnTodo = document.getElementById('btn-descargar-todo');
+    if (btnTodo) {
+      btnTodo.onclick = () => {
+        const snapshot = window.IPOAccount?.snapshot?.() || { version: 1, values: { ipo_tests_v1: localStorage.getItem('ipo_tests_v1') } };
+        const blob = new Blob([JSON.stringify(snapshot, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'copia-ipo-estudio.json';
+        a.click();
+      };
+    }
+    const btnTests = document.getElementById('btn-descargar-tests');
+    if (btnTests) {
+      btnTests.onclick = () => {
+        try {
+          const raw = (window.IPOStorage || localStorage).getItem('ipo_tests_v1');
+          const data = JSON.parse(raw || '{}');
+          const blob = new Blob([JSON.stringify(data.history || [], null, 2)], { type: 'application/json' });
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'historial-tests-ipo.json';
+          a.click();
+        } catch (e) {
+          alert('No se pudo generar el archivo: ' + e.message);
+        }
+      };
+    }
+    const fileRestaurar = document.getElementById('file-restaurar');
+    if (fileRestaurar) {
+      fileRestaurar.onchange = e => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = ev => {
+          try {
+            const data = JSON.parse(ev.target.result);
+            const values = data.values || data;
+            const keys = window.IPOAccount?.keys || ['ipo_tests_v1', 'ipo_competencias_v1', 'ipo_conceptos_v1', 'ipo_calendario_v2', 'ipo_plan_estudio_v1', 'ipo_recordatorios_v1'];
+            keys.forEach(k => {
+              if (typeof values[k] === 'string') {
+                (window.IPOStorage || localStorage).setItem(k, values[k]);
+              }
+            });
+            document.getElementById('backup-msg').textContent = '✓ Copia de seguridad restaurada con éxito. Recargando…';
+            setTimeout(() => location.reload(), 1000);
+          } catch (err) {
+            alert('Error al leer el archivo de copia: ' + err.message);
+          }
+        };
+        reader.readAsText(file);
+      };
+    }
+  })();
+</script>
 </main></body></html>

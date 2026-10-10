@@ -39,6 +39,12 @@
       panel.innerHTML += '<details><summary>Progresión por semana</summary><div class="weekly-table"><table><thead><tr><th>Semana</th><th>Tema</th><th>Respuestas</th><th>Aciertos</th><th>Tests</th></tr></thead><tbody>' +
         weeks.flatMap(([w, themes]) => Object.entries(themes).map(([t, s]) => `<tr><td>${escape(w)}</td><td>${escape(t)}</td><td>${s.answered}</td><td>${s.correct}</td><td>${s.tests}</td></tr>`)).join('') + '</tbody></table></div></details>';
     }
+    const history = IPOStudy.data.history || [];
+    if (history.length) {
+      panel.innerHTML += '<details style="margin-top:10px;"><summary>Historial de tests realizados (' + history.length + ')</summary><div class="weekly-table"><table><thead><tr><th>Fecha</th><th>Aciertos / Total</th><th>Nota</th><th>Estado</th></tr></thead><tbody>' +
+        history.slice(0, 20).map(h => `<tr><td>${escape(h.fecha || '')}</td><td>${h.aciertos || 0}/${h.total || 0} (${Math.round(((h.aciertos || 0) / (h.total || 1)) * 100)}%)</td><td>${h.nota !== undefined ? h.nota + '/10' : '-'}</td><td>${h.completado ? 'Completado' : 'Guardado'}</td></tr>`).join('') +
+        '</tbody></table></div></details>';
+    }
   }
   document.querySelector('main > header').after(panel);
   render();

@@ -5,20 +5,20 @@
   let credential, account, tokenClient, identity, fatal = '', sdkPromise;
   let panel;
   try { credential = JSON.parse(sessionStorage.getItem(SESSION_KEY) || 'null'); } catch (_) {}
-  const configured = Boolean(config.googleClientId);
+  const isConfigured = () => Boolean(config.googleClientId);
   const drive = crearDriveIPO({ token: () => credential?.access_token || '' });
   function render() {
     if (!panel) return;
-    panel.querySelector('[data-email]').textContent = identity?.email || 'Tu progreso, en tu cuenta institucional';
-    panel.querySelector('[data-status]').textContent = fatal || (!configured ? 'El guardado en Drive aún no está activado. Puedes estudiar y guardar el progreso en este navegador.' : account?.status || 'Puedes conectar tu Drive institucional.');
+    panel.querySelector('[data-email]').textContent = identity?.email || 'Tu progreso y tests de estudio';
+    panel.querySelector('[data-status]').textContent = fatal || (!isConfigured() ? 'El progreso se guarda en este navegador. Puedes conectar tu Google Drive configurando tu Client ID.' : account?.status || 'Puedes conectar tu Google Drive.');
     panel.querySelector('[data-connect]').hidden = Boolean(account?.user && !fatal && credential?.expires_at > Date.now());
-    panel.querySelector('[data-connect]').disabled = !configured;
+    panel.querySelector('[data-connect]').disabled = false;
     panel.querySelector('[data-logout]').hidden = !credential;
     panel.querySelector('[data-sync]').hidden = !account?.user || !account.ready;
     panel.querySelector('[data-recover]').hidden = !account?.conflict;
-    panel.querySelector('[data-export]').hidden = !account?.user || !account.ready;
+    panel.querySelector('[data-export]').hidden = false;
     document.querySelectorAll('main > *').forEach(el => {
-      if (el !== panel && el.tagName !== 'HEADER' && el.tagName !== 'SCRIPT') el.inert = Boolean(fatal || account?.conflict);
+      if (el !== panel && el.tagName !== 'HEADER' && el.tagName !== 'SCRIPT') el.inert = Boolean(account?.conflict);
     });
     panel.querySelector('[data-import]').hidden = !account?.user || !account.ready || location.pathname.split('/').pop() !== 'cuenta.html';
   }
@@ -52,20 +52,56 @@
     panel = document.createElement('section'); panel.className = 'card account-panel';
     panel.setAttribute('aria-label', 'Cuenta institucional y guardado');
     panel.innerHTML = '<strong data-email></strong><p data-status role="status" aria-live="polite"></p>' +
-      '<div class="actions"><button type="button" data-connect>Conectar Drive institucional</button>' +
+      '<div class="actions"><button type="button" data-connect>Conectar Google Drive</button>' +
       '<button type="button" class="secondary" data-sync hidden>Guardar / Reintentar</button>' +
-      '<button type="button" class="secondary" data-export hidden>Descargar copia local</button>' +
+      '<button type="button" class="secondary" data-export>Descargar copia (.json)</button>' +
+      '<button type="button" class="secondary" data-config-id>Configurar Client ID</button>' +
       '<button type="button" class="secondary" data-import hidden>Importar mi progreso de este navegador</button>' +
       '<button type="button" class="secondary" data-recover hidden>Recuperar la última copia de Drive</button>' +
       '<button type="button" class="ghost" data-logout hidden>Cerrar sesión</button>' +
-      '<a href="cuenta.html">Cómo se guarda</a></div>';
+      '<a href="cuenta.html">Ajustes de cuenta</a></div>';
     const header = document.querySelector('main > header');
     if (header) header.after(panel); else document.querySelector('main').prepend(panel);
     panel.querySelector('[data-connect]').onclick = async () => {
+      if (!isConfigured()) {
+        const inputId = prompt('Introduce el Client ID público de Google OAuth (Google Cloud Console):', config.googleClientId || '');
+        if (inputId && inputId.trim()) {
+          config.googleClientId = inputId.trim();
+          render();
+        } else {
+          return;
+        }
+      }
       // Precargar evita perder el gesto de usuario al abrir el popup.
-      if (!tokenClient) { try { await loadSDK(); initializeTokenClient(); fatal = 'Google está listo. Pulsa de nuevo Conectar Drive institucional.'; } catch (e) { fatal = e.message; } render(); return; }
+      if (!tokenClient) {
+        try {
+          await loadSDK();
+          initializeTokenClient();
+          fatal = 'Google está listo. Pulsa de nuevo Conectar Google Drive.';
+        } catch (e) {
+          fatal = e.message;
+        }
+        render();
+        return;
+      }
       tokenClient.requestAccessToken({ prompt: 'select_account' });
     };
+    const configBtn = panel.querySelector('[data-config-id]');
+    if (configBtn) {
+      configBtn.onclick = () => {
+        const cur = config.googleClientId || '';
+        const inputId = prompt('Client ID público de Google OAuth (vacío para desactivar):', cur);
+        if (inputId !== null) {
+          config.googleClientId = inputId.trim();
+          tokenClient = null;
+          fatal = '';
+          if (isConfigured()) {
+            void loadSDK().then(initializeTokenClient).catch(() => {});
+          }
+          render();
+        }
+      };
+    }
     const action = (selector, fn) => { panel.querySelector(selector).onclick = async () => {
       try { fatal = ''; await fn(); } catch (e) { fatal = e.message || 'No se pudo completar la acción.'; } render();
     }; };
@@ -86,18 +122,32 @@
       link.download = 'mi-progreso-ipo.json'; link.click(); setTimeout(() => URL.revokeObjectURL(link.href), 1000);
     });
     render();
-    if (configured) void loadSDK().then(initializeTokenClient).catch(() => { tokenClient = null; });
+    if (isConfigured()) void loadSDK().then(initializeTokenClient).catch(() => { tokenClient = null; });
   }
   window.IPOAccountReady = (async () => {
     account = crearCuentaIPO({ api: drive, storage: localStorage, domains: config.allowedDomains, notify: render });
     window.IPOAccount = account;
     if (credential) {
-      if (!configured || credential.expires_at <= Date.now()) throw new Error('Tu sesión de Google ha caducado. Reconecta la misma cuenta para guardar y recuperar el progreso.');
-      const response = await fetch('https://openidconnect.googleapis.com/v1/userinfo', {
-        headers: { Authorization: `Bearer ${credential.access_token}` }, signal: AbortSignal.timeout(15000)
-      });
-      if (!response.ok) throw new Error('No se pudo verificar tu cuenta. Reconecta tu Drive institucional.');
-      identity = await response.json();
+      if (!isConfigured() || credential.expires_at <= Date.now()) {
+        sessionStorage.removeItem(SESSION_KEY);
+        credential = null;
+        fatal = 'Tu sesión de Google ha caducado. Vuelve a conectar tu cuenta para sincronizar con Drive.';
+      } else {
+        try {
+          const response = await fetch('https://openidconnect.googleapis.com/v1/userinfo', {
+            headers: { Authorization: `Bearer ${credential.access_token}` }, signal: AbortSignal.timeout(15000)
+          });
+          if (response.ok) {
+            identity = await response.json();
+          } else {
+            sessionStorage.removeItem(SESSION_KEY);
+            credential = null;
+            fatal = 'No se pudo verificar tu cuenta de Google. Reconecta para sincronizar.';
+          }
+        } catch (_) {
+          fatal = 'Sin conexión para verificar la cuenta. Usando copia local.';
+        }
+      }
     }
     await account.start(identity || null);
     window.IPOStorage = account.storage;

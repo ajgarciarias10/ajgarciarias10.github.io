@@ -9,7 +9,7 @@ window.crearCuentaIPO = ({ api, storage, domains, notify = () => {}, schedule = 
   let timer, flushing = false, conflict = false, writes = 0;
   let status = 'Comprobando tu cuenta…';
   const announce = text => { status = text; notify(); };
-  const permitted = email => domains.includes(String(email || '').toLowerCase().split('@')[1]);
+  const permitted = email => domains.includes('*') || domains.includes(String(email || '').toLowerCase().split('@')[1]);
   const cacheKey = () => `ipo_cuenta_datos_v1:${user.id}`;
   const clean = values => Object.fromEntries(keys.filter(k => typeof values?.[k] === 'string').map(k => [k, values[k]]));
   const persist = () => storage.setItem(cacheKey(), JSON.stringify(cache));

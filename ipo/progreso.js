@@ -10,6 +10,7 @@ window.IPOStudy = (() => {
   if (!data || data.version !== 1 || !data.answers || !data.sessions || !data.weeks) {
     data = { version: 1, answers: {}, sessions: {}, weeks: {} };
   }
+  data.history ||= [];
   const identity = q => JSON.stringify([String(q.tema), q.enunciado]);
   const week = (d = new Date()) => {
     const monday = new Date(d.getFullYear(), d.getMonth(), d.getDate());
@@ -70,6 +71,24 @@ window.IPOStudy = (() => {
       [...new Set(s.ids.map(id => JSON.parse(id)[0]))].forEach(t => {
         if (weekly[t]) weekly[t].tests++;
       });
+      data.history ||= [];
+      if (!s.savedToHistory) {
+        s.savedToHistory = true;
+        const correctCount = s.ids.filter(id => data.answers[id]?.correct).length;
+        data.history.unshift({
+          id: 'test_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+          fecha: fechaISO(new Date()),
+          timestamp: Date.now(),
+          week: week(),
+          total: s.ids.length,
+          aciertos: correctCount,
+          fallos: s.ids.length - correctCount,
+          nota: Number(((correctCount / (s.ids.length || 1)) * 10).toFixed(1)),
+          completado: true,
+          ids: [...s.ids],
+          responses: [...s.responses]
+        });
+      }
       // Finish due reminders only for themes actually covered by this test.
       try {
         const reminders = JSON.parse((window.IPOStorage || localStorage).getItem('ipo_recordatorios_v1') || 'null');
@@ -85,5 +104,31 @@ window.IPOStudy = (() => {
     save();
     window.dispatchEvent(new Event('ipo-progress'));
   }
-  return { data, identity, week, eligible, session, answer, save, get storageOK() { return storageOK; } };
+  function saveCurrentTest(s) {
+    if (!s) return null;
+    data.history ||= [];
+    const correctCount = s.responses.filter((r, i) => {
+      const id = s.ids[i];
+      return data.answers[id]?.correct;
+    }).length;
+    const item = {
+      id: 'test_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+      fecha: fechaISO(new Date()),
+      timestamp: Date.now(),
+      week: week(),
+      total: s.ids.length,
+      contestadas: s.responses.length,
+      aciertos: correctCount,
+      fallos: s.responses.length - correctCount,
+      nota: Number(((correctCount / (s.responses.length || 1)) * 10).toFixed(1)),
+      completado: Boolean(s.completed),
+      ids: [...s.ids],
+      responses: [...s.responses]
+    };
+    data.history.unshift(item);
+    save();
+    window.dispatchEvent(new Event('ipo-progress'));
+    return item;
+  }
+  return { data, identity, week, eligible, session, answer, save, saveCurrentTest, get storageOK() { return storageOK; } };
 })();
