@@ -16,7 +16,7 @@
   <section class="hero">
     <div class="today-strip" id="today-strip"></div>
     <h1>¿Lo entiendes <span class="gradient-text">o solo te suena?</span></h1>
-    <p class="lead">Practica IPO cerrando el libro: preguntas de aplicación con corrección al instante, una ruta para ponerte al día y un plan semanal anclado a las clases.</p>
+    <p class="lead">Una sesión corta de estudio, con los temas y las preguntas que ya tocan en clase.</p>
   </section>
 
   <!-- Ponte al día: lo primero que ve quien empieza tarde -->
@@ -32,49 +32,23 @@
     <ol class="orbit" id="catchup-orbit" aria-label="Progreso por temas"></ol>
   </section>
 
-  <div class="section-title">
-    <h2>Practica por tema</h2>
-    <a href="generador.html">Todas mezcladas →</a>
-  </div>
-  <div class="grid">
-    <a class="tile" href="tema-1.html">
-      <span class="eyebrow">Tema 1 · pp. 16–48</span>
-      <h3>Introducción a la IPO</h3>
-      <p>Fundamentos, interfaces, disciplinas y principios de usabilidad.</p>
-      <span class="tile-foot">40 preguntas →</span>
-    </a>
-    <a class="tile" href="tema-2.html">
-      <span class="eyebrow">Tema 2 · pp. 49–115</span>
-      <h3>El factor humano</h3>
-      <p>Modelos mentales, sentidos, percepción, atención y memoria.</p>
-      <span class="tile-foot">40 preguntas →</span>
-    </a>
-    <a class="tile" href="tema-3.html">
-      <span class="eyebrow">Tema 3 · pp. 116–166</span>
-      <h3>Metáforas</h3>
-      <p>Metáforas verbales, visuales y globales; el escritorio y su metodología.</p>
-      <span class="tile-foot">40 preguntas →</span>
-    </a>
-    <a class="tile" href="tema-4.html">
-      <span class="eyebrow">Tema 4 · pp. 167–222</span>
-      <h3>Ingeniería de la interfaz</h3>
-      <p>Análisis de tareas, análisis jerárquico y GOMS; sketch, wireframe, mockup y prototipo.</p>
-      <span class="tile-foot">40 preguntas →</span>
-    </a>
-  </div>
+  <section class="card home-next-steps" aria-label="Accesos de estudio">
+    <h2>¿Qué hacemos ahora?</h2>
+    <p class="muted">Sigue tu ruta, estudia un tema o responde preguntas.</p>
+    <div class="actions">
+      <a class="button" href="generador.html">Practicar preguntas</a>
+      <a class="button secondary" href="tema-1.html">Abrir temas</a>
+      <a class="button ghost" href="calendario.html">Ver mi semana</a>
+    </div>
+  </section>
 
-  <div class="section-title">
-    <h2>Herramientas</h2>
-  </div>
-  <div class="grid">
-    <a class="tile" href="calendario.html">
-      <h3>Calendario semanal</h3>
-      <p>Horario real de la EPS, tus bloques de estudio y sincronización con Google Calendar.</p>
-    </a>
-    <a class="tile" href="guia-estudio.html">
-      <h3>Guía de estudio</h3>
-      <p>Qué entra en cada tema, trampas habituales y cómo estudiarlo.</p>
-    </a>
+  <details class="home-more">
+    <summary>Más recursos</summary>
+    <div class="grid">
+      <a class="tile" href="guia-estudio.html">
+        <h3>Guía de estudio</h3>
+        <p>Contenido, diferencias entre conceptos y consejos para cada tema.</p>
+      </a>
     <a class="tile" href="usabilidad-clevertracker.html">
       <h3>Informe · CleverTracker</h3>
       <p>Auditoría de usabilidad de una PWA real, con su propio test en Practicar.</p>
@@ -83,7 +57,8 @@
       <h3>Informe · F1-BUGAMBRA</h3>
       <p>Principios del Tema 1 aplicados con capturas antes y después.</p>
     </a>
-  </div>
+    </div>
+  </details>
 
   <footer>
     <p class="credit-note" style="margin:0 0 6px;">Universidad de Jaén · Grado en Ingeniería Informática · IPO 2026–27. Material docente © UJA — profesores responsables: Drª. Salud Mª Jiménez Zafra y Dr. Manuel García Vega. Uso exclusivamente docente y no comercial.</p>
@@ -104,10 +79,8 @@
     }
 
     document.getElementById('today-strip').innerHTML =
-      '<span>Hoy, <strong>' + FECHA_LARGA.format(new Date()) + '</strong></span>' +
-      '<span>Semana <strong>' + semanaDelCurso() + '</strong></span>' +
-      '<span>En clase: <strong>Tema ' + prof + '</strong></span>' +
-      proximasClases(1).map(function (c) { return '<span>Próxima clase: <strong>' + FECHA_CORTA.format(desdeISO(c.fecha)) + '</strong> · ' + (c.tema ? 'Tema ' + c.tema + ' (' + c.leccion + ') ' + c.contenido : c.contenido) + '</span>'; }).join('');
+      '<span><strong>' + FECHA_LARGA.format(new Date()) + '</strong></span>' +
+      '<span>En clase: <strong>Tema ' + prof + '</strong></span>';
 
     var atrasados = [];
     for (var t = 1; t < prof; t++) atrasados.push(t);

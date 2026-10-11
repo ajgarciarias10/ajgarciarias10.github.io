@@ -14,8 +14,12 @@ const shuffle = values => {
 const isGlobal = typeof BANCO_GLOBAL !== 'undefined';
 const QUESTIONS = isGlobal ? BANCO_GLOBAL.map(q => ({ ...q, bloque: q.bloqueIndex }))
   : BANCO.map(q => ({ ...q, tema: TEMA }));
+const sesionesTeoria = typeof SESIONES_TEORIA !== 'undefined' ? SESIONES_TEORIA : [];
+const temaYaImpartido = new Set(sesionesTeoria
+  .filter(s => s.tema && s.fecha <= fechaISO(new Date())).map(s => String(s.tema)));
 let activeScope = 'all';
 let activeTema = isGlobal ? (new URLSearchParams(location.search).get('tema') || 'all') : TEMA;
+if (isGlobal && activeTema !== 'all' && activeTema !== 'clevertracker' && !temaYaImpartido.has(activeTema)) activeTema = 'all';
 let onlyFailed = new URLSearchParams(location.search).get('fallos') === '1';
 let currentQuestion = null;
 let currentOrder = [];
@@ -28,7 +32,7 @@ let sessionHistory = [];
 let session;
 const labelBlock = q => isGlobal ? q.bloqueNombre : BLOQUES[q.bloque];
 function getMatchingPool() {
-  return QUESTIONS.filter(q => (activeTema === 'all' || String(q.tema) === activeTema) &&
+  return QUESTIONS.filter(q => (isGlobal && activeTema === 'all' ? (q.tema === 'clevertracker' || temaYaImpartido.has(String(q.tema))) : (activeTema === 'all' || String(q.tema) === activeTema)) &&
     (activeScope === 'all' || q.bloque === Number(activeScope)));
 }
 function sessionKey() { return JSON.stringify([isGlobal ? 'global' : TEMA, activeTema, activeScope, onlyFailed]); }
@@ -39,7 +43,8 @@ function openSession(fresh = false) {
 function syncSession() {
   sessionHistory = session.responses.map((answer, i) => {
     const question = QUESTIONS.find(q => IPOStudy.identity(q) === session.ids[i]);
-    return question && { question, order: session.orders[i], answer, isCorrect: question.opciones[answer].correcta };
+    const option = question?.opciones?.[answer];
+    return question && option && { question, order: session.orders?.[i] || [], answer, isCorrect: option.correcta };
   }).filter(Boolean).reverse();
   countCorrect = sessionHistory.filter(e => e.isCorrect).length;
   countWrong = sessionHistory.length - countCorrect;
@@ -47,8 +52,14 @@ function syncSession() {
   for (const entry of sessionHistory) { if (!entry.isCorrect) break; streak++; }
   failedIds = new Set(IPOStudy.eligible(getMatchingPool(), true).map(q => q.id ?? q.globalId));
   currentQuestion = QUESTIONS.find(q => IPOStudy.identity(q) === session.ids[session.index]);
-  currentOrder = session.orders[session.index] || [];
+  currentOrder = Array.isArray(session.orders?.[session.index]) ? session.orders[session.index] : [];
   currentAnswer = session.responses[session.index] ?? null;
+  if (currentQuestion && currentAnswer !== null && !currentQuestion.opciones[currentAnswer]) {
+    session.responses.splice(session.index);
+    session.completed = false;
+    currentAnswer = null;
+    IPOStudy.save();
+  }
   renderHistory();
   updateStatsDisplay();
   renderProgress();
@@ -142,7 +153,7 @@ function renderCurrent() {
 
   if ($('gen-block-badge')) $('gen-block-badge').textContent = labelBlock(q) || 'General';
   if ($('gen-ref-badge')) {
-    $('gen-ref-badge').textContent = q.pagina ? `pág. ${q.pagina}` : 'Caso real';
+    $('gen-ref-badge').textContent = q.pagina ? `pág. ${q.pagina}` : (q.pagina === null ? 'Guía de estudio' : 'Caso real');
   }
 
   if ($('gen-prompt')) $('gen-prompt').textContent = q.enunciado;
@@ -296,7 +307,17 @@ if ($('scope-selector')) {
   $('scope-selector').onchange = e => { activeScope = e.target.value; openSession(); };
 }
 document.querySelectorAll('.pill-tab').forEach(tab => {
-  tab.onclick = () => { activeTema = tab.dataset.tema; openSession(); };
+  const theme = tab.dataset.tema;
+  const available = theme === 'all' || theme === 'clevertracker' || temaYaImpartido.has(theme);
+  tab.hidden = !available;
+  if (available && theme === 'all') {
+    const count = QUESTIONS.filter(q => q.tema === 'clevertracker' || temaYaImpartido.has(String(q.tema))).length;
+    tab.textContent = `Todo (${count})`;
+  } else if (available && /^\d+$/.test(theme)) {
+    const count = QUESTIONS.filter(q => String(q.tema) === theme).length;
+    tab.textContent = `Tema ${theme} (${count})`;
+  }
+  if (available) tab.onclick = () => { activeTema = theme; openSession(); };
 });
 window.addEventListener('keydown', e => {
   if (['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(document.activeElement.tagName)) return;

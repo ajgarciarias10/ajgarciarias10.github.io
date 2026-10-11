@@ -2,7 +2,8 @@
 (() => {
   const config = window.IPO_CUENTA_CONFIG;
   const SESSION_KEY = 'ipo_drive_session_v1';
-  let credential, account, tokenClient, identity, fatal = '', sdkPromise;
+  const AUTHORIZED_ORIGIN = 'https://ajgarciarias10.github.io';
+  let credential, account, tokenClient, identity, fatal = '', sdkPromise, connectionPending = false;
   let panel;
   try { credential = JSON.parse(sessionStorage.getItem(SESSION_KEY) || 'null'); } catch (_) {}
   const isConfigured = () => Boolean(config.googleClientId);
@@ -10,17 +11,21 @@
   function render() {
     if (!panel) return;
     panel.querySelector('[data-email]').textContent = identity?.email || 'Tu progreso y tests de estudio';
-    panel.querySelector('[data-status]').textContent = fatal || (!isConfigured() ? 'El progreso se guarda en este navegador. Puedes conectar tu Google Drive configurando tu Client ID.' : account?.status || 'Puedes conectar tu Google Drive.');
-    panel.querySelector('[data-connect]').hidden = Boolean(account?.user && !fatal && credential?.expires_at > Date.now());
-    panel.querySelector('[data-connect]').disabled = false;
-    panel.querySelector('[data-logout]').hidden = !credential;
-    panel.querySelector('[data-sync]').hidden = !account?.user || !account.ready;
-    panel.querySelector('[data-recover]').hidden = !account?.conflict;
-    panel.querySelector('[data-export]').hidden = false;
+    panel.querySelector('[data-status]').textContent = fatal || (!isConfigured() ? 'El progreso se guarda en este navegador. La conexión con Drive aún no está activada.' : account?.status || 'Puedes conectar tu cuenta institucional para sincronizar el progreso.');
+    const connect = panel.querySelector('[data-connect]');
+    if (connect) {
+      connect.hidden = false;
+      connect.textContent = account?.user ? 'Cambiar cuenta de Google' : 'Conectar Google Drive';
+      connect.disabled = connectionPending || (isConfigured() && !tokenClient && !fatal);
+    }
+    const logout = panel.querySelector('[data-logout]'); if (logout) logout.hidden = !credential;
+    const sync = panel.querySelector('[data-sync]'); if (sync) sync.hidden = !account?.user || !account.ready;
+    const recover = panel.querySelector('[data-recover]'); if (recover) recover.hidden = !account?.conflict;
     document.querySelectorAll('main > *').forEach(el => {
       if (el !== panel && el.tagName !== 'HEADER' && el.tagName !== 'SCRIPT') el.inert = Boolean(account?.conflict);
     });
-    panel.querySelector('[data-import]').hidden = !account?.user || !account.ready || location.pathname.split('/').pop() !== 'cuenta.html';
+    const importButton = panel.querySelector('[data-import]');
+    if (importButton) importButton.hidden = !account?.user || !account.ready || location.pathname.split('/').pop() !== 'cuenta.html';
   }
   function loadSDK() {
     if (window.google?.accounts?.oauth2) return Promise.resolve();
@@ -36,7 +41,13 @@
     tokenClient = google.accounts.oauth2.initTokenClient({ client_id: config.googleClientId,
       scope: 'openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/drive.appdata', include_granted_scopes: false,
       callback: response => {
-        if (response.error || !response.access_token) { fatal = 'No se completó la conexión con Google.'; render(); return; }
+        connectionPending = false;
+        if (response.error || !response.access_token) {
+          fatal = ['invalid_client', 'origin_mismatch'].includes(response.error)
+            ? `Google bloqueó el acceso porque este sitio no está autorizado. En Google Cloud añade ${AUTHORIZED_ORIGIN} en «Orígenes autorizados de JavaScript» del cliente OAuth.`
+            : `No se completó la conexión con Google${response.error_description ? `: ${response.error_description}` : '.'}`;
+          render(); return;
+        }
         if (!google.accounts.oauth2.hasGrantedAllScopes(response, 'openid', 'https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/drive.appdata')) {
           fatal = 'Debes autorizar el guardado privado de la aplicación en Drive.'; render(); return;
         }
@@ -44,64 +55,62 @@
         try { sessionStorage.setItem(SESSION_KEY, JSON.stringify(credential)); location.reload(); }
         catch (_) { fatal = 'Activa el almacenamiento de sesión de este navegador para conectar Drive.'; render(); }
       }, error_callback: error => {
-        fatal = error.type === 'popup_closed' ? 'Has cerrado la conexión. Puedes volver a intentarlo.' : 'Google no pudo abrir la conexión. Permite la ventana emergente y reintenta.'; render();
+        connectionPending = false;
+        fatal = error.type === 'popup_closed'
+          ? `Se cerró la ventana de Google. Si mostraba «Acceso bloqueado» o «no registered origin», autoriza ${AUTHORIZED_ORIGIN} en Google Cloud; después vuelve a intentarlo.`
+          : 'Google no pudo abrir la conexión. Permite la ventana emergente y reintenta.';
+        render();
       }
     });
   }
   function mount() {
+    const accountPage = location.pathname.split('/').pop() === 'cuenta.html';
     panel = document.createElement('section'); panel.className = 'card account-panel';
-    panel.setAttribute('aria-label', 'Cuenta institucional y guardado');
-    panel.innerHTML = '<strong data-email></strong><p data-status role="status" aria-live="polite"></p>' +
+    panel.setAttribute('aria-label', accountPage ? 'Cuenta institucional y guardado' : 'Estado del guardado');
+    panel.innerHTML = '<strong data-email></strong><p data-status role="status" aria-live="polite"></p>' + (accountPage ?
       '<div class="actions"><button type="button" data-connect>Conectar Google Drive</button>' +
       '<button type="button" class="secondary" data-sync hidden>Guardar / Reintentar</button>' +
-      '<button type="button" class="secondary" data-export>Descargar copia (.json)</button>' +
-      '<button type="button" class="secondary" data-config-id>Configurar Client ID</button>' +
       '<button type="button" class="secondary" data-import hidden>Importar mi progreso de este navegador</button>' +
       '<button type="button" class="secondary" data-recover hidden>Recuperar la última copia de Drive</button>' +
-      '<button type="button" class="ghost" data-logout hidden>Cerrar sesión</button>' +
-      '<a href="cuenta.html">Ajustes de cuenta</a></div>';
+      '<button type="button" class="ghost" data-logout hidden>Desconectar</button></div>' :
+      '<div class="actions"><a class="button secondary" href="cuenta.html">Mi cuenta y progreso</a></div>');
     const header = document.querySelector('main > header');
     if (header) header.after(panel); else document.querySelector('main').prepend(panel);
+    if (!accountPage) { render(); return; }
     panel.querySelector('[data-connect]').onclick = async () => {
+      if (connectionPending) return;
       if (!isConfigured()) {
-        const inputId = prompt('Introduce el Client ID público de Google OAuth (Google Cloud Console):', config.googleClientId || '');
-        if (inputId && inputId.trim()) {
-          config.googleClientId = inputId.trim();
-          render();
-        } else {
-          return;
-        }
+        fatal = 'La conexión de Drive aún no está activada para esta web. Quien administra el sitio debe configurar su Client ID OAuth.';
+        render(); return;
       }
-      // Precargar evita perder el gesto de usuario al abrir el popup.
+      // Save pending data before replacing the active Google account.
+      if (account?.user && account.ready && account.dirty) {
+        connectionPending = true; fatal = 'Guardando tu progreso antes de cambiar de cuenta…'; render();
+        try { await account.flush(); }
+        catch (e) { connectionPending = false; fatal = `No se pudo guardar el progreso. No se ha cambiado de cuenta: ${e.message}`; render(); return; }
+        if (account.dirty || account.conflict) {
+          connectionPending = false;
+          fatal = account.conflict
+            ? 'Hay un conflicto entre copias. Recupéralo antes de cambiar de cuenta para conservar el progreso.'
+            : 'El progreso sigue pendiente de guardar. Reintenta la sincronización antes de cambiar de cuenta.';
+          render(); return;
+        }
+        connectionPending = false; fatal = '';
+      }
+      // The SDK is loaded ahead of the click so the popup opens from a user gesture.
       if (!tokenClient) {
-        try {
-          await loadSDK();
-          initializeTokenClient();
-          fatal = 'Google está listo. Pulsa de nuevo Conectar Google Drive.';
-        } catch (e) {
-          fatal = e.message;
-        }
-        render();
-        return;
+        try { if (window.google?.accounts?.oauth2) initializeTokenClient(); }
+        catch (_) { tokenClient = null; }
+        if (!tokenClient) { fatal = fatal || 'Google todavía se está cargando. Espera un momento y vuelve a pulsar.'; render(); return; }
       }
-      tokenClient.requestAccessToken({ prompt: 'select_account' });
+      connectionPending = true; fatal = ''; render();
+      try { tokenClient.requestAccessToken({ prompt: 'select_account' }); }
+      catch (_) {
+        connectionPending = false;
+        fatal = `Google no pudo abrir la ventana. Si aparece «no registered origin», añade ${AUTHORIZED_ORIGIN} a los orígenes JavaScript del cliente OAuth.`;
+        render();
+      }
     };
-    const configBtn = panel.querySelector('[data-config-id]');
-    if (configBtn) {
-      configBtn.onclick = () => {
-        const cur = config.googleClientId || '';
-        const inputId = prompt('Client ID público de Google OAuth (vacío para desactivar):', cur);
-        if (inputId !== null) {
-          config.googleClientId = inputId.trim();
-          tokenClient = null;
-          fatal = '';
-          if (isConfigured()) {
-            void loadSDK().then(initializeTokenClient).catch(() => {});
-          }
-          render();
-        }
-      };
-    }
     const action = (selector, fn) => { panel.querySelector(selector).onclick = async () => {
       try { fatal = ''; await fn(); } catch (e) { fatal = e.message || 'No se pudo completar la acción.'; } render();
     }; };
@@ -116,13 +125,8 @@
       sessionStorage.removeItem(SESSION_KEY); credential = null;
       location.reload();
     });
-    action('[data-export]', () => {
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(new Blob([JSON.stringify(account.snapshot(), null, 2)], { type: 'application/json' }));
-      link.download = 'mi-progreso-ipo.json'; link.click(); setTimeout(() => URL.revokeObjectURL(link.href), 1000);
-    });
     render();
-    if (isConfigured()) void loadSDK().then(initializeTokenClient).catch(() => { tokenClient = null; });
+    if (isConfigured()) void loadSDK().then(() => { initializeTokenClient(); render(); }).catch(e => { tokenClient = null; fatal = e.message; render(); });
   }
   window.IPOAccountReady = (async () => {
     account = crearCuentaIPO({ api: drive, storage: localStorage, domains: config.allowedDomains, notify: render });
@@ -139,6 +143,13 @@
           });
           if (response.ok) {
             identity = await response.json();
+            const selectedDomain = String(identity.email || '').toLowerCase().split('@')[1];
+            if (!identity.email_verified || !config.allowedDomains.includes(selectedDomain)) {
+              sessionStorage.removeItem(SESSION_KEY);
+              credential = null;
+              fatal = `Google eligió ${identity.email || 'una cuenta no admitida'}. Vuelve a conectar y selecciona tu cuenta institucional UJA.`;
+              identity = null;
+            }
           } else {
             sessionStorage.removeItem(SESSION_KEY);
             credential = null;

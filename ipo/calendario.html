@@ -20,9 +20,9 @@
     <p class="lead">Qué se da en cada clase según la planificación oficial, tus prácticas y tus bloques de estudio, semana a semana.</p>
   </header>
 
-  <section class="card" id="planificador">
-    <h2>Tu plan de estudio, de clase al examen</h2>
-    <p class="muted">El primer repaso trabaja la teoría; los siguientes incorporan tests del tema. Puedes mover cada sesión o añadir otras. Los viajes desplazan el estudio al siguiente hueco libre.</p>
+  <details class="card" id="planificador">
+    <summary><strong>Ajustar mi plan</strong><span class="muted"> · frecuencia, horario y días disponibles</span></summary>
+    <p class="muted">Define una vez cuánto y cuándo estudiar. Las sesiones se distribuyen a partir de tus clases.</p>
     <form id="plan-ajustes" class="plan-form">
       <label>Sesiones después de cada clase <input id="plan-cantidad" type="number" min="0" max="6" required></label>
       <label>Días entre repasos <input id="plan-separacion" type="number" min="1" max="14" required></label>
@@ -60,7 +60,7 @@
       </form>
     </div>
     <p id="plan-aviso" role="status" aria-live="polite"></p>
-  </section>
+  </details>
 
     <!-- Navegación de semanas + grupo -->
   <div class="cal-toolbar">
@@ -99,24 +99,26 @@
     </section>
   </div>
 
-  <section class="card" aria-label="Línea temporal de estudio">
-    <h2>Línea temporal de esta semana</h2>
+  <details class="card" aria-label="Línea temporal de estudio">
+    <summary><strong>Ver sesiones de estudio de esta semana</strong></summary>
     <p class="muted" id="plan-resumen"></p>
     <ol id="plan-timeline" class="plan-timeline"></ol>
-  </section>
+  </details>
 
   <!-- Rejilla semanal (escritorio) -->
-  <section class="card cal-board" aria-label="Vista semanal">
+  <details class="card cal-board" aria-label="Vista semanal">
+    <summary><strong>Ver horario semanal completo</strong></summary>
     <div class="cal-legend">
       <span><i class="teoria"></i>Teoría</span>
       <span><i class="practica"></i>Prácticas</span>
       <span><i class="estudio"></i>Tu estudio</span>
     </div>
     <div class="wk-scroll"><div class="wk-grid" id="cal-grid"></div></div>
-  </section>
+  </details>
 
   <!-- Bloques de estudio -->
-  <section class="card">
+  <details class="card">
+    <summary><strong>Editar bloques semanales</strong></summary>
     <div class="section-head">
       <div>
         <h2>Tus bloques de estudio</h2>
@@ -128,14 +130,14 @@
       <button type="button" class="secondary" id="cal-add">Añadir bloque</button>
       <button type="button" class="ghost" id="cal-reset">Volver a los bloques sugeridos</button>
     </div>
-  </section>
+  </details>
 
   <!-- Exportar -->
-  <section class="card">
-    <h2>Llévalo a tu calendario</h2>
+  <details class="card">
+    <summary><strong>Exportar clases y estudio a otro calendario</strong></summary>
     <p class="muted">Descarga todas las clases del cuatrimestre de tu grupo, con su tema, y tus bloques de estudio. En Google Calendar: <em>Configuración → Importar y exportar → Importar</em>.</p>
     <div class="actions"><button type="button" id="cal-ics">Descargar el curso completo (.ics)</button></div>
-  </section>
+  </details>
 
   <footer>Horario y planificación según IPO2627.pdf (pp. 3–4 y 15). Tu plan, grupos y bloques se guardan en tu Drive al conectar la cuenta; sin conexión de cuenta, solo en este navegador.</footer>
 </main>

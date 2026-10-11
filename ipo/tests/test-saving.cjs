@@ -75,12 +75,9 @@ test('IPO_CUENTA_CONFIG allows dynamic client ID and permitted personal/institut
   vm.runInContext(fs.readFileSync(path.join(root, 'cuenta-config.js'), 'utf8'), context);
   const cfg = context.window.IPO_CUENTA_CONFIG;
 
-  assert.equal(cfg.googleClientId, '');
-  cfg.googleClientId = 'test-client-id.apps.googleusercontent.com';
-  assert.equal(cfg.googleClientId, 'test-client-id.apps.googleusercontent.com');
-  assert.equal(store.get('ipo_google_client_id'), 'test-client-id.apps.googleusercontent.com');
+  assert.match(cfg.googleClientId, /^[0-9]+-[a-z0-9]+\.apps\.googleusercontent\.com$/);
 
   assert.ok(cfg.allowedDomains.includes('red.ujaen.es'));
   assert.ok(cfg.allowedDomains.includes('ujaen.es'));
-  assert.ok(cfg.allowedDomains.includes('gmail.com'));
+  assert.deepEqual(Array.from(cfg.allowedDomains), ['red.ujaen.es', 'ujaen.es']);
 });

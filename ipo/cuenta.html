@@ -4,6 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mi cuenta · IPO</title>
   <script src="nav.js"></script>
+  <script src="curso.js"></script>
   <script src="cuenta-config.js"></script>
   <script src="cuenta-datos.js"></script>
   <script src="cuenta-drive.js"></script>
@@ -11,33 +12,36 @@
   <link rel="stylesheet" href="estilo.css">
 </head>
 <body><main>
-  <header><span class="eyebrow">IPO · UJA</span><h1>Tu progreso te pertenece</h1><p class="lead">Conecta tu correo institucional y recupera tu estudio desde otro dispositivo.</p></header>
+  <header><span class="eyebrow">IPO · UJA</span><h1>Mi cuenta</h1><p class="lead">Guarda tu progreso y continúa estudiando desde cualquier dispositivo.</p><a class="button secondary" href="calendario.html">Abrir mi semana</a></header>
   <section class="card" id="config-drive-card">
-    <h2>Configuración de Google Drive</h2>
-    <p>Puedes sincronizar automáticamente tus tests, respuestas y calendario conectando tu Google Drive institucional (o cuenta personal de Google). Solo se requiere el <strong>Client ID</strong> público de Google Cloud Console (OAuth 2.0 Web Application).</p>
-    <div style="margin:16px 0;">
-      <label for="input-client-id" style="display:block; font-weight:600; margin-bottom:6px;">Google OAuth Client ID</label>
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <input type="text" id="input-client-id" placeholder="Ej: 123456789-abcdef.apps.googleusercontent.com" style="flex:1; min-width:280px; padding:9px 12px; border-radius:6px; border:1px solid var(--border); font-family:monospace; font-size:0.9rem;">
-        <button type="button" id="btn-save-client-id">Guardar Client ID</button>
-      </div>
-      <p id="client-id-msg" class="muted" style="margin-top:8px; font-size:0.85rem;"></p>
-    </div>
+    <h2>Conecta tu cuenta de Google</h2>
+    <p>Usa tu cuenta institucional UJA. El selector de Google te permitirá elegir la cuenta correcta. El progreso se sincroniza en el espacio privado de esta aplicación en tu Drive.</p>
     <details style="margin-top:12px;">
-      <summary style="cursor:pointer; font-weight:600;">¿Cómo obtener tu propio Client ID gratuito de Google Drive?</summary>
-      <ol style="margin-top:8px; line-height:1.6; font-size:0.9rem; padding-left:20px;">
-        <li>Entra en <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a> y crea un proyecto.</li>
-        <li>Habilita <strong>Google Drive API</strong> en APIs y servicios → Biblioteca.</li>
-        <li>En Pantalla de consentimiento OAuth, selecciona Usuarios externos (o de tu organización UJA) y añade el ámbito <code>https://www.googleapis.com/auth/drive.appdata</code>.</li>
-        <li>En Credenciales → Crear credenciales → ID de cliente OAuth → Tipo: <strong>Aplicación web</strong>.</li>
-        <li>En Orígenes autorizados de JavaScript, añade la URL donde abres esta web (ej: <code>https://ajgarciarias10.github.io</code> o <code>http://localhost:8080</code>).</li>
-        <li>Pega el Client ID generado en el campo superior y pulsa Guardar.</li>
-      </ol>
+      <summary style="cursor:pointer; font-weight:600;">Guía de configuración (solo para quien administra la web)</summary>
+      <p>En <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a>, habilita Google Drive API y configura el consentimiento OAuth. Para esta app se usa el ámbito privado <code>drive.appdata</code>; no se necesita client secret en el navegador.</p>
+      <figure class="drive-guide-shot"><img src="drive-setup/consentimiento.png" alt="Pantalla de consentimiento OAuth con la opción de usuarios externos"><figcaption>La opción Externos requiere añadir las cuentas autorizadas a la lista de prueba mientras la app esté en modo de pruebas.</figcaption></figure>
+      <figure class="drive-guide-shot"><img src="drive-setup/clientes.png" alt="Lista de clientes OAuth en Google Cloud"><figcaption>Después de guardar la pantalla de consentimiento, crea un cliente OAuth.</figcaption></figure>
+      <ol><li>Selecciona tipo <strong>Aplicación web</strong>.</li><li>En <strong>Orígenes autorizados de JavaScript</strong>, añade <code>https://ajgarciarias10.github.io</code> (sin <code>/ipo/</code>). La captura del cliente aún no tiene ningún origen autorizado, así que este paso falta.</li><li>El proyecto debe admitir cuentas UJA: usa Interno si pertenece al Google Workspace de la universidad; si usas Externo en modo de prueba, añade las cuentas UJA como usuarios de prueba.</li><li>El Client ID público ya está configurado en <code>cuenta-config.js</code>. No copies el secreto a esta web.</li></ol>
+      <figure class="drive-guide-shot"><img src="drive-setup/credenciales-redactadas.png" alt="Cliente OAuth creado; los valores de Client ID y secreto están ocultos"><figcaption>Captura con ambos valores sensibles ocultos. El secreto original quedó expuesto: restablécelo en Google Cloud para conservar el mismo Client ID; esta web no usa el secreto.</figcaption></figure>
     </details>
   </section>
 
-  <section class="card" id="backup-card">
-    <h2>Copias de seguridad de tus tests y progreso</h2>
+  <section class="card" id="study-progress-card">
+    <h2>Mi progreso</h2>
+    <p class="muted">Evolución desde tu primer test guardado.</p>
+    <div id="study-progress-chart" aria-live="polite"><p class="muted">Cargando tu historial…</p></div>
+  </section>
+
+  <details class="card" id="notebook-card">
+    <summary><strong>Crear un mapa mental con NotebookLM</strong></summary>
+    <p>Elige un tema ya impartido y copia el prompt en NotebookLM.</p>
+    <div class="actions"><label for="map-topic">Tema</label><select id="map-topic"></select><button type="button" id="copy-map-prompt">Copiar prompt</button></div>
+    <textarea id="map-prompt" rows="8" readonly aria-label="Prompt para NotebookLM"></textarea>
+    <p id="map-prompt-status" class="muted" role="status"></p>
+  </details>
+
+  <details class="card" id="backup-card">
+    <summary><strong>Copias de seguridad</strong></summary>
     <p>También puedes descargar tu progreso y todos tus tests realizados como archivo JSON para guardarlos directamente en tu Google Drive, enviártelos por correo o restaurarlos en cualquier momento.</p>
     <div class="actions">
       <button type="button" id="btn-descargar-todo">Descargar mi progreso completo (JSON)</button>
@@ -47,33 +51,49 @@
       </label>
     </div>
     <p id="backup-msg" class="muted" style="margin-top:8px; font-size:0.85rem;"></p>
-  </section>
+  </details>
 
-  <section class="card"><h2>Guardado en tu propio Drive</h2>
+  <details class="card"><summary><strong>Cómo se guarda y protege mi progreso</strong></summary>
     <p>Tu plan de estudio, sesiones, tests, errores y competencias se guardan en el espacio privado de esta aplicación en tu Google Drive institucional. El responsable de esta web no recibe ni almacena tu progreso.</p>
     <p>La aplicación solo pide acceso a sus propios datos privados de Drive y a tu correo para identificar tu cuenta. No tiene acceso a tus documentos ni a tus mensajes.</p>
     <p>Después de conectar puedes importar el progreso que ya tenías en este navegador si tu cuenta aún no tiene datos. En otros dispositivos, conecta la misma cuenta para recuperarlo.</p>
     <p>Durante el estudio verás si el progreso está guardado o pendiente de sincronizar. Si Google pide renovar la sesión, vuelve a conectar la misma cuenta. Antes de cerrar sesión, guarda los cambios pendientes.</p>
     <p>Puedes eliminar los datos y retirar el acceso desde Google Drive, en Configuración → Administrar aplicaciones. Cerrar sesión en esta web retira la copia local de la cuenta de este equipo.</p>
-    <div class="actions"><a class="button" href="calendario.html">Mi plan de estudio</a><a class="button secondary" href="index.html">Seguir estudiando</a></div>
-  </section>
+    <div class="actions"><a class="button secondary" href="index.html">Seguir estudiando</a></div>
+  </details>
   <footer>Proyecto gratuito de apoyo al estudio. Puedes seguir estudiando sin conectar Drive; en ese caso el progreso se conserva solo en este navegador.</footer>
-</main>
 <script>
   (() => {
-    const input = document.getElementById('input-client-id');
-    const btnSave = document.getElementById('btn-save-client-id');
-    const msg = document.getElementById('client-id-msg');
-    if (input) {
-      input.value = window.IPO_CUENTA_CONFIG?.googleClientId || '';
-      btnSave.onclick = () => {
-        const val = input.value.trim();
-        window.IPO_CUENTA_CONFIG.googleClientId = val;
-        msg.textContent = val ? '✓ Client ID guardado correctamente. Ya puedes pulsar Conectar Google Drive arriba.' : 'Client ID eliminado.';
-        msg.style.color = 'var(--ok, #10b981)';
-        setTimeout(() => location.reload(), 1200);
-      };
-    }
+    const topicNames = {1:'Introducción a la IPO',2:'El factor humano',3:'Metáforas',4:'Ingeniería de la interfaz',5:'Internacionalización',6:'Diseño gráfico',7:'Estilos y paradigmas',8:'Accesibilidad',9:'Evaluación',10:'Estándares y guías de estilo'};
+    const sessions = typeof SESIONES_TEORIA !== 'undefined' ? SESIONES_TEORIA : [];
+    const availableTopics = [...new Set(sessions.filter(s => s.tema && s.fecha <= fechaISO(new Date())).map(s => Number(s.tema)))].sort((a,b)=>a-b);
+    const select = document.getElementById('map-topic');
+    availableTopics.forEach(t => { const option = document.createElement('option'); option.value = t; option.textContent = `Tema ${t} · ${topicNames[t] || ''}`; select.append(option); });
+    const promptBox = document.getElementById('map-prompt');
+    const makePrompt = () => {
+      const topic = Number(select.value);
+      promptBox.value = `Actúa como tutor experto en Interacción Persona-Ordenador. Crea un mapa mental riguroso y claro del Tema ${topic}: ${topicNames[topic] || 'IPO'}, usando únicamente las fuentes que he añadido a NotebookLM.\n\nOrganiza los conceptos de lo general a lo específico y muestra las relaciones causa-efecto, dependencias y contrastes entre conceptos parecidos. Incluye una sección «No confundir» y conecta cada concepto con un ejemplo aplicado. Añade al final 5 preguntas de razonamiento con respuesta explicada: al menos una para unir conceptos relacionados con flechas, una comparación entre conceptos próximos y una situación práctica. No conviertas el mapa en una lista de definiciones para memorizar. Si las fuentes no respaldan un dato, indícalo en vez de inventarlo. Responde en español, con frases breves y jerarquía visual apta para estudiar.`;
+    };
+    select.addEventListener('change', makePrompt); makePrompt();
+    document.getElementById('copy-map-prompt').onclick = async () => {
+      const status = document.getElementById('map-prompt-status');
+      try { await navigator.clipboard.writeText(promptBox.value); status.textContent = 'Prompt copiado. Pégalo en NotebookLM junto con tus apuntes.'; }
+      catch (_) { promptBox.focus(); promptBox.select(); status.textContent = 'Selecciona y copia el prompt para pegarlo en NotebookLM.'; }
+    };
+    const chart = document.getElementById('study-progress-chart');
+    window.IPOAccountReady.then(() => {
+      const raw = (window.IPOStorage || localStorage).getItem('ipo_tests_v1');
+      let history = [];
+      try { history = JSON.parse(raw || '{}').history || []; } catch (_) {}
+      const records = history.filter(h => h.completado && h.fecha).sort((a,b) => a.fecha.localeCompare(b.fecha));
+      if (!records.length) { chart.innerHTML = '<p class="muted">Cuando completes tu primer test, aquí aparecerá tu evolución semanal.</p>'; return; }
+      const byWeek = new Map();
+      records.forEach(h => { const monday = h.week || h.fecha; const d = byWeek.get(monday) || {tests:0, correct:0, total:0}; d.tests++; d.correct += Number(h.aciertos || 0); d.total += Number(h.total || 0); byWeek.set(monday,d); });
+      const weeks = [...byWeek.entries()].sort((a,b)=>a[0].localeCompare(b[0]));
+      const w = Math.max(360, weeks.length * 64 + 48), H = 176, base = 132;
+      const bars = weeks.map(([date,d],i) => { const x=32+i*64, rate=d.total?d.correct/d.total:0, bh=Math.max(4,rate*92); return `<g><title>Semana del ${date}: ${d.tests} tests, ${Math.round(rate*100)} % de aciertos</title><rect x="${x}" y="${base-bh}" width="32" height="${bh}" rx="6" fill="var(--brand)"/><text x="${x+16}" y="${base+19}" text-anchor="middle" font-size="10" fill="currentColor">${date.slice(5)}</text><text x="${x+16}" y="${base-bh-7}" text-anchor="middle" font-size="10" fill="currentColor">${Math.round(rate*100)}%</text></g>`; }).join('');
+      chart.innerHTML = `<p><strong>${records.length}</strong> tests completados · Desde ${weeks[0][0]}</p><div class="chart-scroll"><svg role="img" aria-label="Aciertos por semana, desde el primer test guardado" viewBox="0 0 ${w} ${H}" width="${w}" height="${H}" xmlns="http://www.w3.org/2000/svg"><line x1="20" y1="${base}" x2="${w-8}" y2="${base}" stroke="currentColor" opacity=".2"/>${bars}</svg></div><p class="muted">Cada barra muestra el porcentaje medio de aciertos de tus tests completados esa semana.</p>`;
+    }).catch(() => { chart.innerHTML = '<p class="muted">No se pudo leer el historial en este momento.</p>'; });
     const btnTodo = document.getElementById('btn-descargar-todo');
     if (btnTodo) {
       btnTodo.onclick = () => {

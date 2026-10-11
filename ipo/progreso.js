@@ -34,8 +34,27 @@ window.IPOStudy = (() => {
     return a;
   };
   function session(key, pool, failed = false, fresh = false) {
-    if (!fresh && data.sessions[key]) {
+    if (!fresh && data.sessions[key] && Array.isArray(data.sessions[key].ids) && Array.isArray(data.sessions[key].responses)) {
       const existing = data.sessions[key];
+      if (!Array.isArray(existing.orders)) existing.orders = [];
+      existing.responses = existing.responses.slice(0, existing.ids.length);
+      existing.orders = existing.orders.slice(0, existing.ids.length);
+      if (!Number.isInteger(existing.index)) existing.index = existing.responses.length;
+      existing.completed = Boolean(existing.completed);
+      const known = new Set(pool.map(identity));
+      for (let i = existing.ids.length - 1; i >= 0; i--) {
+        if (!known.has(existing.ids[i])) {
+          existing.ids.splice(i, 1); existing.orders.splice(i, 1);
+          if (i < existing.responses.length) existing.responses.splice(i, 1);
+        }
+      }
+      existing.ids.forEach((id, i) => {
+        const question = pool.find(q => identity(q) === id);
+        const order = existing.orders[i];
+        if (!Array.isArray(order) || order.length !== question.opciones.length || new Set(order).size !== question.opciones.length || order.some(n => !Number.isInteger(n) || n < 0 || n >= question.opciones.length)) {
+          existing.orders[i] = shuffle(question.opciones.map((_, n) => n));
+        }
+      });
       // Another topic/global test may have mastered a queued question since it was saved.
       if (!existing.completed) {
         for (let i = existing.ids.length - 1; i >= existing.responses.length; i--) {
@@ -44,8 +63,8 @@ window.IPOStudy = (() => {
             existing.orders.splice(i, 1);
           }
         }
-        if (existing.responses.length && existing.responses.length === existing.ids.length) existing.completed = true;
-        existing.index = Math.min(existing.index, Math.max(0, existing.ids.length - 1));
+        if (existing.responses.length === existing.ids.length) existing.completed = true;
+        existing.index = Math.max(0, Math.min(existing.index, Math.max(0, existing.ids.length - 1)));
         save();
       }
       return existing;

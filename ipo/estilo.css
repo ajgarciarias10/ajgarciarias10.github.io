@@ -755,6 +755,14 @@ img { max-width: 100%; }
   font-weight: 500;
 }
 .history-drawer-content { padding: 0 18px 12px; }
+.drive-guide-shot { margin: 18px 0; }
+.drive-guide-shot img { display:block; max-width:100%; height:auto; border:1px solid var(--border); border-radius:var(--radius-sm); }
+.drive-guide-shot figcaption { color:var(--text-muted); font-size:.88rem; margin-top:6px; }
+.chart-scroll { overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px; }
+.chart-scroll svg { display:block; max-width:none; }
+.study-rhythm { padding-left:22px; }
+.study-rhythm li { padding:8px 0; }
+#map-prompt { width:100%; margin-top:12px; padding:12px; border:1px solid var(--border); border-radius:var(--radius-sm); color:var(--text-primary); background:var(--surface-muted); font:inherit; }
 .history-item { padding: 14px 0; border-top: 1px solid var(--border); }
 
 #navigator { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 24px; }
@@ -1018,3 +1026,11 @@ dialog.quiz::backdrop { background: rgba(4, 5, 12, 0.6); backdrop-filter: blur(4
 .account-panel > strong { display: block; overflow-wrap: anywhere; }
 .account-panel [data-status] { font-size: .9rem; color: var(--text-muted); margin: 8px 0 12px; }
 .account-panel .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+
+/* Progressive disclosure keeps the main study path calm. */
+main details > summary { cursor: pointer; color: var(--text-primary); }
+main details.card > summary { padding: 2px 0; }
+main details[open] > summary { margin-bottom: 14px; }
+.home-more { margin: 20px 0; }
+.home-more > summary { color: var(--text-muted); }
+.home-next-steps { margin-top: 22px; }

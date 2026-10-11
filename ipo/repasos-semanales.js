@@ -5,6 +5,8 @@
   panel.setAttribute('aria-label', 'Repaso semanal por tema');
   const bank = BANCO_GLOBAL;
   const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const parseJSON = value => { try { return JSON.parse(value); } catch (_) { return null; } };
+  const themeFromId = id => { const parsed = parseJSON(id); return Array.isArray(parsed) ? String(parsed[0]) : ''; };
   function render() {
     const thisWeek = IPOStudy.week();
     const records = IPOStudy.data.weeks[thisWeek] || {};
@@ -17,10 +19,11 @@
         const available = IPOStudy.eligible(pool).length;
         const failed = IPOStudy.eligible(pool, true).length;
         const stats = records[t] || { answered: 0, correct: 0, tests: 0 };
-        const sessions = Object.entries(IPOStudy.data.sessions).filter(([key, s]) => !s.completed && s.ids.length && s.ids.every(id => JSON.parse(id)[0] === t));
+        const sessions = Object.entries(IPOStudy.data.sessions || {}).filter(([, s]) =>
+          !s.completed && Array.isArray(s.ids) && s.ids.length && s.ids.every(id => themeFromId(id) === String(t)));
         const activeEntry = sessions[0];
         const active = activeEntry?.[1];
-        const activeFilter = activeEntry ? JSON.parse(activeEntry[0]) : null;
+        const activeFilter = activeEntry ? parseJSON(activeEntry[0]) : null;
         const base = activeFilter?.[0] === 'global' ? `generador.html?tema=${activeFilter[1]}` : TEMAS_CURSO[t].pagina || `generador.html?tema=${t}`;
         const params = new URLSearchParams(base.split('?')[1] || '');
         if (activeFilter && activeFilter[2] !== 'all') params.set('apartado', activeFilter[2]);
