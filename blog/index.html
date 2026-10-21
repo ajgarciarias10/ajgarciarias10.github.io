@@ -83,12 +83,12 @@
       <button type="button" class="icon-btn" id="mobile-drawer-close" aria-label="Close mobile menu">✕</button>
     </div>
     <nav>
-      <a class="nav-link" href="../#top">home</a>
-      <a class="nav-link" href="../#projects">projects</a>
-      <a class="nav-link active" href="./">blog</a>
-      <a class="nav-link" href="../#about">about</a>
-      <a class="nav-link" href="../ipo/">study IPO</a>
-      <a class="nav-link" href="../#contact">contact</a>
+      <a class="nav-link" href="../#top" data-i18n="nav.home">home</a>
+      <a class="nav-link" href="../#projects" data-i18n="nav.projects">projects</a>
+      <a class="nav-link active" href="./" data-i18n="nav.blog">blog</a>
+      <a class="nav-link" href="../#about" data-i18n="nav.about">about</a>
+      <a class="nav-link" href="../ipo/" data-i18n="nav.study">study IPO</a>
+      <a class="nav-link" href="../#contact" data-i18n="nav.contact">contact</a>
     </nav>
   </aside>
 
@@ -99,37 +99,38 @@
       <span style="color: var(--text-faint);">/</span>
       <span style="color: var(--text-bright);">blog</span>
       <span style="color: var(--text-faint);">·</span>
-      <span>3 entries</span>
+      <span data-i18n="blog.entriesCount">5 case studies</span>
     </div>
 
     <h1 class="hero-title" style="margin-bottom: 14px;">
-      <span class="prompt-prefix">$ </span>cat <span class="accent-text">~/notes</span><span class="cursor-blink" aria-hidden="true"></span>
+      <span class="prompt-prefix">$ </span><span data-i18n="blog.title">cat ~/notes</span><span class="cursor-blink" aria-hidden="true"></span>
     </h1>
 
-    <p style="font-size: 16.5px; line-height: 1.65; color: var(--text); max-width: 58ch; margin-bottom: 36px;">
-      Field notes from building products end to end — real-time concurrency, local-first daemons, proprietary vision models, and lessons learned along the way.
+    <p style="font-size: 16.5px; line-height: 1.65; color: var(--text); max-width: 58ch; margin-bottom: 36px;" data-i18n="blog.pageSubtitle">
+      Technical case studies and architecture notes across my projects — real-time concurrency, local-first daemons, custom computer vision models, bio-inspired AI optimization, and core engineering foundations.
     </p>
 
     <!-- Search & Filter Bar -->
     <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
       <div style="flex: 1; min-width: 260px; display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px;">
         <span style="font-family: var(--font-mono); color: var(--accent);">›</span>
-        <input style="flex: 1; font-family: var(--font-mono); font-size: 13px; color: var(--text-bright);" id="blog-search-input" placeholder="grep notes…" aria-label="grep notes…" />
+        <input style="flex: 1; font-family: var(--font-mono); font-size: 13px; color: var(--text-bright);" id="blog-search-input" placeholder="grep notes…" data-i18n-ph="blog.searchPlaceholder" aria-label="grep notes…" />
         <span style="font-family: var(--font-mono); font-size: 11px; padding: 2px 6px; border: 1px solid var(--border-strong); border-radius: 4px; color: var(--text-faint);">ESC</span>
       </div>
       <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-        <span class="filter-btn active" style="font-size: 11.5px; padding: 6px 12px;">all 3</span>
-        <span class="filter-btn" style="font-size: 11.5px; padding: 6px 12px;">Realtime</span>
-        <span class="filter-btn" style="font-size: 11.5px; padding: 6px 12px;">Local-First</span>
-        <span class="filter-btn" style="font-size: 11.5px; padding: 6px 12px;">Computer Vision</span>
+        <button type="button" class="filter-btn blog-tag-btn active" data-blog-tag="all" style="font-size: 11.5px; padding: 6px 12px;" data-i18n="blog.filterAll">all 5</button>
+        <button type="button" class="filter-btn blog-tag-btn" data-blog-tag="Realtime" style="font-size: 11.5px; padding: 6px 12px;" data-i18n="blog.filterRealtime">Realtime</button>
+        <button type="button" class="filter-btn blog-tag-btn" data-blog-tag="Local-First" style="font-size: 11.5px; padding: 6px 12px;">Local-First</button>
+        <button type="button" class="filter-btn blog-tag-btn" data-blog-tag="ComputerVision" style="font-size: 11.5px; padding: 6px 12px;" data-i18n="blog.filterVision">Computer Vision</button>
+        <button type="button" class="filter-btn blog-tag-btn" data-blog-tag="CoreLogic" style="font-size: 11.5px; padding: 6px 12px;" data-i18n="blog.filterCore">Core &amp; AI</button>
       </div>
     </div>
 
     <!-- Articles List -->
-    <div style="display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; flex-direction: column; gap: 24px;" id="blog-articles-list">
 
       <!-- Article 1 -->
-      <article class="blog-featured-card" data-article-id="f1-bugambra-realtime-auction">
+      <article class="blog-featured-card" data-article-id="f1-bugambra-realtime-auction" data-tags="Realtime,Firestore,Concurrency,PWA">
         <div class="blog-card-preview">
           <div class="blog-code-box">
             <span class="cmd">$ cat notes/f1-auction-concurrency.md</span>
@@ -140,52 +141,52 @@
           </div>
         </div>
         <div class="blog-card-info">
-          <span class="blog-badge-kicker">★ FEATURED · ENGINEERING DEEP DIVE</span>
-          <h2 class="blog-card-title">From WhatsApp Chaos to Real-time Auctions: Engineering the F1-BUGAMBRA Live Bidding Engine</h2>
-          <p class="blog-card-excerpt">
+          <span class="blog-badge-kicker" data-i18n="blog.featuredTag">★ FEATURED · ENGINEERING DEEP DIVE</span>
+          <h2 class="blog-card-title" data-article-title>From WhatsApp Chaos to Real-time Auctions: Engineering the F1-BUGAMBRA Live Bidding Engine</h2>
+          <p class="blog-card-excerpt" data-article-excerpt>
             How we codified an unruly championship spreadsheet and chaotic WhatsApp group bids into an authoritative real-time platform with anti-sniping and concurrency locks.
           </p>
           <div class="blog-card-meta">
-            <span>SEP 20, 2026</span>
+            <span data-article-date>SEP 20, 2026</span>
             <span>·</span>
-            <span>6 min read</span>
+            <span data-article-readtime>6 min read</span>
             <span>·</span>
             <span>#Realtime #Firestore #WebSockets</span>
           </div>
-          <span class="blog-read-cta">read post →</span>
+          <span class="blog-read-cta" data-i18n="blog.readPost">read case study →</span>
         </div>
       </article>
 
       <!-- Article 2 -->
-      <article class="blog-featured-card" data-article-id="local-first-gmailkeeper">
+      <article class="blog-featured-card" data-article-id="local-first-gmailkeeper" data-tags="Local-First,Python,GmailAPI,OAuth2">
         <div class="blog-card-preview">
           <div class="blog-code-box">
-            <span class="cmd">$ cat notes/local-first-gmailkeeper.md</span>
+            <span class="cmd">$ cat notes/local-first-gmailkeep.md</span>
             <div class="meta-line">──────────────────────────────────────</div>
-            <div class="meta-line"># local-first-privacy-gmailkeeper</div>
+            <div class="meta-line"># local-first-privacy-gmailkeep</div>
             <div class="meta-line">tags: [<span class="tags-val">Local-First, Python, GmailAPI, OAuth2</span>]</div>
             <div class="meta-line">read: ~5min · Aug 2026</div>
           </div>
         </div>
         <div class="blog-card-info">
-          <span class="blog-badge-kicker">#LOCAL-FIRST · DATA PRIVACY</span>
-          <h2 class="blog-card-title">Local-First Privacy: Building GmailKeeper Without Cloud Middlemen or AI Costs</h2>
-          <p class="blog-card-excerpt">
+          <span class="blog-badge-kicker" data-i18n="blog.kickerLocal">#LOCAL-FIRST · DATA PRIVACY</span>
+          <h2 class="blog-card-title" data-article-title>Local-First Privacy: Building GmailKeep Personal Without Cloud Middlemen or AI Costs</h2>
+          <p class="blog-card-excerpt" data-article-excerpt>
             Why users do not need another $15/month SaaS reading their personal emails. Architecture of a zero-cost local systemd daemon with hierarchical label dispatch.
           </p>
           <div class="blog-card-meta">
-            <span>AUG 14, 2026</span>
+            <span data-article-date>AUG 14, 2026</span>
             <span>·</span>
-            <span>5 min read</span>
+            <span data-article-readtime>5 min read</span>
             <span>·</span>
             <span>#Python #OAuth2 #Systemd</span>
           </div>
-          <span class="blog-read-cta">read post →</span>
+          <span class="blog-read-cta" data-i18n="blog.readPost">read case study →</span>
         </div>
       </article>
 
       <!-- Article 3 -->
-      <article class="blog-featured-card" data-article-id="clevertracker-custom-vision-models">
+      <article class="blog-featured-card" data-article-id="clevertracker-custom-vision-models" data-tags="ComputerVision,Flutter,PostgREST,ML">
         <div class="blog-card-preview">
           <div class="blog-code-box">
             <span class="cmd">$ cat notes/clevertracker-vision-models.md</span>
@@ -196,39 +197,82 @@
           </div>
         </div>
         <div class="blog-card-info">
-          <span class="blog-badge-kicker">#COMPUTER-VISION · FLUTTER ARCHITECTURE</span>
-          <h2 class="blog-card-title">Custom Models vs. Third-Party APIs: Why CleverTracker Trains Its Own Vision Models</h2>
-          <p class="blog-card-excerpt">
+          <span class="blog-badge-kicker" data-i18n="blog.kickerVision">#COMPUTER-VISION · FLUTTER ARCHITECTURE</span>
+          <h2 class="blog-card-title" data-article-title>Custom Models vs. Third-Party APIs: Why CleverTracker Trains Its Own Vision Models</h2>
+          <p class="blog-card-excerpt" data-article-excerpt>
             The architectural tradeoffs between calling external LLM vision endpoints and training custom lightweight models for a 681,000 product food catalog.
           </p>
           <div class="blog-card-meta">
-            <span>JUL 02, 2026</span>
+            <span data-article-date>JUL 02, 2026</span>
             <span>·</span>
-            <span>7 min read</span>
+            <span data-article-readtime>7 min read</span>
             <span>·</span>
             <span>#Flutter #PostgreSQL #OnDeviceML</span>
           </div>
-          <span class="blog-read-cta">read post →</span>
+          <span class="blog-read-cta" data-i18n="blog.readPost">read case study →</span>
+        </div>
+      </article>
+
+      <!-- Article 4 -->
+      <article class="blog-featured-card" data-article-id="smartfruit-bio-inspired-ai" data-tags="ComputerVision,EfficientNet,BioInspired,HuggingFace">
+        <div class="blog-card-preview">
+          <div class="blog-code-box">
+            <span class="cmd">$ cat notes/smartfruit-bio-optimization.md</span>
+            <div class="meta-line">──────────────────────────────────────</div>
+            <div class="meta-line"># bio-inspired-transfer-learning</div>
+            <div class="meta-line">tags: [<span class="tags-val">EfficientNet-B0, ABC, PSO, ComputerVision</span>]</div>
+            <div class="meta-line">read: ~5min · Jan 2026</div>
+          </div>
+        </div>
+        <div class="blog-card-info">
+          <span class="blog-badge-kicker" data-i18n="blog.kickerBio">#TRANSFER-LEARNING · BIO-INSPIRED AI</span>
+          <h2 class="blog-card-title" data-article-title>Bio-Inspired Optimization: Outperforming Heavy CNNs with EfficientNet-B0 in SmartFruitClassifier</h2>
+          <p class="blog-card-excerpt" data-article-excerpt>
+            How Artificial Bee Colony (ABC) and Particle Swarm Optimization (PSO) tuned EfficientNet-B0 to surpass >95% accuracy while cutting parameter count by 87%.
+          </p>
+          <div class="blog-card-meta">
+            <span data-article-date>JAN 18, 2026</span>
+            <span>·</span>
+            <span data-article-readtime>5 min read</span>
+            <span>·</span>
+            <span>#EfficientNet #HuggingFace #PSO</span>
+          </div>
+          <span class="blog-read-cta" data-i18n="blog.readPost">read case study →</span>
+        </div>
+      </article>
+
+      <!-- Article 5 -->
+      <article class="blog-featured-card" data-article-id="divinando-core-foundations-to-ai" data-tags="CoreLogic,Java,CPP,SQL,DIVINANDO,AIOrchestration">
+        <div class="blog-card-preview">
+          <div class="blog-code-box">
+            <span class="cmd">$ cat notes/divinando-to-ai-orchestration.md</span>
+            <div class="meta-line">──────────────────────────────────────</div>
+            <div class="meta-line"># from-scratch-foundations-to-ai-workflows</div>
+            <div class="meta-line">tags: [<span class="tags-val">Java, C++, SQL, AI Orchestration</span>]</div>
+            <div class="meta-line">read: ~5min · May 2026</div>
+          </div>
+        </div>
+        <div class="blog-card-info">
+          <span class="blog-badge-kicker" data-i18n="blog.kickerCore">#CORE-ENGINEERING · AI ORCHESTRATION</span>
+          <h2 class="blog-card-title" data-article-title>From Scratch Core Logic in DIVINANDO to AI Orchestration: Why Foundations Matter</h2>
+          <p class="blog-card-excerpt" data-article-excerpt>
+            Why coding DIVINANDO from scratch in Java, C++, and SQL shaped how I orchestrate AI-assisted workflows today to ship production software faster without losing control of the underlying architecture.
+          </p>
+          <div class="blog-card-meta">
+            <span data-article-date>MAY 10, 2026</span>
+            <span>·</span>
+            <span data-article-readtime>5 min read</span>
+            <span>·</span>
+            <span>#Java #C++ #SQL #AIOrchestration</span>
+          </div>
+          <span class="blog-read-cta" data-i18n="blog.readPost">read case study →</span>
         </div>
       </article>
 
     </div>
 
-    <!-- RSS Box -->
-    <div class="rss-box" style="margin-top: 40px;">
-      <div class="rss-box-icon" aria-hidden="true">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M6.18 15.64a2.18 2.18 0 1 1 0 4.36 2.18 2.18 0 0 1 0-4.36zM4 4.44C12.51 4.44 19.56 11.49 19.56 20H16.5C16.5 13.18 10.82 7.5 4 7.5V4.44zm0 5.6c5.43 0 9.92 4.49 9.92 9.92H10.86c0-3.79-3.07-6.86-6.86-6.86v-3.06z"></path>
-        </svg>
-      </div>
-      <div>
-        <strong style="color: var(--text-bright); font-size: 14px;">Subscribe via RSS</strong>
-        <p style="color: var(--text-dim); font-size: 13px;">New engineering posts hit your reader instantly — zero spam, no tracking.</p>
-      </div>
-      <div style="margin-left: auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-        <a class="btn btn-secondary code-btn" href="./feed.xml" target="_blank" rel="noopener noreferrer">feed.xml ↗</a>
-        <a class="btn btn-secondary code-btn" href="../">← /home</a>
-      </div>
+    <div style="margin-top: 36px; display: flex; justify-content: flex-start;">
+      <a class="btn btn-secondary code-btn" href="../" data-i18n="blog.backHome">← /home</a>
     </div>
   </main>
 
@@ -236,8 +280,8 @@
   <footer class="footer">
     <div class="container footer-content">
       <div>
-        <span>© 2026 Antonio José García Arias</span>
-        <span style="color: var(--text-faint);">· built with precision, Blue Cyan theme, deployed on GitHub Pages</span>
+        <span data-i18n="footer.copy">© 2026 Antonio José García Arias</span>
+        <span style="color: var(--text-faint);" data-i18n="footer.note">· built with precision, Blue Cyan theme, deployed on GitHub Pages</span>
       </div>
       <div class="footer-links">
         <a href="../">/home</a>

@@ -122,12 +122,24 @@
       blog: {
         eyebrow: 'FIELD NOTES',
         title: 'cat ~/notes',
-        path: '~/blog · 3 entries',
-        readPost: 'read post →',
+        path: '~/notes · 5 case studies',
+        subpath: 'Engineering teardowns',
+        entriesCount: '5 case studies',
+        pageSubtitle: 'Technical case studies and architecture notes across my projects — real-time concurrency, local-first daemons, custom computer vision models, bio-inspired AI optimization, and core engineering foundations.',
+        searchPlaceholder: 'grep notes…',
+        filterAll: 'all 5',
+        filterRealtime: 'Realtime',
+        filterVision: 'Computer Vision',
+        filterCore: 'Core & AI',
+        readPost: 'read case study →',
         minRead: 'min read',
         featuredTag: '★ FEATURED · ENGINEERING DEEP DIVE',
-        rssTitle: 'Subscribe via RSS',
-        rssDesc: 'New engineering posts hit your reader instantly — zero spam, no tracking.'
+        kickerLocal: '#LOCAL-FIRST · PRIVACY',
+        kickerVision: '#COMPUTER-VISION · FLUTTER',
+        kickerBio: '#TRANSFER-LEARNING · BIO-INSPIRED AI',
+        kickerCore: '#CORE-ENGINEERING · AI ORCHESTRATION',
+        archiveBtn: 'ls ~/notes/all →',
+        backHome: '← /home'
       },
       about: {
         eyebrow: 'ABOUT ME',
@@ -284,12 +296,24 @@
       blog: {
         eyebrow: 'NOTAS DE CAMPO',
         title: 'cat ~/notas',
-        path: '~/blog · 3 entradas',
-        readPost: 'leer entrada →',
+        path: '~/notas · 5 casos de estudio',
+        subpath: 'Análisis de ingeniería',
+        entriesCount: '5 casos de estudio',
+        pageSubtitle: 'Casos de estudio técnicos y arquitectura de mis proyectos: concurrencia en tiempo real, demonios local-first, modelos propios de visión computacional, optimización bioinspirada y fundamentos de ingeniería.',
+        searchPlaceholder: 'buscar notas…',
+        filterAll: 'todos (5)',
+        filterRealtime: 'Tiempo Real',
+        filterVision: 'Visión Computacional',
+        filterCore: 'Ingeniería Base e IA',
+        readPost: 'leer análisis →',
         minRead: 'min de lectura',
         featuredTag: '★ DESTACADO · ANÁLISIS TÉCNICO',
-        rssTitle: 'Suscribirse vía RSS',
-        rssDesc: 'Nuevos artículos técnicos directos a tu lector: sin correos, sin rastreo.'
+        kickerLocal: '#LOCAL-FIRST · PRIVACIDAD',
+        kickerVision: '#VISIÓN-COMPUTACIONAL · FLUTTER',
+        kickerBio: '#TRANSFER-LEARNING · IA BIOINSPIRADA',
+        kickerCore: '#INGENIERÍA-BASE · ORQUESTACIÓN IA',
+        archiveBtn: 'ls ~/notas/todas →',
+        backHome: '← /inicio'
       },
       about: {
         eyebrow: 'SOBRE MÍ',
@@ -342,7 +366,8 @@
       id: 'f1-bugambra-realtime-auction',
       title: 'From WhatsApp Chaos to Real-time Auctions: Engineering the F1-BUGAMBRA Live Bidding Engine',
       titleEs: 'Del caos de WhatsApp a subastas en tiempo real: La ingeniería de F1-BUGAMBRA',
-      date: 'Sep 20, 2026',
+      date: 'SEP 20, 2026',
+      dateEs: '20 SEP 2026',
       readTime: '6 min read',
       readTimeEs: '6 min de lectura',
       tags: ['Realtime', 'WebSockets', 'Firestore', 'F1-BUGAMBRA', 'Concurrency'],
@@ -456,9 +481,10 @@ await runTransaction(db, async (transaction) => {
     },
     {
       id: 'local-first-gmailkeeper',
-      title: 'Local-First Privacy: Building GmailKeeper Without Cloud Middlemen or AI Costs',
-      titleEs: 'Privacidad Local-First: Construyendo GmailKeeper sin servidores intermediarios',
-      date: 'Aug 14, 2026',
+      title: 'Local-First Privacy: Building GmailKeep Personal Without Cloud Middlemen or AI Costs',
+      titleEs: 'Privacidad Local-First: Construyendo GmailKeep Personal sin servidores intermediarios ni costes de IA',
+      date: 'AUG 14, 2026',
+      dateEs: '14 AGO 2026',
       readTime: '5 min read',
       readTimeEs: '5 min de lectura',
       tags: ['Local-First', 'Python', 'GmailAPI', 'OAuth2', 'Systemd'],
@@ -528,7 +554,8 @@ await runTransaction(db, async (transaction) => {
       id: 'clevertracker-custom-vision-models',
       title: 'Custom Models vs. Third-Party APIs: Why CleverTracker Trains Its Own Vision Models',
       titleEs: 'Modelos Propios vs APIs de Terceros: Por qué CleverTracker entrena su propia visión',
-      date: 'Jul 02, 2026',
+      date: 'JUL 02, 2026',
+      dateEs: '02 JUL 2026',
       readTime: '7 min read',
       readTimeEs: '7 min de lectura',
       tags: ['ComputerVision', 'Flutter', 'PostgREST', 'MachineLearning', 'OfflineFirst'],
@@ -568,6 +595,98 @@ await runTransaction(db, async (transaction) => {
 
         <h3>3. Arquitectura Flutter con soporte Offline-First</h3>
         <p>Construido con Flutter, Riverpod y Hive, el usuario puede registrar comidas, entrenamientos y medidas corporales en el gimnasio o en el supermercado sin depender de cobertura móvil. Los datos se sincronizan con Oracle Cloud de manera transparente en cuanto hay conexión.</p>
+      `
+    },
+    {
+      id: 'smartfruit-bio-inspired-ai',
+      title: 'Bio-Inspired Optimization: Outperforming Heavy CNNs with EfficientNet-B0 in SmartFruitClassifier',
+      titleEs: 'Optimización Bioinspirada: Superando a CNNs pesadas con EfficientNet-B0 en SmartFruitClassifier',
+      date: 'JAN 18, 2026',
+      dateEs: '18 ENE 2026',
+      readTime: '5 min read',
+      readTimeEs: '5 min de lectura',
+      tags: ['EfficientNet-B0', 'TransferLearning', 'BioInspired', 'HuggingFace', 'ComputerVision'],
+      excerpt: 'How Artificial Bee Colony (ABC) and Particle Swarm Optimization (PSO) tuned EfficientNet-B0 to surpass >95% accuracy while cutting parameter count by 87%.',
+      excerptEs: 'Cómo la Colonia Artificial de Abejas (ABC) y la Optimización por Enjambre de Partículas (PSO) ajustaron EfficientNet-B0 para superar el 95% de precisión reduciendo los parámetros un 87%.',
+      content: `
+        <h3>1. Beyond Grid Search in Transfer Learning</h3>
+        <p>When fine-tuning deep convolutional networks for fine-grained fruit variety classification, manual hyperparameter tuning or exhaustive grid search quickly hits a wall: learning rates, dropout ratios, unfreezing depth, and L2 regularization interact non-linearly.</p>
+        <p>In <strong>SmartFruitClassifier</strong> (developed during my mobility program at ISEC Coimbra), we paired a compact <code>EfficientNet-B0</code> backbone with bio-inspired metaheuristic algorithms—specifically <strong>Artificial Bee Colony (ABC)</strong> and <strong>Particle Swarm Optimization (PSO)</strong>—to navigate the hyperparameter space automatically.</p>
+
+        <div class="reader-callout">
+          <strong>Key Result:</strong> Over 95% test accuracy across fine-grained fruit varieties while using 87% fewer parameters than traditional heavy CNN architectures, deployed live on Hugging Face Spaces.
+        </div>
+
+        <h3>2. How ABC &amp; PSO Guided the Architecture</h3>
+        <ul>
+          <li><strong>Exploration vs. Exploitation:</strong> PSO particles explored continuous learning-rate and dropout schedules, while ABC scout bees escaped local minima in regularization strength.</li>
+          <li><strong>Compound Scaling Efficiency:</strong> By leveraging EfficientNet-B0's balanced depth, width, and resolution scaling, inference remains lightweight enough for real-time CPU execution on cloud spaces.</li>
+        </ul>
+
+        <h3>3. From Research Notebook to Live Cloud Deployment</h3>
+        <p>A model that lives only in a Jupyter notebook delivers zero practical value. We packaged the preprocessing pipeline and trained weights into an interactive web interface hosted on <strong>Hugging Face Spaces</strong>, allowing anyone to upload an image and inspect top-k confidence scores in real time.</p>
+      `,
+      contentEs: `
+        <h3>1. Más allá de Grid Search en Transfer Learning</h3>
+        <p>Al ajustar redes convolucionales profundas para clasificar variedades específicas de fruta, la búsqueda manual o mediante rejilla exhaustiva (Grid Search) resulta ineficiente: la tasa de aprendizaje, el porcentaje de dropout, las capas descongeladas y la regularización L2 interactúan de forma no lineal.</p>
+        <p>En <strong>SmartFruitClassifier</strong> (desarrollado durante mi estancia en ISEC Coímbra), combinamos un backbone compacto <code>EfficientNet-B0</code> con algoritmos metaheurísticos bioinspirados —<strong>Colonia Artificial de Abejas (ABC)</strong> y <strong>Enjambre de Partículas (PSO)</strong>— para explorar automáticamente el espacio de hiperparámetros.</p>
+
+        <div class="reader-callout">
+          <strong>Resultado clave:</strong> Más del 95% de precisión en clasificación con un 87% menos de parámetros que arquitecturas CNN pesadas tradicionales, desplegado en vivo en Hugging Face Spaces.
+        </div>
+
+        <h3>2. Cómo ABC y PSO guiaron el ajuste del modelo</h3>
+        <ul>
+          <li><strong>Exploración vs. Explotación:</strong> Las partículas de PSO exploraron combinaciones continuas de tasa de aprendizaje y dropout, mientras que las abejas exploradoras de ABC evitaron óptimos locales en la regularización.</li>
+          <li><strong>Eficiencia en Inferencia:</strong> Gracias al escalado compuesto de EfficientNet-B0, el modelo ofrece predicciones instantáneas en tiempo real sin requerir GPUs dedicadas en producción.</li>
+        </ul>
+
+        <h3>3. Del cuaderno de investigación al despliegue en la nube</h3>
+        <p>Un modelo que se queda en un notebook no aporta valor real. Empaquetamos el preprocesamiento y los pesos optimizados en una aplicación interactiva en <strong>Hugging Face Spaces</strong> con inferencia visual inmediata.</p>
+      `
+    },
+    {
+      id: 'divinando-core-foundations-to-ai',
+      title: 'From Scratch Core Logic in DIVINANDO to AI Orchestration: Why Foundations Matter',
+      titleEs: 'De programar DIVINANDO desde cero a la Orquestación con IA: Por qué importan los fundamentos',
+      date: 'MAY 10, 2026',
+      dateEs: '10 MAY 2026',
+      readTime: '5 min read',
+      readTimeEs: '5 min de lectura',
+      tags: ['Java', 'C++', 'SQL', 'DIVINANDO', 'AIOrchestration'],
+      excerpt: 'Why coding DIVINANDO from scratch in Java, C++, and SQL shaped how I orchestrate AI-assisted workflows today to ship production software faster without losing control of the underlying architecture.',
+      excerptEs: 'Por qué programar DIVINANDO íntegramente desde cero en Java, C++ y SQL definió mi forma actual de orquestar flujos asistidos por IA para entregar herramientas reales más rápido sin perder el control arquitectónico.',
+      content: `
+        <h3>1. Building DIVINANDO Without Shortcuts</h3>
+        <p>When we built <strong>DIVINANDO</strong> as our vocational capstone project (DAM Final Degree Project), every single line of code—from the game state machine and native logic in <code>Java</code> and <code>C++</code> to the relational database schemas and authentication flows—was written by hand from scratch.</p>
+        <p>Debugging memory boundaries, designing normalized SQL tables, and coordinating multiplatform client-server state taught me how software actually works underneath the abstractions.</p>
+
+        <div class="reader-callout">
+          <strong>Engineering Principle:</strong> Writing every single line of code from scratch isn't always the smartest path when delivery time, efficiency, and costs matter—but you can only orchestrate AI effectively if you deeply understand the underlying engineering.
+        </div>
+
+        <h3>2. Combining Solid Foundations with AI-Assisted Workflows</h3>
+        <p>Today's software landscape has shifted. By combining those core foundations (Java, C++, SQL, and data pipelines at Civica and T-Systems) with <strong>advanced prompt engineering, guardrails, and AI orchestration</strong>, I can deliver complete production suites—like <em>F1-BUGAMBRA</em>, <em>GmailKeep Personal</em>, <em>CleverTracker</em>, and <em>IPO Study Lab</em>—in a fraction of the traditional time.</p>
+        <ul>
+          <li><strong>Architecture First:</strong> I design the data model, concurrency locks, and security boundaries before generating or writing implementation code.</li>
+          <li><strong>Verification &amp; Guardrails:</strong> Every AI-assisted module is audited for edge cases, transactional integrity, and runtime performance.</li>
+        </ul>
+      `,
+      contentEs: `
+        <h3>1. Construyendo DIVINANDO sin atajos</h3>
+        <p>Cuando desarrollamos <strong>DIVINANDO</strong> como Proyecto Final de Ciclo Formativo (DAM), cada línea de código —desde la máquina de estados del juego y la lógica en <code>Java</code> y <code>C++</code> hasta el diseño de bases de datos relacionales y la autenticación— se programó íntegramente desde cero.</p>
+        <p>Depurar errores a bajo nivel, normalizar tablas SQL y sincronizar cliente y servidor me dio una base sólida para comprender cómo funciona realmente el software por debajo de las abstracciones.</p>
+
+        <div class="reader-callout">
+          <strong>Principio de ingeniería:</strong> Escribir cada línea de código desde cero no siempre es el camino más inteligente cuando importan los tiempos de entrega, la eficiencia y los costes; pero solo puedes orquestar IA con criterio si dominas los fundamentos técnicos.
+        </div>
+
+        <h3>2. Uniendo fundamentos sólidos con flujos asistidos por IA</h3>
+        <p>Combinando esa base técnica (Java, C++, SQL y tuberías de datos corporativas en Civica y T-Systems) con <strong>prompt engineering avanzado, guardrails y orquestación de IA</strong>, hoy construyo y despliego herramientas reales completas —como <em>F1-BUGAMBRA</em>, <em>GmailKeep Personal</em>, <em>CleverTracker</em> e <em>IPO Study Lab</em>— mucho más rápido sin perder el control sobre la arquitectura.</p>
+        <ul>
+          <li><strong>Arquitectura primero:</strong> Diseño el modelo de datos, el control de concurrencia y las reglas de seguridad antes de implementar.</li>
+          <li><strong>Verificación rigurosa:</strong> Cada componente se audita para garantizar integridad transaccional, privacidad y rendimiento en producción.</li>
+        </ul>
       `
     }
   ];
@@ -668,29 +787,41 @@ await runTransaction(db, async (transaction) => {
   }
 
   // ==========================================================================
-  // Blog Search
+  // Blog Search & Tag Filters
   // ==========================================================================
   function setupBlogSearch() {
     const searchInput = document.getElementById('blog-search-input');
-    if (!searchInput) return;
+    const tagBtns = document.querySelectorAll('.blog-tag-btn');
+    let activeTag = 'all';
 
-    searchInput.addEventListener('input', function () {
-      const q = this.value.toLowerCase().trim();
+    function filterBlogCards() {
+      const q = searchInput ? searchInput.value.toLowerCase().trim() : '';
       document.querySelectorAll('.blog-featured-card, .blog-mini-card').forEach(card => {
         const text = card.textContent.toLowerCase();
-        if (!q || text.includes(q)) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
+        const tagsAttr = (card.getAttribute('data-tags') || '').toLowerCase();
+        const matchesQuery = !q || text.includes(q);
+        const matchesTag = activeTag === 'all' || tagsAttr.includes(activeTag.toLowerCase()) || text.includes(activeTag.toLowerCase());
+        card.style.display = (matchesQuery && matchesTag) ? '' : 'none';
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', filterBlogCards);
+      searchInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          this.value = '';
+          filterBlogCards();
         }
       });
-    });
+    }
 
-    searchInput.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        this.value = '';
-        this.dispatchEvent(new Event('input'));
-      }
+    tagBtns.forEach(btn => {
+      btn.addEventListener('click', function () {
+        tagBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        activeTag = this.getAttribute('data-blog-tag') || 'all';
+        filterBlogCards();
+      });
     });
   }
 
@@ -797,10 +928,34 @@ await runTransaction(db, async (transaction) => {
       if (val !== undefined) el.placeholder = val;
     });
 
+    // Translate blog article cards dynamically (both index.html and blog/index.html)
+    const isEs = currentLang === 'es';
+    document.querySelectorAll('[data-article-id]').forEach(card => {
+      const id = card.getAttribute('data-article-id');
+      const article = ARTICLES.find(a => a.id === id);
+      if (!article) return;
+
+      const titleEl = card.querySelector('[data-article-title]');
+      const excerptEl = card.querySelector('[data-article-excerpt]');
+      const dateEl = card.querySelector('[data-article-date]');
+      const readTimeEl = card.querySelector('[data-article-readtime]');
+
+      if (titleEl) titleEl.textContent = isEs ? (article.titleEs || article.title) : article.title;
+      if (excerptEl) excerptEl.textContent = isEs ? (article.excerptEs || article.excerpt) : article.excerpt;
+      if (dateEl) dateEl.textContent = isEs ? (article.dateEs || article.date) : article.date;
+      if (readTimeEl) readTimeEl.textContent = isEs ? (article.readTimeEs || article.readTime) : article.readTime;
+    });
+
     // Translate document title
-    document.title = currentLang === 'es'
-      ? 'Antonio José García Arias — Ingeniero de IA y Desarrollador Full-Stack'
-      : 'Antonio José García Arias — AI Engineer & Full-Stack Developer';
+    if (window.location.pathname.includes('/blog')) {
+      document.title = isEs
+        ? 'Blog · Notas de Campo — Antonio José García Arias'
+        : 'Blog · Field Notes — Antonio José García Arias';
+    } else {
+      document.title = isEs
+        ? 'Antonio José García Arias — Ingeniero de IA y Desarrollador Full-Stack'
+        : 'Antonio José García Arias — AI Engineer & Full-Stack Developer';
+    }
   }
 
   function getNestedValue(obj, path) {

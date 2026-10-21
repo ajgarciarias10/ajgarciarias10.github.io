@@ -533,8 +533,8 @@
             <h2 class="section-title" data-i18n="blog.title">cat ~/notes</h2>
           </div>
           <div class="section-path">
-            <span data-i18n="blog.path">~/blog · 3 entries</span><br />
-            <span class="section-path-count">Engineering teardowns</span>
+            <span data-i18n="blog.path">~/notes · 5 case studies</span><br />
+            <span class="section-path-count" data-i18n="blog.subpath">Engineering teardowns</span>
           </div>
         </div>
 
@@ -551,68 +551,88 @@
           </div>
           <div class="blog-card-info">
             <span class="blog-badge-kicker" data-i18n="blog.featuredTag">★ FEATURED · ENGINEERING DEEP DIVE</span>
-            <h3 class="blog-card-title">From WhatsApp Chaos to Real-time Auctions: Engineering the F1-BUGAMBRA Live Bidding Engine</h3>
-            <p class="blog-card-excerpt">
+            <h3 class="blog-card-title" data-article-title>From WhatsApp Chaos to Real-time Auctions: Engineering the F1-BUGAMBRA Live Bidding Engine</h3>
+            <p class="blog-card-excerpt" data-article-excerpt>
               How we codified an unruly championship spreadsheet and chaotic WhatsApp group bids into an authoritative real-time platform with anti-sniping and concurrency locks.
             </p>
             <div class="blog-card-meta">
-              <span>SEP 20, 2026</span>
+              <span data-article-date>SEP 20, 2026</span>
               <span>·</span>
-              <span>6 min read</span>
+              <span data-article-readtime>6 min read</span>
               <span>·</span>
               <span>#Realtime #Firestore #WebSockets</span>
             </div>
-            <span class="blog-read-cta" data-i18n="blog.readPost">read post →</span>
+            <span class="blog-read-cta" data-i18n="blog.readPost">read case study →</span>
           </div>
         </div>
 
-        <!-- Secondary Blog Grid -->
+        <!-- Secondary Blog Grid (2x2) -->
         <div class="blog-secondary-grid">
 
-          <!-- Post 2: GmailKeeper -->
+          <!-- Post 2: GmailKeep Personal -->
           <div class="blog-mini-card" data-article-id="local-first-gmailkeeper">
-            <div class="blog-badge-kicker">#LOCAL-FIRST · PRIVACY</div>
-            <h4 class="blog-mini-title">Local-First Privacy: Building GmailKeeper Without Cloud Middlemen or AI Costs</h4>
-            <p class="blog-mini-desc">
+            <div class="blog-badge-kicker" data-i18n="blog.kickerLocal">#LOCAL-FIRST · PRIVACY</div>
+            <h4 class="blog-mini-title" data-article-title>Local-First Privacy: Building GmailKeep Personal Without Cloud Middlemen or AI Costs</h4>
+            <p class="blog-mini-desc" data-article-excerpt>
               Why users do not need another $15/month SaaS reading their personal emails. Architecture of a zero-cost local systemd daemon with hierarchical label dispatch.
             </p>
             <div class="blog-card-meta">
-              <span>AUG 14, 2026</span>
+              <span data-article-date>AUG 14, 2026</span>
               <span>·</span>
-              <span>5 min read</span>
+              <span data-article-readtime>5 min read</span>
             </div>
-            <span class="blog-read-cta" data-i18n="blog.readPost">read post →</span>
+            <span class="blog-read-cta" data-i18n="blog.readPost">read case study →</span>
           </div>
 
           <!-- Post 3: CleverTracker -->
           <div class="blog-mini-card" data-article-id="clevertracker-custom-vision-models">
-            <div class="blog-badge-kicker">#COMPUTER-VISION · FLUTTER</div>
-            <h4 class="blog-mini-title">Custom Models vs. Third-Party APIs: Why CleverTracker Trains Its Own Vision Models</h4>
-            <p class="blog-mini-desc">
+            <div class="blog-badge-kicker" data-i18n="blog.kickerVision">#COMPUTER-VISION · FLUTTER</div>
+            <h4 class="blog-mini-title" data-article-title>Custom Models vs. Third-Party APIs: Why CleverTracker Trains Its Own Vision Models</h4>
+            <p class="blog-mini-desc" data-article-excerpt>
               The architectural tradeoffs between calling external LLM vision endpoints and training custom lightweight models for a 681,000 product food catalog.
             </p>
             <div class="blog-card-meta">
-              <span>JUL 02, 2026</span>
+              <span data-article-date>JUL 02, 2026</span>
               <span>·</span>
-              <span>7 min read</span>
+              <span data-article-readtime>7 min read</span>
             </div>
-            <span class="blog-read-cta" data-i18n="blog.readPost">read post →</span>
+            <span class="blog-read-cta" data-i18n="blog.readPost">read case study →</span>
+          </div>
+
+          <!-- Post 4: SmartFruitClassifier -->
+          <div class="blog-mini-card" data-article-id="smartfruit-bio-inspired-ai">
+            <div class="blog-badge-kicker" data-i18n="blog.kickerBio">#TRANSFER-LEARNING · BIO-INSPIRED AI</div>
+            <h4 class="blog-mini-title" data-article-title>Bio-Inspired Optimization: Outperforming Heavy CNNs with EfficientNet-B0 in SmartFruitClassifier</h4>
+            <p class="blog-mini-desc" data-article-excerpt>
+              How Artificial Bee Colony (ABC) and Particle Swarm Optimization (PSO) tuned EfficientNet-B0 to surpass >95% accuracy while cutting parameter count by 87%.
+            </p>
+            <div class="blog-card-meta">
+              <span data-article-date>JAN 18, 2026</span>
+              <span>·</span>
+              <span data-article-readtime>5 min read</span>
+            </div>
+            <span class="blog-read-cta" data-i18n="blog.readPost">read case study →</span>
+          </div>
+
+          <!-- Post 5: DIVINANDO & AI Orchestration Philosophy -->
+          <div class="blog-mini-card" data-article-id="divinando-core-foundations-to-ai">
+            <div class="blog-badge-kicker" data-i18n="blog.kickerCore">#CORE-ENGINEERING · AI ORCHESTRATION</div>
+            <h4 class="blog-mini-title" data-article-title>From Scratch Core Logic in DIVINANDO to AI Orchestration: Why Foundations Matter</h4>
+            <p class="blog-mini-desc" data-article-excerpt>
+              Why coding DIVINANDO from scratch in Java, C++, and SQL shaped how I orchestrate AI-assisted workflows today to ship production software faster without losing control of the underlying architecture.
+            </p>
+            <div class="blog-card-meta">
+              <span data-article-date>MAY 10, 2026</span>
+              <span>·</span>
+              <span data-article-readtime>5 min read</span>
+            </div>
+            <span class="blog-read-cta" data-i18n="blog.readPost">read case study →</span>
           </div>
 
         </div>
 
-        <!-- RSS Box -->
-        <div class="rss-box">
-          <div class="rss-box-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6.18 15.64a2.18 2.18 0 1 1 0 4.36 2.18 2.18 0 0 1 0-4.36zM4 4.44C12.51 4.44 19.56 11.49 19.56 20H16.5C16.5 13.18 10.82 7.5 4 7.5V4.44zm0 5.6c5.43 0 9.92 4.49 9.92 9.92H10.86c0-3.79-3.07-6.86-6.86-6.86v-3.06z"></path>
-            </svg>
-          </div>
-          <div>
-            <strong style="color: var(--text-bright); font-size: 14px;" data-i18n="blog.rssTitle">Subscribe via RSS</strong>
-            <p style="color: var(--text-dim); font-size: 13px;" data-i18n="blog.rssDesc">New engineering posts hit your reader instantly — zero spam, no tracking.</p>
-          </div>
-          <a class="btn btn-secondary code-btn" href="blog/" style="margin-left: auto;">/blog archive</a>
+        <div style="margin-top: 28px; display: flex; justify-content: flex-end;">
+          <a class="btn btn-secondary code-btn" href="blog/" data-i18n="blog.archiveBtn">ls ~/notes/all →</a>
         </div>
 
       </div>
