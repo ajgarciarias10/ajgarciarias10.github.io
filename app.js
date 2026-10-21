@@ -38,8 +38,9 @@
           'what is your stack?',
           'tell me about F1-BUGAMBRA',
           'what is CleverTracker?',
-          'how does GmailKeeper work?',
+          'how does GmailKeep work?',
           'tell me about SmartFruitClassifier',
+          'tell me about DIVINANDO',
           'are you available for hire?'
         ]
       },
@@ -47,18 +48,18 @@
         eyebrow: 'FEATURED WORK',
         title: 'Selected projects',
         path: '~/projects/all',
+        count: '6 projects configured',
         filterAll: 'All',
         filterDone: 'Production [Done]',
         filterProgress: 'In Progress',
-        filterFuture: 'Future Roadmap',
         viewLive: '↗ Live Demo',
         viewSource: '↗ Source Code',
         viewLab: '↗ Enter Study Lab',
         viewGenerator: '🎲 Question Generator',
         viewUsability: '↗ Usability Study',
-        viewArchitecture: '🔒 Architecture Spec',
         viewRepo: '↗ Repository',
         watchAuction: '▶ Live Auction Video',
+        watchVideo: '▶ Watch Video',
         previewGallery: '🖼️ Screenshots',
         f1: {
           tag: 'Formula 1 & Real-time Platform',
@@ -71,7 +72,7 @@
         },
         gmail: {
           tag: 'Local-First · Inbox Automation',
-          title: 'GmailKeepr Personal',
+          title: 'GmailKeep Personal',
           meta: '2026 · Python & Google Cloud',
           desc: 'Automated inbox organisation and brand-based archiving daemon. Categorises incoming mail by merchant and brand, assigns hierarchical sub-labels, and archives messages automatically without third-party servers, AI subscriptions, or data leaks.',
           f1: 'Direct Google OAuth 2.0 desktop authentication with zero intermediary servers.',
@@ -107,23 +108,15 @@
           f2: 'Usability audits and interactive tests for production applications (F1-BUGAMBRA & CleverTracker).',
           f3: 'Local score tracking and spaced repetition review.'
         },
-        clother: {
-          tag: 'Human First AI · Wardrobe Intelligence',
-          title: 'CleverClother',
-          meta: 'Upcoming · Agentic Architecture',
-          desc: 'Intelligent personal style and wardrobe advisor based on "Human First AI". Helps individuals discover, develop, and express their personal identity using their existing closet context rather than driving fast-fashion consumerism.',
-          f1: 'Multi-agent architecture with explicit contracts and domain styling ontology.',
-          f2: 'Context-aware outfit generation based on weather, schedule, and personal comfort.',
-          f3: 'Currently in comprehensive architecture and knowledge base specification phase.'
-        },
-        pcbuilder: {
-          tag: 'Hardware Engine · Compatibility Graph',
-          title: 'PC-BUILDER',
-          meta: 'Upcoming · REST API & Engine',
-          desc: 'Deterministic hardware compatibility and PC build configuration engine. Calculates physical clearances, power draw curves, PCIe lane allocation, and chipset/socket compatibility rules for custom computer builds.',
-          f1: 'Rules engine approach rather than static catalog lookup.',
-          f2: 'Deep verification: cooler height vs. case clearance, PSU transient spikes, RAM clearance.',
-          f3: 'Clean REST API backend for build validation and component synthesis.'
+        divinando: {
+          tag: 'FP Final Degree Project · Core Engineering',
+          badge: 'FP Final Project · Done',
+          title: 'DIVINANDO',
+          meta: '2022 · Java, C++ & Relational Databases',
+          desc: 'Coded entirely from scratch as a vocational capstone project (FP Final Degree Project in DAM), demonstrating strong core logic, relational database design, and algorithmic problem-solving.',
+          f1: 'Coded entirely from scratch without AI-generation shortcuts, establishing solid software engineering foundations.',
+          f2: 'Core backend services, native modules, and data persistence built with Java, C++, and Relational Databases.',
+          f3: 'Multiplatform capstone architecture featuring user authentication, competitive rankings, and word-guessing mechanics.'
         }
       },
       blog: {
@@ -206,8 +199,9 @@
           '¿cuál es tu stack?',
           'háblame de F1-BUGAMBRA',
           '¿qué es CleverTracker?',
-          '¿cómo funciona GmailKeeper?',
+          '¿cómo funciona GmailKeep?',
           'háblame de SmartFruitClassifier',
+          'háblame de DIVINANDO',
           '¿estás disponible para trabajar?'
         ]
       },
@@ -215,19 +209,19 @@
         eyebrow: 'TRABAJO DESTACADO',
         title: 'Proyectos seleccionados',
         path: '~/proyectos/todos',
+        count: '6 proyectos configurados',
         filterAll: 'Todos',
         filterDone: 'Producción [Terminados]',
         filterProgress: 'En Desarrollo',
-        filterFuture: 'Futuro Roadmap',
         viewLive: '↗ Ver App',
         viewSource: '↗ Código Fuente',
         viewLab: '↗ Entrar al Laboratorio',
         viewGenerator: '🎲 Generador de Preguntas',
         viewUsability: '↗ Informe de Usabilidad',
-        viewArchitecture: '🔒 Especificación Técnica',
         viewRepo: '↗ Repositorio',
         viewSpace: '🤗 Hugging Face Space',
         watchAuction: '▶ Vídeo de la Subasta',
+        watchVideo: '▶ Ver Vídeo',
         previewGallery: '🖼️ Capturas',
         f1: {
           tag: 'Fórmula 1 y Plataforma en Tiempo Real',
@@ -240,7 +234,7 @@
         },
         gmail: {
           tag: 'Local-First · Automatización de Correo',
-          title: 'GmailKeepr Personal',
+          title: 'GmailKeep Personal',
           meta: '2026 · Python y Google Cloud',
           desc: 'Demonio de organización y archivado automático de Gmail por marcas comerciales. Agrupa mensajes por remitente corporativo, crea subetiquetas jerárquicas y archiva sin recurrir a servidores de terceros, suscripciones de IA ni fugas de datos.',
           f1: 'Autenticación directa de escritorio mediante OAuth 2.0 de Google sin intermediarios.',
@@ -276,23 +270,15 @@
           f2: 'Auditorías de usabilidad y tests interactivos sobre aplicaciones reales (F1-BUGAMBRA y CleverTracker).',
           f3: 'Registro local de progreso y refuerzo de conceptos dudosos.'
         },
-        clother: {
-          tag: 'Human First AI · Asesor de Imagen',
-          title: 'CleverClother',
-          meta: 'Próximamente · Arquitectura Agéntica',
-          desc: 'Asesor de imagen inteligente fundamentado en el paradigma Human First AI. Ayuda a descubrir, desarrollar y expresar el estilo personal aprovechando el armario existente de cada usuario, sin sesgo comercial hacia el consumismo rápido.',
-          f1: 'Arquitectura modular multiagente con contratos formales y ontología de moda y estilo.',
-          f2: 'Generación contextual de combinaciones según clima, agenda del día y comodidad personal.',
-          f3: 'Actualmente en fase de especificación arquitectónica y base de conocimiento.'
-        },
-        pcbuilder: {
-          tag: 'Motor Hardware · Grafo de Compatibilidad',
-          title: 'PC-BUILDER',
-          meta: 'Próximamente · Motor y API REST',
-          desc: 'Motor determinista de cálculo de compatibilidad de configuraciones de hardware para PC. Valida holguras físicas, curvas de consumo eléctrico, líneas PCIe y restricciones de zócalos/chipsets para montajes a medida.',
-          f1: 'Enfoque de motor de reglas lógicas en lugar de simple consulta a catálogo estático.',
-          f2: 'Comprobaciones profundas: altura de disipadores vs chasis, picos transitorios de potencia y perfil de RAM.',
-          f3: 'API REST limpia para síntesis y validación de componentes de ordenador.'
+        divinando: {
+          tag: 'Proyecto Fin de Ciclo (FP) · Ingeniería Base',
+          badge: 'Proyecto Final FP · Terminado',
+          title: 'DIVINANDO',
+          meta: '2022 · Java, C++ y Bases de Datos Relacionales',
+          desc: 'Programado íntegramente desde cero como proyecto final de ciclo formativo (DAM), demostrando una sólida base de lógica de programación, diseño de bases de datos relacionales y resolución de problemas.',
+          f1: 'Desarrollado íntegramente desde cero sin atajos de generación por IA, consolidando fundamentos de ingeniería del software.',
+          f2: 'Lógica central de backend, módulos nativos y persistencia construidos con Java, C++ y Bases de Datos Relacionales.',
+          f3: 'Arquitectura multiplataforma con autenticación de usuarios, clasificaciones competitivas y mecánicas de adivinanza de palabras.'
         }
       },
       blog: {
@@ -614,13 +600,17 @@ await runTransaction(db, async (transaction) => {
       en: "IPO Study Lab is an active-recall testing lab for Human-Computer Interaction:\n• Interactive question banks covering Topics 1, 2, and 3 with reasoned explanations.\n• Includes an in-depth real-world Usability Audit report analyzing F1-BUGAMBRA with before/after screenshots.\n• Live right now at: /ipo/ (click Study IPO in the top bar!)",
       es: "IPO Study Lab es un laboratorio de recuperación activa para Interacción Persona-Ordenador:\n• Tests interactivos de los Temas 1, 2 y 3 con corrección razonada y niveles de certeza.\n• Incluye un informe completo de usabilidad evaluando F1-BUGAMBRA con capturas antes/después.\n• Disponible ahora mismo en: /ipo/ (¡accede desde el menú superior!)"
     },
+    divinando: {
+      en: "DIVINANDO is Toni's FP Final Degree Project (DAM):\n• Coded entirely from scratch as a vocational capstone project, demonstrating strong core logic and problem-solving.\n• Built with Java, C++, and Relational Databases.\n• Video demo: https://www.youtube.com/watch?v=gyAzFh-lDJg\n• GitHub repository: https://github.com/ajgarciarias10/DIVINANDO",
+      es: "DIVINANDO es el Proyecto Final de Ciclo Formativo (DAM) de Toni:\n• Programado íntegramente desde cero como proyecto final, demostrando sólida lógica de programación y resolución de problemas.\n• Construido con Java, C++ y Bases de Datos Relacionales.\n• Vídeo demostrativo: https://www.youtube.com/watch?v=gyAzFh-lDJg\n• Repositorio en GitHub: https://github.com/ajgarciarias10/DIVINANDO"
+    },
     hire: {
       en: "Yes! Toni is based in Spain (CET / GMT+1) and is actively open to AI Engineering, Full-Stack, and Software Engineering opportunities (Remote / Hybrid / On-site).\n• Email: ajgarciarias@gmail.com\n• GitHub: https://github.com/ajgarciarias10\n• Hugging Face: https://huggingface.co/toniariasss\n• CV available for direct download in the header and contact section!",
       es: "¡Sí! Toni reside en España (CET / GMT+1) y está abierto activamente a oportunidades en Ingeniería de IA, Full-Stack y Desarrollo de Software (Remoto / Híbrido / Presencial).\n• Correo: ajgarciarias@gmail.com\n• GitHub: https://github.com/ajgarciarias10\n• Hugging Face: https://huggingface.co/toniariasss\n• ¡CV disponible para descarga directa en la cabecera y en la sección de contacto!"
     },
     default: {
-      en: "I am Toni's terminal companion. You can ask me about his production projects (F1-BUGAMBRA, GmailKeeper, SmartFruitClassifier), in-progress work (CleverTracker, IPO Study Lab), future roadmap (CleverClother, PC-BUILDER), his engineering stack, or how to contact him.",
-      es: "Soy el asistente de terminal de Toni. Puedes preguntarme sobre sus proyectos en producción (F1-BUGAMBRA, GmailKeeper, SmartFruitClassifier), desarrollos en curso (CleverTracker, IPO Study Lab), planes futuros (CleverClother, PC-BUILDER), su stack tecnológico o cómo contactar con él."
+      en: "I am Toni's terminal companion. You can ask me about his production projects (F1-BUGAMBRA, GmailKeep Personal, SmartFruitClassifier, DIVINANDO), in-progress work (CleverTracker, IPO Study Lab), his engineering stack, or how to contact him.",
+      es: "Soy el asistente de terminal de Toni. Puedes preguntarme sobre sus proyectos en producción (F1-BUGAMBRA, GmailKeep Personal, SmartFruitClassifier, DIVINANDO), desarrollos en curso (CleverTracker, IPO Study Lab), su stack tecnológico o cómo contactar con él."
     }
   };
 
@@ -901,6 +891,8 @@ await runTransaction(db, async (transaction) => {
       key = 'smartfruit';
     } else if (q.includes('ipo') || q.includes('hci') || q.includes('study') || q.includes('lab') || q.includes('usab') || q.includes('test')) {
       key = 'ipo';
+    } else if (q.includes('divinando') || q.includes('dam') || q.includes('fp') || q.includes('capstone') || q.includes('wordle')) {
+      key = 'divinando';
     } else if (q.includes('hire') || q.includes('trabaj') || q.includes('contrat') || q.includes('contact') || q.includes('disponib') || q.includes('available')) {
       key = 'hire';
     }

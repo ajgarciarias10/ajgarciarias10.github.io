@@ -9,12 +9,11 @@ High-performance personal engineering portfolio and technical field notes for **
 ## ⚡ Highlights
 
 - **Aesthetic & Theme**: Precision Blue Cyan color system (`--accent: #00f0ff`, `--accent-secondary: #38bdf8`) with background tech layers (grid, dots, dynamic torchlight cursor spotlight, and radial vignette). Full dark/light mode toggle with preference persistence.
-- **Interactive Terminal (`~/ask-me.sh`)**: In-browser command line assistant answering questions about stack, projects (F1-BUGAMBRA, GmailKeeper, SmartFruitClassifier, CleverTracker), and availability.
+- **Interactive Terminal (`~/ask-me.sh`)**: In-browser command line assistant answering questions about stack, projects (F1-BUGAMBRA, GmailKeep Personal, SmartFruitClassifier, CleverTracker, IPO Study Lab, DIVINANDO), and availability.
 - **Bilingual (EN / ES)**: Complete English and Spanish localization handled via lightweight declarative client-side i18n engine in `app.js`.
 - **Project Showcase**:
-  - **Production [Done]**: *F1-BUGAMBRA* (Real-Time Auction Platform & Telemetry), *GmailKeeper Personal* (Local-First Email Daemon & Privacy Automation), *SmartFruitClassifier* (Bio-Inspired AI & Hugging Face Space).
+  - **Production [Done]**: *F1-BUGAMBRA* (Real-Time Auction Platform & Telemetry), *GmailKeep Personal* (Local-First Email Daemon & Privacy Automation), *SmartFruitClassifier* (Bio-Inspired AI & Hugging Face Space), *DIVINANDO* (FP Final Degree Project in Java, C++, and Relational Databases).
   - **In Progress**: *CleverTracker* (Computer Vision TFG & Edge Pipeline), *IPO Study Lab* (Active-Recall Interactivo de Interacción Persona-Ordenador).
-  - **Future Roadmap**: *CleverClother* (Recomendador de Moda & Grafos), *PC-BUILDER* (Motor de Reglas y Compatibilidad de Hardware).
 - **Technical Blog (`/blog/`)**: Field notes and technical analyses with live search and RSS feed (`feed.xml`).
 - **Interactive IPO Lab (`/ipo/`)**: Interactive study tool with active recall, flashcards, and progress tracking.
 
