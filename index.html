@@ -235,6 +235,12 @@
           <button type="button" class="filter-btn active" data-filter="all">
             <span data-i18n="projects.filterAll">All</span><span class="count">6</span>
           </button>
+          <button type="button" class="filter-btn" data-filter="ai">
+            <span data-i18n="projects.filterAi">🤖 Full AI · AI-Orchestrated</span><span class="count">5</span>
+          </button>
+          <button type="button" class="filter-btn" data-filter="handmade">
+            <span data-i18n="projects.filterHandmade">🛠️ Hand-Coded · From Scratch</span><span class="count">1</span>
+          </button>
           <button type="button" class="filter-btn" data-filter="done">
             <span data-i18n="projects.filterDone">Production [Done]</span><span class="count">4</span>
           </button>
@@ -246,11 +252,14 @@
         <!-- Projects Grid -->
         <div class="projects-grid">
 
-          <!-- [01] F1-BUGAMBRA (Done) -->
-          <article class="project-card" data-category="done">
+          <!-- [01] F1-BUGAMBRA (Done · Full AI) -->
+          <article class="project-card" data-category="done" data-origin="ai">
             <div class="project-card-header">
               <span class="project-num">[01]</span>
-              <span class="project-status-badge done">Production · Done</span>
+              <div class="project-badges-group">
+                <span class="project-origin-badge ai" data-i18n="projects.badgeAi">🤖 Full AI</span>
+                <span class="project-status-badge done" data-i18n="projects.statusDone">Production · Done</span>
+              </div>
             </div>
             <h3 class="project-title" data-i18n="projects.f1.title">F1-BUGAMBRA</h3>
             <div class="project-meta">
@@ -320,11 +329,14 @@
             </div>
           </article>
 
-          <!-- [02] GmailKeep Personal (Done) -->
-          <article class="project-card" data-category="done">
+          <!-- [02] GmailKeep Personal (Done · Full AI) -->
+          <article class="project-card" data-category="done" data-origin="ai">
             <div class="project-card-header">
               <span class="project-num">[02]</span>
-              <span class="project-status-badge done">Production · Done</span>
+              <div class="project-badges-group">
+                <span class="project-origin-badge ai" data-i18n="projects.badgeAi">🤖 Full AI</span>
+                <span class="project-status-badge done" data-i18n="projects.statusDone">Production · Done</span>
+              </div>
             </div>
             <h3 class="project-title" data-i18n="projects.gmail.title">GmailKeep Personal</h3>
             <div class="project-meta">
@@ -358,11 +370,14 @@
             </div>
           </article>
 
-          <!-- [03] SmartFruitClassifier (Done · Hugging Face) -->
-          <article class="project-card" data-category="done">
+          <!-- [03] SmartFruitClassifier (Done · Full AI · Hugging Face) -->
+          <article class="project-card" data-category="done" data-origin="ai">
             <div class="project-card-header">
               <span class="project-num">[03]</span>
-              <span class="project-status-badge done">Production · Live Space</span>
+              <div class="project-badges-group">
+                <span class="project-origin-badge ai" data-i18n="projects.badgeAi">🤖 Full AI</span>
+                <span class="project-status-badge done" data-i18n="projects.statusSpace">Production · Live Space</span>
+              </div>
             </div>
             <h3 class="project-title" data-i18n="projects.smartfruit.title">SmartFruitClassifier</h3>
             <div class="project-meta">
@@ -396,11 +411,14 @@
             </div>
           </article>
 
-          <!-- [04] CleverTracker (In Progress) -->
-          <article class="project-card" data-category="progress">
+          <!-- [04] CleverTracker (In Progress · Full AI) -->
+          <article class="project-card" data-category="progress" data-origin="ai">
             <div class="project-card-header">
               <span class="project-num">[04]</span>
-              <span class="project-status-badge in-progress">In Progress · TFG</span>
+              <div class="project-badges-group">
+                <span class="project-origin-badge ai" data-i18n="projects.badgeAi">🤖 Full AI</span>
+                <span class="project-status-badge in-progress" data-i18n="projects.statusTfg">In Progress · TFG</span>
+              </div>
             </div>
             <h3 class="project-title" data-i18n="projects.clever.title">CleverTracker</h3>
             <div class="project-meta">
@@ -439,11 +457,14 @@
             </div>
           </article>
 
-          <!-- [05] IPO Study Lab (In Progress) -->
-          <article class="project-card" data-category="progress">
+          <!-- [05] IPO Study Lab (In Progress · Full AI) -->
+          <article class="project-card" data-category="progress" data-origin="ai">
             <div class="project-card-header">
               <span class="project-num">[05]</span>
-              <span class="project-status-badge in-progress">In Progress · Live Lab</span>
+              <div class="project-badges-group">
+                <span class="project-origin-badge ai" data-i18n="projects.badgeAi">🤖 Full AI</span>
+                <span class="project-status-badge in-progress" data-i18n="projects.statusLab">In Progress · Live Lab</span>
+              </div>
             </div>
             <h3 class="project-title" data-i18n="projects.ipo.title">IPO Study Lab</h3>
             <div class="project-meta">
@@ -479,11 +500,14 @@
             </div>
           </article>
 
-          <!-- [06] DIVINANDO (FP Final Degree Project · Done) -->
-          <article class="project-card" data-category="done">
+          <!-- [06] DIVINANDO (FP Final Degree Project · Hand-Coded from Scratch) -->
+          <article class="project-card" data-category="done" data-origin="handmade">
             <div class="project-card-header">
               <span class="project-num">[06]</span>
-              <span class="project-status-badge done" data-i18n="projects.divinando.badge">FP Final Project · Done</span>
+              <div class="project-badges-group">
+                <span class="project-origin-badge handmade" data-i18n="projects.badgeHandmade">🛠️ Hand-Coded · From Scratch</span>
+                <span class="project-status-badge done" data-i18n="projects.divinando.badge">FP Final Project · Done</span>
+              </div>
             </div>
             <h3 class="project-title" data-i18n="projects.divinando.title">DIVINANDO</h3>
             <div class="project-meta">

@@ -50,8 +50,16 @@
         path: '~/projects/all',
         count: '6 projects configured',
         filterAll: 'All',
+        filterAi: '🤖 Full AI · AI-Orchestrated',
+        filterHandmade: '🛠️ Hand-Coded · From Scratch',
         filterDone: 'Production [Done]',
         filterProgress: 'In Progress',
+        badgeAi: '🤖 Full AI',
+        badgeHandmade: '🛠️ Hand-Coded · From Scratch',
+        statusDone: 'Production · Done',
+        statusSpace: 'Production · Live Space',
+        statusTfg: 'In Progress · TFG',
+        statusLab: 'In Progress · Live Lab',
         viewLive: '↗ Live Demo',
         viewSource: '↗ Source Code',
         viewLab: '↗ Enter Study Lab',
@@ -223,8 +231,16 @@
         path: '~/proyectos/todos',
         count: '6 proyectos configurados',
         filterAll: 'Todos',
+        filterAi: '🤖 Full IA · Orquestación IA',
+        filterHandmade: '🛠️ Hecho a Mano · Desde Cero',
         filterDone: 'Producción [Terminados]',
         filterProgress: 'En Desarrollo',
+        badgeAi: '🤖 Full IA',
+        badgeHandmade: '🛠️ Hecho a Mano · Desde Cero',
+        statusDone: 'Producción · Terminado',
+        statusSpace: 'Producción · Live Space',
+        statusTfg: 'En Desarrollo · TFG',
+        statusLab: 'En Desarrollo · Live Lab',
         viewLive: '↗ Ver App',
         viewSource: '↗ Código Fuente',
         viewLab: '↗ Entrar al Laboratorio',
@@ -1078,7 +1094,8 @@ await runTransaction(db, async (transaction) => {
 
         elProjectCards.forEach(card => {
           const category = card.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
+          const origin = card.getAttribute('data-origin');
+          if (filter === 'all' || category === filter || origin === filter) {
             card.style.display = 'flex';
           } else {
             card.style.display = 'none';
