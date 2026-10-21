@@ -226,23 +226,23 @@
           </div>
           <div class="section-path">
             <span data-i18n="projects.path">~/projects/all</span><br />
-            <span class="section-path-count" data-i18n="projects.count">6 projects configured</span>
+            <span class="section-path-count" data-i18n="projects.count">7 projects configured</span>
           </div>
         </div>
 
         <!-- Filter Tabs -->
         <div class="filter-tabs">
           <button type="button" class="filter-btn active" data-filter="all">
-            <span data-i18n="projects.filterAll">All</span><span class="count">6</span>
+            <span data-i18n="projects.filterAll">All</span><span class="count">7</span>
           </button>
           <button type="button" class="filter-btn" data-filter="ai">
             <span data-i18n="projects.filterAi">🤖 Full AI · AI-Orchestrated</span><span class="count">5</span>
           </button>
           <button type="button" class="filter-btn" data-filter="handmade">
-            <span data-i18n="projects.filterHandmade">🛠️ Hand-Coded · From Scratch</span><span class="count">1</span>
+            <span data-i18n="projects.filterHandmade">🛠️ Hand-Coded · From Scratch</span><span class="count">2</span>
           </button>
           <button type="button" class="filter-btn" data-filter="done">
-            <span data-i18n="projects.filterDone">Production [Done]</span><span class="count">4</span>
+            <span data-i18n="projects.filterDone">Production [Done]</span><span class="count">5</span>
           </button>
           <button type="button" class="filter-btn" data-filter="progress">
             <span data-i18n="projects.filterProgress">In Progress</span><span class="count">2</span>
@@ -536,6 +536,79 @@
                 ▶ Watch Video
               </a>
               <a class="project-link" href="https://github.com/ajgarciarias10/DIVINANDO" target="_blank" rel="noopener noreferrer" data-i18n="projects.viewSource">
+                ↗ Source Code
+              </a>
+            </div>
+          </article>
+
+          <!-- [07] GRAPHQLDESK (Enterprise Hot-Desking · Hand-Coded from Scratch) -->
+          <article class="project-card" data-category="done" data-origin="handmade">
+            <div class="project-card-header">
+              <span class="project-num">[07]</span>
+              <div class="project-badges-group">
+                <span class="project-origin-badge handmade" data-i18n="projects.badgeHandmade">🛠️ Hand-Coded · From Scratch</span>
+                <span class="project-status-badge done" data-i18n="projects.graphqldesk.badge">Enterprise · Done</span>
+              </div>
+            </div>
+            <h3 class="project-title" data-i18n="projects.graphqldesk.title">GRAPHQLDESK · Enterprise Desk Sharing</h3>
+            <div class="project-meta">
+              <span data-i18n="projects.graphqldesk.meta">2022 · GraphQL, Next.js, TypeORM &amp; Python OpenCV</span>
+            </div>
+            <p class="project-desc" data-i18n="projects.graphqldesk.desc">
+              Corporate interactive workstation reservation and floor-plan management platform (DeskShare). Combines automated computer-vision blueprint seat detection (OpenCV + WebSockets) with a GraphQL + TypeORM + MySQL backend and an interactive schematic SVG map in Next.js (anonymized demo layout).
+            </p>
+            <ul class="project-features">
+              <li data-i18n="projects.graphqldesk.f1">Automated seat coordinate extraction from architectural blueprints using Python OpenCV blob detection streamed over WebSockets.</li>
+              <li data-i18n="projects.graphqldesk.f2">Interactive multi-zone schematic SVG floor plans with real-time seat status (available, reserved, partial shift, user-owned, blocked) and time-slot conflict validation.</li>
+              <li data-i18n="projects.graphqldesk.f3">Admin drag-box multi-selection mode to bulk-block/unblock workstations and inspect reservations via GraphQL &amp; TypeORM.</li>
+            </ul>
+
+            <!-- Screenshots thumbnail row -->
+            <div class="thumbnail-strip" style="margin-bottom: 12px;">
+              <div class="thumb-item" data-lightbox-src="assets/desk-map.png" data-lightbox-caption="GRAPHQLDESK (DeskShare) — Anonymized Schematic Floor Plan (Campus Norte · 144 Workstations)">
+                <img src="assets/desk-map.png" alt="GRAPHQLDESK Campus Norte Schematic Floor Plan" loading="lazy" />
+                <span class="thumb-badge">Campus Norte</span>
+              </div>
+              <div class="thumb-item" data-lightbox-src="assets/desk-reservation.png" data-lightbox-caption="GRAPHQLDESK (DeskShare) — Real-time Seat Reservation Modal & Time-Slot Validation">
+                <img src="assets/desk-reservation.png" alt="GRAPHQLDESK Reservation Modal" loading="lazy" />
+                <span class="thumb-badge">Seat Booking</span>
+              </div>
+              <div class="thumb-item" data-lightbox-src="assets/desk-granada.png" data-lightbox-caption="GRAPHQLDESK (DeskShare) — Sede Central Open Space Schematic Floor Plan (96 Workstations)">
+                <img src="assets/desk-granada.png" alt="GRAPHQLDESK Sede Central Schematic Floor Plan" loading="lazy" />
+                <span class="thumb-badge">Sede Central</span>
+              </div>
+            </div>
+
+            <!-- Additional preview chips -->
+            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px;">
+              <button type="button" class="gallery-preview-btn" data-lightbox-src="assets/desk-admin.png" data-lightbox-caption="GRAPHQLDESK (DeskShare) — Admin Drag-Selection Mode for Bulk Workstation Blocking">
+                🛠️ Admin Bulk-Block
+              </button>
+              <button type="button" class="gallery-preview-btn" data-lightbox-src="assets/desk-graphql.png" data-lightbox-caption="GRAPHQLDESK (DeskShare) — Live GraphiQL IDE Querying MySQL Workstations & Coordinates">
+                ⚡ GraphiQL API
+              </button>
+            </div>
+
+            <div class="project-chips">
+              <span class="project-chip">GraphQL</span>
+              <span class="project-chip">Next.js</span>
+              <span class="project-chip">React</span>
+              <span class="project-chip">Node.js</span>
+              <span class="project-chip">TypeScript</span>
+              <span class="project-chip">TypeORM</span>
+              <span class="project-chip">MySQL</span>
+              <span class="project-chip">Python OpenCV</span>
+              <span class="project-chip">WebSockets</span>
+            </div>
+
+            <div class="project-footer">
+              <a class="project-link primary" href="graphqldesk/" target="_blank" rel="noopener noreferrer" data-i18n="projects.viewLive">
+                ↗ Live Demo
+              </a>
+              <a class="project-link" href="graphqldesk/admin.html" target="_blank" rel="noopener noreferrer">
+                🛠️ Admin Mode
+              </a>
+              <a class="project-link" href="https://github.com/ajgarciarias10/GRAPHQLDESK" target="_blank" rel="noopener noreferrer" data-i18n="projects.viewSource">
                 ↗ Source Code
               </a>
             </div>

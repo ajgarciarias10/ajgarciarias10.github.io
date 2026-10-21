@@ -40,6 +40,7 @@
           'what is CleverTracker?',
           'how does GmailKeep work?',
           'tell me about SmartFruitClassifier',
+          'tell me about GRAPHQLDESK',
           'tell me about DIVINANDO',
           'are you available for hire?'
         ]
@@ -48,7 +49,7 @@
         eyebrow: 'FEATURED WORK',
         title: 'Selected projects',
         path: '~/projects/all',
-        count: '6 projects configured',
+        count: '7 projects configured',
         filterAll: 'All',
         filterAi: '🤖 Full AI · AI-Orchestrated',
         filterHandmade: '🛠️ Hand-Coded · From Scratch',
@@ -125,6 +126,16 @@
           f1: 'Coded entirely from scratch without AI-generation shortcuts, establishing solid software engineering foundations.',
           f2: 'Core backend services, native modules, and data persistence built with Java, C++, and Relational Databases.',
           f3: 'Multiplatform capstone architecture featuring user authentication, competitive rankings, and word-guessing mechanics.'
+        },
+        graphqldesk: {
+          tag: 'Enterprise Workspace · Hot-Desking',
+          badge: 'Enterprise · Done',
+          title: 'GRAPHQLDESK · Enterprise Desk Sharing',
+          meta: '2022 · GraphQL, Next.js, TypeORM & Python OpenCV',
+          desc: 'Corporate interactive workstation reservation and floor-plan management platform (DeskShare). Combines automated computer-vision blueprint seat detection (OpenCV + WebSockets) with a GraphQL + TypeORM + MySQL backend and an interactive schematic SVG map in Next.js (anonymized demo layout).',
+          f1: 'Automated seat coordinate extraction from architectural blueprints using Python OpenCV blob detection streamed over WebSockets.',
+          f2: 'Interactive multi-zone schematic SVG floor plans with real-time seat status (available, reserved, partial shift, user-owned, blocked) and time-slot conflict validation.',
+          f3: 'Admin drag-box multi-selection mode to bulk-block/unblock workstations and inspect reservations via GraphQL & TypeORM.'
         }
       },
       blog: {
@@ -221,6 +232,7 @@
           '¿qué es CleverTracker?',
           '¿cómo funciona GmailKeep?',
           'háblame de SmartFruitClassifier',
+          'háblame de GRAPHQLDESK',
           'háblame de DIVINANDO',
           '¿estás disponible para trabajar?'
         ]
@@ -229,7 +241,7 @@
         eyebrow: 'TRABAJO DESTACADO',
         title: 'Proyectos seleccionados',
         path: '~/proyectos/todos',
-        count: '6 proyectos configurados',
+        count: '7 proyectos configurados',
         filterAll: 'Todos',
         filterAi: '🤖 Full IA · Orquestación IA',
         filterHandmade: '🛠️ Hecho a Mano · Desde Cero',
@@ -307,6 +319,16 @@
           f1: 'Desarrollado íntegramente desde cero sin atajos de generación por IA, consolidando fundamentos de ingeniería del software.',
           f2: 'Lógica central de backend, módulos nativos y persistencia construidos con Java, C++ y Bases de Datos Relacionales.',
           f3: 'Arquitectura multiplataforma con autenticación de usuarios, clasificaciones competitivas y mecánicas de adivinanza de palabras.'
+        },
+        graphqldesk: {
+          tag: 'Espacios Corporativos · Reserva de Puestos',
+          badge: 'Corporativo · Terminado',
+          title: 'GRAPHQLDESK · Enterprise Desk Sharing',
+          meta: '2022 · GraphQL, Next.js, TypeORM y Python OpenCV',
+          desc: 'Plataforma corporativa de reserva interactiva de puestos de trabajo sobre planos arquitectónicos (DeskShare). Combina detección automática de mesas mediante visión artificial (Python OpenCV + WebSockets) con un backend GraphQL + TypeORM + MySQL y planos esquemáticos SVG anonimizados en Next.js.',
+          f1: 'Extracción automática de coordenadas de puestos desde planos mediante detección de blobs con Python OpenCV y sincronización por WebSockets.',
+          f2: 'Planos esquemáticos SVG multi-zona con estado en tiempo real (libre, reservado, parcial, propio, bloqueado) y validación de solapamiento horario.',
+          f3: 'Modo administrador con selección múltiple mediante recuadro de arrastre para bloqueo masivo de puestos y gestión de reservas.'
         }
       },
       blog: {
@@ -739,6 +761,10 @@ await runTransaction(db, async (transaction) => {
       en: "DIVINANDO is Toni's FP Final Degree Project (DAM):\n• Coded entirely from scratch as a vocational capstone project, demonstrating strong core logic and problem-solving.\n• Built with Java, C++, and Relational Databases.\n• Video demo: https://www.youtube.com/watch?v=gyAzFh-lDJg\n• GitHub repository: https://github.com/ajgarciarias10/DIVINANDO",
       es: "DIVINANDO es el Proyecto Final de Ciclo Formativo (DAM) de Toni:\n• Programado íntegramente desde cero como proyecto final, demostrando sólida lógica de programación y resolución de problemas.\n• Construido con Java, C++ y Bases de Datos Relacionales.\n• Vídeo demostrativo: https://www.youtube.com/watch?v=gyAzFh-lDJg\n• Repositorio en GitHub: https://github.com/ajgarciarias10/DIVINANDO"
     },
+    graphqldesk: {
+      en: "GRAPHQLDESK (DeskShare) is an enterprise Hot-Desking & Workstation Reservation platform built by Toni (2022):\n• Coded entirely from scratch using Next.js, React, Apollo Client, Express + GraphQL, TypeORM, MySQL, and Python OpenCV.\n• Detects workstation coordinates automatically from architectural blueprints via OpenCV SimpleBlobDetector and WebSockets.\n• Features anonymized schematic SVG maps (Campus Norte, Sede Central, Centro I+D, Torre Tecnológica), shift overlap validation, and an Admin drag-select tool for bulk blocking.\n• Interactive Live Demo: https://ajgarciarias10.github.io/graphqldesk/\n• GitHub repository: https://github.com/ajgarciarias10/GRAPHQLDESK",
+      es: "GRAPHQLDESK (DeskShare) es una plataforma corporativa de reserva de puestos (Hot-Desking) desarrollada por Toni (2022):\n• Programada íntegramente a mano desde cero con Next.js, React, Apollo Client, Express + GraphQL, TypeORM, MySQL y Python OpenCV.\n• Detecta automáticamente las coordenadas de cada mesa sobre planos arquitectónicos con OpenCV y WebSockets.\n• Presentada con planos esquemáticos SVG 100% anonimizados (Campus Norte, Sede Central, Centro I+D, Torre Tecnológica), validación de turnos horarios y panel Admin con selección por arrastre.\n• Demo interactiva en vivo: https://ajgarciarias10.github.io/graphqldesk/\n• Repositorio en GitHub: https://github.com/ajgarciarias10/GRAPHQLDESK"
+    },
     hire: {
       en: "Yes! Toni is based in Spain (CET / GMT+1) and is actively open to AI Engineering, Full-Stack, and Software Engineering opportunities (Remote / Hybrid / On-site).\n• Email: ajgarciarias@gmail.com\n• GitHub: https://github.com/ajgarciarias10\n• Hugging Face: https://huggingface.co/toniariasss\n• CV available for direct download in the header and contact section!",
       es: "¡Sí! Toni reside en España (CET / GMT+1) y está abierto activamente a oportunidades en Ingeniería de IA, Full-Stack y Desarrollo de Software (Remoto / Híbrido / Presencial).\n• Correo: ajgarciarias@gmail.com\n• GitHub: https://github.com/ajgarciarias10\n• Hugging Face: https://huggingface.co/toniariasss\n• ¡CV disponible para descarga directa en la cabecera y en la sección de contacto!"
@@ -1064,6 +1090,8 @@ await runTransaction(db, async (transaction) => {
       key = 'ipo';
     } else if (q.includes('divinando') || q.includes('dam') || q.includes('fp') || q.includes('capstone') || q.includes('wordle')) {
       key = 'divinando';
+    } else if (q.includes('graphql') || q.includes('desk') || q.includes('t-systems') || q.includes('tsystems') || q.includes('puesto')) {
+      key = 'graphqldesk';
     } else if (q.includes('hire') || q.includes('trabaj') || q.includes('contrat') || q.includes('contact') || q.includes('disponib') || q.includes('available')) {
       key = 'hire';
     }
