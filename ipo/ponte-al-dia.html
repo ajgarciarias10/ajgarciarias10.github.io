@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ponte al día · IPO</title>
   <script src="nav.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/13.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/13.0.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore-compat.js"></script>
 <script src="cuenta-config.js"></script>
 <script src="cuenta-datos.js"></script>
-<script src="cuenta-drive.js"></script>
+<script src="cuenta-firebase.js"></script>
 <script src="cuenta.js"></script>
   <link rel="stylesheet" href="estilo.css">
 </head>
@@ -46,7 +49,7 @@
     </ol>
   </details>
 
-  <footer>Tu progreso se guarda en tu Drive al conectar la cuenta; sin conexión de cuenta, solo en este navegador. Banco de preguntas basado en IPO2627.pdf · Material de práctica, no examen oficial.</footer>
+  <footer>Tu progreso se guarda en Firebase al conectar tu cuenta; sin conexión de cuenta, solo en este navegador. Banco de preguntas basado en IPO2627.pdf · Material de práctica, no examen oficial.</footer>
 </main>
 
 <dialog class="quiz" id="quiz" aria-labelledby="quiz-title">

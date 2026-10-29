@@ -34,17 +34,26 @@ window.crearCuentaIPO = ({ api, storage, domains, notify = () => {}, schedule = 
     };
     try {
       const remote = await cloud();
-      if (remote.conflict || (cache.dirty && cache.revision !== remote.revision)) {
-        conflict = true; announce('Hay cambios en otro dispositivo. Tu copia local se conserva: descárgala antes de recuperar Drive.');
+      if (!remote.revision && Object.keys(cache.values).length) {
+        // The previous Drive integration used the Google provider UID as its
+        // local cache key. When Firestore is empty, carry that cached snapshot
+        // over as a pending first write instead of replacing it with emptiness.
+        cache.revision = '';
+        cache.dirty = true;
+        writes++;
+        persistQuietly();
+        announce('Encontré tu copia local anterior. Guardando el progreso en Firebase…');
+      } else if (remote.conflict || (cache.dirty && cache.revision !== remote.revision)) {
+        conflict = true; announce('Hay cambios en otro dispositivo. Tu copia local se conserva: descárgala antes de recuperar el progreso guardado.');
       } else if (cache.dirty) {
         announce('Hay cambios locales pendientes de sincronizar.');
       } else {
         cache = { revision: remote.revision, values: clean(remote.values), dirty: false };
-        persistQuietly(); announce('Progreso recuperado de tu Drive institucional.');
+        persistQuietly(); announce('Progreso recuperado de Firebase.');
       }
     } catch (_) {
-      if (!saved) throw new Error('No se pudo recuperar tu progreso. Reintenta la conexión antes de estudiar con esta cuenta.');
-      announce('Sin conexión con Drive. Usando tu copia local; los cambios quedan pendientes.');
+      if (!saved) throw new Error('No se pudo recuperar tu progreso de Firebase. Reintenta la conexión antes de estudiar con esta cuenta.');
+      announce('Sin conexión con Firebase. Usando tu copia local; los cambios quedan pendientes.');
     }
     ready = true;
     if (cache.dirty && !conflict) queue();
@@ -74,10 +83,10 @@ window.crearCuentaIPO = ({ api, storage, domains, notify = () => {}, schedule = 
       cache.revision = data.revision;
       cache.dirty = writes !== version;
       persistQuietly();
-      announce(cache.dirty ? 'Quedan cambios pendientes de sincronizar…' : 'Progreso guardado en tu Drive institucional.');
+      announce(cache.dirty ? 'Quedan cambios pendientes de sincronizar…' : 'Progreso guardado en Firebase.');
     } catch (error) {
       if (error.conflict) conflict = true;
-      announce(conflict ? 'Hay cambios en otro dispositivo. Descarga tu copia local y recupera Drive para continuar.' : 'No se pudo sincronizar. Tus cambios siguen pendientes; pulsa Reintentar.');
+      announce(conflict ? 'Hay cambios en otro dispositivo. Descarga tu copia local y recupera el progreso guardado para continuar.' : 'No se pudo sincronizar. Tus cambios siguen pendientes; pulsa Reintentar.');
     } finally {
       flushing = false;
       if (cache.dirty && writes !== version && !conflict) queue();
@@ -88,7 +97,7 @@ window.crearCuentaIPO = ({ api, storage, domains, notify = () => {}, schedule = 
     const remote = await cloud();
     cache = { revision: remote.revision, values: clean(remote.values), dirty: false };
     conflict = false;
-    // Crear una nueva versión que reúne las ramas conservadas en Drive.
+    // Guardar una nueva revisión después de elegir la versión remota.
     cache.dirty = Boolean(remote.conflict); writes++; persistQuietly();
     if (cache.dirty) await flush();
   }

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es" data-tema="6">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El diseño gráfico · IPO</title>
+<script src="nav.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/13.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/13.0.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore-compat.js"></script>
+<script src="cuenta-config.js"></script>
+<script src="cuenta-datos.js"></script>
+<script src="cuenta-firebase.js"></script>
+<script src="cuenta.js"></script>
+<link rel="stylesheet" href="estilo.css">
+<main>
+  <header>
+    <span class="eyebrow">Tema 6 · pp. 285–349</span>
+    <h1>El diseño gráfico</h1>
+    <p class="lead">Objetivos del diseño, elementos de la imagen, uso del color, técnicas de diseño gráfico e iconos. Tests de hasta 40 preguntas con sesión guardada y repaso de errores.</p>
+  </header>
+
+  <!-- Barra de control y estadísticas en vivo -->
+  <div class="gen-bar">
+    <div class="gen-filters">
+      <label for="scope-selector" class="muted" style="font-size:0.88rem;">Apartado</label>
+      <select id="scope-selector"></select>
+    </div>
+    <div class="gen-stats">
+      <span class="streak-badge" title="Preguntas seguidas acertadas">Racha <strong id="streak-val">0</strong></span>
+      <span class="badge ok">✓ <strong id="correct-val">0</strong></span>
+      <span class="badge wrong">✗ <strong id="wrong-val">0</strong></span>
+      <button id="btn-reset" class="btn-reset" title="Iniciar otro test al terminar el actual">Reiniciar</button>
+    </div>
+  </div>
+
+  <!-- Tarjeta de la pregunta actual -->
+  <section class="card question-card" aria-label="Pregunta actual">
+    <div class="question-meta">
+      <span class="badge" id="gen-block-badge">Apartado</span>
+      <span class="badge" id="gen-ref-badge" style="background:var(--soft); color:var(--accent);">Referencia</span>
+      <div style="margin-left:auto;">
+        <label id="failed-box" class="inline" style="font-size:0.85rem; cursor:pointer;" hidden>
+          <input type="checkbox" id="filter-failed"> Solo errores pendientes (<span id="failed-count">0</span>)
+        </label>
+      </div>
+    </div>
+
+    <h2 id="gen-prompt" style="font-size:1.22rem; margin:14px 0 18px; line-height:1.5;"></h2>
+
+    <div id="gen-banner" hidden></div>
+
+    <form id="gen-options" onsubmit="return false;" style="margin-top:16px;"></form>
+
+    <div class="gen-actions">
+      <button id="btn-next" class="btn-next-random" type="button">Siguiente pregunta</button>
+      <button id="btn-skip" class="btn-skip" type="button">Saltar</button>
+      <span class="kbd-hint">Teclas: <kbd>1</kbd>-<kbd>4</kbd> responder · <kbd>Espacio</kbd> siguiente · <kbd>S</kbd> saltar</span>
+    </div>
+  </section>
+
+  <!-- Historial de la sesión -->
+  <details class="history-drawer">
+    <summary>Preguntas respondidas en esta sesión (<span id="history-count">0</span>) · Pulsa para repasar</summary>
+    <div class="history-drawer-content" id="history-list">
+      <p class="muted">Aún no has respondido ninguna pregunta en esta sesión.</p>
+    </div>
+  </details>
+
+  <div class="actions" style="justify-content:space-between; margin-top:24px;">
+    <a href="tema-7.html" class="button secondary">Tema 7 →</a>
+    <a href="generador.html" class="button">Mezclar todos los temas</a>
+  </div>
+
+  <footer>
+    Fuente: IPO2627.pdf, tema VI (pp. 285–349). Banco de 47 preguntas sobre diseño gráfico.
+  </footer>
+  <noscript><p class="card">Activa JavaScript para realizar las preguntas.</p></noscript>
+</main>
+<script type="text/plain" data-ipo-script="preguntas-tema-6.js"></script>
+<script type="text/plain" data-ipo-script="curso.js"></script>
+<script type="text/plain" data-ipo-script="progreso.js"></script>
+<script type="text/plain" data-ipo-script="test.js"></script>
+</html>
+
+<script src="cuenta-arranque.js"></script>

@@ -13,9 +13,9 @@ const TEMAS_CURSO = {
   2: { titulo: 'El factor humano', paginas: '49–115', peso: 67, pagina: 'tema-2.html' },
   3: { titulo: 'Metáforas', paginas: '116–166', peso: 51, pagina: 'tema-3.html' },
   4: { titulo: 'Ingeniería de la interfaz', paginas: '167–222', peso: 56, pagina: 'tema-4.html' },
-  5: { titulo: 'Internacionalización', paginas: '223–284', peso: 62 },
-  6: { titulo: 'El diseño gráfico', paginas: '285–349', peso: 65 },
-  7: { titulo: 'Estilos y paradigmas', paginas: '350–406', peso: 57 },
+  5: { titulo: 'Internacionalización', paginas: '223–284', peso: 62, pagina: 'tema-5.html' },
+  6: { titulo: 'El diseño gráfico', paginas: '285–349', peso: 65, pagina: 'tema-6.html' },
+  7: { titulo: 'Estilos y paradigmas', paginas: '350–406', peso: 57, pagina: 'tema-7.html' },
   8: { titulo: 'Accesibilidad', paginas: '407–456', peso: 50 },
   9: { titulo: 'Evaluación', paginas: '457–515', peso: 59 },
   10: { titulo: 'Estándares y guías de estilo', paginas: '516–602', peso: 87 }

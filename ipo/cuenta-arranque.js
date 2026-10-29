@@ -2,9 +2,9 @@
 (async () => {
   try {
     // Nunca cargar progreso de otro usuario mientras se verifica la identidad
-    // ni escribir valores vacíos antes de restaurar Drive.
+    // ni escribir valores vacíos antes de restaurar el progreso remoto.
     await window.IPOAccountReady;
-    if (window.IPOAccount.conflict) throw new Error('Resuelve el conflicto de Drive con el panel de cuenta antes de continuar.');
+    if (window.IPOAccount.conflict) throw new Error('Resuelve el conflicto de sincronización con el panel de cuenta antes de continuar.');
     for (const placeholder of document.querySelectorAll('script[data-ipo-script]')) {
       const script = document.createElement('script');
       if (placeholder.dataset.ipoScript) {

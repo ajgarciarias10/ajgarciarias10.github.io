@@ -1,4 +1,4 @@
-/* Banco Global de 170 preguntas compilado para el Generador Aleatorio de IPO */
+/* Banco Global de 309 preguntas compilado para el Generador Aleatorio de IPO */
 const BANCO_GLOBAL = [
   {
     "globalId": 1,
@@ -5266,6 +5266,4315 @@ const BANCO_GLOBAL = [
       {
         "texto": "Porque cumple con la directriz de interfaz unimodal estricta de Norman.",
         "explicacion": "Norman defiende interfaces multimodales ricas y modelos conceptuales claros, no restricciones artificiales.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 171,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Objetivos del diseño",
+    "pagina": 288,
+    "enunciado": "Tras un rediseño, los usuarios completan sus tareas sin fijarse en la interfaz y apenas recuerdan cómo era. ¿Cómo lo valora el tema?",
+    "opciones": [
+      {
+        "texto": "Como un éxito: el objetivo es una interfaz transparente, que casi no se detecta y no obstruye el acceso.",
+        "explicacion": "La página 288 define así el objetivo del diseño: la interfaz casi no es detectada.",
+        "correcta": true
+      },
+      {
+        "texto": "Como un fracaso: una buena interfaz debe ser lo más memorable de la aplicación.",
+        "explicacion": "El tema busca lo contrario: que la interfaz no se interponga entre el usuario y su tarea.",
+        "correcta": false
+      },
+      {
+        "texto": "Como un problema de estética: falta decoración para que el usuario la note.",
+        "explicacion": "Añadir decoración para hacerse notar va contra la transparencia buscada.",
+        "correcta": false
+      },
+      {
+        "texto": "Como irrelevante: el diseño gráfico no influye en la experiencia del usuario.",
+        "explicacion": "La página 288 vincula el diseño con una buena experiencia de interacción.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 172,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Objetivos del diseño",
+    "pagina": 288,
+    "enunciado": "¿Qué rasgos describen, según el tema, los objetivos de un buen diseño de la interfaz?",
+    "opciones": [
+      {
+        "texto": "Transparencia, no obstruir el acceso y que el usuario tenga una buena experiencia interaccionando con el sistema.",
+        "explicacion": "Son los objetivos enumerados en la página 288.",
+        "correcta": true
+      },
+      {
+        "texto": "Máxima densidad de controles por pantalla y uso de todos los colores disponibles.",
+        "explicacion": "El tema no persigue densidad ni variedad cromática, sino transparencia.",
+        "correcta": false
+      },
+      {
+        "texto": "Originalidad visual por encima de la facilidad de uso.",
+        "explicacion": "El objetivo es una buena experiencia, no la originalidad en sí misma.",
+        "correcta": false
+      },
+      {
+        "texto": "Que la interfaz destaque sobre el contenido para reforzar la marca.",
+        "explicacion": "Se busca que la interfaz casi no sea detectada.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 173,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Objetivos del diseño",
+    "pagina": 289,
+    "enunciado": "Un botón parece un texto decorativo y un texto decorativo parece un botón. ¿Qué pauta del tema se incumple?",
+    "opciones": [
+      {
+        "texto": "Los controles deben tener un aspecto acorde a su función y funcionar de acuerdo con su aspecto.",
+        "explicacion": "La página 289 pide coherencia entre apariencia y comportamiento.",
+        "correcta": true
+      },
+      {
+        "texto": "Usar como máximo 5±2 colores en la interfaz.",
+        "explicacion": "Es una pauta de color; el problema descrito es la correspondencia entre aspecto y función.",
+        "correcta": false
+      },
+      {
+        "texto": "Diseñar primero la interfaz en blanco y negro.",
+        "explicacion": "Es una sugerencia sobre el color, no sobre la apariencia de los controles.",
+        "correcta": false
+      },
+      {
+        "texto": "Utilizar formatos verticales para dar dinamismo.",
+        "explicacion": "El formato del cuadro no explica la confusión entre controles y decoración.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 174,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Objetivos del diseño",
+    "pagina": 289,
+    "enunciado": "Un equipo separa el trabajo: unos deciden qué hace cada pantalla y otros, más tarde y sin coordinarse, cómo se ve. ¿Qué recomendación del tema ignora?",
+    "opciones": [
+      {
+        "texto": "Conjuntar el diseño funcional y el visual, considerando cada aspecto con un sentido del conjunto.",
+        "explicacion": "La página 289 pide integrar ambos diseños con visión de conjunto.",
+        "correcta": true
+      },
+      {
+        "texto": "Usar colores estandarizados para los mensajes de error.",
+        "explicacion": "Es una pauta de claridad del color, no de organización del diseño.",
+        "correcta": false
+      },
+      {
+        "texto": "Evitar el azul puro en el texto.",
+        "explicacion": "Es una regla de Murch sobre el color, ajena al problema.",
+        "correcta": false
+      },
+      {
+        "texto": "Colocar los pesos mayores en la zona izquierda.",
+        "explicacion": "Es una regla de composición, no de coordinación entre diseño funcional y visual.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 175,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Objetivos del diseño",
+    "pagina": 289,
+    "enunciado": "¿Cuándo resulta intuitiva una interfaz, según el tema?",
+    "opciones": [
+      {
+        "texto": "Cuando el diseño visual aclara sus funciones.",
+        "explicacion": "Es la conclusión de la página 289.",
+        "correcta": true
+      },
+      {
+        "texto": "Cuando incluye un manual extenso accesible desde cada pantalla.",
+        "explicacion": "La intuición surge del propio diseño visual, no de documentación externa.",
+        "correcta": false
+      },
+      {
+        "texto": "Cuando todos los elementos tienen el mismo peso visual.",
+        "explicacion": "La página 324 advierte que eso hace la composición aburrida y la navegación difícil.",
+        "correcta": false
+      },
+      {
+        "texto": "Cuando usa colores muy saturados en todos los controles.",
+        "explicacion": "Los colores muy saturados causan fatiga (p. 315), no hacen la interfaz intuitiva.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 176,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Objetivos del diseño",
+    "pagina": 349,
+    "enunciado": "Alguien afirma que el diseño gráfico es una cuestión de buen gusto personal. ¿Qué responde el tema en sus conclusiones?",
+    "opciones": [
+      {
+        "texto": "Que el diseño se basa en conocimientos fundados sobre la percepción humana y existen reglas de fácil aplicación.",
+        "explicacion": "La página 349 lo afirma expresamente.",
+        "correcta": true
+      },
+      {
+        "texto": "Que tiene razón, por eso no existen guías de estilo útiles.",
+        "explicacion": "El tema concluye que es importante recurrir a las guías de estilo.",
+        "correcta": false
+      },
+      {
+        "texto": "Que el diseño solo afecta a la estética y no a la usabilidad.",
+        "explicacion": "La página 349 dice que el diseño es importante para la usabilidad.",
+        "correcta": false
+      },
+      {
+        "texto": "Que basta con copiar la interfaz de un producto conocido.",
+        "explicacion": "El tema no propone la copia, sino aplicar reglas basadas en la percepción.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 177,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Objetivos del diseño",
+    "pagina": 349,
+    "enunciado": "Según las conclusiones del tema, ¿qué consigue un buen diseño?",
+    "opciones": [
+      {
+        "texto": "Aunar la funcionalidad con la estética.",
+        "explicacion": "Es una de las conclusiones de la página 349.",
+        "correcta": true
+      },
+      {
+        "texto": "Sacrificar la funcionalidad para lograr una estética llamativa.",
+        "explicacion": "El tema pide unir ambas, no sacrificar una.",
+        "correcta": false
+      },
+      {
+        "texto": "Eliminar la necesidad de evaluar la usabilidad.",
+        "explicacion": "El tema relaciona el diseño con la usabilidad, no la sustituye.",
+        "correcta": false
+      },
+      {
+        "texto": "Sustituir a las guías de estilo.",
+        "explicacion": "La página 349 recomienda recurrir a ellas.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 178,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Objetivos del diseño",
+    "pagina": 286,
+    "enunciado": "¿Cuáles son los objetivos de aprendizaje que plantea el tema VI?",
+    "opciones": [
+      {
+        "texto": "Valorar la importancia del diseño en la interfaz y conocer sus principios, métodos y herramientas.",
+        "explicacion": "Son los objetivos de la página 286.",
+        "correcta": true
+      },
+      {
+        "texto": "Aprender a programar motores gráficos y aceleración por hardware.",
+        "explicacion": "El tema no trata la implementación gráfica de bajo nivel.",
+        "correcta": false
+      },
+      {
+        "texto": "Traducir la interfaz a varios idiomas y culturas.",
+        "explicacion": "Eso corresponde al tema de internacionalización.",
+        "correcta": false
+      },
+      {
+        "texto": "Medir el rendimiento de la memoria a largo plazo.",
+        "explicacion": "El tema trata el diseño gráfico, no experimentos de memoria.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 179,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la imagen",
+    "pagina": 291,
+    "enunciado": "¿Qué lista recoge únicamente elementos del alfabeto gráfico de la imagen según el tema?",
+    "opciones": [
+      {
+        "texto": "Punto, línea, forma, luz, color, tiempo, tamaño, formato y composición.",
+        "explicacion": "Es la enumeración de la página 291.",
+        "correcta": true
+      },
+      {
+        "texto": "Punto, píxel, vector, código, color y fuente.",
+        "explicacion": "Píxel, vector o código no forman parte del alfabeto gráfico del tema.",
+        "correcta": false
+      },
+      {
+        "texto": "Menú, botón, ventana, icono y cursor.",
+        "explicacion": "Son elementos de una GUI, no los elementos morfológicos de la imagen.",
+        "correcta": false
+      },
+      {
+        "texto": "Proximidad, semejanza, cierre y continuidad.",
+        "explicacion": "Son principios de la Gestalt, no los elementos que enumera la página 291.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 180,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la imagen",
+    "pagina": 292,
+    "enunciado": "Una página muestra una sucesión de puntos que guía la vista del inicio al botón de pago. ¿Qué propiedad del punto aprovecha?",
+    "opciones": [
+      {
+        "texto": "Una secuencia de puntos imprime ritmo y crea una dirección de movimiento que ayuda a dirigir la visión.",
+        "explicacion": "La página 292 atribuye al punto esa capacidad.",
+        "correcta": true
+      },
+      {
+        "texto": "El punto define una superficie con dimensiones dadas.",
+        "explicacion": "Esa es la definición de la forma (p. 294).",
+        "correcta": false
+      },
+      {
+        "texto": "El punto establece la proporción del cuadro.",
+        "explicacion": "Eso corresponde al formato (p. 301).",
+        "correcta": false
+      },
+      {
+        "texto": "El punto simula el paso del tiempo mediante la tonalidad.",
+        "explicacion": "La tonalidad es una característica de la luz (p. 295).",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 181,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la imagen",
+    "pagina": 293,
+    "enunciado": "¿Qué función atribuye el tema a la línea?",
+    "opciones": [
+      {
+        "texto": "Organiza el espacio, determina ejes que delimitan zonas de atracción y puede crear textura, profundidad y movimiento.",
+        "explicacion": "Son las propiedades de la página 293.",
+        "correcta": true
+      },
+      {
+        "texto": "Es el elemento más simple y tiene gran fuerza atractiva como marca.",
+        "explicacion": "Esas son propiedades del punto (p. 292).",
+        "correcta": false
+      },
+      {
+        "texto": "Combina radiaciones de distinta longitud de onda.",
+        "explicacion": "Describe el sistema de color aditivo (p. 296).",
+        "correcta": false
+      },
+      {
+        "texto": "Es la proporción del cuadro donde se muestra la imagen.",
+        "explicacion": "Es la definición del formato (p. 301).",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 182,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la imagen",
+    "pagina": 294,
+    "enunciado": "¿Qué formas básicas y qué función atribuye el tema a la forma?",
+    "opciones": [
+      {
+        "texto": "Cuadrado, triángulo y círculo; definir y organizar el espacio.",
+        "explicacion": "La página 294 lo indica así.",
+        "correcta": true
+      },
+      {
+        "texto": "Rectángulo, rombo y estrella; transmitir sentimientos.",
+        "explicacion": "Las formas básicas citadas son otras; transmitir sentimientos se asocia al color.",
+        "correcta": false
+      },
+      {
+        "texto": "Punto, línea y plano; simular el paso del tiempo.",
+        "explicacion": "Punto y línea son otros elementos; el tiempo es un elemento distinto.",
+        "correcta": false
+      },
+      {
+        "texto": "Cuadrado, triángulo y círculo; fijar el orden de lectura.",
+        "explicacion": "Las formas son correctas, pero su función es definir y organizar el espacio.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 183,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la imagen",
+    "pagina": 295,
+    "enunciado": "Un texto blanco sobre fondo negro parece más grueso que el mismo texto negro sobre fondo blanco. ¿Qué efecto de la luz lo explica?",
+    "opciones": [
+      {
+        "texto": "Un tono claro se expande rodeado de uno oscuro y un tono oscuro se comprime rodeado de uno claro.",
+        "explicacion": "La página 295 describe ese efecto de la tonalidad.",
+        "correcta": true
+      },
+      {
+        "texto": "Los colores saturados producen un fuerte impacto.",
+        "explicacion": "La saturación no explica el cambio aparente de tamaño.",
+        "correcta": false
+      },
+      {
+        "texto": "Los formatos horizontales son más estáticos.",
+        "explicacion": "El formato no interviene en el efecto descrito.",
+        "correcta": false
+      },
+      {
+        "texto": "El azul se enfoca en el fondo.",
+        "explicacion": "Es un efecto del orden espectral del color, no de la tonalidad clara y oscura.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 184,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la imagen",
+    "pagina": 296,
+    "enunciado": "Un diseñador prepara una paleta para una pantalla y luego la imprime, y los colores cambian. ¿Qué distinción del tema lo explica?",
+    "opciones": [
+      {
+        "texto": "Las pantallas usan un sistema aditivo de radiaciones; el papel, uno sustractivo de pigmentos cian, magenta y amarillo.",
+        "explicacion": "La página 296 diferencia ambos sistemas de color.",
+        "correcta": true
+      },
+      {
+        "texto": "Las pantallas usan pigmentos y el papel radiaciones luminosas.",
+        "explicacion": "La relación está invertida.",
+        "correcta": false
+      },
+      {
+        "texto": "El color de pantalla depende de la forma; el del papel, de la línea.",
+        "explicacion": "Forma y línea no determinan el sistema de color.",
+        "correcta": false
+      },
+      {
+        "texto": "Pantalla y papel usan el mismo sistema, así que el cambio se debe al formato.",
+        "explicacion": "El tema distingue sistemas distintos para cada soporte.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 185,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la imagen",
+    "pagina": 296,
+    "enunciado": "Una paleta se vuelve casi gris al reducir uno de sus parámetros. ¿Cuál ha bajado y qué mide?",
+    "opciones": [
+      {
+        "texto": "La saturación o intensidad, que mide la cantidad de color; poca saturación tiende al blanco y negro.",
+        "explicacion": "La página 296 define así la saturación.",
+        "correcta": true
+      },
+      {
+        "texto": "La tonalidad o matiz, que mide la cantidad de luz reflejada.",
+        "explicacion": "El matiz corresponde a la longitud de onda; la luz reflejada es la luminosidad.",
+        "correcta": false
+      },
+      {
+        "texto": "La luminosidad, que mide la longitud de onda.",
+        "explicacion": "La luminosidad es la cantidad de luz que refleja el color.",
+        "correcta": false
+      },
+      {
+        "texto": "El formato, que mide la vividez.",
+        "explicacion": "El formato es la proporción del cuadro, no una característica del color.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 186,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la imagen",
+    "pagina": 298,
+    "enunciado": "Un panel combina texto rojo sobre fondo verde muy intensos y los usuarios dicen que «vibra». ¿Qué explica el tema?",
+    "opciones": [
+      {
+        "texto": "El contraste de complementarios llama la atención, pero si es muy acentuado reduce la legibilidad por vibración.",
+        "explicacion": "La página 298 advierte de ese efecto del contraste.",
+        "correcta": true
+      },
+      {
+        "texto": "Es una armonía cromática: colores afines con variaciones suaves.",
+        "explicacion": "Rojo y verde son complementarios; la armonía relaciona colores afines.",
+        "correcta": false
+      },
+      {
+        "texto": "El problema es el formato horizontal, que resulta estático.",
+        "explicacion": "La vibración procede del contraste cromático, no del formato.",
+        "correcta": false
+      },
+      {
+        "texto": "Es un efecto de la tonalidad que hace que el tono oscuro se expanda.",
+        "explicacion": "El tema dice que se expande el tono claro rodeado de oscuro, y el caso trata de contraste cromático.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 187,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la imagen",
+    "pagina": 301,
+    "enunciado": "Se debate entre un banner horizontal y uno vertical para transmitir dinamismo. ¿Qué indica el tema sobre el formato?",
+    "opciones": [
+      {
+        "texto": "Los formatos horizontales son más estáticos; los verticales y circulares, más dinámicos.",
+        "explicacion": "La página 301 lo indica así.",
+        "correcta": true
+      },
+      {
+        "texto": "Los horizontales son los más dinámicos por adaptarse al campo visual.",
+        "explicacion": "El tema asocia la horizontalidad con lo estático.",
+        "correcta": false
+      },
+      {
+        "texto": "El formato no influye en la composición.",
+        "explicacion": "La página 301 dice que influye decisivamente y le da significado.",
+        "correcta": false
+      },
+      {
+        "texto": "Los formatos circulares son los más estáticos.",
+        "explicacion": "El tema los agrupa con los verticales como dinámicos.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 188,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la imagen",
+    "pagina": 303,
+    "enunciado": "Al componer una pantalla, ¿qué regla de composición recoge el tema?",
+    "opciones": [
+      {
+        "texto": "La zona izquierda es más estable y admite pesos mayores sin desequilibrar; a mayor tamaño, mayor peso.",
+        "explicacion": "Son reglas de la página 303.",
+        "correcta": true
+      },
+      {
+        "texto": "La zona inferior es la más dinámica y llamativa.",
+        "explicacion": "El tema indica que la inferior es más estática y sólida, y la superior más dinámica.",
+        "correcta": false
+      },
+      {
+        "texto": "El tamaño no influye en el peso compositivo.",
+        "explicacion": "A mayor tamaño, mayor peso compositivo.",
+        "correcta": false
+      },
+      {
+        "texto": "Hay que evitar un centro de interés para no distraer.",
+        "explicacion": "La página 302 pide delimitar claramente el centro de interés.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 189,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Uso del color",
+    "pagina": 305,
+    "enunciado": "¿Por qué dedica el tema un apartado específico al uso del color en las GUI?",
+    "opciones": [
+      {
+        "texto": "Porque tiene gran impacto: bien usado mejora la presentación y ayuda a la memoria y a formar modelos mentales; mal usado reduce la funcionalidad.",
+        "explicacion": "Es la motivación de la página 305.",
+        "correcta": true
+      },
+      {
+        "texto": "Porque el color solo es decorativo y no afecta a la funcionalidad.",
+        "explicacion": "El tema afirma que un uso inapropiado reduce la funcionalidad.",
+        "correcta": false
+      },
+      {
+        "texto": "Porque el color sustituye al texto en todos los mensajes.",
+        "explicacion": "El tema no propone sustituir el texto por el color.",
+        "correcta": false
+      },
+      {
+        "texto": "Porque las GUI deben usar el mayor número de colores posible.",
+        "explicacion": "La página 309 recomienda pocos colores.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 190,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Uso del color",
+    "pagina": 306,
+    "enunciado": "¿Qué clasificación de modelos de color es correcta?",
+    "opciones": [
+      {
+        "texto": "Perceptuales: HSV y HLS; de dispositivos de presentación: RGB y YIQ/YUV.",
+        "explicacion": "La página 306 los clasifica así.",
+        "correcta": true
+      },
+      {
+        "texto": "Perceptuales: RGB y YIQ; de dispositivos: HSV y HLS.",
+        "explicacion": "La clasificación está invertida.",
+        "correcta": false
+      },
+      {
+        "texto": "Todos son perceptuales y equivalentes uno a uno.",
+        "explicacion": "La página 307 señala que no hay un mapeo uno a uno.",
+        "correcta": false
+      },
+      {
+        "texto": "HSV se usa en la televisión y YIQ en los monitores.",
+        "explicacion": "YIQ/YUV se usa en televisión; RGB, en monitores.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 191,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Uso del color",
+    "pagina": 307,
+    "enunciado": "Un diseñador elige colores en HSV y al mostrarlos en el monitor no coinciden exactamente. ¿Qué explicación da el tema?",
+    "opciones": [
+      {
+        "texto": "No hay un mapeo uno a uno entre los modelos perceptuales y los de presentación; el modelo CIE permite traducir de HSV a RGB.",
+        "explicacion": "La página 307 describe ese problema y la solución CIE.",
+        "correcta": true
+      },
+      {
+        "texto": "HSV y RGB son idénticos; el fallo está en el formato del cuadro.",
+        "explicacion": "Son modelos distintos y su correspondencia no es directa.",
+        "correcta": false
+      },
+      {
+        "texto": "Los monitores usan el modelo sustractivo de pigmentos.",
+        "explicacion": "Los monitores usan RGB, un sistema aditivo.",
+        "correcta": false
+      },
+      {
+        "texto": "El modelo HLS impide representar colores en pantalla.",
+        "explicacion": "El tema no afirma tal limitación.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 192,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Uso del color",
+    "pagina": 309,
+    "enunciado": "Un panel usa doce colores y el rojo indica a la vez «error», «favorito» y «oferta». ¿Qué pautas de simplicidad incumple?",
+    "opciones": [
+      {
+        "texto": "Mantener pocos colores (5±2) y no vincular más de un concepto a un solo color.",
+        "explicacion": "La página 309 pide un esquema simple y conceptos diferentes con colores diferentes.",
+        "correcta": true
+      },
+      {
+        "texto": "Usar siempre el azul como color de texto.",
+        "explicacion": "Murch recomienda descartar el azul puro para texto (p. 318).",
+        "correcta": false
+      },
+      {
+        "texto": "Utilizar al menos un color por cada pantalla.",
+        "explicacion": "No es una pauta del tema.",
+        "correcta": false
+      },
+      {
+        "texto": "Evitar los colores primarios por ser difíciles de recordar.",
+        "explicacion": "El tema recomienda vincular significados a los primarios por ser fáciles de recordar.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 193,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Uso del color",
+    "pagina": 310,
+    "enunciado": "En una pantalla los campos no editables tienen fondo gris y en otra el gris marca los obligatorios. ¿Qué pauta se rompe?",
+    "opciones": [
+      {
+        "texto": "Consistencia: evitar cambiar el significado de los colores entre pantallas, sobre todo al codificar información.",
+        "explicacion": "La página 310 pone precisamente ese ejemplo.",
+        "correcta": true
+      },
+      {
+        "texto": "Simplicidad: usar 5±2 colores.",
+        "explicacion": "El número de colores no es el problema descrito.",
+        "correcta": false
+      },
+      {
+        "texto": "Claridad: usar el verde para el progreso positivo.",
+        "explicacion": "El caso no trata de mensajes de progreso.",
+        "correcta": false
+      },
+      {
+        "texto": "Composición: la zona izquierda es más estable.",
+        "explicacion": "No es una cuestión de composición.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 194,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Uso del color",
+    "pagina": 310,
+    "enunciado": "Según el orden espectral y perceptual que recoge el tema, ¿dónde se enfoca cada color?",
+    "opciones": [
+      {
+        "texto": "El rojo en el frente, el verde y el amarillo en medio, y el azul en el fondo.",
+        "explicacion": "Es el orden de la página 310.",
+        "correcta": true
+      },
+      {
+        "texto": "El azul en el frente y el rojo en el fondo.",
+        "explicacion": "La relación está invertida.",
+        "correcta": false
+      },
+      {
+        "texto": "Todos los colores se enfocan en el mismo plano.",
+        "explicacion": "El tema distingue planos de enfoque por color.",
+        "correcta": false
+      },
+      {
+        "texto": "El amarillo en el frente y el verde en el fondo.",
+        "explicacion": "Verde y amarillo se enfocan en medio.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 195,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Uso del color",
+    "pagina": 311,
+    "enunciado": "Una leyenda usa cinco tonos de azul para cinco categorías distintas. ¿Qué indica el tema?",
+    "opciones": [
+      {
+        "texto": "Que no se usen varios matices del mismo color, sobre todo azules, y que conceptos diferentes lleven colores diferentes.",
+        "explicacion": "La página 311 lo recomienda expresamente.",
+        "correcta": true
+      },
+      {
+        "texto": "Que es correcto porque el azul es el mejor color para el texto.",
+        "explicacion": "Murch desaconseja el azul puro en texto y figuras pequeñas.",
+        "correcta": false
+      },
+      {
+        "texto": "Que es correcto porque mantiene el esquema en un solo color.",
+        "explicacion": "La simplicidad no justifica distinguir conceptos con matices difíciles de discriminar.",
+        "correcta": false
+      },
+      {
+        "texto": "Que debe añadirse un sexto tono para el fondo.",
+        "explicacion": "Añadir más azules agrava el problema.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 196,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Uso del color",
+    "pagina": 313,
+    "enunciado": "¿Qué código de color en los mensajes recoge el tema como mejora de la usabilidad?",
+    "opciones": [
+      {
+        "texto": "Rojo para errores, amarillo para advertencias y verde para progreso positivo.",
+        "explicacion": "Es el código de la página 313.",
+        "correcta": true
+      },
+      {
+        "texto": "Verde para errores, rojo para progreso y azul para advertencias.",
+        "explicacion": "No coincide con los colores estandarizados del tema.",
+        "correcta": false
+      },
+      {
+        "texto": "Un mismo color para todos los mensajes, para no distraer.",
+        "explicacion": "El tema propone códigos de color para distinguir los mensajes.",
+        "correcta": false
+      },
+      {
+        "texto": "Amarillo para errores y rojo para avisos informativos.",
+        "explicacion": "El rojo se reserva para alertar de errores.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 197,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Uso del color",
+    "pagina": 312,
+    "enunciado": "Un usuario busca en un listado las facturas vencidas, que siempre aparecen en rojo y solo ellas. ¿Qué efecto describe el tema?",
+    "opciones": [
+      {
+        "texto": "El tiempo de búsqueda disminuye si el color se conoce de antemano y solo se aplica a esa información.",
+        "explicacion": "Es la pauta de claridad de la página 312.",
+        "correcta": true
+      },
+      {
+        "texto": "El tiempo de búsqueda aumenta porque el rojo genera fatiga.",
+        "explicacion": "El color conocido y exclusivo reduce el tiempo de búsqueda.",
+        "correcta": false
+      },
+      {
+        "texto": "El color solo mejora la estética, no el procesamiento.",
+        "explicacion": "La página 312 dice que también mejora el procesamiento y la memoria.",
+        "correcta": false
+      },
+      {
+        "texto": "El efecto se pierde si el rojo está estandarizado.",
+        "explicacion": "El tema recomienda precisamente usar colores estandarizados.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 198,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Uso del color",
+    "pagina": 317,
+    "enunciado": "¿Qué recomendación pertenece a las reglas de Marcus sobre el color?",
+    "opciones": [
+      {
+        "texto": "Usar azul para el fondo, seguir la secuencia espectral, mantener pocos colores y diseñar primero en blanco y negro.",
+        "explicacion": "Son reglas y sugerencias de Marcus (p. 317).",
+        "correcta": true
+      },
+      {
+        "texto": "Usar azul puro para el texto y las líneas delgadas.",
+        "explicacion": "Murch recomienda descartarlo (p. 318).",
+        "correcta": false
+      },
+      {
+        "texto": "Usar el rojo y el verde en la periferia de las presentaciones grandes.",
+        "explicacion": "Murch recomienda evitarlo (p. 319).",
+        "correcta": false
+      },
+      {
+        "texto": "Usar colores muy saturados y espectralmente extremos a la vez.",
+        "explicacion": "Murch aconseja evitar ese despliegue simultáneo (p. 318).",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 199,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Uso del color",
+    "pagina": 318,
+    "enunciado": "Una aplicación para personas mayores usa texto azul puro sobre fondo oscuro y colores apagados. ¿Qué reglas de Murch incumple?",
+    "opciones": [
+      {
+        "texto": "Descartar el azul puro para texto y figuras pequeñas, y dar más brillo a los operadores de edad avanzada.",
+        "explicacion": "Ambas reglas aparecen en la página 318.",
+        "correcta": true
+      },
+      {
+        "texto": "Usar azul para el fondo y la secuencia espectral.",
+        "explicacion": "Son reglas de Marcus, y el caso no las contradice directamente.",
+        "correcta": false
+      },
+      {
+        "texto": "Diseñar primero en blanco y negro.",
+        "explicacion": "Es una sugerencia, no explica los problemas descritos.",
+        "correcta": false
+      },
+      {
+        "texto": "Usar colores opuestos juntos.",
+        "explicacion": "Murch indica que los colores opuestos se ven bien juntos (p. 319).",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 200,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Uso del color",
+    "pagina": 319,
+    "enunciado": "Un mapa distingue zonas seguras y peligrosas solo con verde y rojo. ¿Qué recomendación de Murch se aplica?",
+    "opciones": [
+      {
+        "texto": "Para observadores con deficiencias del color, evitar hacer distinciones de un solo color.",
+        "explicacion": "La página 319 lo indica expresamente.",
+        "correcta": true
+      },
+      {
+        "texto": "Usar el rojo y el verde en la periferia de las presentaciones grandes.",
+        "explicacion": "Murch recomienda evitarlo.",
+        "correcta": false
+      },
+      {
+        "texto": "Usar varios matices del mismo azul.",
+        "explicacion": "No resuelve el problema y la página 311 lo desaconseja.",
+        "correcta": false
+      },
+      {
+        "texto": "Enfocar hacia orillas creadas solo por el color.",
+        "explicacion": "La página 319 dice que es difícil enfocar esas orillas.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 201,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Uso del color",
+    "pagina": 315,
+    "enunciado": "¿Qué efecto negativo del color señala el tema?",
+    "opciones": [
+      {
+        "texto": "Usar muchos colores puros o muy saturados obliga al ojo a reenfocar constantemente y causa fatiga.",
+        "explicacion": "La página 315 lo advierte.",
+        "correcta": true
+      },
+      {
+        "texto": "Los colores poco saturados obligan a reenfocar constantemente.",
+        "explicacion": "El tema atribuye ese problema a los colores puros y muy saturados.",
+        "correcta": false
+      },
+      {
+        "texto": "Usar pocos colores impide crear modelos mentales.",
+        "explicacion": "La página 309 recomienda pocos colores.",
+        "correcta": false
+      },
+      {
+        "texto": "El color de fondo nunca influye en cómo se percibe el del frente.",
+        "explicacion": "La página 311 advierte de colores que parecen distintos por la variación del fondo.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 202,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Técnicas de diseño gráfico",
+    "pagina": 324,
+    "enunciado": "Un cuadro de mando muestra todos los indicadores con el mismo tamaño, color y peso. ¿Qué consecuencia prevé el tema?",
+    "opciones": [
+      {
+        "texto": "Una composición aburrida y una navegación difícil: hace falta énfasis para destacar lo importante.",
+        "explicacion": "La página 324 lo advierte al describir el énfasis.",
+        "correcta": true
+      },
+      {
+        "texto": "Una interfaz transparente y fácil de usar.",
+        "explicacion": "La falta de jerarquía dificulta la navegación.",
+        "correcta": false
+      },
+      {
+        "texto": "Mayor dinamismo, porque todos los elementos compiten.",
+        "explicacion": "El tema habla de composición aburrida, no dinámica.",
+        "correcta": false
+      },
+      {
+        "texto": "Un foco claro en el elemento más importante.",
+        "explicacion": "Sin diferencias de peso no hay un punto focal claro.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 203,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Técnicas de diseño gráfico",
+    "pagina": 324,
+    "enunciado": "¿Con qué recursos se consigue el énfasis, según el tema?",
+    "opciones": [
+      {
+        "texto": "Con la posición, el color y los atributos del texto.",
+        "explicacion": "La página 324 los enumera.",
+        "correcta": true
+      },
+      {
+        "texto": "Solo con el tamaño de la ventana.",
+        "explicacion": "El tema cita posición, color y atributos del texto.",
+        "correcta": false
+      },
+      {
+        "texto": "Eliminando la alineación.",
+        "explicacion": "La alineación aporta equilibrio; no es el recurso para enfatizar.",
+        "correcta": false
+      },
+      {
+        "texto": "Con más matices del mismo color azul.",
+        "explicacion": "La página 311 desaconseja esos matices.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 204,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Técnicas de diseño gráfico",
+    "pagina": 324,
+    "enunciado": "Al adaptar una interfaz a un idioma que se lee de derecha a izquierda, ¿qué técnica de diseño gráfico debe revisarse especialmente?",
+    "opciones": [
+      {
+        "texto": "La disposición, porque el orden de lectura es importante y varía según la cultura.",
+        "explicacion": "La página 324 lo señala al definir la disposición.",
+        "correcta": true
+      },
+      {
+        "texto": "El sistema de color sustractivo.",
+        "explicacion": "Afecta a la impresión, no al orden de lectura.",
+        "correcta": false
+      },
+      {
+        "texto": "El lenguaje icónico de depuración.",
+        "explicacion": "Es un ejemplo de iconos, no tiene relación con el orden de lectura.",
+        "correcta": false
+      },
+      {
+        "texto": "La saturación de los colores.",
+        "explicacion": "No depende de la dirección de lectura.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 205,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Técnicas de diseño gráfico",
+    "pagina": 325,
+    "enunciado": "Un formulario tiene etiquetas y campos desalineados unos píxeles entre sí. Según el tema, ¿qué técnica mejora con más facilidad su estética?",
+    "opciones": [
+      {
+        "texto": "Una alineación exacta y consistente, que aporta equilibrio, armonía, unidad y modularidad.",
+        "explicacion": "La página 325 la presenta como la manera más fácil de mejorar la estética.",
+        "correcta": true
+      },
+      {
+        "texto": "Añadir un fondo llamativo.",
+        "explicacion": "La página 340 indica que un fondo llamativo dificulta la lectura.",
+        "correcta": false
+      },
+      {
+        "texto": "Aumentar el número de colores.",
+        "explicacion": "No corrige el desorden y contradice la simplicidad.",
+        "correcta": false
+      },
+      {
+        "texto": "Cambiar a un formato circular.",
+        "explicacion": "El formato no resuelve la desalineación.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 206,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Técnicas de diseño gráfico",
+    "pagina": 325,
+    "enunciado": "Se quiere que el usuario vea primero el aviso de que su plan va a caducar. ¿Qué técnica usa el tema para dirigir su atención?",
+    "opciones": [
+      {
+        "texto": "El foco: un punto focal que es el centro de atención y suele verse antes.",
+        "explicacion": "La página 325 define así el foco.",
+        "correcta": true
+      },
+      {
+        "texto": "La alineación: centrar todos los elementos.",
+        "explicacion": "La alineación da equilibrio, pero no crea por sí misma un centro de atención.",
+        "correcta": false
+      },
+      {
+        "texto": "Dar a todos los avisos el mismo peso.",
+        "explicacion": "Sin diferencias, nada destaca como punto focal.",
+        "correcta": false
+      },
+      {
+        "texto": "Usar un formato horizontal estático.",
+        "explicacion": "El formato no dirige la atención a un elemento concreto.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 207,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Técnicas de diseño gráfico",
+    "pagina": 302,
+    "enunciado": "Un diseñador añade mucha variedad de colores y tamaños para dar dinamismo. ¿Qué advierte el tema sobre la composición?",
+    "opciones": [
+      {
+        "texto": "La diversidad y el contraste añaden dinamismo, pero complican la composición, cuyos principios son unidad y claridad.",
+        "explicacion": "La página 302 lo explica.",
+        "correcta": true
+      },
+      {
+        "texto": "La diversidad siempre simplifica la composición.",
+        "explicacion": "El tema dice que la complica.",
+        "correcta": false
+      },
+      {
+        "texto": "La composición no necesita un centro de interés.",
+        "explicacion": "Hay que delimitar claramente el centro de interés.",
+        "correcta": false
+      },
+      {
+        "texto": "Unidad y claridad solo afectan al formato.",
+        "explicacion": "Son los principios de la composición.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 208,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Técnicas de diseño gráfico",
+    "pagina": 336,
+    "enunciado": "Una página de ayuda presenta títulos, subtítulos y detalles con niveles visuales distintos. ¿Qué buena práctica ilustra entre los ejemplos del tema?",
+    "opciones": [
+      {
+        "texto": "Información jerarquizada, que facilita localizar lo relevante.",
+        "explicacion": "La página 336 la muestra como ejemplo positivo.",
+        "correcta": true
+      },
+      {
+        "texto": "Sobrecarga informativa.",
+        "explicacion": "La página 338 la presenta como un problema.",
+        "correcta": false
+      },
+      {
+        "texto": "Contraste erróneo rojo-azul.",
+        "explicacion": "Es un ejemplo negativo (p. 345) y no se relaciona con niveles de información.",
+        "correcta": false
+      },
+      {
+        "texto": "Un fondo llamativo.",
+        "explicacion": "La página 340 indica que dificulta la lectura.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 209,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Técnicas de diseño gráfico",
+    "pagina": 345,
+    "enunciado": "Un texto rojo sobre fondo azul obliga a forzar la vista. ¿Cómo lo describe el tema?",
+    "opciones": [
+      {
+        "texto": "Como un contraste erróneo que exige un gran esfuerzo de acomodación visual.",
+        "explicacion": "Es el ejemplo negativo de la página 345.",
+        "correcta": true
+      },
+      {
+        "texto": "Como un contraste que anima y estimula sin inconvenientes.",
+        "explicacion": "La página 344 habla de contraste estimulante, pero rojo-azul es el ejemplo erróneo.",
+        "correcta": false
+      },
+      {
+        "texto": "Como una armonía de colores afines.",
+        "explicacion": "Rojo y azul no se presentan como colores afines.",
+        "correcta": false
+      },
+      {
+        "texto": "Como el uso recomendado por Marcus para el fondo.",
+        "explicacion": "Marcus recomienda el azul para el fondo, pero no esta combinación con texto rojo.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 210,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Iconos y recomendaciones",
+    "pagina": 327,
+    "enunciado": "¿Por qué son útiles los iconos, según el tema?",
+    "opciones": [
+      {
+        "texto": "Porque las personas reaccionan instintivamente a las imágenes y ocupan poco espacio en la pantalla.",
+        "explicacion": "Son los dos motivos de la página 327.",
+        "correcta": true
+      },
+      {
+        "texto": "Porque siempre se entienden sin aprendizaje, sea cual sea su diseño.",
+        "explicacion": "Los iconos arbitrarios exigen aprender la asociación (p. 329).",
+        "correcta": false
+      },
+      {
+        "texto": "Porque aparecieron en las interfaces de línea de comandos.",
+        "explicacion": "Se usan desde la primera interfaz gráfica, Xerox Star.",
+        "correcta": false
+      },
+      {
+        "texto": "Porque solo representan objetos, nunca funciones.",
+        "explicacion": "La página 327 dice que representan objetos y también funciones.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 211,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Iconos y recomendaciones",
+    "pagina": 328,
+    "enunciado": "Un mismo icono de lupa significa «buscar» en un navegador y «ampliar» en un visor de imágenes. ¿Qué factores del significado de un icono explican la diferencia?",
+    "opciones": [
+      {
+        "texto": "El contexto en el que se usa y la función o tipo de tarea.",
+        "explicacion": "La página 328 cita contexto, función y forma representativa.",
+        "correcta": true
+      },
+      {
+        "texto": "Solo el número de colores del icono.",
+        "explicacion": "El color no figura entre los factores del significado del icono.",
+        "correcta": false
+      },
+      {
+        "texto": "El formato del cuadro de la pantalla.",
+        "explicacion": "No es un factor del significado del icono.",
+        "correcta": false
+      },
+      {
+        "texto": "Que es un icono arbitrario sin relación con el concepto.",
+        "explicacion": "La lupa guarda relación con el concepto; el cambio se debe al contexto y la función.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 212,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Iconos y recomendaciones",
+    "pagina": 328,
+    "enunciado": "Según el tema, ¿qué forma representativa produce los iconos más comprensibles?",
+    "opciones": [
+      {
+        "texto": "La combinación de un objeto concreto y un objeto abstracto.",
+        "explicacion": "La página 328 la señala como la más comprensible.",
+        "correcta": true
+      },
+      {
+        "texto": "Solo un objeto abstracto.",
+        "explicacion": "Es una de las tres opciones, pero no la más comprensible.",
+        "correcta": false
+      },
+      {
+        "texto": "Solo texto sin imagen.",
+        "explicacion": "El tema trata de formas representativas gráficas.",
+        "correcta": false
+      },
+      {
+        "texto": "Una imagen sin relación con el concepto.",
+        "explicacion": "Eso corresponde a los iconos arbitrarios.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 213,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Iconos y recomendaciones",
+    "pagina": 329,
+    "enunciado": "Una aplicación representa «sincronizar» con un triángulo naranja que no guarda ninguna relación con la acción, y los usuarios tienen que memorizarlo. ¿Qué tipo de icono es?",
+    "opciones": [
+      {
+        "texto": "Arbitrario: no guarda relación y la asociación ha de aprenderse.",
+        "explicacion": "La página 329 define así los iconos arbitrarios.",
+        "correcta": true
+      },
+      {
+        "texto": "Similar: presenta el concepto con una imagen análoga.",
+        "explicacion": "Un icono similar sí se parece al concepto.",
+        "correcta": false
+      },
+      {
+        "texto": "Ejemplar: muestra un ejemplo del concepto.",
+        "explicacion": "No sirve como ejemplo del concepto.",
+        "correcta": false
+      },
+      {
+        "texto": "Concreto: representa el objeto real.",
+        "explicacion": "No representa el objeto real implicado.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 214,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Iconos y recomendaciones",
+    "pagina": 329,
+    "enunciado": "Un icono de cuchillo y tenedor indica «restaurantes» mostrando algo típico de ellos. ¿Qué tipo de icono es?",
+    "opciones": [
+      {
+        "texto": "Ejemplar: sirve como ejemplo de lo que se representa.",
+        "explicacion": "La página 329 define así los iconos ejemplares.",
+        "correcta": true
+      },
+      {
+        "texto": "Arbitrario: no guarda relación con el concepto.",
+        "explicacion": "Los cubiertos sí se relacionan con el concepto.",
+        "correcta": false
+      },
+      {
+        "texto": "Similar: es una imagen análoga del propio restaurante.",
+        "explicacion": "No representa el restaurante, sino un objeto que lo ejemplifica.",
+        "correcta": false
+      },
+      {
+        "texto": "Simbólico: expresa un concepto de mayor abstracción sin ejemplos.",
+        "explicacion": "Aquí se muestra un ejemplo concreto.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 215,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Iconos y recomendaciones",
+    "pagina": 330,
+    "enunciado": "Al dibujar un icono, un diseñador añade sombras, reflejos y textura al objeto. ¿Qué regla del tema conviene aplicar?",
+    "opciones": [
+      {
+        "texto": "Incluir solo los detalles imprescindibles.",
+        "explicacion": "Es la regla de la página 330.",
+        "correcta": true
+      },
+      {
+        "texto": "Incluir todos los detalles posibles para que sea realista.",
+        "explicacion": "El tema recomienda lo contrario.",
+        "correcta": false
+      },
+      {
+        "texto": "Usar siempre una fotografía en lugar de un dibujo.",
+        "explicacion": "El tema compara dibujos, caricaturas, líneas y siluetas, sin imponer fotografías.",
+        "correcta": false
+      },
+      {
+        "texto": "Diseñar cada icono de forma independiente.",
+        "explicacion": "La página 332 recomienda un conjunto coordinado.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 216,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Iconos y recomendaciones",
+    "pagina": 332,
+    "enunciado": "¿Qué ventaja aporta diseñar un lenguaje icónico coordinado frente a diseñar los iconos uno a uno?",
+    "opciones": [
+      {
+        "texto": "Reduce el esfuerzo, asegura la consistencia, da estilo y permite al usuario prever cómo serán los iconos.",
+        "explicacion": "Son las ventajas de la página 332.",
+        "correcta": true
+      },
+      {
+        "texto": "Permite que cada icono tenga un estilo completamente distinto.",
+        "explicacion": "El objetivo es la consistencia.",
+        "correcta": false
+      },
+      {
+        "texto": "Evita tener que asociar iconos a acciones.",
+        "explicacion": "El lenguaje icónico representa acciones aplicables a un elemento (p. 331).",
+        "correcta": false
+      },
+      {
+        "texto": "Solo es útil en sistemas muy simples.",
+        "explicacion": "El tema dice que los sistemas complejos disponen de un lenguaje icónico simple y consistente.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 217,
+    "tema": "6",
+    "temaTitulo": "Tema 6 · El diseño gráfico",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Iconos y recomendaciones",
+    "pagina": 348,
+    "enunciado": "Una aplicación obliga a desplazarse y recordar datos de una pantalla anterior para completar un formulario. ¿Qué recomendación del tema incumple?",
+    "opciones": [
+      {
+        "texto": "Reducir la memorización haciendo visible toda la información y evitando desplazamientos.",
+        "explicacion": "Es una de las recomendaciones de la página 348.",
+        "correcta": true
+      },
+      {
+        "texto": "Flexibilizar la presentación mediante personalización.",
+        "explicacion": "Es otra recomendación, pero no aborda la carga de memoria.",
+        "correcta": false
+      },
+      {
+        "texto": "Utilizar el azul como color de fondo.",
+        "explicacion": "Es una regla de Marcus sobre el color, ajena al problema.",
+        "correcta": false
+      },
+      {
+        "texto": "Diseñar primero en blanco y negro.",
+        "explicacion": "Es una sugerencia sobre el color, no sobre la memorización.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 218,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Internacionalización y localización",
+    "pagina": 229,
+    "enunciado": "Una app separa los textos de la lógica, admite fechas y monedas configurables y reserva espacio para textos más largos. Luego se traduce al japonés y se adaptan sus convenciones. ¿Qué relación describe mejor el trabajo?",
+    "opciones": [
+      {
+        "texto": "La preparación del software es internacionalización; la adaptación al japonés es localización.",
+        "explicacion": "i18n permite adaptar sin reescribir la lógica; l10n adapta el producto a una cultura concreta.",
+        "correcta": true
+      },
+      {
+        "texto": "Ambas tareas son localización porque incluyen idioma.",
+        "explicacion": "Preparar la arquitectura para más de una cultura corresponde a internacionalización.",
+        "correcta": false
+      },
+      {
+        "texto": "Ambas tareas son internacionalización porque el producto se distribuye en varios países.",
+        "explicacion": "La adaptación final de idioma y convenciones es localización.",
+        "correcta": false
+      },
+      {
+        "texto": "La traducción es internacionalización y el espacio flexible es localización.",
+        "explicacion": "La relación está invertida: traducción es parte de l10n.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 219,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Internacionalización y localización",
+    "pagina": 230,
+    "enunciado": "Une cada decisión con su propósito: separar cadenas y evitar fechas fijas en código; cambiar el separador decimal al formato local. ¿Cuál es la correspondencia correcta?",
+    "opciones": [
+      {
+        "texto": "Preparar el software para varios entornos es i18n; adaptar el formato para un entorno es l10n.",
+        "explicacion": "La primera decisión prepara el sistema; la segunda aplica una convención local.",
+        "correcta": true
+      },
+      {
+        "texto": "Ambas son l10n porque afectan a lo que ve el usuario.",
+        "explicacion": "Evitar formatos fijos en código es una decisión de internacionalización.",
+        "correcta": false
+      },
+      {
+        "texto": "La primera es traducción; la segunda, accesibilidad.",
+        "explicacion": "Ninguna decisión se refiere necesariamente a traducir texto o a accesibilidad.",
+        "correcta": false
+      },
+      {
+        "texto": "La primera es l10n y la segunda i18n.",
+        "explicacion": "Se han intercambiado la preparación general y la adaptación concreta.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 220,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Guía técnica",
+    "pagina": 273,
+    "enunciado": "Una interfaz en árabe traduce correctamente todos los textos, pero conserva la navegación izquierda-derecha y corta las etiquetas que ahora ocupan más espacio. ¿Qué conclusión está mejor fundada?",
+    "opciones": [
+      {
+        "texto": "La traducción no basta: la localización debe considerar dirección de lectura y expansión del texto.",
+        "explicacion": "Los formatos, la direccionalidad y el espacio también varían según el entorno.",
+        "correcta": true
+      },
+      {
+        "texto": "La internacionalización se completó porque el texto ya está traducido.",
+        "explicacion": "La traducción por sí sola no prepara ni adapta toda la interfaz.",
+        "correcta": false
+      },
+      {
+        "texto": "Solo hay que aumentar el tamaño de fuente; la dirección visual no cambia.",
+        "explicacion": "Para RTL debe adaptarse la dirección y disposición cuando el contenido lo requiera.",
+        "correcta": false
+      },
+      {
+        "texto": "Es un problema de contraste, no de localización.",
+        "explicacion": "El caso describe dirección y ajuste del contenido, no contraste.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 221,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la interfaz",
+    "pagina": 235,
+    "enunciado": "Un equipo reemplaza una imagen de una mano por otra porque el gesto tiene sentidos distintos en dos culturas. ¿En qué fase encaja mejor esa decisión?",
+    "opciones": [
+      {
+        "texto": "Localización: adapta un elemento cultural del producto a un público concreto.",
+        "explicacion": "Iconografía y convenciones culturales son parte de la adaptación local.",
+        "correcta": true
+      },
+      {
+        "texto": "Internacionalización: elimina toda imagen del sistema.",
+        "explicacion": "No es necesario eliminar imágenes; i18n prepara el producto para poder adaptarlas.",
+        "correcta": false
+      },
+      {
+        "texto": "Traducción literal: cambia el texto sin tocar la imagen.",
+        "explicacion": "La decisión trata de significado cultural de la iconografía.",
+        "correcta": false
+      },
+      {
+        "texto": "Accesibilidad: hace que el gesto se pueda usar con teclado.",
+        "explicacion": "El caso no describe un problema de operación o percepción accesible.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 222,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la interfaz",
+    "pagina": 239,
+    "enunciado": "Una fecha se guarda como un instante normalizado y se muestra según la región del usuario. ¿Qué ventaja de diseño expresa mejor?",
+    "opciones": [
+      {
+        "texto": "Separa la representación interna de la convención local de presentación.",
+        "explicacion": "Así se evitan supuestos de formato incrustados en la lógica.",
+        "correcta": true
+      },
+      {
+        "texto": "Obliga a guardar una fecha distinta para cada idioma.",
+        "explicacion": "Una misma fecha puede formatearse de varias maneras sin duplicar el dato.",
+        "correcta": false
+      },
+      {
+        "texto": "Convierte la localización en una traducción automática.",
+        "explicacion": "El formato de fecha es una convención local, no una traducción.",
+        "correcta": false
+      },
+      {
+        "texto": "Garantiza que todos los países usan el mismo orden de día y mes.",
+        "explicacion": "Precisamente se contemplan convenciones diferentes.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 223,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Internacionalización y localización",
+    "pagina": 226,
+    "enunciado": "¿Qué entiende el tema por software internacionalizado?",
+    "opciones": [
+      {
+        "texto": "Un producto preparado para ser utilizado fuera de la región o país donde fue creado.",
+        "explicacion": "Es la definición de la página 226.",
+        "correcta": true
+      },
+      {
+        "texto": "Un producto que solo se vende en su país de origen, pero en varios idiomas.",
+        "explicacion": "La clave es poder usarse fuera de la región de origen.",
+        "correcta": false
+      },
+      {
+        "texto": "Un producto traducido automáticamente al inglés.",
+        "explicacion": "Traducir no equivale a estar internacionalizado.",
+        "correcta": false
+      },
+      {
+        "texto": "Un producto que funciona sin interfaz gráfica.",
+        "explicacion": "La internacionalización afecta precisamente a la interfaz.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 224,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Internacionalización y localización",
+    "pagina": 229,
+    "enunciado": "Un programa tiene los mensajes de error escritos directamente en el código fuente en castellano. ¿Qué rasgo de un programa internacionalizado incumple?",
+    "opciones": [
+      {
+        "texto": "Los elementos textuales no deben estar en el código, sino fuera, y tomarse dinámicamente.",
+        "explicacion": "La página 229 lo exige para poder adaptar sin cambiar el código.",
+        "correcta": true
+      },
+      {
+        "texto": "Debe usar solo el alfabeto latino.",
+        "explicacion": "La internacionalización busca soportar distintas escrituras.",
+        "correcta": false
+      },
+      {
+        "texto": "Los mensajes deben estar siempre en inglés.",
+        "explicacion": "Eso no elimina la dependencia de una lengua en el código.",
+        "correcta": false
+      },
+      {
+        "texto": "Debe compilarse una versión distinta por país.",
+        "explicacion": "El objetivo es adaptarse sin cambiar el código.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 225,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Internacionalización y localización",
+    "pagina": 229,
+    "enunciado": "¿Cuál es la definición de internacionalización (i18n) que da el tema?",
+    "opciones": [
+      {
+        "texto": "Diseñar una aplicación para que pueda adaptarse a diferentes lenguajes y regiones sin necesidad de cambiar el código.",
+        "explicacion": "Es la definición de la página 229.",
+        "correcta": true
+      },
+      {
+        "texto": "Adaptar el software a una región concreta añadiendo componentes y traduciendo texto.",
+        "explicacion": "Esa es la definición de localización (p. 230).",
+        "correcta": false
+      },
+      {
+        "texto": "Traducir la documentación al inglés.",
+        "explicacion": "La i18n afecta al diseño de la aplicación, no solo a la documentación.",
+        "correcta": false
+      },
+      {
+        "texto": "Publicar la aplicación en tiendas de varios países.",
+        "explicacion": "La distribución no implica que el producto esté preparado.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 226,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Internacionalización y localización",
+    "pagina": 230,
+    "enunciado": "¿Qué abarca la localización (L10n) según el tema?",
+    "opciones": [
+      {
+        "texto": "Adaptar el software a una región o lengua concreta añadiendo componentes específicos y traduciendo texto, según sus convenciones, cultura y escritura.",
+        "explicacion": "Es la definición de la página 230.",
+        "correcta": true
+      },
+      {
+        "texto": "Diseñar el código para que no dependa de ninguna lengua.",
+        "explicacion": "Esa es la internacionalización.",
+        "correcta": false
+      },
+      {
+        "texto": "Detectar la ubicación GPS del usuario.",
+        "explicacion": "El tema no define la localización como geolocalización.",
+        "correcta": false
+      },
+      {
+        "texto": "Convertir todos los textos a ASCII.",
+        "explicacion": "ASCII se queda corto para muchos idiomas (p. 251).",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 227,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Internacionalización y localización",
+    "pagina": 231,
+    "enunciado": "Una empresa planea añadir soporte internacional cuando el producto esté terminado. ¿Qué advierte el tema?",
+    "opciones": [
+      {
+        "texto": "Que añadirlo a un programa acabado puede hacerlo menos estable que incorporarlo durante el desarrollo.",
+        "explicacion": "Es una de las ventajas enumeradas en la página 231.",
+        "correcta": true
+      },
+      {
+        "texto": "Que es la mejor opción porque abarata el mantenimiento.",
+        "explicacion": "El mantenimiento es menos costoso cuando se internacionaliza desde el principio.",
+        "correcta": false
+      },
+      {
+        "texto": "Que es obligatorio hacerlo así para no retrasar la primera versión.",
+        "explicacion": "El tema recomienda tenerla en cuenta desde el principio (p. 283).",
+        "correcta": false
+      },
+      {
+        "texto": "Que no afecta a la estabilidad del producto.",
+        "explicacion": "El tema señala el riesgo de menor estabilidad.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 228,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Internacionalización y localización",
+    "pagina": 231,
+    "enunciado": "¿Qué ventaja de la internacionalización recoge el tema?",
+    "opciones": [
+      {
+        "texto": "El mismo ejecutable funciona en todo el mundo y añadir nuevas localizaciones es menos costoso.",
+        "explicacion": "Son ventajas de la página 231.",
+        "correcta": true
+      },
+      {
+        "texto": "Cada país necesita un ejecutable distinto, lo que facilita el control.",
+        "explicacion": "Una ventaja es precisamente que el mismo ejecutable sirve para todos.",
+        "correcta": false
+      },
+      {
+        "texto": "Reduce el mercado para centrarse en un país.",
+        "explicacion": "El mercado es mayor.",
+        "correcta": false
+      },
+      {
+        "texto": "Elimina la necesidad de traducir textos.",
+        "explicacion": "La localización sigue requiriendo traducción.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 229,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Internacionalización y localización",
+    "pagina": 283,
+    "enunciado": "¿Qué conclusión del tema resume la importancia de la internacionalización?",
+    "opciones": [
+      {
+        "texto": "Es una necesidad, no una opción, y debe tenerse en cuenta desde el principio del diseño con una metodología adecuada.",
+        "explicacion": "Es la conclusión de la página 283.",
+        "correcta": true
+      },
+      {
+        "texto": "Es opcional y solo útil para grandes empresas.",
+        "explicacion": "El tema la presenta como necesidad en un mercado global.",
+        "correcta": false
+      },
+      {
+        "texto": "Se aborda al final, cuando el producto ya funciona.",
+        "explicacion": "Debe considerarse desde el principio.",
+        "correcta": false
+      },
+      {
+        "texto": "Solo afecta a los sitios web.",
+        "explicacion": "Los sitios web son el caso extremo, pero no el único (p. 226).",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 230,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la interfaz",
+    "pagina": 232,
+    "enunciado": "¿Qué lista contiene solo elementos que hay que considerar al internacionalizar?",
+    "opciones": [
+      {
+        "texto": "Texto, iconos, formatos de fechas y monedas, medidas, colores, direcciones y títulos honoríficos.",
+        "explicacion": "Son elementos de la página 232.",
+        "correcta": true
+      },
+      {
+        "texto": "Velocidad del procesador, memoria RAM y sistema de archivos.",
+        "explicacion": "Son aspectos técnicos ajenos a la adaptación cultural.",
+        "correcta": false
+      },
+      {
+        "texto": "Solo el texto de los menús.",
+        "explicacion": "La lista del tema es mucho más amplia.",
+        "correcta": false
+      },
+      {
+        "texto": "El nombre del programador y la fecha de compilación.",
+        "explicacion": "No son elementos de la interfaz a localizar.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 231,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la interfaz",
+    "pagina": 235,
+    "enunciado": "Un mensaje promete una respuesta «tan pronto como sea posible». ¿Qué ilustra el tema con esta expresión?",
+    "opciones": [
+      {
+        "texto": "Que la cultura hace percibir lo mismo de maneras distintas: «inmediatamente» en EE. UU., «puede ser este mes» en Latinoamérica.",
+        "explicacion": "Es el ejemplo de cultura de la página 235.",
+        "correcta": true
+      },
+      {
+        "texto": "Que la expresión es un problema de codificación de caracteres.",
+        "explicacion": "No es un problema de codificación.",
+        "correcta": false
+      },
+      {
+        "texto": "Que basta una traducción literal para conservar el significado.",
+        "explicacion": "El significado cambia aunque la traducción sea correcta.",
+        "correcta": false
+      },
+      {
+        "texto": "Que es un problema de orden de lectura.",
+        "explicacion": "No tiene relación con la dirección del texto.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 232,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la interfaz",
+    "pagina": 237,
+    "enunciado": "¿Por qué el tema cita el buzón de correo, el corrector ortográfico o el tick de verificación?",
+    "opciones": [
+      {
+        "texto": "Como ejemplos de iconos que dependen de una lengua y cultura determinadas.",
+        "explicacion": "La página 237 los pone como ejemplos de esa dependencia.",
+        "correcta": true
+      },
+      {
+        "texto": "Como iconos universales que no hace falta revisar.",
+        "explicacion": "Se citan precisamente porque no son universales.",
+        "correcta": false
+      },
+      {
+        "texto": "Como iconos que solo fallan en escrituras ideográficas.",
+        "explicacion": "La dependencia es cultural y lingüística en general.",
+        "correcta": false
+      },
+      {
+        "texto": "Como ejemplos de iconos arbitrarios del diseño gráfico.",
+        "explicacion": "En este tema ilustran la dependencia cultural.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 233,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la interfaz",
+    "pagina": 238,
+    "enunciado": "Una felicitación de boda usa un fondo blanco para un público oriental. ¿Qué riesgo señala el tema?",
+    "opciones": [
+      {
+        "texto": "En la cultura oriental el blanco se asocia con el luto; el rojo, con el matrimonio.",
+        "explicacion": "La página 238 contrapone los significados occidentales y orientales.",
+        "correcta": true
+      },
+      {
+        "texto": "Ninguno: el blanco significa matrimonio en todas las culturas.",
+        "explicacion": "En Occidente sí, pero no en Oriente.",
+        "correcta": false
+      },
+      {
+        "texto": "El blanco es ilegible en pantallas orientales.",
+        "explicacion": "No es un problema técnico, sino cultural.",
+        "correcta": false
+      },
+      {
+        "texto": "El rojo es el color del luto en Oriente.",
+        "explicacion": "Se asocia con el matrimonio.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 234,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la interfaz",
+    "pagina": 238,
+    "enunciado": "¿Qué enseña el ejemplo del semáforo sobre los colores?",
+    "opciones": [
+      {
+        "texto": "Que ni siquiera significados tan extendidos como rojo-parar se pueden asumir de manera generalizada.",
+        "explicacion": "La página 238 lo usa como advertencia.",
+        "correcta": true
+      },
+      {
+        "texto": "Que sus colores son un estándar universal que no requiere revisión.",
+        "explicacion": "El tema dice lo contrario.",
+        "correcta": false
+      },
+      {
+        "texto": "Que el verde siempre significa error.",
+        "explicacion": "No es lo que indica el tema.",
+        "correcta": false
+      },
+      {
+        "texto": "Que los colores no tienen significados culturales.",
+        "explicacion": "Tienen significados asociados por tradición.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 235,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la interfaz",
+    "pagina": 239,
+    "enunciado": "Un formulario muestra «03/04/2026». ¿Por qué puede ser ambiguo para un público internacional?",
+    "opciones": [
+      {
+        "texto": "Porque unos usan dd/mm/aaaa y los angloparlantes mm/dd/aaaa, y además existen calendarios distintos del gregoriano.",
+        "explicacion": "La página 239 recoge ambos aspectos.",
+        "correcta": true
+      },
+      {
+        "texto": "Porque todos los países usan el formato aaaa/dd/mm.",
+        "explicacion": "No existe tal formato común.",
+        "correcta": false
+      },
+      {
+        "texto": "Porque las fechas no deben mostrarse nunca.",
+        "explicacion": "El problema es el formato, no mostrarlas.",
+        "correcta": false
+      },
+      {
+        "texto": "Porque el calendario gregoriano es el único existente.",
+        "explicacion": "El tema cita el budista, islámico, chino o hebreo.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 236,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la interfaz",
+    "pagina": 240,
+    "enunciado": "¿Qué formato numérico corresponde al euro según el ejemplo del tema?",
+    "opciones": [
+      {
+        "texto": "1.234,56 €",
+        "explicacion": "La página 240 muestra este formato para el euro.",
+        "correcta": true
+      },
+      {
+        "texto": "€ 1,234.56",
+        "explicacion": "Es el patrón de EE. UU. y Reino Unido con otro símbolo.",
+        "correcta": false
+      },
+      {
+        "texto": "1,234.56 €",
+        "explicacion": "Usa los separadores anglosajones.",
+        "correcta": false
+      },
+      {
+        "texto": "€1234.56",
+        "explicacion": "No coincide con el ejemplo del tema.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 237,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la interfaz",
+    "pagina": 241,
+    "enunciado": "Una lista ordena por código de carácter: mayúsculas primero, luego minúsculas. ¿Qué advierte el tema?",
+    "opciones": [
+      {
+        "texto": "Esa regla no siempre es aceptable: hay ordenaciones más complejas que consideran un segundo carácter, como la antigua ‘ch’ y ‘ll’.",
+        "explicacion": "La página 241 lo explica.",
+        "correcta": true
+      },
+      {
+        "texto": "Es el orden universal de todas las lenguas.",
+        "explicacion": "El tema señala que no siempre es aceptable.",
+        "correcta": false
+      },
+      {
+        "texto": "La ordenación no influye en la internacionalización.",
+        "explicacion": "Es un tema importante y complejo.",
+        "correcta": false
+      },
+      {
+        "texto": "Basta con ordenar los números de 9 a 0.",
+        "explicacion": "No resuelve el problema de los caracteres.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 238,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Elementos de la interfaz",
+    "pagina": 242,
+    "enunciado": "Una app de running muestra distancias solo en kilómetros. ¿Qué mercado plantea un problema según el tema?",
+    "opciones": [
+      {
+        "texto": "Estados Unidos, que no usa el sistema métrico sino millas y pulgadas.",
+        "explicacion": "La página 242 lo señala como excepción.",
+        "correcta": true
+      },
+      {
+        "texto": "Toda Europa, que usa millas.",
+        "explicacion": "Europa usa el sistema métrico.",
+        "correcta": false
+      },
+      {
+        "texto": "Ninguno: el sistema métrico es universal.",
+        "explicacion": "Estados Unidos es la excepción.",
+        "correcta": false
+      },
+      {
+        "texto": "Japón, que usa pulgadas en lugar de centímetros.",
+        "explicacion": "El tema cita a Estados Unidos.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 239,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Escrituras y codificación",
+    "pagina": 244,
+    "enunciado": "¿Qué diferencia hay entre un ideograma y una escritura fonética?",
+    "opciones": [
+      {
+        "texto": "El ideograma tiene significado propio sin relación con su pronunciación; las letras fonéticas representan sonidos.",
+        "explicacion": "Es la clasificación de la página 244.",
+        "correcta": true
+      },
+      {
+        "texto": "El ideograma representa sonidos y la letra fonética, conceptos.",
+        "explicacion": "La relación está invertida.",
+        "correcta": false
+      },
+      {
+        "texto": "Ambos representan sonidos, pero con distinto alfabeto.",
+        "explicacion": "Los ideogramas no representan sonidos.",
+        "correcta": false
+      },
+      {
+        "texto": "Los ideogramas solo se usan en escrituras occidentales.",
+        "explicacion": "Se usan en el Extremo Oriente.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 240,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Escrituras y codificación",
+    "pagina": 245,
+    "enunciado": "¿Qué rasgos comparten las escrituras latina, griega y cirílica?",
+    "opciones": [
+      {
+        "texto": "Son fonéticas, se leen de izquierda a derecha, distinguen mayúsculas y minúsculas y usan numeración arábiga.",
+        "explicacion": "Son las características comunes de la página 245.",
+        "correcta": true
+      },
+      {
+        "texto": "Son ideográficas y se leen de derecha a izquierda.",
+        "explicacion": "Eso no corresponde a las escrituras occidentales.",
+        "correcta": false
+      },
+      {
+        "texto": "No distinguen mayúsculas de minúsculas.",
+        "explicacion": "Sí las distinguen.",
+        "correcta": false
+      },
+      {
+        "texto": "Usan numeración romana.",
+        "explicacion": "Usan numeración arábiga.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 241,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Escrituras y codificación",
+    "pagina": 246,
+    "enunciado": "¿Dónde se usa la escritura cirílica según el tema?",
+    "opciones": [
+      {
+        "texto": "En países eslavos como Rusia, Bulgaria o Serbia y en países de Asia central.",
+        "explicacion": "La página 246 lo indica.",
+        "correcta": true
+      },
+      {
+        "texto": "En casi toda Europa occidental y América.",
+        "explicacion": "Esa es la escritura latina.",
+        "correcta": false
+      },
+      {
+        "texto": "En China y Japón.",
+        "explicacion": "Usan escrituras basadas en caracteres ideográficos.",
+        "correcta": false
+      },
+      {
+        "texto": "Solo en Grecia.",
+        "explicacion": "Grecia usa la escritura griega.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 242,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Escrituras y codificación",
+    "pagina": 247,
+    "enunciado": "¿Cuántos caracteres se consideran el mínimo para conversar en las escrituras del Extremo Oriente?",
+    "opciones": [
+      {
+        "texto": "Unos 3.000, frente a 20.000 del conjunto estándar y 50.000 del extendido.",
+        "explicacion": "Son las cifras de la página 247.",
+        "correcta": true
+      },
+      {
+        "texto": "Unos 128, como en ASCII.",
+        "explicacion": "ASCII es un mapa latino de 128 caracteres.",
+        "correcta": false
+      },
+      {
+        "texto": "Unos 256, como en los mapas de un octeto.",
+        "explicacion": "Un octeto no basta para estas escrituras.",
+        "correcta": false
+      },
+      {
+        "texto": "Unos 50.000, el mínimo para conversar.",
+        "explicacion": "Esa cifra corresponde al conjunto extendido.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 243,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Escrituras y codificación",
+    "pagina": 251,
+    "enunciado": "Un programa usa ASCII de 128 caracteres y no muestra la ñ ni los caracteres griegos. ¿Por qué?",
+    "opciones": [
+      {
+        "texto": "ASCII se creó para el inglés a partir del alfabeto latino básico y se queda corto para otros idiomas.",
+        "explicacion": "La página 251 lo explica.",
+        "correcta": true
+      },
+      {
+        "texto": "ASCII es un mapa de doble octeto para escrituras orientales.",
+        "explicacion": "ASCII ocupa 128 posiciones.",
+        "correcta": false
+      },
+      {
+        "texto": "ASCII reserva todos sus caracteres para el control.",
+        "explicacion": "Solo los caracteres 0–31 y 127 son de control.",
+        "correcta": false
+      },
+      {
+        "texto": "ASCII es incompatible con el alfabeto latino.",
+        "explicacion": "Está basado en el alfabeto latino.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 244,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Escrituras y codificación",
+    "pagina": 252,
+    "enunciado": "¿Qué es un mapa de caracteres de un solo octeto (SBCS)?",
+    "opciones": [
+      {
+        "texto": "Una extensión de ASCII de hasta 256 caracteres que añade las posiciones 128–255, como las variantes ISO 8859.",
+        "explicacion": "Es la definición de la página 252.",
+        "correcta": true
+      },
+      {
+        "texto": "Un mapa de 65.536 caracteres de 16 bits.",
+        "explicacion": "Eso corresponde al doble octeto o a Unicode.",
+        "correcta": false
+      },
+      {
+        "texto": "Un mapa sin caracteres de control.",
+        "explicacion": "Mantiene la base ASCII.",
+        "correcta": false
+      },
+      {
+        "texto": "Un esquema único para todas las escrituras del mundo.",
+        "explicacion": "Cada variante ISO 8859 cubre un grupo de lenguas.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 245,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Escrituras y codificación",
+    "pagina": 252,
+    "enunciado": "¿Qué variante ISO corresponde al latín de Europa occidental?",
+    "opciones": [
+      {
+        "texto": "ISO 8859-1 (Latin-1).",
+        "explicacion": "La página 252 la asigna al latín de Europa del oeste.",
+        "correcta": true
+      },
+      {
+        "texto": "ISO 8859-5.",
+        "explicacion": "Corresponde al cirílico.",
+        "correcta": false
+      },
+      {
+        "texto": "ISO 8859-7.",
+        "explicacion": "Corresponde al griego.",
+        "correcta": false
+      },
+      {
+        "texto": "ISO 8859-6.",
+        "explicacion": "Corresponde al árabe.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 246,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Escrituras y codificación",
+    "pagina": 255,
+    "enunciado": "¿Por qué las escrituras del Extremo Oriente necesitan un mapa de doble octeto (DBCS)?",
+    "opciones": [
+      {
+        "texto": "Porque sus caracteres ideográficos superan los 256 de un octeto; con 16 bits se llega a 65.536.",
+        "explicacion": "La página 255 lo explica.",
+        "correcta": true
+      },
+      {
+        "texto": "Porque se escriben de derecha a izquierda.",
+        "explicacion": "La dirección no determina el tamaño del mapa.",
+        "correcta": false
+      },
+      {
+        "texto": "Porque no usan signos de puntuación.",
+        "explicacion": "No es el motivo.",
+        "correcta": false
+      },
+      {
+        "texto": "Porque DBCS solo contiene caracteres de dos octetos.",
+        "explicacion": "DBCS mezcla caracteres de 1 y 2 octetos.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 247,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Escrituras y codificación",
+    "pagina": 256,
+    "enunciado": "¿Qué problemas de los esquemas de codificación motivaron Unicode?",
+    "opciones": [
+      {
+        "texto": "Duplicidad e inconsistencia de códigos entre estándares, límites de 128 o 256 posiciones e Internet, que exige un conjunto único mundial.",
+        "explicacion": "Son los problemas de la página 256.",
+        "correcta": true
+      },
+      {
+        "texto": "Que ASCII ocupaba demasiada memoria.",
+        "explicacion": "El problema era su escasa capacidad.",
+        "correcta": false
+      },
+      {
+        "texto": "Que no existían escrituras fonéticas.",
+        "explicacion": "No es el problema planteado.",
+        "correcta": false
+      },
+      {
+        "texto": "Que los mapas de un octeto eran demasiado grandes.",
+        "explicacion": "Al contrario, eran limitados.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 248,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Escrituras y codificación",
+    "pagina": 259,
+    "enunciado": "¿Cómo resume el tema las características de Unicode?",
+    "opciones": [
+      {
+        "texto": "Universal, uniforme (anchura fija) y no ambiguo; compatible con ASCII y sin secuencias de escape.",
+        "explicacion": "Son las propiedades de las páginas 258–259.",
+        "correcta": true
+      },
+      {
+        "texto": "Variable, ambiguo e incompatible con ASCII.",
+        "explicacion": "Es lo contrario.",
+        "correcta": false
+      },
+      {
+        "texto": "Limitado a escrituras occidentales.",
+        "explicacion": "Cubre las escrituras más importantes del mundo.",
+        "correcta": false
+      },
+      {
+        "texto": "Basado en secuencias de escape para cambiar de alfabeto.",
+        "explicacion": "No necesita secuencias de escape.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 249,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Escrituras y codificación",
+    "pagina": 257,
+    "enunciado": "Un documento mezcla texto latino, ideogramas y símbolos técnicos. ¿Qué rasgo de Unicode lo hace posible?",
+    "opciones": [
+      {
+        "texto": "Trata los caracteres alfabéticos, ideográficos y los símbolos de la misma manera, de forma que se pueden mezclar.",
+        "explicacion": "La página 257 lo destaca.",
+        "correcta": true
+      },
+      {
+        "texto": "Usa un mapa ISO 8859 distinto para cada párrafo.",
+        "explicacion": "Unicode es un esquema único.",
+        "correcta": false
+      },
+      {
+        "texto": "Convierte los ideogramas en letras latinas.",
+        "explicacion": "No transforma la escritura.",
+        "correcta": false
+      },
+      {
+        "texto": "Solo admite símbolos técnicos de un octeto.",
+        "explicacion": "Utiliza una codificación de 16 bits.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 250,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Modelo de localización",
+    "pagina": 264,
+    "enunciado": "¿Qué esquema de producto localizado presenta el tema?",
+    "opciones": [
+      {
+        "texto": "Recursos localizados + código de la aplicación = producto localizado.",
+        "explicacion": "Es el modelo de la página 264.",
+        "correcta": true
+      },
+      {
+        "texto": "Código traducido + compilador local = producto localizado.",
+        "explicacion": "El código no se traduce; los recursos se separan.",
+        "correcta": false
+      },
+      {
+        "texto": "Un ejecutable distinto por idioma.",
+        "explicacion": "El código es común a todos los países.",
+        "correcta": false
+      },
+      {
+        "texto": "Producto original + traducción automática = producto localizado.",
+        "explicacion": "No es el esquema del tema.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 251,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Modelo de localización",
+    "pagina": 265,
+    "enunciado": "En el modelo de localización, ¿qué contienen los recursos localizados?",
+    "opciones": [
+      {
+        "texto": "Datos pero no código: cadenas y gráficos de la interfaz y elementos específicos de la localización.",
+        "explicacion": "La página 265 los describe así.",
+        "correcta": true
+      },
+      {
+        "texto": "El código de la aplicación común a todos los países.",
+        "explicacion": "Eso es el código de la aplicación (p. 266).",
+        "correcta": false
+      },
+      {
+        "texto": "Solo el instalador del producto.",
+        "explicacion": "No coincide con el modelo.",
+        "correcta": false
+      },
+      {
+        "texto": "El código fuente traducido.",
+        "explicacion": "Los recursos no contienen código.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 252,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Modelo de localización",
+    "pagina": 266,
+    "enunciado": "En el modelo de localización, ¿qué caracteriza al código de la aplicación?",
+    "opciones": [
+      {
+        "texto": "Es el mismo y se ejecuta en todos los países e idiomas.",
+        "explicacion": "La página 266 lo define así.",
+        "correcta": true
+      },
+      {
+        "texto": "Cambia en cada país para incluir sus textos.",
+        "explicacion": "Los textos están en los recursos.",
+        "correcta": false
+      },
+      {
+        "texto": "Contiene los gráficos específicos de cada cultura.",
+        "explicacion": "Eso pertenece a los recursos localizados.",
+        "correcta": false
+      },
+      {
+        "texto": "Solo se ejecuta en el país de origen.",
+        "explicacion": "Debe funcionar en todos.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 253,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Modelo de localización",
+    "pagina": 267,
+    "enunciado": "¿Qué claves da el tema para diseñar un producto localizado?",
+    "opciones": [
+      {
+        "texto": "Extraer datos, textos y gráficos a un fichero separado, organizar y documentar los ficheros y crear un proceso para construir el producto.",
+        "explicacion": "Son las claves de la página 267.",
+        "correcta": true
+      },
+      {
+        "texto": "Mezclar los textos en el código para que no se pierdan.",
+        "explicacion": "Hay que extraerlos.",
+        "correcta": false
+      },
+      {
+        "texto": "Traducir el código fuente a cada idioma.",
+        "explicacion": "El código no se traduce.",
+        "correcta": false
+      },
+      {
+        "texto": "Evitar documentar los recursos para ganar flexibilidad.",
+        "explicacion": "Hay que organizarlos y documentarlos.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 254,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Modelo de localización",
+    "pagina": 281,
+    "enunciado": "¿Por qué recomienda el tema hacer dos localizaciones en paralelo?",
+    "opciones": [
+      {
+        "texto": "Porque permite evaluar si la internacionalización está bien hecha.",
+        "explicacion": "La página 281 lo indica.",
+        "correcta": true
+      },
+      {
+        "texto": "Porque duplica las ventas automáticamente.",
+        "explicacion": "No es el motivo dado.",
+        "correcta": false
+      },
+      {
+        "texto": "Porque evita documentar los recursos.",
+        "explicacion": "También hay que documentar todos los recursos.",
+        "correcta": false
+      },
+      {
+        "texto": "Porque así no hacen falta herramientas de localización.",
+        "explicacion": "El tema subraya la importancia de las herramientas.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 255,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Modelo de localización",
+    "pagina": 282,
+    "enunciado": "¿Qué ofrece Java para la internacionalización según el ejemplo del tema?",
+    "opciones": [
+      {
+        "texto": "Soporte Unicode con char de 16 bits, la notación '\\uxxxx' y la clase Locale, que identifica una región.",
+        "explicacion": "Es el ejemplo de la página 282.",
+        "correcta": true
+      },
+      {
+        "texto": "Un char de 8 bits limitado a ASCII.",
+        "explicacion": "Java usa 16 bits.",
+        "correcta": false
+      },
+      {
+        "texto": "Un ejecutable distinto para cada región.",
+        "explicacion": "Locale representa la región sin cambiar el ejecutable.",
+        "correcta": false
+      },
+      {
+        "texto": "Que el tamaño de char siempre depende de la plataforma.",
+        "explicacion": "Eso ocurre en C++, no en Java.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 256,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Guía técnica",
+    "pagina": 271,
+    "enunciado": "«Mover» se traduce al alemán como «verschieben». ¿Qué principio ilustra el tema con este ejemplo?",
+    "opciones": [
+      {
+        "texto": "El texto traducido cambia de tamaño y hay que prever que pueda crecer.",
+        "explicacion": "La página 271 compara 5 frente a 11 caracteres.",
+        "correcta": true
+      },
+      {
+        "texto": "Que el alemán no necesita localización.",
+        "explicacion": "El ejemplo muestra lo contrario.",
+        "correcta": false
+      },
+      {
+        "texto": "Que las traducciones siempre son más cortas.",
+        "explicacion": "En este caso es más larga.",
+        "correcta": false
+      },
+      {
+        "texto": "Que hay que evitar los verbos en la interfaz.",
+        "explicacion": "No es la recomendación del tema.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 257,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Guía técnica",
+    "pagina": 273,
+    "enunciado": "¿Qué margen de expansión del texto recomienda el tema al organizar los diálogos?",
+    "opciones": [
+      {
+        "texto": "Un 30 %.",
+        "explicacion": "Es la regla de la página 273.",
+        "correcta": true
+      },
+      {
+        "texto": "Un 5 %.",
+        "explicacion": "Es muy inferior a lo recomendado.",
+        "correcta": false
+      },
+      {
+        "texto": "Un 100 %.",
+        "explicacion": "No es la cifra del tema.",
+        "correcta": false
+      },
+      {
+        "texto": "Ninguno: el texto traducido ocupa lo mismo.",
+        "explicacion": "El texto traducido cambia de tamaño.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 258,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Guía técnica",
+    "pagina": 275,
+    "enunciado": "Los controles «primero, anterior, siguiente, último» se adaptan para árabe. ¿Qué cambio propone el tema?",
+    "opciones": [
+      {
+        "texto": "Invertir su orden, porque la información se presenta de derecha a izquierda.",
+        "explicacion": "La página 275 lo muestra con este ejemplo.",
+        "correcta": true
+      },
+      {
+        "texto": "Mantener el mismo orden porque son iconos universales.",
+        "explicacion": "La dirección de lectura cambia la disposición.",
+        "correcta": false
+      },
+      {
+        "texto": "Eliminar los controles.",
+        "explicacion": "No es necesario eliminarlos.",
+        "correcta": false
+      },
+      {
+        "texto": "Cambiar solo su color.",
+        "explicacion": "El problema es la dirección.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 259,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Guía técnica",
+    "pagina": 276,
+    "enunciado": "¿Cuánto debe ocupar la versión inglesa de la barra de estado?",
+    "opciones": [
+      {
+        "texto": "Solo el 50 %, para que haya espacio cuando el texto crezca al traducirlo.",
+        "explicacion": "La página 276 lo recomienda.",
+        "correcta": true
+      },
+      {
+        "texto": "El 100 %, para aprovechar el espacio.",
+        "explicacion": "No se debe llenar la barra de estado.",
+        "correcta": false
+      },
+      {
+        "texto": "El 30 %, igual que el margen de expansión.",
+        "explicacion": "La regla de la barra es el 50 %.",
+        "correcta": false
+      },
+      {
+        "texto": "Nada: no deben usarse barras de estado.",
+        "explicacion": "El tema da pautas para usarlas.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 260,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Guía técnica",
+    "pagina": 277,
+    "enunciado": "Las teclas aceleradoras de un menú coinciden con la inicial de cada palabra. ¿Qué problema plantea la traducción?",
+    "opciones": [
+      {
+        "texto": "Al traducir, la inicial cambia o se repite, así que debe permitirse otra tecla distinta de la inicial.",
+        "explicacion": "La página 277 lo advierte.",
+        "correcta": true
+      },
+      {
+        "texto": "Ninguno, porque las iniciales se conservan al traducir.",
+        "explicacion": "Las palabras cambian al traducirlas.",
+        "correcta": false
+      },
+      {
+        "texto": "Hay que suprimir las teclas aceleradoras.",
+        "explicacion": "Basta con permitir otra tecla.",
+        "correcta": false
+      },
+      {
+        "texto": "El menú debe superar los 80 caracteres.",
+        "explicacion": "El tema pide evitar menús densos, con un límite de 80.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 261,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Guía técnica",
+    "pagina": 279,
+    "enunciado": "Un formulario de envío tiene campos fijos de calle, código postal y estado. ¿Qué solución da el tema?",
+    "opciones": [
+      {
+        "texto": "Una dirección postal flexible, porque su formato depende de cada país.",
+        "explicacion": "Es la solución de la página 279.",
+        "correcta": true
+      },
+      {
+        "texto": "Exigir el formato estadounidense a todos los usuarios.",
+        "explicacion": "Ignora las diferencias culturales.",
+        "correcta": false
+      },
+      {
+        "texto": "Eliminar la dirección postal.",
+        "explicacion": "No resuelve el problema.",
+        "correcta": false
+      },
+      {
+        "texto": "Traducir solo las etiquetas de los campos.",
+        "explicacion": "El problema es la estructura, no solo el texto.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 262,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Guía técnica",
+    "pagina": 270,
+    "enunciado": "¿Qué puntos a revisar incluye la guía técnica en el procesamiento de texto?",
+    "opciones": [
+      {
+        "texto": "Ordenación, clasificación de caracteres, pronunciación, guionado, gestión de cadenas e importación y exportación de ficheros.",
+        "explicacion": "Son los puntos de la página 270.",
+        "correcta": true
+      },
+      {
+        "texto": "Solo el color de la fuente.",
+        "explicacion": "No es un aspecto del procesamiento de texto.",
+        "correcta": false
+      },
+      {
+        "texto": "Únicamente la velocidad de escritura del usuario.",
+        "explicacion": "No figura en la guía técnica.",
+        "correcta": false
+      },
+      {
+        "texto": "El número de ventanas abiertas.",
+        "explicacion": "No figura en la guía técnica.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 263,
+    "tema": "5",
+    "temaTitulo": "Tema 5 · Internacionalización",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Guía técnica",
+    "pagina": 280,
+    "enunciado": "¿Qué advierte el ejemplo del perro que pide una pelota?",
+    "opciones": [
+      {
+        "texto": "Que los objetos cotidianos son elementos culturales que varían entre países y deben revisarse al localizar.",
+        "explicacion": "La página 280 lo presenta como elemento cultural.",
+        "correcta": true
+      },
+      {
+        "texto": "Que los animales deben eliminarse de las interfaces.",
+        "explicacion": "El tema no lo propone.",
+        "correcta": false
+      },
+      {
+        "texto": "Que es un problema de codificación de caracteres.",
+        "explicacion": "Es un problema cultural.",
+        "correcta": false
+      },
+      {
+        "texto": "Que las pelotas son un símbolo político.",
+        "explicacion": "No es lo que plantea el tema.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 264,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Manipulación directa",
+    "pagina": 370,
+    "enunciado": "Un cajero ofrece elegir una operación de una lista y solicita los datos en campos. Otro sistema permite arrastrar directamente un archivo a una papelera visible. ¿Qué comparación es correcta?",
+    "opciones": [
+      {
+        "texto": "Lista y campos son estilos de interacción; arrastrar a una papelera es manipulación directa.",
+        "explicacion": "Los estilos describen el diálogo; el segundo caso actúa directamente sobre objetos representados.",
+        "correcta": true
+      },
+      {
+        "texto": "Los tres son paradigmas porque describen dispositivos físicos.",
+        "explicacion": "Menús y formularios son estilos; no son paradigmas por sí solos.",
+        "correcta": false
+      },
+      {
+        "texto": "Arrastrar es un paradigma móvil y los campos, ubicuos.",
+        "explicacion": "No se describe el modelo de interacción o contexto que definen esos paradigmas.",
+        "correcta": false
+      },
+      {
+        "texto": "El menú es manipulación directa porque permite elegir una opción.",
+        "explicacion": "Elegir una orden en un menú no manipula directamente el objeto del dominio.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 265,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Interacción y línea de órdenes",
+    "pagina": 358,
+    "enunciado": "Una persona experta memoriza una orden de texto; una principiante prefiere escoger la misma acción en un menú. ¿Qué conclusión de diseño es más equilibrada?",
+    "opciones": [
+      {
+        "texto": "Los estilos pueden favorecer perfiles distintos; conviene valorar el contexto y la experiencia.",
+        "explicacion": "Comandos pueden ser eficientes para expertos; los menús facilitan reconocer opciones.",
+        "correcta": true
+      },
+      {
+        "texto": "Los comandos son siempre mejores porque requieren menos espacio.",
+        "explicacion": "La eficiencia depende del aprendizaje, la frecuencia y el contexto.",
+        "correcta": false
+      },
+      {
+        "texto": "Los menús son siempre mejores porque no requieren aprender nada.",
+        "explicacion": "También exigen reconocer y recorrer opciones.",
+        "correcta": false
+      },
+      {
+        "texto": "La interfaz debería ocultar uno de los estilos sin evaluar a sus usuarios.",
+        "explicacion": "La elección necesita atender a las necesidades observadas.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 266,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Paradigmas de interacción",
+    "pagina": 382,
+    "enunciado": "Una app usa formularios tanto en móvil como en escritorio. ¿Qué dato permitiría clasificarla como paradigma móvil?",
+    "opciones": [
+      {
+        "texto": "El modelo conceptual de interacción y uso en movilidad, no la presencia aislada de un formulario.",
+        "explicacion": "Estilo y paradigma responden a niveles diferentes; el formulario no determina el paradigma.",
+        "correcta": true
+      },
+      {
+        "texto": "Que cada formulario tenga un botón azul.",
+        "explicacion": "El color es una decisión visual, no un paradigma.",
+        "correcta": false
+      },
+      {
+        "texto": "Que la app esté escrita con un lenguaje específico.",
+        "explicacion": "La tecnología interna no define el modelo conceptual de interacción.",
+        "correcta": false
+      },
+      {
+        "texto": "Que los campos tengan etiquetas.",
+        "explicacion": "Las etiquetas son una decisión del estilo formulario.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 267,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Manipulación directa",
+    "pagina": 370,
+    "enunciado": "Una acción destructiva se ejecuta al instante al tocar un objeto y no se muestra resultado ni opción para deshacer. ¿Qué propiedad asociada a manipulación directa está peor resuelta?",
+    "opciones": [
+      {
+        "texto": "La visibilidad del estado y la posibilidad de revertir acciones.",
+        "explicacion": "La manipulación directa suele mostrar objetos y resultados inmediatos, con acciones reversibles cuando es posible.",
+        "correcta": true
+      },
+      {
+        "texto": "La cantidad de comandos que la persona debe memorizar.",
+        "explicacion": "No se describen órdenes ocultas o vocabulario de comandos.",
+        "correcta": false
+      },
+      {
+        "texto": "La consistencia del estándar de plataforma exclusivamente.",
+        "explicacion": "El problema inmediato es falta de feedback y control.",
+        "correcta": false
+      },
+      {
+        "texto": "La personalización del idioma.",
+        "explicacion": "El caso no describe idioma ni convenciones locales.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 268,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Paradigmas de interacción",
+    "pagina": 382,
+    "enunciado": "Un diseñador dice «menú» y «paradigma ubicuo» como si fueran categorías del mismo nivel. ¿Qué corrección ayuda a analizarlos?",
+    "opciones": [
+      {
+        "texto": "El menú es un estilo de diálogo; ubicuo es un paradigma sobre interacción integrada en distintos contextos.",
+        "explicacion": "Un nivel describe cómo se dan órdenes; el otro, un modelo conceptual más amplio.",
+        "correcta": true
+      },
+      {
+        "texto": "Ambos son estilos porque aparecen en la interfaz.",
+        "explicacion": "Ubicuo describe un paradigma, no un control visual.",
+        "correcta": false
+      },
+      {
+        "texto": "Ambos son paradigmas porque organizan información.",
+        "explicacion": "Un menú es una forma concreta de interacción.",
+        "correcta": false
+      },
+      {
+        "texto": "Menú es un paradigma y ubicuo un dispositivo.",
+        "explicacion": "Se confunden la técnica de diálogo y el modelo de uso.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 269,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Interacción y línea de órdenes",
+    "pagina": 354,
+    "enunciado": "¿Qué es un estilo de interacción según el tema?",
+    "opciones": [
+      {
+        "texto": "El término genérico que agrupa las diferentes maneras en que los usuarios se comunican o interaccionan con el ordenador (Preece, 1994).",
+        "explicacion": "Es la definición de la página 354.",
+        "correcta": true
+      },
+      {
+        "texto": "Todos los intercambios entre la persona y el ordenador.",
+        "explicacion": "Esa es la definición de interacción (Baecker y Buxton, 1987).",
+        "correcta": false
+      },
+      {
+        "texto": "El uso simultáneo de varios canales de comunicación.",
+        "explicacion": "Esa es la interacción multimodal.",
+        "correcta": false
+      },
+      {
+        "texto": "El modelo del que se derivan todos los sistemas de interacción.",
+        "explicacion": "Esa es la definición de paradigma (p. 382).",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 270,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Interacción y línea de órdenes",
+    "pagina": 354,
+    "enunciado": "Un sistema del coche permite dar una orden por voz mientras se señala un punto en la pantalla táctil. ¿Cómo se denomina esta interacción?",
+    "opciones": [
+      {
+        "texto": "Interacción multimodal: usa múltiples canales de comunicación simultáneamente.",
+        "explicacion": "La página 354 la define así.",
+        "correcta": true
+      },
+      {
+        "texto": "Interfaz por línea de órdenes.",
+        "explicacion": "No se escriben órdenes de texto.",
+        "correcta": false
+      },
+      {
+        "texto": "Realidad virtual.",
+        "explicacion": "No hay un entorno 3D con sensación de presencia.",
+        "correcta": false
+      },
+      {
+        "texto": "Interacción asistida.",
+        "explicacion": "No interviene un agente que colabore con el usuario.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 271,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Interacción y línea de órdenes",
+    "pagina": 353,
+    "enunciado": "¿Qué secuencia refleja la evolución de la interacción que presenta el tema?",
+    "opciones": [
+      {
+        "texto": "Texto con teclado y pantalla, menús y navegación, manipulación directa y nuevos paradigmas (RV, computación ubicua, RA).",
+        "explicacion": "Es la evolución de la página 353.",
+        "correcta": true
+      },
+      {
+        "texto": "Realidad aumentada, menús, línea de órdenes y manipulación directa.",
+        "explicacion": "El orden no se corresponde con la evolución.",
+        "correcta": false
+      },
+      {
+        "texto": "Manipulación directa, texto y realidad virtual.",
+        "explicacion": "El texto fue el primer estilo de uso generalizado.",
+        "correcta": false
+      },
+      {
+        "texto": "Computación ubicua, menús y línea de órdenes.",
+        "explicacion": "La computación ubicua es un paradigma reciente.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 272,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Interacción y línea de órdenes",
+    "pagina": 357,
+    "enunciado": "¿Qué caracteriza a la interfaz por línea de órdenes?",
+    "opciones": [
+      {
+        "texto": "Fue el primer estilo de uso generalizado y consiste en dar instrucciones mediante palabras, abreviaturas, caracteres o teclas de función.",
+        "explicacion": "Es la descripción de la página 357.",
+        "correcta": true
+      },
+      {
+        "texto": "Se basa en arrastrar objetos visibles con un dispositivo apuntador.",
+        "explicacion": "Eso es manipulación directa.",
+        "correcta": false
+      },
+      {
+        "texto": "Ya no se usa en ningún sistema actual.",
+        "explicacion": "El tema dice que todavía hoy está en uso.",
+        "correcta": false
+      },
+      {
+        "texto": "Requiere que un agente interprete las intenciones del usuario.",
+        "explicacion": "Las órdenes se dan directamente.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 273,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Interacción y línea de órdenes",
+    "pagina": 357,
+    "enunciado": "Comparando «copy», «cp» y «Ctrl+Z», ¿qué compromiso señala el tema?",
+    "opciones": [
+      {
+        "texto": "Las palabras enteras son más fáciles de recordar y las abreviaturas o teclas, más rápidas de ejecutar.",
+        "explicacion": "La página 357 lo muestra con esos ejemplos.",
+        "correcta": true
+      },
+      {
+        "texto": "Las abreviaturas son más fáciles de recordar y más lentas.",
+        "explicacion": "La relación está invertida.",
+        "correcta": false
+      },
+      {
+        "texto": "Todas las formas son igual de rápidas y fáciles de recordar.",
+        "explicacion": "El tema distingue entre recordar y ejecutar.",
+        "correcta": false
+      },
+      {
+        "texto": "Las teclas de función no se usan en la línea de órdenes.",
+        "explicacion": "Son una de las formas citadas.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 274,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Interacción y línea de órdenes",
+    "pagina": 358,
+    "enunciado": "Un administrador aplica una orden con opciones a cientos de archivos a la vez y la guarda como macro. ¿Qué ventajas de la línea de órdenes aprovecha?",
+    "opciones": [
+      {
+        "texto": "Flexibilidad, aplicación a muchos objetos a la vez y capacidad para hacer macros.",
+        "explicacion": "Son ventajas de la página 358.",
+        "correcta": true
+      },
+      {
+        "texto": "Indicación visual de la orden necesaria.",
+        "explicacion": "El tema cita su ausencia como desventaja.",
+        "correcta": false
+      },
+      {
+        "texto": "Buena gestión de errores.",
+        "explicacion": "La gestión de errores es pobre.",
+        "correcta": false
+      },
+      {
+        "texto": "Que no requiere memorización.",
+        "explicacion": "Requiere gran memorización y entrenamiento.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 275,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 0,
+    "bloqueNombre": "Interacción y línea de órdenes",
+    "pagina": 358,
+    "enunciado": "Un usuario novel no sabe qué escribir en una terminal y recibe un error poco claro. ¿Qué desventajas del estilo ilustra?",
+    "opciones": [
+      {
+        "texto": "No hay indicación visual de la orden necesaria y la gestión de errores es pobre.",
+        "explicacion": "Son desventajas de la página 358.",
+        "correcta": true
+      },
+      {
+        "texto": "Que ocupa demasiado espacio en la interfaz.",
+        "explicacion": "Esa desventaja corresponde a los menús.",
+        "correcta": false
+      },
+      {
+        "texto": "Que se necesitan muchos recursos gráficos.",
+        "explicacion": "Es un problema de la manipulación directa.",
+        "correcta": false
+      },
+      {
+        "texto": "Que produce cansancio por el casco.",
+        "explicacion": "Es un problema de la realidad virtual.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 276,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Menús y voz",
+    "pagina": 359,
+    "enunciado": "¿Cuántas opciones considera ideales el tema para un menú?",
+    "opciones": [
+      {
+        "texto": "Entre 3 y 8.",
+        "explicacion": "Es el número ideal de la página 359.",
+        "correcta": true
+      },
+      {
+        "texto": "Entre 10 y 20.",
+        "explicacion": "Superaría el rango recomendado.",
+        "correcta": false
+      },
+      {
+        "texto": "Una sola opción.",
+        "explicacion": "Un menú es un conjunto de opciones.",
+        "correcta": false
+      },
+      {
+        "texto": "Tantas como funciones tenga la aplicación.",
+        "explicacion": "El tema propone estructurarlos jerárquicamente con pocas opciones.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 277,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Menús y voz",
+    "pagina": 360,
+    "enunciado": "Usuarios expertos se quejan de que recorrer los menús es lento. ¿Qué solución da el tema?",
+    "opciones": [
+      {
+        "texto": "Ofrecer atajos de teclado.",
+        "explicacion": "La página 360 propone esa solución.",
+        "correcta": true
+      },
+      {
+        "texto": "Eliminar los menús desplegables.",
+        "explicacion": "Los desplegables solucionan el problema del espacio.",
+        "correcta": false
+      },
+      {
+        "texto": "Pasar toda la interfaz a realidad virtual.",
+        "explicacion": "No es la solución propuesta.",
+        "correcta": false
+      },
+      {
+        "texto": "Aumentar el número de opciones por menú.",
+        "explicacion": "No resuelve la lentitud.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 278,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Menús y voz",
+    "pagina": 360,
+    "enunciado": "¿Qué ventajas de los menús recoge el tema?",
+    "opciones": [
+      {
+        "texto": "Entrenamiento reducido, menos tecleo, uso de herramientas de gestión de diálogos y toma de decisión estructurada.",
+        "explicacion": "Son las ventajas de la página 360.",
+        "correcta": true
+      },
+      {
+        "texto": "Acceso directo a la funcionalidad y capacidad de macros.",
+        "explicacion": "Son ventajas de la línea de órdenes.",
+        "correcta": false
+      },
+      {
+        "texto": "Simulaciones imposibles en otro estilo.",
+        "explicacion": "Es el beneficio de la realidad virtual.",
+        "correcta": false
+      },
+      {
+        "texto": "Ocupan poco espacio en la interfaz.",
+        "explicacion": "El tema dice que ocupan mucho.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 279,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Menús y voz",
+    "pagina": 361,
+    "enunciado": "Un sistema de dictado necesita entrenarse con la voz de cada usuario y no exige pausas entre palabras. ¿Cómo se clasifica?",
+    "opciones": [
+      {
+        "texto": "Reconocimiento de voz continua dependiente del que habla.",
+        "explicacion": "La página 361 define ambas categorías.",
+        "correcta": true
+      },
+      {
+        "texto": "Reconocimiento de palabras aisladas independiente del que habla.",
+        "explicacion": "Exigiría pausas y no necesitaría entrenamiento.",
+        "correcta": false
+      },
+      {
+        "texto": "Síntesis por reglas.",
+        "explicacion": "La síntesis genera voz, no la reconoce.",
+        "correcta": false
+      },
+      {
+        "texto": "Verificación de la persona que habla.",
+        "explicacion": "Su objetivo es comprobar la identidad, no transcribir.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 280,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Menús y voz",
+    "pagina": 362,
+    "enunciado": "Un sistema de megafonía une palabras grabadas para formar avisos y suena con una entonación poco natural. ¿Qué técnica usa y qué problema presenta?",
+    "opciones": [
+      {
+        "texto": "Síntesis por concatenación; su problema es la entonación.",
+        "explicacion": "La página 362 lo señala.",
+        "correcta": true
+      },
+      {
+        "texto": "Síntesis por reglas; su problema es el vocabulario limitado.",
+        "explicacion": "La síntesis por reglas permite un vocabulario indefinido.",
+        "correcta": false
+      },
+      {
+        "texto": "Reconocimiento continuo; su problema son las pausas.",
+        "explicacion": "No reconoce voz, la genera.",
+        "correcta": false
+      },
+      {
+        "texto": "Identificación por voz; su problema es la privacidad.",
+        "explicacion": "No identifica a ninguna persona.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 281,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Menús y voz",
+    "pagina": 362,
+    "enunciado": "¿Por qué la síntesis por reglas puede articular un vocabulario indefinido?",
+    "opciones": [
+      {
+        "texto": "Porque utiliza fonemas, el bloque básico de una palabra, controlados por reglas.",
+        "explicacion": "La página 362 lo explica.",
+        "correcta": true
+      },
+      {
+        "texto": "Porque graba todas las palabras posibles.",
+        "explicacion": "Esa es la concatenación, y no permite un vocabulario indefinido.",
+        "correcta": false
+      },
+      {
+        "texto": "Porque usa directamente voz humana.",
+        "explicacion": "No utiliza voz humana directamente.",
+        "correcta": false
+      },
+      {
+        "texto": "Porque se entrena con la voz de cada usuario.",
+        "explicacion": "El entrenamiento corresponde al reconocimiento dependiente del hablante.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 282,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Menús y voz",
+    "pagina": 363,
+    "enunciado": "¿En qué situación es especialmente útil la síntesis de voz?",
+    "opciones": [
+      {
+        "texto": "Con los ojos libres o cuando la visualización no es práctica, como oír el correo electrónico por teléfono.",
+        "explicacion": "Son aplicaciones de la página 363.",
+        "correcta": true
+      },
+      {
+        "texto": "Para dibujar diagramas de precisión.",
+        "explicacion": "No es una aplicación citada.",
+        "correcta": false
+      },
+      {
+        "texto": "Para editar una hoja de cálculo extensa con el ratón.",
+        "explicacion": "No requiere síntesis de voz.",
+        "correcta": false
+      },
+      {
+        "texto": "Para sustituir siempre a la pantalla.",
+        "explicacion": "Se usa en situaciones concretas.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 283,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Menús y voz",
+    "pagina": 364,
+    "enunciado": "Un banco permite acceder a la cuenta diciendo «mi voz es mi contraseña». ¿Qué uso de la voz es?",
+    "opciones": [
+      {
+        "texto": "Verificación de la persona que habla.",
+        "explicacion": "La página 364 usa ese ejemplo.",
+        "correcta": true
+      },
+      {
+        "texto": "Síntesis de voz por concatenación.",
+        "explicacion": "No genera voz.",
+        "correcta": false
+      },
+      {
+        "texto": "Dictado de informes.",
+        "explicacion": "No transcribe texto.",
+        "correcta": false
+      },
+      {
+        "texto": "Sonido musical.",
+        "explicacion": "No usa la música como elemento de interacción.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 284,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Menús y voz",
+    "pagina": 365,
+    "enunciado": "¿Qué cambio señala el tema en la comprensión del lenguaje natural entre sistemas antiguos y actuales?",
+    "opciones": [
+      {
+        "texto": "De vocabulario limitado y dominio restringido a vocabulario extenso y modelos de propósito general (LLM, IA generativa).",
+        "explicacion": "Es la comparación de la página 365.",
+        "correcta": true
+      },
+      {
+        "texto": "De vocabulario extenso a vocabulario limitado.",
+        "explicacion": "La evolución es la contraria.",
+        "correcta": false
+      },
+      {
+        "texto": "De modelos generales a dominios restringidos.",
+        "explicacion": "También está invertido.",
+        "correcta": false
+      },
+      {
+        "texto": "Ninguno: los sistemas actuales son iguales a los antiguos.",
+        "explicacion": "El tema destaca la evolución.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 285,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Menús y voz",
+    "pagina": 367,
+    "enunciado": "Una alarma de fábrica debe avisar a operarios con la vista ocupada. ¿Qué indica el tema sobre el uso del sonido?",
+    "opciones": [
+      {
+        "texto": "Es importante cuando los ojos están ocupados y debe guardar relación con lo que representa.",
+        "explicacion": "La página 367 lo indica.",
+        "correcta": true
+      },
+      {
+        "texto": "El sonido debe ser aleatorio para llamar la atención.",
+        "explicacion": "Debe guardar relación con lo que representa.",
+        "correcta": false
+      },
+      {
+        "texto": "El sonido nunca debe usarse en interfaces.",
+        "explicacion": "El tema lo considera útil.",
+        "correcta": false
+      },
+      {
+        "texto": "Solo puede usarse música, nunca sonidos naturales.",
+        "explicacion": "El tema cita sonidos naturales y musicales.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 286,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 1,
+    "bloqueNombre": "Menús y voz",
+    "pagina": 369,
+    "enunciado": "¿Qué problemas presenta el lenguaje natural según el tema?",
+    "opciones": [
+      {
+        "texto": "Diferencias de lenguaje, argot y voces, posibles diálogos de aclaración e interfaces todavía no inteligentes.",
+        "explicacion": "Son los problemas de la página 369.",
+        "correcta": true
+      },
+      {
+        "texto": "Exige memorizar órdenes y sintaxis.",
+        "explicacion": "Uno de sus beneficios es el conocimiento del propio lenguaje.",
+        "correcta": false
+      },
+      {
+        "texto": "Obliga a usar las manos.",
+        "explicacion": "Permite manos libres.",
+        "correcta": false
+      },
+      {
+        "texto": "Necesita pantallas de alta resolución.",
+        "explicacion": "Es un requisito de la manipulación directa.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 287,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Manipulación directa",
+    "pagina": 370,
+    "enunciado": "¿Qué características de la manipulación directa recoge el tema (Shneiderman)?",
+    "opciones": [
+      {
+        "texto": "Representación continua de los objetos, manipulación en lugar de sintaxis compleja y acciones rápidas, incrementales y reversibles con efecto visible inmediato.",
+        "explicacion": "Son las características de la página 370.",
+        "correcta": true
+      },
+      {
+        "texto": "Órdenes escritas con abreviaturas y teclas de función.",
+        "explicacion": "Corresponde a la línea de órdenes.",
+        "correcta": false
+      },
+      {
+        "texto": "Un agente que actúa por propia iniciativa.",
+        "explicacion": "Corresponde a la interacción asistida.",
+        "correcta": false
+      },
+      {
+        "texto": "Información superpuesta al mundo real.",
+        "explicacion": "Corresponde a la realidad aumentada.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 288,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Manipulación directa",
+    "pagina": 370,
+    "enunciado": "¿Qué significan las siglas WIMP, el entorno más común de manipulación directa?",
+    "opciones": [
+      {
+        "texto": "Windows, Icons, Menus, Pointers.",
+        "explicacion": "La página 370 las desarrolla así.",
+        "correcta": true
+      },
+      {
+        "texto": "Wireless, Internet, Mobile, Phone.",
+        "explicacion": "No es el significado del tema.",
+        "correcta": false
+      },
+      {
+        "texto": "Words, Instructions, Macros, Programs.",
+        "explicacion": "Se parece más a la línea de órdenes.",
+        "correcta": false
+      },
+      {
+        "texto": "Wearables, IoT, Mobile, Personal.",
+        "explicacion": "Son términos de la computación ubicua.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 289,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Manipulación directa",
+    "pagina": 370,
+    "enunciado": "¿Qué hizo posible la manipulación directa y en qué sistemas tiene su origen?",
+    "opciones": [
+      {
+        "texto": "Las pantallas gráficas de alta resolución y los dispositivos apuntadores; Xerox Star y Apple Macintosh.",
+        "explicacion": "La página 370 lo indica.",
+        "correcta": true
+      },
+      {
+        "texto": "Los LLM y la IA generativa; Knowledge Navigator.",
+        "explicacion": "Se asocian al lenguaje natural.",
+        "correcta": false
+      },
+      {
+        "texto": "Las redes 5G; Xerox PARC en 1991.",
+        "explicacion": "Se asocian a la computación ubicua.",
+        "correcta": false
+      },
+      {
+        "texto": "Los cascos de visualización; la Cueva.",
+        "explicacion": "Corresponden a la realidad virtual.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 290,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Manipulación directa",
+    "pagina": 371,
+    "enunciado": "¿Qué beneficios atribuye el tema a la manipulación directa?",
+    "opciones": [
+      {
+        "texto": "Los nuevos usuarios aprenden rápido, los expertos trabajan rápido, se ve enseguida el resultado y las acciones son reversibles.",
+        "explicacion": "Son los beneficios de la página 371.",
+        "correcta": true
+      },
+      {
+        "texto": "Requiere menos recursos que cualquier otro estilo.",
+        "explicacion": "El tema dice que necesita más recursos.",
+        "correcta": false
+      },
+      {
+        "texto": "Permite describir cualquier tarea mediante objetos concretos.",
+        "explicacion": "No todas las tareas pueden describirse así.",
+        "correcta": false
+      },
+      {
+        "texto": "El usuario delega las tareas en un agente.",
+        "explicacion": "Eso es interacción asistida.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 291,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 2,
+    "bloqueNombre": "Manipulación directa",
+    "pagina": 371,
+    "enunciado": "Un programa quiere representar «aplicar un filtro a todos los registros de 2019 con importe superior a 500 €» solo arrastrando objetos. ¿Qué problema de la manipulación directa aparece?",
+    "opciones": [
+      {
+        "texto": "No todas las tareas pueden describirse con objetos concretos ni todas las acciones se pueden hacer directamente.",
+        "explicacion": "Son problemas de la página 371.",
+        "correcta": true
+      },
+      {
+        "texto": "Que las acciones no son reversibles.",
+        "explicacion": "La reversibilidad es un beneficio.",
+        "correcta": false
+      },
+      {
+        "texto": "Que el usuario no ve el resultado.",
+        "explicacion": "El resultado es visible de inmediato.",
+        "correcta": false
+      },
+      {
+        "texto": "Que necesita una red 5G.",
+        "explicacion": "No guarda relación con la manipulación directa.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 292,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Interacción asistida",
+    "pagina": 373,
+    "enunciado": "¿Qué motiva la aparición de la interacción asistida según el tema?",
+    "opciones": [
+      {
+        "texto": "La manipulación directa exige explicitar todas las tareas y controlar todos los eventos, y el número creciente de nuevos usuarios pide otra forma de interactuar.",
+        "explicacion": "Es el razonamiento de la página 373.",
+        "correcta": true
+      },
+      {
+        "texto": "Que la línea de órdenes ya no se usa.",
+        "explicacion": "No es la motivación citada.",
+        "correcta": false
+      },
+      {
+        "texto": "Que las pantallas gráficas son demasiado caras.",
+        "explicacion": "No es la motivación citada.",
+        "correcta": false
+      },
+      {
+        "texto": "Que el usuario quiere controlar todos los eventos.",
+        "explicacion": "Precisamente se busca reducir ese esfuerzo.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 293,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Interacción asistida",
+    "pagina": 373,
+    "enunciado": "En la interacción asistida, ¿qué papel tiene el usuario?",
+    "opciones": [
+      {
+        "texto": "No dirige la interacción: coopera con uno o varios agentes, lo que reduce su esfuerzo.",
+        "explicacion": "La página 373 lo describe así.",
+        "correcta": true
+      },
+      {
+        "texto": "Dirige cada evento como en la manipulación directa.",
+        "explicacion": "Ese es el rasgo que la interacción asistida cambia.",
+        "correcta": false
+      },
+      {
+        "texto": "Escribe todas las órdenes con la sintaxis exacta.",
+        "explicacion": "Eso es la línea de órdenes.",
+        "correcta": false
+      },
+      {
+        "texto": "No participa en absoluto.",
+        "explicacion": "Trabaja de forma cooperativa con el agente.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 294,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Interacción asistida",
+    "pagina": 374,
+    "enunciado": "Un programa revisa en segundo plano el correo y, sin que se lo pidan, avisa de una reunión que choca con otra. ¿Qué es según el tema?",
+    "opciones": [
+      {
+        "texto": "Un agente: discreto, trabaja en segundo plano y actúa por propia iniciativa cuando encuentra información relevante.",
+        "explicacion": "La página 374 define así al agente.",
+        "correcta": true
+      },
+      {
+        "texto": "Un asistente, porque lo activa el usuario.",
+        "explicacion": "Aquí no lo ha activado el usuario.",
+        "correcta": false
+      },
+      {
+        "texto": "Una interfaz por línea de órdenes.",
+        "explicacion": "No se escribe ninguna orden.",
+        "correcta": false
+      },
+      {
+        "texto": "Un paradigma de realidad aumentada.",
+        "explicacion": "No superpone información al mundo real.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 295,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Interacción asistida",
+    "pagina": 374,
+    "enunciado": "Según Maes (1994), ¿qué relación tiene el usuario con un agente?",
+    "opciones": [
+      {
+        "texto": "El usuario no ordena, delega tareas en el agente.",
+        "explicacion": "Es la idea citada en la página 374.",
+        "correcta": true
+      },
+      {
+        "texto": "El usuario programa cada paso del agente.",
+        "explicacion": "El agente actúa con autonomía.",
+        "correcta": false
+      },
+      {
+        "texto": "El agente solo ejecuta órdenes explícitas.",
+        "explicacion": "Puede actuar sin instrucciones explícitas.",
+        "correcta": false
+      },
+      {
+        "texto": "El usuario ve al agente como una herramienta.",
+        "explicacion": "Lo ve como un asistente que le ayuda.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 296,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Interacción asistida",
+    "pagina": 375,
+    "enunciado": "Un agente propone una carpeta para un correo; el usuario elige otra y el agente no vuelve a insistir y aprende de ello. ¿Qué característica muestra?",
+    "opciones": [
+      {
+        "texto": "Uso personal: se adapta y aprende del usuario y no insiste si este decide otra solución.",
+        "explicacion": "La página 375 la describe así.",
+        "correcta": true
+      },
+      {
+        "texto": "Autonomía, porque trabaja con la pantalla apagada.",
+        "explicacion": "La autonomía es trabajar en segundo plano observando.",
+        "correcta": false
+      },
+      {
+        "texto": "Programabilidad de la aplicación.",
+        "explicacion": "Es una propiedad de la aplicación, no del agente.",
+        "correcta": false
+      },
+      {
+        "texto": "Manipulación directa.",
+        "explicacion": "No se manipula ningún objeto.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 297,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Interacción asistida",
+    "pagina": 377,
+    "enunciado": "Una aplicación ofrece una API para que un agente externo pueda llamar a sus órdenes. ¿Qué propiedad cumple?",
+    "opciones": [
+      {
+        "texto": "Es programable.",
+        "explicacion": "La página 377 define así la aplicación programable.",
+        "correcta": true
+      },
+      {
+        "texto": "Es controlable.",
+        "explicacion": "Controlable significa informar al agente de qué función pide el usuario.",
+        "correcta": false
+      },
+      {
+        "texto": "Es examinable.",
+        "explicacion": "Examinable significa que se pueden revisar sus estructuras de datos.",
+        "correcta": false
+      },
+      {
+        "texto": "Es ubicua.",
+        "explicacion": "La ubicuidad es un paradigma, no una propiedad de integración.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 298,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Interacción asistida",
+    "pagina": 377,
+    "enunciado": "Una aplicación avisa a un agente externo cada vez que el usuario usa una función por menú, icono o teclado. ¿Qué propiedad cumple?",
+    "opciones": [
+      {
+        "texto": "Es controlable.",
+        "explicacion": "La página 377 define así la aplicación controlable.",
+        "correcta": true
+      },
+      {
+        "texto": "Es programable.",
+        "explicacion": "Programable significa que el agente puede llamar a las órdenes.",
+        "correcta": false
+      },
+      {
+        "texto": "Es examinable.",
+        "explicacion": "Examinable implica revisar sus estructuras de datos.",
+        "correcta": false
+      },
+      {
+        "texto": "Es multimodal.",
+        "explicacion": "No describe varios canales de comunicación.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 299,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 3,
+    "bloqueNombre": "Interacción asistida",
+    "pagina": 379,
+    "enunciado": "¿Qué diferencia principal hay entre un asistente y un agente según el tema?",
+    "opciones": [
+      {
+        "texto": "El asistente lo activa el usuario; el agente es más discreto y actúa por propia iniciativa.",
+        "explicacion": "Las páginas 374 y 379 lo distinguen así.",
+        "correcta": true
+      },
+      {
+        "texto": "El agente lo activa el usuario; el asistente actúa solo.",
+        "explicacion": "La relación está invertida.",
+        "correcta": false
+      },
+      {
+        "texto": "Ninguno de los dos puede aprender del usuario.",
+        "explicacion": "Ambos pueden aprender.",
+        "correcta": false
+      },
+      {
+        "texto": "El asistente solo entiende órdenes escritas con sintaxis exacta.",
+        "explicacion": "Entiende palabras escritas o habladas y acciones gráficas.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 300,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Paradigmas de interacción",
+    "pagina": 382,
+    "enunciado": "¿Qué son los paradigmas de interacción y cuáles son los actuales según el tema?",
+    "opciones": [
+      {
+        "texto": "Los modelos de los que se derivan todos los sistemas de interacción: sobremesa, realidad virtual, computación ubicua y realidad aumentada.",
+        "explicacion": "Es la definición de la página 382.",
+        "correcta": true
+      },
+      {
+        "texto": "Las formas de dar órdenes: menús, voz y línea de órdenes.",
+        "explicacion": "Son estilos de interacción.",
+        "correcta": false
+      },
+      {
+        "texto": "Los dispositivos de entrada: ratón, teclado y micrófono.",
+        "explicacion": "No son paradigmas.",
+        "correcta": false
+      },
+      {
+        "texto": "Las propiedades programable, controlable y examinable.",
+        "explicacion": "Son propiedades para integrar agentes.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 301,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Paradigmas de interacción",
+    "pagina": 384,
+    "enunciado": "¿Qué condiciones deben darse para hablar de realidad virtual?",
+    "opciones": [
+      {
+        "texto": "Sensación de presencia física mediante indicaciones sensoriales, que estas sean en tres dimensiones e interacción natural con los objetos virtuales.",
+        "explicacion": "Son las condiciones de la página 384.",
+        "correcta": true
+      },
+      {
+        "texto": "Superponer información digital sobre el mundo real.",
+        "explicacion": "Eso es realidad aumentada.",
+        "correcta": false
+      },
+      {
+        "texto": "Integrar pequeños dispositivos en objetos cotidianos.",
+        "explicacion": "Eso es computación ubicua.",
+        "correcta": false
+      },
+      {
+        "texto": "Usar solo teclado y pantalla.",
+        "explicacion": "No cumple las condiciones de presencia e interacción natural.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 302,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Paradigmas de interacción",
+    "pagina": 386,
+    "enunciado": "Un simulador de vuelo en realidad virtual entrena situaciones de emergencia. ¿Qué beneficio y qué problemas señala el tema?",
+    "opciones": [
+      {
+        "texto": "Permite simulaciones imposibles en otro estilo, pero tiene alto coste y cansa al usuario.",
+        "explicacion": "La página 386 lo indica.",
+        "correcta": true
+      },
+      {
+        "texto": "Es barato y no produce cansancio.",
+        "explicacion": "El tema señala lo contrario.",
+        "correcta": false
+      },
+      {
+        "texto": "Reduce la privacidad y oculta la información.",
+        "explicacion": "Son desventajas de la computación ubicua.",
+        "correcta": false
+      },
+      {
+        "texto": "Exige memorizar órdenes.",
+        "explicacion": "Es una desventaja de la línea de órdenes.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 303,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Paradigmas de interacción",
+    "pagina": 388,
+    "enunciado": "¿Qué busca la computación ubicua según el tema?",
+    "opciones": [
+      {
+        "texto": "Extender la capacidad computacional al entorno, integrándola en objetos cotidianos y relegando el ordenador a un segundo plano (ordenador invisible).",
+        "explicacion": "La página 388 la define así.",
+        "correcta": true
+      },
+      {
+        "texto": "Trasladar al usuario a un mundo 3D generado por ordenador.",
+        "explicacion": "Eso es realidad virtual.",
+        "correcta": false
+      },
+      {
+        "texto": "Concentrar todo el procesamiento en el ordenador de sobremesa.",
+        "explicacion": "Es lo contrario.",
+        "correcta": false
+      },
+      {
+        "texto": "Sustituir los menús por órdenes de texto.",
+        "explicacion": "No es un paradigma de ese tipo.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 304,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Paradigmas de interacción",
+    "pagina": 389,
+    "enunciado": "¿Quién y cuándo originó la computación ubicua, y qué rasgos la caracterizan?",
+    "opciones": [
+      {
+        "texto": "Mark Weiser, Xerox PARC, 1991; tamaño reducido, precio reducido y movilidad de quienes interactúan en la red.",
+        "explicacion": "La página 389 lo recoge.",
+        "correcta": true
+      },
+      {
+        "texto": "Shneiderman, 1991; representación continua de objetos.",
+        "explicacion": "Corresponde a la manipulación directa.",
+        "correcta": false
+      },
+      {
+        "texto": "Maes, 1994; delegación de tareas.",
+        "explicacion": "Corresponde a los agentes.",
+        "correcta": false
+      },
+      {
+        "texto": "Rekimoto, 1995; superposición de información.",
+        "explicacion": "Rekimoto compara paradigmas (p. 405).",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 305,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Paradigmas de interacción",
+    "pagina": 393,
+    "enunciado": "Una ciudad llena de sensores adapta los servicios a la ubicación de cada persona. ¿Qué desventajas de la computación ubicua advierte el tema?",
+    "opciones": [
+      {
+        "texto": "Pérdida de privacidad y del entorno real, información escondida y dispositivos que se fusionan con la realidad.",
+        "explicacion": "Son las desventajas de la página 393.",
+        "correcta": true
+      },
+      {
+        "texto": "Alto coste inicial y cansancio por el casco.",
+        "explicacion": "Son problemas de la realidad virtual.",
+        "correcta": false
+      },
+      {
+        "texto": "Que no se adapta al usuario.",
+        "explicacion": "Una ventaja es que se adapta a cada usuario y tarea.",
+        "correcta": false
+      },
+      {
+        "texto": "Que exige memorizar órdenes.",
+        "explicacion": "Es propio de la línea de órdenes.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 306,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Paradigmas de interacción",
+    "pagina": 395,
+    "enunciado": "¿En qué se diferencia la realidad aumentada de la realidad virtual según el tema?",
+    "opciones": [
+      {
+        "texto": "La RA traslada la información al mundo real; la RV introduce el mundo real en el ordenador.",
+        "explicacion": "La página 395 los contrapone así.",
+        "correcta": true
+      },
+      {
+        "texto": "La RA aísla al usuario del mundo real.",
+        "explicacion": "Lo hace, en todo caso, la RV.",
+        "correcta": false
+      },
+      {
+        "texto": "La RV usa el mundo como interfaz.",
+        "explicacion": "Esa idea pertenece a la RA (p. 394).",
+        "correcta": false
+      },
+      {
+        "texto": "Ambas son idénticas.",
+        "explicacion": "El tema las presenta como paradigmas distintos.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 307,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Paradigmas de interacción",
+    "pagina": 394,
+    "enunciado": "Un técnico apunta la tablet a una máquina y ve sobre ella las instrucciones de reparación. ¿Qué paradigma es y qué consigue?",
+    "opciones": [
+      {
+        "texto": "Realidad aumentada: aumenta el mundo real con información sintética y reduce el coste interactivo.",
+        "explicacion": "Las páginas 394 y 400 lo describen.",
+        "correcta": true
+      },
+      {
+        "texto": "Realidad virtual: sustituye la máquina por un modelo 3D.",
+        "explicacion": "La máquina real sigue presente.",
+        "correcta": false
+      },
+      {
+        "texto": "Línea de órdenes: escribe la avería.",
+        "explicacion": "No se escribe ninguna orden.",
+        "correcta": false
+      },
+      {
+        "texto": "Ordenador de sobremesa: consulta un manual.",
+        "explicacion": "La información se integra en el mundo real.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 308,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Paradigmas de interacción",
+    "pagina": 402,
+    "enunciado": "Una mesa reconoce las tarjetas que se colocan encima y muestra su información digital. ¿Qué línea de trabajo de la realidad aumentada ilustra?",
+    "opciones": [
+      {
+        "texto": "Acoplamiento de bits y átomos: unir objetos cotidianos que se pueden coger con la información digital relacionada.",
+        "explicacion": "La página 402 la define así.",
+        "correcta": true
+      },
+      {
+        "texto": "Medio ambiente: usar luz y sonido como interfaces de fondo.",
+        "explicacion": "No se usa el ambiente como interfaz.",
+        "correcta": false
+      },
+      {
+        "texto": "Ordenadores corporales.",
+        "explicacion": "No se lleva el ordenador encima.",
+        "correcta": false
+      },
+      {
+        "texto": "Síntesis de voz por reglas.",
+        "explicacion": "No es una línea de la RA.",
+        "correcta": false
+      }
+    ]
+  },
+  {
+    "globalId": 309,
+    "tema": "7",
+    "temaTitulo": "Tema 7 · Estilos y paradigmas",
+    "bloqueIndex": 4,
+    "bloqueNombre": "Paradigmas de interacción",
+    "pagina": 406,
+    "enunciado": "¿Qué concluye el tema sobre la elección del estilo de interacción?",
+    "opciones": [
+      {
+        "texto": "El problema a resolver y los conocimientos del usuario deciden el estilo más idóneo, y en el futuro coexistirán casi todos los estilos.",
+        "explicacion": "Son las conclusiones de la página 406.",
+        "correcta": true
+      },
+      {
+        "texto": "La manipulación directa es siempre la mejor opción.",
+        "explicacion": "El tema no fija un estilo universal.",
+        "correcta": false
+      },
+      {
+        "texto": "La línea de órdenes desaparecerá por completo.",
+        "explicacion": "El tema prevé que coexistirán.",
+        "correcta": false
+      },
+      {
+        "texto": "El estilo depende solo del hardware disponible.",
+        "explicacion": "Depende del problema y del usuario.",
         "correcta": false
       }
     ]

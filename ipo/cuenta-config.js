@@ -1,11 +1,15 @@
 'use strict';
-// Solo el ID público del cliente OAuth web. No se necesita un client secret.
-const _global = typeof window !== 'undefined' ? window : globalThis;
-_global.IPO_CUENTA_CONFIG = {
-  // Client ID público de la aplicación web de IPO Study Lab. No es un secreto.
-  // El origen de la web debe estar autorizado en Google Cloud Console.
-  googleClientId: '409203504068-9e5vv109h5tfmlpr5me64u50jkkq6ci0.apps.googleusercontent.com',
-  // Solo identidades institucionales verificadas. La lista es deliberadamente
-  // explícita: nunca aceptar dominios comodín ni cuentas personales.
-  allowedDomains: ['red.ujaen.es', 'ujaen.es']
+// La configuración de Firebase para web contiene identificadores públicos.
+// El acceso a los datos se protege con Firebase Authentication y Firestore Rules.
+window.IPO_CUENTA_CONFIG = {
+  firebase: {
+    apiKey: 'AIzaSyDIEQKbokXoMHgVX3bbTWrYZnFLmwZUGn8',
+    authDomain: 'web-ipo-f7e7a.firebaseapp.com',
+    projectId: 'web-ipo-f7e7a',
+    storageBucket: 'web-ipo-f7e7a.firebasestorage.app',
+    messagingSenderId: '1094785037353',
+    appId: '1:1094785037353:web:249d969b8eca423406d838'
+  },
+  // El propietario puede usar la cuenta Google personal o institucional que elija.
+  allowedDomains: ['*']
 };

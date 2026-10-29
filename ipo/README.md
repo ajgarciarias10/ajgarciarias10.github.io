@@ -1,6 +1,6 @@
 # Repasos y tests de IPO
 
-Los tests de los temas, CleverTracker y el generador comparten el progreso (`ipo_tests_v1`). El banco contiene 200 preguntas de IPO y CleverTracker; cada test contiene como máximo 40 preguntas disponibles. Los temas de IPO se habilitan a partir de la primera clase registrada para cada tema. Las acertadas se excluyen de nuevos tests; las falladas pueden volver a aparecer hasta que se acierten. Si no hay 40 disponibles, se indica el tamaño real del test.
+Los tests de los temas, CleverTracker y el generador comparten el progreso (`ipo_tests_v1`). El banco contiene 324 preguntas de IPO y CleverTracker; cada test contiene como máximo 40 preguntas disponibles. Los temas de IPO se habilitan a partir de la primera clase registrada para cada tema. Las acertadas se excluyen de nuevos tests; las falladas pueden volver a aparecer hasta que se acierten. Si no hay 40 disponibles, se indica el tamaño real del test.
 
 La sesión conserva las preguntas, el orden de las opciones, las respuestas y la posición. Cambiar de apartado o modo conserva una sesión independiente para cada filtro. El botón «Nuevo test» se habilita al terminar; los errores y los aciertos acumulados se conservan.
 
@@ -8,7 +8,7 @@ Inicio, Ponte al día, Practicar y Calendario muestran los repasos semanales por
 
 Al completar un test se acreditan los apartados con al menos dos respuestas, todas correctas, y se actualiza el progreso del calendario si todas las competencias del tema están acreditadas.
 
-Sin cuenta, el guardado es local al navegador y al dominio. Con Drive institucional conectado, se sincroniza con el Drive privado del estudiante. Si el almacenamiento falla se muestra un aviso junto al test. No se pueden recuperar sesiones anteriores que la versión previa no guardaba.
+Sin cuenta, el guardado es local al navegador y al dominio. Con Google conectado, se sincroniza con Firebase. Si el almacenamiento falla se muestra un aviso junto al test. No se pueden recuperar sesiones anteriores que la versión previa no guardaba.
 
 Validación: `node --test ipo/tests/progreso.cjs`.
 
@@ -20,28 +20,19 @@ El plan se guarda en `ipo_plan_estudio_v1`, separado del progreso. La exportaci�
 
 Validación del plan y del progreso: `node --test ipo/tests/*.cjs`.
 
-## Cuenta institucional y Drive personal
+## Cuenta Google y Firebase
 
-Implementación sin servidor ni base de datos central: Google Identity Services autoriza `openid`, `userinfo.email` y `drive.appdata`. Se verifica la identidad con el endpoint de Google UserInfo y se admiten solo los dominios exactos `red.ujaen.es` y `ujaen.es`. El identificador estable de Google separa los datos de cada usuario. La interfaz no convierte una dirección escrita en una identidad autenticada. El selector OAuth solicita elegir cuenta en cada conexión.
+La web usa Firebase Authentication para elegir una cuenta Google y Cloud Firestore para sincronizar el progreso. El adaptador mantiene `IPOStorage`, así que las pantallas de estudio no dependen directamente del proveedor. Sin iniciar sesión, el progreso permanece en el navegador. Al conectar una cuenta vacía se puede importar el progreso local desde Mi cuenta.
 
-Los datos viven en `appDataFolder` del Drive del estudiante, accesible solo con su autorización para esta aplicación. No se solicita acceso a documentos o Gmail. Los tokens se conservan únicamente en sessionStorage durante la sesión de la pestaña, nunca en los archivos del progreso. Al caducar se solicita reconectar; no hay refresh token ni secreto en la web. Cerrar sesión retira el token y la copia local de la cuenta después de sincronizar.
+Los datos se guardan en `users/{uid}/study/progress`. La transacción compara la revisión remota antes de escribir; si otro dispositivo guardó primero, los cambios locales quedan conservados y se muestra el conflicto. Las reglas en `firestore.rules` limitan lectura y escritura al UID autenticado. Las personas que administran el proyecto Firebase pueden acceder a su base de datos.
 
-`cuenta-arranque.js` espera a verificar la identidad y recuperar Drive antes de ejecutar los scripts de estudio. `IPOStorage` mantiene el progreso invitado existente separado del de la cuenta. La importación del progreso invitado es explícita desde Mi cuenta y solo se permite si la cuenta no tiene datos.
+### Activación en Firebase
 
-El guardado crea versiones JSON inmutables en Drive. Sus referencias a versiones anteriores detectan ediciones concurrentes, conservando ambas copias en lugar de sobrescribirlas. Si hay conflicto, se puede descargar la copia local y recuperar la última versión de Drive; la siguiente versión resuelve las ramas. Las versiones anteriores permanecen en el Drive del propietario y consumen su espacio. Los errores de red mantienen cambios locales pendientes y permiten reintentar. No se confirma un guardado hasta recibir la respuesta de Drive.
+1. En Authentication, habilitar el proveedor Google.
+2. En Authentication → Settings → Authorized domains, añadir `ajgarciarias10.github.io` (y `localhost` solo para pruebas locales).
+3. Crear la base de datos Cloud Firestore y publicar `firestore.rules` con Firebase CLI (`firebase deploy --only firestore:rules`). El proyecto de esta app es `web-ipo-f7e7a`.
+4. El archivo `cuenta-config.js` contiene la configuración pública de la aplicación web. No contiene client secrets.
 
-### Activación (una vez)
+Los datos que estaban en Google Drive no se migran automáticamente. Descarga la copia JSON anterior y usa Restaurar copia JSON desde Mi cuenta; también puedes importar el progreso invitado del navegador si la cuenta Firestore está vacía.
 
-1. Crear o reutilizar un proyecto de Google Cloud y habilitar Google Drive API.
-2. Configurar la pantalla de consentimiento para IPO Study Lab, los ámbitos indicados y los datos del proyecto gratuito.
-3. Crear un cliente OAuth de tipo Aplicación web. Añadir el origen real de GitHub Pages y, para pruebas, el origen local; los orígenes no incluyen `/ipo/`.
-4. El Client ID público ya está en `cuenta-config.js` (`googleClientId`). En el cliente OAuth de Google Cloud añade `https://ajgarciarias10.github.io` como origen autorizado (sin `/ipo/`). Añade `http://localhost:8080` solo para desarrollo local. Nunca introduzcas ningún client secret; el mismo Client ID debe mantenerse para conservar el acceso a appDataFolder.
-5. Probar con un correo institucional. Si el proyecto está en modo Pruebas, añadir esa cuenta como usuario de prueba. Para abrirlo a todo el alumnado, completar la configuración de publicación del consentimiento que Google requiera. Si la UJA bloquea autorizaciones externas, deberá autorizar la aplicación.
-
-No requiere Supabase, Firebase, cuentas de base de datos ni almacenar datos del alumnado en infraestructura del responsable de la web. Si Google Cloud aún no tiene autorizado el origen, el acceso OAuth no podrá completarse hasta añadirlo. Mientras tanto sigue disponible el estudio local.
-
-Mi cuenta muestra la evolución de los tests completados desde el primer registro disponible, una pauta de repasos espaciados y un prompt de NotebookLM para los temas cuya docencia ya ha comenzado. Los temas 5–10 se apoyan en los resúmenes disponibles en la guía; al preparar el examen, completa sus fuentes en NotebookLM con los apuntes oficiales.
-
-Validación: `node --test ipo/tests/*.cjs`. Las pruebas simulan cuentas y Drive; la prueba OAuth real requiere el Client ID y dos dispositivos o navegadores.
-
-Referencias: [Datos privados de aplicaciones en Drive](https://developers.google.com/workspace/drive/api/guides/appdata), [modelo de tokens de Google](https://developers.google.com/identity/oauth2/web/guides/use-token-model), [cuentas institucionales de la UJA](https://www.ujaen.es/servicios/sinformatica/catalogo-de-servicios-tic/correo-electronico).
+El SDK se carga desde Firebase CDN porque este sitio estático no usa un empaquetador.

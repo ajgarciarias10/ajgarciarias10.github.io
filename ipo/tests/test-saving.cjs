@@ -60,24 +60,14 @@ test('completed tests and manual saves are recorded in persistent history', () =
   assert.ok(restoredData.history.length > 0);
 });
 
-test('IPO_CUENTA_CONFIG allows dynamic client ID and permitted personal/institutional domains', () => {
-  const store = new Map();
-  const context = vm.createContext({
-    localStorage: {
-      getItem: k => store.get(k) || null,
-      setItem: (k, v) => store.set(k, v),
-      removeItem: k => store.delete(k)
-    },
-    window: {}
-  });
-  context.window.localStorage = context.localStorage;
+test('IPO_CUENTA_CONFIG provides the Firebase web app and allows any Google account', () => {
+  const context = vm.createContext({ window: {} });
 
   vm.runInContext(fs.readFileSync(path.join(root, 'cuenta-config.js'), 'utf8'), context);
   const cfg = context.window.IPO_CUENTA_CONFIG;
 
-  assert.match(cfg.googleClientId, /^[0-9]+-[a-z0-9]+\.apps\.googleusercontent\.com$/);
-
-  assert.ok(cfg.allowedDomains.includes('red.ujaen.es'));
-  assert.ok(cfg.allowedDomains.includes('ujaen.es'));
-  assert.deepEqual(Array.from(cfg.allowedDomains), ['red.ujaen.es', 'ujaen.es']);
+  assert.equal(cfg.firebase.projectId, 'web-ipo-f7e7a');
+  assert.equal(cfg.firebase.authDomain, 'web-ipo-f7e7a.firebaseapp.com');
+  assert.ok(cfg.firebase.apiKey && cfg.firebase.appId);
+  assert.deepEqual(Array.from(cfg.allowedDomains), ['*']);
 });

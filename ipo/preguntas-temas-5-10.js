@@ -1,89 +1,9 @@
-/* Preguntas de aplicación para temas 5–10. Se habilitan en Practicar cuando
+/* Preguntas de aplicación para temas 8–10 (los temas 5, 6 y 7 tienen banco propio en
+   preguntas-tema-5.js, preguntas-tema-6.js y preguntas-tema-7.js, copiados en preguntas-globales.js). Se habilitan en Practicar cuando
    comienza la primera clase de cada tema, según curso.js. */
 'use strict';
 const TITULOS = {5:'Internacionalización y localización',6:'Diseño gráfico',7:'Estilos y paradigmas',8:'Accesibilidad',9:'Evaluación',10:'Estándares y guías de estilo'};
 const NUEVAS = {
-5:[
-[0,'Internacionalización y localización','Una app separa los textos de la lógica, admite fechas y monedas configurables y reserva espacio para textos más largos. Luego se traduce al japonés y se adaptan sus convenciones. ¿Qué relación describe mejor el trabajo?',[
-['La preparación del software es internacionalización; la adaptación al japonés es localización.','i18n permite adaptar sin reescribir la lógica; l10n adapta el producto a una cultura concreta.'],
-['Ambas tareas son localización porque incluyen idioma.','Preparar la arquitectura para más de una cultura corresponde a internacionalización.'],
-['Ambas tareas son internacionalización porque el producto se distribuye en varios países.','La adaptación final de idioma y convenciones es localización.'],
-['La traducción es internacionalización y el espacio flexible es localización.','La relación está invertida: traducción es parte de l10n.']]],
-[0,'Internacionalización y localización','Une cada decisión con su propósito: separar cadenas y evitar fechas fijas en código; cambiar el separador decimal al formato local. ¿Cuál es la correspondencia correcta?',[
-['Preparar el software para varios entornos es i18n; adaptar el formato para un entorno es l10n.','La primera decisión prepara el sistema; la segunda aplica una convención local.'],
-['Ambas son l10n porque afectan a lo que ve el usuario.','Evitar formatos fijos en código es una decisión de internacionalización.'],
-['La primera es traducción; la segunda, accesibilidad.','Ninguna decisión se refiere necesariamente a traducir texto o a accesibilidad.'],
-['La primera es l10n y la segunda i18n.','Se han intercambiado la preparación general y la adaptación concreta.']]],
-[1,'Internacionalización y localización','Una interfaz en árabe traduce correctamente todos los textos, pero conserva la navegación izquierda-derecha y corta las etiquetas que ahora ocupan más espacio. ¿Qué conclusión está mejor fundada?',[
-['La traducción no basta: la localización debe considerar dirección de lectura y expansión del texto.','Los formatos, la direccionalidad y el espacio también varían según el entorno.'],
-['La internacionalización se completó porque el texto ya está traducido.','La traducción por sí sola no prepara ni adapta toda la interfaz.'],
-['Solo hay que aumentar el tamaño de fuente; la dirección visual no cambia.','Para RTL debe adaptarse la dirección y disposición cuando el contenido lo requiera.'],
-['Es un problema de contraste, no de localización.','El caso describe dirección y ajuste del contenido, no contraste.']]],
-[1,'Internacionalización y localización','Un equipo reemplaza una imagen de una mano por otra porque el gesto tiene sentidos distintos en dos culturas. ¿En qué fase encaja mejor esa decisión?',[
-['Localización: adapta un elemento cultural del producto a un público concreto.','Iconografía y convenciones culturales son parte de la adaptación local.'],
-['Internacionalización: elimina toda imagen del sistema.','No es necesario eliminar imágenes; i18n prepara el producto para poder adaptarlas.'],
-['Traducción literal: cambia el texto sin tocar la imagen.','La decisión trata de significado cultural de la iconografía.'],
-['Accesibilidad: hace que el gesto se pueda usar con teclado.','El caso no describe un problema de operación o percepción accesible.']]],
-[2,'Internacionalización y localización','Una fecha se guarda como un instante normalizado y se muestra según la región del usuario. ¿Qué ventaja de diseño expresa mejor?',[
-['Separa la representación interna de la convención local de presentación.','Así se evitan supuestos de formato incrustados en la lógica.'],
-['Obliga a guardar una fecha distinta para cada idioma.','Una misma fecha puede formatearse de varias maneras sin duplicar el dato.'],
-['Convierte la localización en una traducción automática.','El formato de fecha es una convención local, no una traducción.'],
-['Garantiza que todos los países usan el mismo orden de día y mes.','Precisamente se contemplan convenciones diferentes.']]]
-],
-6:[
-[0,'Principios de Gestalt','En una pantalla hay cuatro avisos. Los usuarios agrupan los dos más cercanos aunque tengan colores distintos. ¿Qué principio explica mejor esa agrupación?',[
-['Proximidad: la distancia reducida hace que los elementos se perciban como relacionados.','La cercanía espacial favorece la agrupación.'],
-['Semejanza: elementos cercanos siempre comparten aspecto.','El enunciado indica que el color difiere; domina la proximidad.'],
-['Cierre: el usuario completa una forma incompleta.','No hay una forma incompleta que completar.'],
-['Continuidad: el ojo sigue una línea común.','No se describe una trayectoria alineada.']]],
-[0,'Principios de Gestalt','Relaciona el efecto con el principio: agrupación por aspecto común; agrupación por cercanía. ¿Qué pareja es correcta?',[
-['Aspecto común → semejanza; cercanía → proximidad.','Cada principio describe una señal distinta para percibir agrupaciones.'],
-['Aspecto común → proximidad; cercanía → cierre.','Ambas asociaciones asignan un principio que no explica el efecto descrito.'],
-['Aspecto común → continuidad; cercanía → semejanza.','Continuidad trata de seguir trayectorias; semejanza, de compartir rasgos.'],
-['Aspecto común → cierre; cercanía → continuidad.','Cierre y continuidad no describen esos dos efectos.']]],
-[1,'Principios de Gestalt','Un icono muestra solo varios segmentos del contorno de una taza, pero las personas perciben una taza completa. ¿Qué principio explica mejor esa percepción?',[
-['Cierre: la percepción completa una forma con partes ausentes.','La mente organiza los segmentos y percibe el objeto como una figura completa.'],
-['Continuidad: el ojo sigue una trayectoria a través del icono.','El caso trata de completar una forma, no de seguir una línea.'],
-['Proximidad: los puntos cercanos forman un grupo.','El juicio trata de la trayectoria, no de agrupar puntos por distancia.'],
-['Semejanza: dos líneas de color parecido se agrupan.','El caso no depende de compartir color o forma.']]],
-[1,'Principios de Gestalt','Un estado se indica solo con rojo o verde. ¿Qué cambio mejora más la comunicación sin abandonar el color?',[
-['Añadir texto o un icono distinguible para transmitir el mismo estado por otro canal.','El color nunca debería ser la única señal; redundar la información ayuda a más personas.'],
-['Usar un rojo más saturado para que nadie lo confunda.','Sigue dependiendo exclusivamente del color.'],
-['Añadir más tonos intermedios para representar más estados.','Aumenta la carga de distinguir colores y no resuelve la dependencia.'],
-['Quitar toda etiqueta para que el usuario interprete el contexto.','Reduce la información explícita y mantiene la ambigüedad.']]],
-[2,'Principios de Gestalt','Un icono y su etiqueta se colocan lejos de la acción que controlan; otro bloque agrupa opciones por color aunque su función no esté relacionada. ¿Qué revisión sigue mejor los principios de agrupación?',[
-['Acercar cada etiqueta a su control y usar semejanza solo entre elementos que comparten función.','La proximidad y la semejanza deben apoyar relaciones reales.'],
-['Aplicar el mismo color a todos los controles, aunque tengan funciones distintas.','La uniformidad puede crear agrupaciones engañosas.'],
-['Separar todas las opciones a distancias iguales para evitar agrupaciones.','La distancia también comunica; eliminar la agrupación dificulta entender relaciones.'],
-['Cambiar proximidad por animación en todos los controles.','La animación no responde al problema de relación espacial descrito.']]]
-],
-7:[
-[0,'Estilos y paradigmas','Un cajero ofrece elegir una operación de una lista y solicita los datos en campos. Otro sistema permite arrastrar directamente un archivo a una papelera visible. ¿Qué comparación es correcta?',[
-['Lista y campos son estilos de interacción; arrastrar a una papelera es manipulación directa.','Los estilos describen el diálogo; el segundo caso actúa directamente sobre objetos representados.'],
-['Los tres son paradigmas porque describen dispositivos físicos.','Menús y formularios son estilos; no son paradigmas por sí solos.'],
-['Arrastrar es un paradigma móvil y los campos, ubicuos.','No se describe el modelo de interacción o contexto que definen esos paradigmas.'],
-['El menú es manipulación directa porque permite elegir una opción.','Elegir una orden en un menú no manipula directamente el objeto del dominio.']]],
-[0,'Estilos y paradigmas','Una persona experta memoriza una orden de texto; una principiante prefiere escoger la misma acción en un menú. ¿Qué conclusión de diseño es más equilibrada?',[
-['Los estilos pueden favorecer perfiles distintos; conviene valorar el contexto y la experiencia.','Comandos pueden ser eficientes para expertos; los menús facilitan reconocer opciones.'],
-['Los comandos son siempre mejores porque requieren menos espacio.','La eficiencia depende del aprendizaje, la frecuencia y el contexto.'],
-['Los menús son siempre mejores porque no requieren aprender nada.','También exigen reconocer y recorrer opciones.'],
-['La interfaz debería ocultar uno de los estilos sin evaluar a sus usuarios.','La elección necesita atender a las necesidades observadas.']]],
-[1,'Estilos y paradigmas','Una app usa formularios tanto en móvil como en escritorio. ¿Qué dato permitiría clasificarla como paradigma móvil?',[
-['El modelo conceptual de interacción y uso en movilidad, no la presencia aislada de un formulario.','Estilo y paradigma responden a niveles diferentes; el formulario no determina el paradigma.'],
-['Que cada formulario tenga un botón azul.','El color es una decisión visual, no un paradigma.'],
-['Que la app esté escrita con un lenguaje específico.','La tecnología interna no define el modelo conceptual de interacción.'],
-['Que los campos tengan etiquetas.','Las etiquetas son una decisión del estilo formulario.']]],
-[1,'Estilos y paradigmas','Una acción destructiva se ejecuta al instante al tocar un objeto y no se muestra resultado ni opción para deshacer. ¿Qué propiedad asociada a manipulación directa está peor resuelta?',[
-['La visibilidad del estado y la posibilidad de revertir acciones.','La manipulación directa suele mostrar objetos y resultados inmediatos, con acciones reversibles cuando es posible.'],
-['La cantidad de comandos que la persona debe memorizar.','No se describen órdenes ocultas o vocabulario de comandos.'],
-['La consistencia del estándar de plataforma exclusivamente.','El problema inmediato es falta de feedback y control.'],
-['La personalización del idioma.','El caso no describe idioma ni convenciones locales.']]],
-[2,'Estilos y paradigmas','Un diseñador dice «menú» y «paradigma ubicuo» como si fueran categorías del mismo nivel. ¿Qué corrección ayuda a analizarlos?',[
-['El menú es un estilo de diálogo; ubicuo es un paradigma sobre interacción integrada en distintos contextos.','Un nivel describe cómo se dan órdenes; el otro, un modelo conceptual más amplio.'],
-['Ambos son estilos porque aparecen en la interfaz.','Ubicuo describe un paradigma, no un control visual.'],
-['Ambos son paradigmas porque organizan información.','Un menú es una forma concreta de interacción.'],
-['Menú es un paradigma y ubicuo un dispositivo.','Se confunden la técnica de diálogo y el modelo de uso.']]]
-],
 8:[
 [0,'Accesibilidad y WCAG','Un formulario puede percibirse visualmente, pero todo su flujo requiere ratón. ¿Qué dimensión POUR falla de forma más directa?',[
 ['Operable: las funciones deben poder manejarse con distintos mecanismos, incluido teclado.','Perceptible no garantiza que los controles se puedan operar.'],

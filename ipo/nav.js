@@ -11,7 +11,7 @@
   var LINKS = [
     { href: 'index.html', label: 'Inicio' },
     { href: 'ponte-al-dia.html', label: 'Ponte al día' },
-    { href: 'tema-1.html', label: 'Temas', match: ['tema-1.html', 'tema-2.html', 'tema-3.html', 'tema-4.html'] },
+    { href: 'tema-1.html', label: 'Temas', match: ['tema-1.html', 'tema-2.html', 'tema-3.html', 'tema-4.html', 'tema-5.html', 'tema-6.html', 'tema-7.html'] },
     { href: 'generador.html', label: 'Practicar', match: ['generador.html', 'test-clevertracker.html'] },
     { href: 'cuenta.html', label: 'Mi cuenta' }
   ];

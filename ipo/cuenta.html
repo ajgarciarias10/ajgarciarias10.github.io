@@ -5,24 +5,24 @@
   <title>Mi cuenta · IPO</title>
   <script src="nav.js"></script>
   <script src="curso.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/13.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/13.0.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore-compat.js"></script>
   <script src="cuenta-config.js"></script>
   <script src="cuenta-datos.js"></script>
-  <script src="cuenta-drive.js"></script>
+  <script src="cuenta-firebase.js"></script>
   <script src="cuenta.js"></script>
   <link rel="stylesheet" href="estilo.css">
 </head>
 <body><main>
   <header><span class="eyebrow">IPO · UJA</span><h1>Mi cuenta</h1><p class="lead">Guarda tu progreso y continúa estudiando desde cualquier dispositivo.</p><a class="button secondary" href="calendario.html">Abrir mi semana</a></header>
-  <section class="card" id="config-drive-card">
+  <section class="card" id="config-firebase-card">
     <h2>Conecta tu cuenta de Google</h2>
-    <p>Usa tu cuenta institucional UJA. El selector de Google te permitirá elegir la cuenta correcta. El progreso se sincroniza en el espacio privado de esta aplicación en tu Drive.</p>
+    <p>Elige la cuenta Google que quieras usar. El progreso se sincronizará de forma privada en esta aplicación para que puedas continuar desde otros dispositivos.</p>
     <details style="margin-top:12px;">
-      <summary style="cursor:pointer; font-weight:600;">Guía de configuración (solo para quien administra la web)</summary>
-      <p>En <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a>, habilita Google Drive API y configura el consentimiento OAuth. Para esta app se usa el ámbito privado <code>drive.appdata</code>; no se necesita client secret en el navegador.</p>
-      <figure class="drive-guide-shot"><img src="drive-setup/consentimiento.png" alt="Pantalla de consentimiento OAuth con la opción de usuarios externos"><figcaption>La opción Externos requiere añadir las cuentas autorizadas a la lista de prueba mientras la app esté en modo de pruebas.</figcaption></figure>
-      <figure class="drive-guide-shot"><img src="drive-setup/clientes.png" alt="Lista de clientes OAuth en Google Cloud"><figcaption>Después de guardar la pantalla de consentimiento, crea un cliente OAuth.</figcaption></figure>
-      <ol><li>Selecciona tipo <strong>Aplicación web</strong>.</li><li>En <strong>Orígenes autorizados de JavaScript</strong>, añade <code>https://ajgarciarias10.github.io</code> (sin <code>/ipo/</code>). La captura del cliente aún no tiene ningún origen autorizado, así que este paso falta.</li><li>El proyecto debe admitir cuentas UJA: usa Interno si pertenece al Google Workspace de la universidad; si usas Externo en modo de prueba, añade las cuentas UJA como usuarios de prueba.</li><li>El Client ID público ya está configurado en <code>cuenta-config.js</code>. No copies el secreto a esta web.</li></ol>
-      <figure class="drive-guide-shot"><img src="drive-setup/credenciales-redactadas.png" alt="Cliente OAuth creado; los valores de Client ID y secreto están ocultos"><figcaption>Captura con ambos valores sensibles ocultos. El secreto original quedó expuesto: restablécelo en Google Cloud para conservar el mismo Client ID; esta web no usa el secreto.</figcaption></figure>
+      <summary style="cursor:pointer; font-weight:600;">Configuración de Firebase (administración de la web)</summary>
+      <ol><li>En Firebase Authentication, activa el proveedor <strong>Google</strong>.</li><li>En Authentication → Settings → Authorized domains, comprueba que aparece <code>ajgarciarias10.github.io</code>.</li><li>Crea la base de datos de Cloud Firestore y publica las reglas del archivo <code>firestore.rules</code> de este proyecto.</li></ol>
+      <p>La configuración web de Firebase está en <code>cuenta-config.js</code>. Esos identificadores son públicos; las reglas de Firestore son las que impiden que una cuenta lea el progreso de otra.</p>
     </details>
   </section>
 
@@ -42,7 +42,7 @@
 
   <details class="card" id="backup-card">
     <summary><strong>Copias de seguridad</strong></summary>
-    <p>También puedes descargar tu progreso y todos tus tests realizados como archivo JSON para guardarlos directamente en tu Google Drive, enviártelos por correo o restaurarlos en cualquier momento.</p>
+    <p>Descarga una copia JSON para conservarla o restaurar tu progreso en otro dispositivo.</p>
     <div class="actions">
       <button type="button" id="btn-descargar-todo">Descargar mi progreso completo (JSON)</button>
       <button type="button" class="secondary" id="btn-descargar-tests">Descargar historial de tests realizados (JSON)</button>
@@ -54,14 +54,13 @@
   </details>
 
   <details class="card"><summary><strong>Cómo se guarda y protege mi progreso</strong></summary>
-    <p>Tu plan de estudio, sesiones, tests, errores y competencias se guardan en el espacio privado de esta aplicación en tu Google Drive institucional. El responsable de esta web no recibe ni almacena tu progreso.</p>
-    <p>La aplicación solo pide acceso a sus propios datos privados de Drive y a tu correo para identificar tu cuenta. No tiene acceso a tus documentos ni a tus mensajes.</p>
-    <p>Después de conectar puedes importar el progreso que ya tenías en este navegador si tu cuenta aún no tiene datos. En otros dispositivos, conecta la misma cuenta para recuperarlo.</p>
-    <p>Durante el estudio verás si el progreso está guardado o pendiente de sincronizar. Si Google pide renovar la sesión, vuelve a conectar la misma cuenta. Antes de cerrar sesión, guarda los cambios pendientes.</p>
-    <p>Puedes eliminar los datos y retirar el acceso desde Google Drive, en Configuración → Administrar aplicaciones. Cerrar sesión en esta web retira la copia local de la cuenta de este equipo.</p>
+    <p>Tu plan de estudio, sesiones, tests, errores y competencias se guardan en Cloud Firestore, dentro del proyecto Firebase de esta aplicación, asociados a tu UID de Google. Las reglas limitan cada cuenta a sus propios datos; quien administra el proyecto Firebase puede administrar la base de datos.</p>
+    <p>La aplicación usa Google para identificarte. No solicita acceso a tus documentos ni a tus mensajes.</p>
+    <p>Al conectar puedes importar el progreso local del navegador si tu cuenta aún no tiene datos. En otros dispositivos, conecta la misma cuenta Google para recuperarlo. Los datos que guardaste anteriormente en Drive no se copian automáticamente: descarga el JSON de Drive y restaúralo aquí.</p>
+    <p>Durante el estudio verás si el progreso está guardado o pendiente de sincronizar. Antes de cerrar sesión, guarda los cambios pendientes. Cerrar sesión en esta web retira la copia local de la cuenta de este equipo.</p>
     <div class="actions"><a class="button secondary" href="index.html">Seguir estudiando</a></div>
   </details>
-  <footer>Proyecto gratuito de apoyo al estudio. Puedes seguir estudiando sin conectar Drive; en ese caso el progreso se conserva solo en este navegador.</footer>
+  <footer>Proyecto gratuito de apoyo al estudio. Puedes seguir estudiando sin conectar Google; en ese caso el progreso se conserva solo en este navegador.</footer>
 <script>
   (() => {
     const topicNames = {1:'Introducción a la IPO',2:'El factor humano',3:'Metáforas',4:'Ingeniería de la interfaz',5:'Internacionalización',6:'Diseño gráfico',7:'Estilos y paradigmas',8:'Accesibilidad',9:'Evaluación',10:'Estándares y guías de estilo'};

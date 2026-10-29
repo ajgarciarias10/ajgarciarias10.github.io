@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calendario · IPO</title>
   <script src="nav.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/13.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/13.0.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore-compat.js"></script>
 <script src="cuenta-config.js"></script>
 <script src="cuenta-datos.js"></script>
-<script src="cuenta-drive.js"></script>
+<script src="cuenta-firebase.js"></script>
 <script src="cuenta.js"></script>
   <link rel="stylesheet" href="estilo.css">
   <link rel="stylesheet" href="calendario.css">
@@ -139,7 +142,7 @@
     <div class="actions"><button type="button" id="cal-ics">Descargar el curso completo (.ics)</button></div>
   </details>
 
-  <footer>Horario y planificación según IPO2627.pdf (pp. 3–4 y 15). Tu plan, grupos y bloques se guardan en tu Drive al conectar la cuenta; sin conexión de cuenta, solo en este navegador.</footer>
+  <footer>Horario y planificación según IPO2627.pdf (pp. 3–4 y 15). Tu plan, grupos y bloques se se guardan en Firebase al conectar tu cuenta; sin conexión de cuenta, solo en este navegador.</footer>
 </main>
 
 <script type="text/plain" data-ipo-script="curso.js"></script>
