@@ -115,3 +115,43 @@ test('all six quiz pages render, reject skipping, finish and resume with saved a
     assert.ok(!ids.includes(initial), page);
   }
 });
+test('a correction round resumes after reload and can be repeated', () => {
+  const html = fs.readFileSync(path.join(root, 'tema-1.html'), 'utf8');
+  const store = new Map();
+  function boot() {
+    const elements = new Map();
+    const element = () => ({ classList: { add() {}, remove() {}, toggle() {} }, focus() {}, before() {},
+      after() {}, setAttribute() {}, textContent: '', innerHTML: '', hidden: false,
+      parentElement: { classList: { add() {}, remove() {} } } });
+    [...html.matchAll(/id="([^"]+)"/g)].forEach(m => elements.set(m[1], element()));
+    ['test-progress', 'test-save', 'test-status'].forEach(id => elements.set(id, element()));
+    const document = { documentElement: { dataset: { tema: '1' } },
+      getElementById: id => elements.get(id) || null, querySelector: () => element(),
+      querySelectorAll: () => [], createElement: element, activeElement: { tagName: 'BODY' } };
+    const context = vm.createContext({ document, location: { search: '' }, URLSearchParams, Date, Math, JSON, Set, Event,
+      localStorage: { getItem: k => store.get(k) || null, setItem: (k, v) => store.set(k, v) } });
+    context.window = context; context.addEventListener = () => {}; context.dispatchEvent = () => {};
+    const scripts = [...html.matchAll(/<script (?:src|type="text\/plain" data-ipo-script)="([^"]+)"/g)]
+      .map(m => m[1]).filter(f => f !== 'nav.js' && f !== 'repasos-semanales.js' &&
+        !f.startsWith('cuenta-') && f !== 'cuenta.js' && !f.startsWith('https:'));
+    scripts.forEach(file => vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context));
+    return context;
+  }
+  let context = boot();
+  vm.runInContext(`for (let i = 0, n = session.ids.length; i < n; i++) {
+    handleAnswer(currentQuestion.opciones.findIndex(o => i === 0 ? !o.correcta : o.correcta));
+    if (i < n - 1) nextRandomQuestion();
+  }
+  startCorrection();
+  handleAnswer(currentQuestion.opciones.findIndex(o => !o.correcta));`, context);
+  assert.equal(vm.runInContext('session.completed', context), true);
+  const correctionKey = vm.runInContext('sessionKey()', context);
+  context = boot();
+  assert.equal(vm.runInContext('sessionKey()', context), correctionKey);
+  assert.equal(vm.runInContext('session.completed && correctionIds !== null', context), true);
+  vm.runInContext('startCorrection(); handleAnswer(currentQuestion.opciones.findIndex(o => o.correcta));', context);
+  assert.equal(vm.runInContext('session.completed && pendingFailures().length === 0', context), true);
+  vm.runInContext('leaveCorrection()', context);
+  assert.equal(vm.runInContext('onlyFailed', context), false);
+  assert.equal(vm.runInContext('IPOStudy.data.activeCorrections[correctionKey]', context), undefined);
+});

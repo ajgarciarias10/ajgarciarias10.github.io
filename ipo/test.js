@@ -22,6 +22,7 @@ let activeTema = isGlobal ? (new URLSearchParams(location.search).get('tema') ||
 if (isGlobal && activeTema !== 'all' && activeTema !== 'clevertracker' && !temaYaImpartido.has(activeTema)) activeTema = 'all';
 let onlyFailed = new URLSearchParams(location.search).get('fallos') === '1';
 let correctionIds = null; // identities of the questions being corrected (null = normal test)
+const correctionKey = isGlobal ? 'global' : TEMA;
 let currentQuestion = null;
 let currentOrder = [];
 let currentAnswer = null;
@@ -49,11 +50,35 @@ function startCorrection() {
   const failed = pendingFailures();
   if (!failed.length) return;
   correctionIds = new Set(failed);
+  IPOStudy.data.activeCorrections ||= {};
+  const previousOnlyFailed = IPOStudy.data.activeCorrections[correctionKey]?.previousOnlyFailed ?? onlyFailed;
+  IPOStudy.data.activeCorrections[correctionKey] = {
+    ids: failed, tema: activeTema, scope: activeScope, previousOnlyFailed
+  };
+  IPOStudy.save();
   onlyFailed = true;
   if ($('filter-failed')) $('filter-failed').checked = true;
   openSession(true);
 }
-function leaveCorrection() { correctionIds = null; }
+function leaveCorrection() {
+  const saved = IPOStudy.data.activeCorrections?.[correctionKey];
+  correctionIds = null;
+  if (!saved) return;
+  onlyFailed = Boolean(saved.previousOnlyFailed);
+  if ($('filter-failed')) $('filter-failed').checked = onlyFailed;
+  delete IPOStudy.data.activeCorrections[correctionKey];
+  IPOStudy.save();
+}
+function restoreCorrection() {
+  const saved = IPOStudy.data.activeCorrections?.[correctionKey];
+  if (!saved || !Array.isArray(saved.ids) || !saved.ids.length) return;
+  correctionIds = new Set(saved.ids);
+  activeTema = saved.tema;
+  activeScope = saved.scope;
+  onlyFailed = true;
+  if ($('filter-failed')) $('filter-failed').checked = true;
+  if ($('scope-selector')) $('scope-selector').value = activeScope;
+}
 function openSession(fresh = false) {
   session = IPOStudy.session(sessionKey(), getMatchingPool(), onlyFailed, fresh);
   syncSession();
@@ -378,4 +403,5 @@ if ($('btn-save-test')) {
 }
 if ($('btn-download-test')) $('btn-download-test').onclick = exportCurrentTestJSON;
 document.querySelectorAll('.kbd-hint').forEach(el => { el.textContent = 'Teclas: 1–4 responder · Espacio siguiente'; });
+restoreCorrection();
 openSession();
