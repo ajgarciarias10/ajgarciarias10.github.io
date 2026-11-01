@@ -46,12 +46,12 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Solo habrá interacción cuando el operador actúe sobre un dispositivo de entrada.",
+        "texto": "Solo habrá interacción cuando el operador actúe de forma explícita sobre un dispositivo de entrada del sistema.",
         "explicacion": "Reduce indebidamente la interacción a la entrada de información.",
         "correcta": false
       },
       {
-        "texto": "Hay interfaz, pero no puede haber interacción mientras el flujo sea solo de salida.",
+        "texto": "Hay interfaz, pero no puede haber interacción mientras el flujo de información sea únicamente de salida hacia la persona.",
         "explicacion": "La salida de información al usuario también pertenece a la interacción.",
         "correcta": false
       },
@@ -77,12 +77,12 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La IPO impide que los usuarios aprendan procedimientos que antes desconocían.",
+        "texto": "La IPO impide que los usuarios aprendan procedimientos nuevos, porque su objetivo es que nadie modifique nunca su forma de trabajar.",
         "explicacion": "El tema contempla aprendizaje; no prohíbe cualquier cambio ni toda formación.",
         "correcta": false
       },
       {
-        "texto": "La arquitectura debería decidirse exclusivamente a partir de preferencias individuales.",
+        "texto": "La arquitectura debería decidirse exclusivamente a partir de las preferencias individuales de cada empleado, sin criterios comunes.",
         "explicacion": "Centrarse en requisitos no equivale a ignorar todos los demás factores.",
         "correcta": false
       },
@@ -263,12 +263,12 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "No es un problema de interfaz porque todos los dispositivos responden.",
+        "texto": "No es un problema de interfaz, porque todos los dispositivos físicos responden correctamente a las acciones del usuario.",
         "explicacion": "Confunde interfaz con funcionamiento del hardware.",
         "correcta": false
       },
       {
-        "texto": "Es exclusivamente un problema físico porque el mensaje aparece en una pantalla.",
+        "texto": "Es exclusivamente un problema físico del dispositivo, porque el mensaje incomprensible aparece en una pantalla concreta.",
         "explicacion": "Que se presente físicamente no convierte su incomprensibilidad en un problema exclusivamente físico.",
         "correcta": false
       },
@@ -325,7 +325,7 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Ya no hay interfaz de usuario, aunque sí exista interacción.",
+        "texto": "Ya no hay interfaz de usuario al desaparecer el ratón, aunque sí siga existiendo interacción mediante la voz.",
         "explicacion": "No tener pantalla o ratón no elimina la superficie de contacto.",
         "correcta": false
       },
@@ -335,7 +335,7 @@ const BANCO_GLOBAL = [
         "correcta": false
       },
       {
-        "texto": "La interfaz pasa a ser únicamente el algoritmo de reconocimiento de voz.",
+        "texto": "La interfaz pasa a ser únicamente el algoritmo de reconocimiento de voz, ya que el usuario deja de tocar ningún componente.",
         "explicacion": "La interfaz no se identifica solo con un algoritmo interno.",
         "correcta": false
       }
@@ -449,17 +449,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La interfaz es la entrada de información; la interacción, exclusivamente la salida.",
+        "texto": "La interfaz es la entrada de información al sistema; la interacción, exclusivamente la salida de resultados hacia la persona.",
         "explicacion": "Ninguna de las definiciones establece esa división.",
         "correcta": false
       },
       {
-        "texto": "La interfaz es lo físico; la interacción es lo cognitivo.",
+        "texto": "La interfaz es siempre la parte física del sistema; la interacción es siempre y solo la parte cognitiva del usuario.",
         "explicacion": "La propia interfaz incluye contacto físico y cognitivo.",
         "correcta": false
       },
       {
-        "texto": "La interfaz existe solo mientras el usuario está introduciendo una orden.",
+        "texto": "La interfaz existe solo mientras el usuario está introduciendo activamente una orden, y desaparece al recibir la respuesta.",
         "explicacion": "El concepto no se limita al instante de entrada de una orden.",
         "correcta": false
       }
@@ -697,17 +697,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Ambos exclusivamente diseño, ya que cualquier uso del color es estético.",
+        "texto": "Ambos son exclusivamente diseño, ya que cualquier uso del color en una interfaz persigue únicamente un fin estético.",
         "explicacion": "El tema relaciona el color también con atención y salud.",
         "correcta": false
       },
       {
-        "texto": "Primero ergonomía; segundo sociología, porque la fatiga depende de grupos.",
+        "texto": "Primero ergonomía; segundo sociología, porque la fatiga visual depende sobre todo de los grupos sociales de pertenencia.",
         "explicacion": "No corresponde a los objetivos descritos en los casos.",
         "correcta": false
       },
       {
-        "texto": "Ambos exclusivamente psicología, porque el color se percibe.",
+        "texto": "Ambos son exclusivamente psicología, porque el color siempre se percibe y no interviene ningún otro factor.",
         "explicacion": "Ignora los aspectos ergonómicos explícitos del tema.",
         "correcta": false
       }
@@ -728,12 +728,12 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "El diseño sustituye a las demás disciplinas cuando la interfaz tiene iconos.",
+        "texto": "El diseño sustituye a las demás disciplinas relacionadas cuando la interfaz incorpora iconos y elementos gráficos.",
         "explicacion": "La interdisciplinariedad no desaparece por incorporar iconos.",
         "correcta": false
       },
       {
-        "texto": "El diseño únicamente aporta utilidad; el aspecto visual pertenece solo a ergonomía.",
+        "texto": "El diseño únicamente aporta utilidad práctica; todo lo relativo al aspecto visual pertenece solo a la ergonomía.",
         "explicacion": "El tema menciona expresamente lo visualmente agradable dentro del diseño.",
         "correcta": false
       },
@@ -914,17 +914,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Evitar añadir funcionalidades nuevas a un sistema existente.",
+        "texto": "Evitar añadir funcionalidades nuevas a un sistema ya existente, para no alterar lo que el usuario conoce de él.",
         "explicacion": "El tema permite añadirlas; recomienda conservar lo conocido.",
         "correcta": false
       },
       {
-        "texto": "Garantizar que cada mecanismo cambie de uso según el momento.",
+        "texto": "Garantizar que cada mecanismo de la interfaz cambie de uso según el momento, para mantener al usuario atento.",
         "explicacion": "Eso contradice la definición de consistencia.",
         "correcta": false
       },
       {
-        "texto": "Permitir exclusivamente una manera de intercambiar información.",
+        "texto": "Permitir exclusivamente una única manera de intercambiar información entre el usuario y el sistema en toda la interfaz.",
         "explicacion": "Eso restringe la flexibilidad y no es la recomendación relevante.",
         "correcta": false
       }
@@ -976,12 +976,12 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Solo los 0,1 s de ejecución interna.",
+        "texto": "Solo los 0,1 s que dura la ejecución interna de la operación, con independencia de cuándo se comunique el resultado.",
         "explicacion": "Ignora el retraso de la expresión del estado al usuario.",
         "correcta": false
       },
       {
-        "texto": "El tiempo que tarda el usuario en aprender qué significa el mensaje.",
+        "texto": "El tiempo que tarda el usuario en aprender y asimilar qué significa el mensaje que recibe del sistema.",
         "explicacion": "Eso es aprendizaje o comprensión, no el intervalo definido.",
         "correcta": false
       },
@@ -1007,7 +1007,7 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La adecuación está plenamente satisfecha porque solo exige llegar al resultado.",
+        "texto": "La adecuación está plenamente satisfecha, porque este principio solo exige que el usuario llegue al resultado esperado.",
         "explicacion": "Omite la forma de realizar las tareas.",
         "correcta": false
       },
@@ -1017,7 +1017,7 @@ const BANCO_GLOBAL = [
         "correcta": false
       },
       {
-        "texto": "Si el sistema es rápido, queda demostrada la adecuación.",
+        "texto": "Si el sistema es rápido al responder y completa el resultado, queda demostrada la adecuación de las tareas.",
         "explicacion": "Rapidez y adecuación de las tareas no son equivalentes.",
         "correcta": false
       }
@@ -1038,17 +1038,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Acortar el código, pero mantener una abreviatura complicada que debe memorizarse.",
+        "texto": "Acortar el código de la función, pero mantener una abreviatura complicada que sigue obligando al usuario a memorizarla.",
         "explicacion": "Puede aliviar algo, pero mantiene la exigencia que el tema desaconseja.",
         "correcta": false
       },
       {
-        "texto": "Ejecutar el código más rápido sin modificar cómo se selecciona la función.",
+        "texto": "Ejecutar el código más rápido en el sistema, sin modificar en absoluto cómo selecciona la función el usuario.",
         "explicacion": "Mejora potencialmente respuesta, pero no elimina la carga de recordar el código.",
         "correcta": false
       },
       {
-        "texto": "Cambiar el código en cada sesión para que el usuario no dependa de hábitos.",
+        "texto": "Cambiar el código en cada sesión para que el usuario no dependa de hábitos adquiridos con el uso anterior.",
         "explicacion": "Aumenta la dificultad de recuerdo y perjudica la consistencia.",
         "correcta": false
       }
@@ -1100,17 +1100,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Está completamente atendida: el tema solo menciona usuarios sin experiencia.",
+        "texto": "Está completamente atendida, porque el tema solo menciona la llegada productiva de los usuarios sin experiencia previa.",
         "explicacion": "También menciona explícitamente a los intermedios.",
         "correcta": false
       },
       {
-        "texto": "Está ausente por completo: el éxito inicial no constituye ninguna evidencia.",
+        "texto": "Está ausente por completo, ya que el éxito inicial de los principiantes no constituye ninguna evidencia de aprendizaje.",
         "explicacion": "El tiempo hasta el uso productivo sí es parte del principio.",
         "correcta": false
       },
       {
-        "texto": "El único principio implicado es capacidad de sustitución.",
+        "texto": "El único principio implicado en este caso es la capacidad de sustitución, sin relación con la facilidad de aprendizaje.",
         "explicacion": "No hay valores equivalentes en el caso.",
         "correcta": false
       }
@@ -1131,17 +1131,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Solo control: recuperabilidad exige que el sistema corrija sin intervención humana.",
+        "texto": "Solo control: la recuperabilidad exige que sea el propio sistema quien corrija el error sin intervención humana.",
         "explicacion": "La definición de recuperabilidad no exige automatismo.",
         "correcta": false
       },
       {
-        "texto": "Solo recuperabilidad: el tema excluye Deshacer de las formas de dar control.",
+        "texto": "Solo recuperabilidad: el tema excluye expresamente Deshacer de las formas de dar control al usuario sobre la interacción.",
         "explicacion": "Deshacer aparece expresamente en las recomendaciones de control.",
         "correcta": false
       },
       {
-        "texto": "Ninguna: restablecer un estado es siempre capacidad de sustitución.",
+        "texto": "Ninguna de las dos: restablecer un estado anterior es siempre y solo un caso de capacidad de sustitución.",
         "explicacion": "Sustitución se refiere a valores equivalentes, no a deshacer operaciones.",
         "correcta": false
       }
@@ -1162,17 +1162,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La satisfacción es irrelevante siempre que se completen las tareas.",
+        "texto": "La satisfacción es irrelevante para la usabilidad siempre que los usuarios completen las tareas con eficiencia en ese contexto.",
         "explicacion": "Elimina uno de los componentes explícitos.",
         "correcta": false
       },
       {
-        "texto": "La insatisfacción demuestra que no se ha completado ningún objetivo.",
+        "texto": "La insatisfacción declarada demuestra que los usuarios no han llegado a completar ningún objetivo en ese contexto de uso.",
         "explicacion": "Contradice el caso y confunde satisfacción con logro.",
         "correcta": false
       },
       {
-        "texto": "El resultado permite concluir lo mismo para cualquier otro contexto.",
+        "texto": "El resultado obtenido permite concluir exactamente lo mismo para cualquier otro contexto de uso, usuario o tarea distintos.",
         "explicacion": "La definición está ligada a usuarios, objetivos y contexto determinados.",
         "correcta": false
       }
@@ -1193,17 +1193,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Cualquier mejora técnica garantiza que el desarrollo ya está centrado en el usuario.",
+        "texto": "Cualquier mejora técnica, como un procesador más rápido, garantiza que el desarrollo ya está centrado en el usuario.",
         "explicacion": "La mejora puede mantener exactamente la misma exigencia problemática.",
         "correcta": false
       },
       {
-        "texto": "La IPO exige ocultar todas las funciones avanzadas, cualquiera que sea la tarea.",
+        "texto": "La IPO exige ocultar todas las funciones avanzadas del dispositivo al usuario, cualquiera que sea la tarea que realice.",
         "explicacion": "No se establece esa prohibición general.",
         "correcta": false
       },
       {
-        "texto": "Si el dispositivo funciona correctamente, el argumento de Norman deja de ser aplicable.",
+        "texto": "Si el dispositivo funciona correctamente desde el punto de vista técnico, el argumento de Norman deja de ser aplicable.",
         "explicacion": "Puede funcionar técnicamente y seguir siendo difícil de usar.",
         "correcta": false
       }
@@ -1255,12 +1255,12 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La información permanece aislada en la memoria sensorial.",
+        "texto": "La información de la aplicación permanece aislada en la memoria sensorial, sin relaciones entre sus elementos ni organización.",
         "explicacion": "La memoria sensorial retiene estímulos brevemente, no organiza conocimiento del sistema.",
         "correcta": false
       },
       {
-        "texto": "Solo puede aprenderse una interfaz memorizando cada pantalla por separado.",
+        "texto": "Solo puede aprenderse una interfaz memorizando cada pantalla por separado, sin que existan relaciones entre las funciones.",
         "explicacion": "Las relaciones semánticas facilitan adquisición y recuperación.",
         "correcta": false
       },
@@ -1472,17 +1472,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La posibilidad de medir solo la frecuencia del procesador.",
+        "texto": "La posibilidad de medir únicamente la frecuencia del procesador y el rendimiento técnico del producto que usan.",
         "explicacion": "No aborda las expectativas del usuario.",
         "correcta": false
       },
       {
-        "texto": "La garantía de que todos comparten un modelo único.",
+        "texto": "La garantía de que todos los usuarios comparten un único modelo mental, idéntico para cualquier persona.",
         "explicacion": "El tema no afirma uniformidad entre personas.",
         "correcta": false
       },
       {
-        "texto": "La necesidad de analizar exclusivamente la retina.",
+        "texto": "La necesidad de analizar exclusivamente la retina de los usuarios para comprender sus creencias sobre el producto.",
         "explicacion": "El problema planteado es conceptual.",
         "correcta": false
       }
@@ -1534,17 +1534,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Entrada del ordenador, efectores y memoria a largo plazo directamente.",
+        "texto": "Entrada del ordenador, efectores motores y memoria a largo plazo directamente, sin pasar por la percepción.",
         "explicacion": "Los efectores son el canal de acción, no de recepción.",
         "correcta": false
       },
       {
-        "texto": "Memoria a largo plazo del ordenador antes de los sensores.",
+        "texto": "Memoria a largo plazo del ordenador, antes de llegar a los sensores y a la memoria sensorial del usuario.",
         "explicacion": "El diagrama modela memoria humana y recepción sensorial.",
         "correcta": false
       },
       {
-        "texto": "Sistema vocal del usuario antes de percibir la pantalla.",
+        "texto": "Sistema vocal del usuario, que responde antes de percibir la pantalla y de que intervenga la atención.",
         "explicacion": "La vocalización sería una posible acción posterior.",
         "correcta": false
       }
@@ -1627,17 +1627,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Una prueba de que la pantalla ya no contiene información visual.",
+        "texto": "Una prueba de que la pantalla ya no contiene información visual y de que el usuario no necesita mirarla.",
         "explicacion": "La vibración puede complementar la imagen.",
         "correcta": false
       },
       {
-        "texto": "Una sustitución obligatoria del sonido en toda interfaz.",
+        "texto": "Una sustitución obligatoria del sonido en toda interfaz, porque ambos canales nunca pueden usarse a la vez.",
         "explicacion": "No se establece esa exclusividad.",
         "correcta": false
       },
       {
-        "texto": "Una memoria a largo plazo de las pulsaciones.",
+        "texto": "Una memoria a largo plazo de las pulsaciones, que reemplaza la realimentación en el momento de la acción.",
         "explicacion": "La respuesta táctil no es un almacén de recuerdos.",
         "correcta": false
       }
@@ -1658,17 +1658,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Termorreceptores; solo la espalda percibe tacto.",
+        "texto": "Termorreceptores, encargados de la presión; solo la espalda percibe tacto de forma significativa.",
         "explicacion": "Termorreceptores responden al calor y el tacto se recibe por la piel.",
         "correcta": false
       },
       {
-        "texto": "Nocirreceptores; exclusivamente la retina.",
+        "texto": "Nocirreceptores, que detectan la presión suave; los dedos carecen de sensibilidad y solo responde la retina.",
         "explicacion": "No corresponde a presión ni a la zona indicada.",
         "correcta": false
       },
       {
-        "texto": "Memoria ecoica; las palmas.",
+        "texto": "Memoria ecoica, que almacena sonidos breves; únicamente las palmas de las manos intervienen.",
         "explicacion": "La memoria ecoica es auditiva, no un receptor de presión.",
         "correcta": false
       }
@@ -1689,17 +1689,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Solo la elección de palabras del botón de salir.",
+        "texto": "Solo la elección de palabras del botón de salir y el tamaño de la tipografía del menú principal.",
         "explicacion": "No aborda la percepción del movimiento.",
         "correcta": false
       },
       {
-        "texto": "Solo la memoria declarativa semántica.",
+        "texto": "Solo la memoria declarativa semántica y el vocabulario que el usuario conoce sobre realidad virtual.",
         "explicacion": "La página 84 atribuye estos riesgos a señales corporales.",
         "correcta": false
       },
       {
-        "texto": "La clasificación de los conos de color exclusivamente.",
+        "texto": "La clasificación de los conos de color de la retina, que es lo único que explica el mareo del usuario.",
         "explicacion": "No basta para explicar el mareo descrito.",
         "correcta": false
       }
@@ -1782,17 +1782,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Bordes más nítidos por la sensibilidad máxima al azul.",
+        "texto": "Bordes más nítidos y fáciles de seguir, gracias a la sensibilidad máxima de la visión al color azul.",
         "explicacion": "El ojo es menos sensible a longitudes cortas.",
         "correcta": false
       },
       {
-        "texto": "Mejora asegurada de lectura en la visión frontal.",
+        "texto": "Mejora asegurada de la lectura en la visión frontal, al concentrarse allí la mayor parte de los conos azules.",
         "explicacion": "Las líneas azules delgadas tienden a verse borrosas.",
         "correcta": false
       },
       {
-        "texto": "Desaparición de toda percepción de amarillo.",
+        "texto": "Desaparición de toda percepción del amarillo, al no existir ningún receptor del color en la retina.",
         "explicacion": "No se deriva de esa elección.",
         "correcta": false
       }
@@ -1844,17 +1844,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Quitar toda etiqueta y usar más tonos rojo-verde.",
+        "texto": "Quitar toda etiqueta de texto y usar más tonos rojo-verde, para que la distinción dependa solo del color.",
         "explicacion": "Aumenta la dependencia de la distinción problemática.",
         "correcta": false
       },
       {
-        "texto": "Suponer que la visión del color es idéntica para todas las personas.",
+        "texto": "Suponer que la visión del color es idéntica para todas las personas y mantener el diseño basado solo en el color.",
         "explicacion": "El tema presenta distintas alteraciones.",
         "correcta": false
       },
       {
-        "texto": "Sustituirlo siempre por olor como único canal.",
+        "texto": "Sustituirlo siempre por el olor como único canal de comunicación del estado de cada campo del formulario.",
         "explicacion": "El olfato también tiene límites y no resuelve por sí solo el problema.",
         "correcta": false
       }
@@ -1875,17 +1875,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Solo importa el valor RGB de los iconos, nunca el entorno.",
+        "texto": "Solo importa el valor RGB de los iconos mostrados en pantalla, nunca la iluminación ni el entorno de uso.",
         "explicacion": "El ambiente altera la información percibida.",
         "correcta": false
       },
       {
-        "texto": "La agudeza mejora ilimitadamente aumentando la luminancia.",
+        "texto": "La agudeza visual mejora ilimitadamente aumentando la luminancia, de modo que basta con subir el brillo de la pantalla.",
         "explicacion": "Una luminancia muy elevada incrementa el parpadeo.",
         "correcta": false
       },
       {
-        "texto": "El problema demuestra que los usuarios carecen de memoria sensorial.",
+        "texto": "El problema demuestra que los usuarios carecen de memoria sensorial y no retienen lo que ven en la pantalla.",
         "explicacion": "Los reflejos no permiten esa conclusión.",
         "correcta": false
       }
@@ -1937,17 +1937,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Tienen necesariamente idéntico ángulo visual.",
+        "texto": "Tienen necesariamente idéntico ángulo visual, porque el tamaño en píxeles es lo único que determina la percepción.",
         "explicacion": "La distancia cambia el ángulo aun con igual tamaño.",
         "correcta": false
       },
       {
-        "texto": "El más lejano siempre tiene un ángulo mayor.",
+        "texto": "El más lejano siempre tiene un ángulo visual mayor, porque la distancia aumenta el tamaño percibido del control.",
         "explicacion": "A igual tamaño, alejarlo reduce el ángulo.",
         "correcta": false
       },
       {
-        "texto": "La separación percibida no depende de ningún umbral.",
+        "texto": "La separación percibida entre los controles no depende de ningún umbral de la visión ni de las condiciones del entorno.",
         "explicacion": "Se indican umbrales mínimos para detalles y espacios.",
         "correcta": false
       }
@@ -1968,17 +1968,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "El usuario analiza siempre cada píxel por igual.",
+        "texto": "El usuario analiza siempre cada píxel de la portada por igual, sin filtrar nada de lo que aparece en ella.",
         "explicacion": "El tema indica que selecciona zonas de alto contenido informativo.",
         "correcta": false
       },
       {
-        "texto": "Una imagen llamativa garantiza atención útil por la ceguera al banner.",
+        "texto": "Una imagen llamativa garantiza siempre atención útil, y la ceguera al banner es un fenómeno inexistente en la web.",
         "explicacion": "La ceguera al banner es precisamente una advertencia.",
         "correcta": false
       },
       {
-        "texto": "Solo la memoria procedimental determina lo que entra por la retina.",
+        "texto": "Solo la memoria procedimental determina lo que entra por la retina, de modo que la atención no interviene en ello.",
         "explicacion": "La página 77 describe atención y percepción.",
         "correcta": false
       }
@@ -1999,17 +1999,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Guardar para siempre el destello como conocimiento semántico.",
+        "texto": "Guardar para siempre el destello como conocimiento semántico, con independencia de que llegue a la memoria de trabajo.",
         "explicacion": "Su almacenamiento dura muy poco.",
         "correcta": false
       },
       {
-        "texto": "Ejecutar la respuesta muscular sin atención.",
+        "texto": "Ejecutar la respuesta muscular de forma automática, sin necesidad de atención ni de transferir nada a la memoria de trabajo.",
         "explicacion": "No es un efector.",
         "correcta": false
       },
       {
-        "texto": "Eliminar la necesidad de interpretar cualquier estímulo.",
+        "texto": "Eliminar la necesidad de interpretar cualquier estímulo, ya que lo almacena ya procesado como conocimiento permanente.",
         "explicacion": "Retener no equivale a comprender.",
         "correcta": false
       }
@@ -2216,17 +2216,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Solo interfiere si el usuario decide memorizar la canción.",
+        "texto": "Solo interfiere si el usuario decide memorizar la canción de forma voluntaria; sin esa intención no hay efecto alguno.",
         "explicacion": "El efecto se observó sin prestarle atención.",
         "correcta": false
       },
       {
-        "texto": "Un ruido no verbal produce necesariamente el mismo efecto observado.",
+        "texto": "Un ruido no verbal, como el de una máquina, produce necesariamente el mismo efecto que el habla de fondo observado.",
         "explicacion": "En el experimento citado, el ruido no produjo ese efecto.",
         "correcta": false
       },
       {
-        "texto": "La letra mejora siempre las búsquedas verbales.",
+        "texto": "La letra de la canción mejora siempre las búsquedas verbales, porque estimula el mismo almacén que usa el usuario.",
         "explicacion": "La aplicación al diseño advierte lo contrario.",
         "correcta": false
       }
@@ -2247,17 +2247,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La MLP es el buffer visual de milisegundos.",
+        "texto": "La MLP es el buffer visual de milisegundos donde se mantiene brevemente la imagen y de donde se pierde enseguida.",
         "explicacion": "Eso corresponde a memoria sensorial icónica.",
         "correcta": false
       },
       {
-        "texto": "La memoria de trabajo tiene capacidad casi ilimitada.",
+        "texto": "La memoria de trabajo tiene capacidad casi ilimitada y retiene la información durante años sin necesidad de repaso.",
         "explicacion": "La página 97 la describe como limitada.",
         "correcta": false
       },
       {
-        "texto": "La MLP no puede contener conocimientos adquiridos.",
+        "texto": "La MLP no puede contener conocimientos adquiridos, sino solo lo que se percibe en el instante de cada estímulo.",
         "explicacion": "Almacena nuestro conocimiento.",
         "correcta": false
       }
@@ -2278,17 +2278,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Episódica.",
+        "texto": "Episódica, referida a hechos y momentos vividos.",
         "explicacion": "Recoge eventos y experiencias personales seriadas.",
         "correcta": false
       },
       {
-        "texto": "Icónica.",
+        "texto": "Icónica, que retiene imágenes durante milisegundos.",
         "explicacion": "Retiene brevemente información visual.",
         "correcta": false
       },
       {
-        "texto": "Ecoica.",
+        "texto": "Ecoica, que conserva sonidos durante unos segundos.",
         "explicacion": "Retiene brevemente información auditiva.",
         "correcta": false
       }
@@ -2340,17 +2340,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Tiempo total: solo importa la posición del monitor.",
+        "texto": "Tiempo total: solo importa la cantidad de horas de estudio y la posición del monitor, no su distribución.",
         "explicacion": "La hipótesis de tiempo total relaciona cantidad aprendida y tiempo dedicado.",
         "correcta": false
       },
       {
-        "texto": "Primacía: toda sesión debe acabar con el primer elemento.",
+        "texto": "Primacía: toda sesión debe acabar con el primer elemento de la lista para que quede mejor fijado en memoria.",
         "explicacion": "Primacía se refiere al recuerdo de posiciones en listas.",
         "correcta": false
       },
       {
-        "texto": "Paralaje: lo cercano cambia más rápido.",
+        "texto": "Paralaje: los objetos cercanos cambian de posición más rápido, de modo que conviene repasar antes lo más próximo.",
         "explicacion": "Es una pista de profundidad, no de estudio.",
         "correcta": false
       }
@@ -2402,17 +2402,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Recuerdo con pistas frente a reconocimiento sin estímulos.",
+        "texto": "Recuerdo con pistas frente a reconocimiento sin estímulos; la persona ha logrado recuperar el nombre por sí sola.",
         "explicacion": "Invierte las definiciones.",
         "correcta": false
       },
       {
-        "texto": "Memoria de trabajo frente a bastones retinianos.",
+        "texto": "Memoria de trabajo frente a bastones retinianos, que explican por qué no puede decir el nombre de la herramienta.",
         "explicacion": "No distingue las dos formas de recuperación.",
         "correcta": false
       },
       {
-        "texto": "Olvido demostrado e irreversible.",
+        "texto": "Olvido demostrado e irreversible: si no puede decir el nombre, la información ha desaparecido de la memoria.",
         "explicacion": "Identificarla muestra que aún puede recuperarla con pistas.",
         "correcta": false
       }
@@ -2433,17 +2433,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La velocidad de lectura en palabras por minuto.",
+        "texto": "La velocidad de lectura en palabras por minuto, que determina si el usuario entiende que la imagen es un enlace.",
         "explicacion": "El problema es descubrir la función del objeto.",
         "correcta": false
       },
       {
-        "texto": "La clasificación de recuerdos episódicos.",
+        "texto": "La clasificación de los recuerdos episódicos, que decide si la imagen se asocia con un enlace o con un archivo.",
         "explicacion": "No explica la acción que parece posible.",
         "correcta": false
       },
       {
-        "texto": "El paralaje de movimiento.",
+        "texto": "El paralaje de movimiento, que impide percibir la profundidad de la imagen y su posible función de enlace.",
         "explicacion": "No se describe una escena 3D en movimiento.",
         "correcta": false
       }
@@ -2464,17 +2464,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La segunda debe perjudicar siempre más porque usa dos modalidades.",
+        "texto": "La segunda debe perjudicar siempre más, porque combina dos modalidades distintas y exige más recursos de memoria.",
         "explicacion": "El resultado expuesto es el contrario en esos ejemplos.",
         "correcta": false
       },
       {
-        "texto": "Ambas rinden necesariamente igual para toda persona.",
+        "texto": "Ambas rinden necesariamente igual para toda persona, ya que los límites de la memoria de trabajo no dependen de la tarea.",
         "explicacion": "El experimento registra diferencias según almacenes implicados.",
         "correcta": false
       },
       {
-        "texto": "Ninguna se relaciona con los límites de memoria de trabajo.",
+        "texto": "Ninguna de las dos se relaciona con los límites de la memoria de trabajo ni con el almacén de repetición verbal.",
         "explicacion": "La página 106 trata precisamente de multitarea y memoria de trabajo.",
         "correcta": false
       }
@@ -2526,17 +2526,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Usarla con exactamente el mismo significado y sin trasladar relaciones.",
+        "texto": "Usarla con exactamente el mismo significado habitual y sin trasladar a otro ámbito ninguna relación de semejanza.",
         "explicacion": "Sin cambio de sentido ni analogía no se produce la metáfora descrita.",
         "correcta": false
       },
       {
-        "texto": "Representarla necesariamente mediante un icono animado.",
+        "texto": "Representarla necesariamente mediante un icono animado que sustituya al texto original dentro de la interfaz.",
         "explicacion": "Eso añadiría una representación visual, pero no define la metáfora verbal.",
         "correcta": false
       },
       {
-        "texto": "Elegir una palabra desconocida para impedir asociaciones previas.",
+        "texto": "Elegir una palabra totalmente desconocida para el usuario, con el fin de impedir cualquier asociación previa.",
         "explicacion": "La utilidad de la metáfora depende precisamente de aprovechar asociaciones conocidas.",
         "correcta": false
       }
@@ -2557,17 +2557,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Convierte literalmente los minutos en monedas canjeables.",
+        "texto": "Convierte literalmente los minutos del usuario en monedas canjeables dentro de la aplicación, como si fueran dinero real.",
         "explicacion": "La relación es lingüística y conceptual, no una transformación física.",
         "correcta": false
       },
       {
-        "texto": "Usa una metáfora global de oficina completa.",
+        "texto": "Usa una metáfora global de oficina completa, con mesas, archivadores y carpetas distribuidos por la pantalla.",
         "explicacion": "Las palabras citadas forman una comparación verbal, no el marco de toda una interfaz.",
         "correcta": false
       },
       {
-        "texto": "Elimina toda diferencia entre tiempo y dinero.",
+        "texto": "Elimina toda diferencia entre el tiempo y el dinero, de modo que ambos pueden intercambiarse sin restricción alguna.",
         "explicacion": "Una metáfora conserva semejanzas útiles aunque los dominios sigan siendo distintos.",
         "correcta": false
       }
@@ -2588,17 +2588,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Como propiedades físicas obligatorias de Internet.",
+        "texto": "Como propiedades físicas obligatorias de Internet, que toda red de ordenadores debe poseer para funcionar.",
         "explicacion": "Son maneras familiares de conceptualizar acciones y elementos digitales.",
         "correcta": false
       },
       {
-        "texto": "Como errores que deben retirarse de cualquier web.",
+        "texto": "Como errores de lenguaje que deben retirarse de cualquier web para evitar confusiones entre los usuarios.",
         "explicacion": "El tema los muestra como ejemplos, no como prohibiciones generales.",
         "correcta": false
       },
       {
-        "texto": "Como nombres exclusivos de componentes del hardware.",
+        "texto": "Como nombres exclusivos de componentes del hardware, sin relación con el lenguaje que usa la persona.",
         "explicacion": "Describen conceptos de interacción, no piezas físicas del ordenador.",
         "correcta": false
       }
@@ -2619,17 +2619,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La eliminación de todo modelo mental previo.",
+        "texto": "La eliminación de todo modelo mental previo, de modo que la persona aprende la herramienta partiendo de cero.",
         "explicacion": "La persona está utilizando conocimiento previo, no descartándolo.",
         "correcta": false
       },
       {
-        "texto": "Una prueba de que ambos objetos son físicamente idénticos.",
+        "texto": "Una prueba de que ambos objetos son físicamente idénticos y de que funcionan exactamente de la misma manera.",
         "explicacion": "La comparación requiere alguna semejanza útil, no identidad total.",
         "correcta": false
       },
       {
-        "texto": "La creación automática de una metáfora global coherente.",
+        "texto": "La creación automática de una metáfora global coherente, que el sistema impone a todos los usuarios por igual.",
         "explicacion": "Una comparación inicial no constituye necesariamente el marco de todo el sistema.",
         "correcta": false
       }
@@ -2650,17 +2650,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Únicamente la forma y el peso físico de cada objeto.",
+        "texto": "Únicamente la forma y el peso físico de cada objeto, sin conocimientos sobre cómo se relacionan entre sí.",
         "explicacion": "La transferencia es conceptual y no se limita a propiedades físicas.",
         "correcta": false
       },
       {
-        "texto": "El código fuente que implementa el dispositivo conocido.",
+        "texto": "El código fuente que implementa el dispositivo conocido, que el usuario reutiliza en el dominio no familiar.",
         "explicacion": "El usuario traslada conocimiento, no la implementación informática.",
         "correcta": false
       },
       {
-        "texto": "Solo palabras aisladas, nunca relaciones de funcionamiento.",
+        "texto": "Solo palabras aisladas del dominio familiar, nunca las relaciones de funcionamiento entre sus elementos.",
         "explicacion": "El tema menciona expresamente los elementos y sus relaciones.",
         "correcta": false
       }
@@ -2681,17 +2681,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Garantiza que no habrá que aprender ninguna diferencia.",
+        "texto": "Garantiza que el usuario no tendrá que aprender ninguna diferencia entre el dominio nuevo y el que ya conocía.",
         "explicacion": "La página también advierte que existen limitaciones y diferencias.",
         "correcta": false
       },
       {
-        "texto": "Hace innecesaria toda realimentación de la interfaz.",
+        "texto": "Hace innecesaria toda realimentación de la interfaz, porque el usuario deduce siempre el resultado de cada acción.",
         "explicacion": "La metáfora no sustituye la comunicación del resultado de las acciones.",
         "correcta": false
       },
       {
-        "texto": "Obliga a comprender la arquitectura interna antes de actuar.",
+        "texto": "Obliga a comprender la arquitectura interna del sistema por completo antes de que la persona pueda actuar sobre él.",
         "explicacion": "Su propósito es facilitar el inicio desde algo ya familiar.",
         "correcta": false
       }
@@ -2712,17 +2712,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La existencia de una diferencia invalida necesariamente toda metáfora.",
+        "texto": "La existencia de una sola diferencia con el objeto original invalida necesariamente toda la metáfora empleada.",
         "explicacion": "El ejemplo sigue considerándose útil pese a no coincidir por completo.",
         "correcta": false
       },
       {
-        "texto": "El ordenador debe incorporar un carro físico para conservar la metáfora.",
+        "texto": "El ordenador debe incorporar un carro físico que se desplace, para poder conservar la metáfora de la máquina de escribir.",
         "explicacion": "La correspondencia útil no exige copiar el mecanismo material.",
         "correcta": false
       },
       {
-        "texto": "La tecla funciona únicamente como una metáfora visual global.",
+        "texto": "La tecla funciona únicamente como una metáfora visual global, sin relación con la máquina de escribir original.",
         "explicacion": "El caso ilustra la transferencia verbal y funcional desde una herramienta conocida.",
         "correcta": false
       }
@@ -2774,17 +2774,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Debe limitarse a iconos de 16 píxeles.",
+        "texto": "Debe limitarse a iconos de 16 píxeles de tamaño, sin que pueda ocupar zonas mayores de la interfaz.",
         "explicacion": "El tema no fija ese tamaño y admite pantallas completas.",
         "correcta": false
       },
       {
-        "texto": "Solo puede aparecer como texto sin imágenes.",
+        "texto": "Solo puede aparecer como texto descriptivo, sin imágenes, porque lo visual no puede transmitir analogías.",
         "explicacion": "Eso contradice su carácter visual.",
         "correcta": false
       },
       {
-        "texto": "Tiene que abarcar siempre todo el sistema.",
+        "texto": "Tiene que abarcar siempre todo el sistema, de manera que una metáfora parcial nunca resulta válida.",
         "explicacion": "Ese alcance corresponde a una posible metáfora global, no a toda metáfora visual.",
         "correcta": false
       }
@@ -2805,17 +2805,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Análisis de tareas: enumeración de acciones del usuario.",
+        "texto": "Análisis de tareas: enumeración detallada de las acciones que realiza el usuario para completar cada objetivo.",
         "explicacion": "No se está descomponiendo una tarea.",
         "correcta": false
       },
       {
-        "texto": "Extensibilidad: capacidad de añadir funciones futuras.",
+        "texto": "Extensibilidad: capacidad de añadir funciones futuras a la metáfora sin tener que rediseñar el sistema.",
         "explicacion": "La inmediatez de la comprensión no mide la extensión de la metáfora.",
         "correcta": false
       },
       {
-        "texto": "Memorización literal del código de la aplicación.",
+        "texto": "Memorización literal del código de la aplicación, que permite al usuario predecir su comportamiento al instante.",
         "explicacion": "El caso describe reconocimiento y asociación, no conocimiento de la implementación.",
         "correcta": false
       }
@@ -2898,17 +2898,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La metáfora se vuelve universal por ser visual.",
+        "texto": "La metáfora se vuelve universal por ser visual, de modo que cualquier audiencia la interpreta como se pretende.",
         "explicacion": "Una imagen también depende del conocimiento cultural.",
         "correcta": false
       },
       {
-        "texto": "El objeto adquiere automáticamente el significado pretendido.",
+        "texto": "El objeto adquiere automáticamente el significado pretendido por el desarrollador, sea cual sea la cultura del usuario.",
         "explicacion": "La familiaridad no puede darse por supuesta.",
         "correcta": false
       },
       {
-        "texto": "Solo se perjudica el rendimiento del hardware.",
+        "texto": "Solo se perjudica el rendimiento del hardware de la aplicación, sin que afecte a la comprensión de la audiencia.",
         "explicacion": "El problema afecta a la interpretación humana de la interfaz.",
         "correcta": false
       }
@@ -3022,17 +3022,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Ambas pesan lo mismo y producen idéntico ruido.",
+        "texto": "Ambas pesan lo mismo y producen un ruido idéntico, de modo que la metáfora conserva todas sus propiedades físicas.",
         "explicacion": "Peso y ruido son propiedades físicas ausentes en la versión virtual.",
         "correcta": false
       },
       {
-        "texto": "Solo las reales pueden contener algo.",
+        "texto": "Solo las carpetas reales pueden contener algo; las virtuales son únicamente imágenes sin contenido.",
         "explicacion": "La función de contenedor es la base compartida de la metáfora.",
         "correcta": false
       },
       {
-        "texto": "Solo las virtuales pueden abrirse o moverse.",
+        "texto": "Solo las carpetas virtuales pueden abrirse, anidarse o moverse; las reales de cartón no admiten ninguna de esas acciones.",
         "explicacion": "Esas acciones existen en ambos dominios.",
         "correcta": false
       }
@@ -3053,12 +3053,12 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Como propiedades mágicas añadidas por el sistema.",
+        "texto": "Como propiedades mágicas que el sistema añade, sin relación alguna con el objeto real del que parte la metáfora.",
         "explicacion": "Las propiedades mágicas son capacidades nuevas, como ordenar automáticamente.",
         "correcta": false
       },
       {
-        "texto": "Como prueba de que no existe ninguna analogía útil.",
+        "texto": "Como prueba de que no existe ninguna analogía útil entre la carpeta real y la virtual, por lo que la metáfora fracasa.",
         "explicacion": "La metáfora mantiene otras correspondencias funcionales.",
         "correcta": false
       },
@@ -3084,17 +3084,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Propiedades físicas imprescindibles de una carpeta de cartón.",
+        "texto": "Propiedades físicas imprescindibles de una carpeta de cartón, que la versión virtual debe reproducir fielmente.",
         "explicacion": "No son capacidades ordinarias del objeto real.",
         "correcta": false
       },
       {
-        "texto": "Errores que impiden extender cualquier metáfora.",
+        "texto": "Errores de diseño que impiden extender cualquier metáfora más allá del objeto físico del que proceden.",
         "explicacion": "El tema los presenta como ampliaciones del objeto virtual.",
         "correcta": false
       },
       {
-        "texto": "Metáforas verbales sin ninguna relación con el escritorio.",
+        "texto": "Metáforas verbales sin ninguna relación con el escritorio, que pertenecen a un ámbito distinto de la interfaz.",
         "explicacion": "Son capacidades de objetos dentro de la metáfora del escritorio.",
         "correcta": false
       }
@@ -3208,17 +3208,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Que apague físicamente la pantalla durante la interacción.",
+        "texto": "Que apague físicamente la pantalla durante la interacción, de modo que el usuario deja de ver el sistema.",
         "explicacion": "Invisible se usa en sentido cognitivo, no óptico.",
         "correcta": false
       },
       {
-        "texto": "Que oculte las consecuencias de todas las acciones.",
+        "texto": "Que oculte al usuario las consecuencias de todas las acciones, para que no tenga que preocuparse por los resultados.",
         "explicacion": "La falta de realimentación dificultaría comprender el sistema.",
         "correcta": false
       },
       {
-        "texto": "Que obligue a memorizar la implementación interna.",
+        "texto": "Que obligue al usuario a memorizar la implementación interna del sistema para poder utilizarlo con eficacia.",
         "explicacion": "Eso aumentaría, en vez de reducir, el esfuerzo cognitivo.",
         "correcta": false
       }
@@ -3239,17 +3239,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "En la extensión no intuitiva de la metáfora.",
+        "texto": "En la extensión no intuitiva de la metáfora, cuando ya está elegida y se amplía con funciones nuevas.",
         "explicacion": "Todavía no se ha generado ni extendido ninguna metáfora.",
         "correcta": false
       },
       {
-        "texto": "En la elección de una asociación inadecuada.",
+        "texto": "En la elección de una asociación inadecuada, cuando ya se ha seleccionado una metáfora y se aplica al sistema.",
         "explicacion": "Analizar funciones no constituye por sí mismo una asociación.",
         "correcta": false
       },
       {
-        "texto": "En la representación final de cada acción.",
+        "texto": "En la representación final de cada acción, cuando ya se han elegido metáforas y solo falta dibujarlas.",
         "explicacion": "Eso llega después de comprender funciones, usuarios y alternativas.",
         "correcta": false
       }
@@ -3301,17 +3301,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Preguntar solo al programador y no mostrar nada a usuarios.",
+        "texto": "Preguntar solo al programador del sistema y no mostrar ningún prototipo ni material a los usuarios finales.",
         "explicacion": "La fase exige observar cómo entienden y utilizan la propuesta.",
         "correcta": false
       },
       {
-        "texto": "Elegir primero una metáfora y prohibir cualquier revisión.",
+        "texto": "Elegir primero una metáfora de forma definitiva y prohibir cualquier revisión posterior por parte del equipo.",
         "explicacion": "La investigación de problemas debe informar la generación posterior.",
         "correcta": false
       },
       {
-        "texto": "Medir únicamente el tiempo de arranque del ordenador.",
+        "texto": "Medir únicamente el tiempo de arranque del ordenador y el consumo de memoria de la aplicación durante su uso.",
         "explicacion": "Ese dato no descubre cómo comprende el usuario la funcionalidad.",
         "correcta": false
       }
@@ -3332,17 +3332,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Solo la estructura del código fuente del nuevo sistema.",
+        "texto": "Solo la estructura del código fuente del nuevo sistema, sin atender a cómo se realizan hoy las tareas.",
         "explicacion": "La metodología busca herramientas y prácticas familiares de los usuarios.",
         "correcta": false
       },
       {
-        "texto": "Exclusivamente metáforas ya descartadas por la audiencia.",
+        "texto": "Exclusivamente metáforas que la audiencia ya ha descartado en otros proyectos, para no volver a utilizarlas.",
         "explicacion": "Se investigan tareas, problemas y herramientas reales.",
         "correcta": false
       },
       {
-        "texto": "Únicamente objetos sin relación con las dificultades detectadas.",
+        "texto": "Únicamente objetos cotidianos que no tengan relación con las dificultades detectadas en el análisis de los usuarios.",
         "explicacion": "Las candidatas deben ayudar precisamente con lo difícil de comprender.",
         "correcta": false
       }
@@ -3363,17 +3363,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Las más vistosas aunque no guarden relación con la tarea.",
+        "texto": "Las más vistosas y llamativas visualmente, aunque no guarden ninguna relación con la tarea que realiza el usuario.",
         "explicacion": "La decoración no aporta por sí sola una analogía útil.",
         "correcta": false
       },
       {
-        "texto": "Las que exigen conocer previamente la implementación nueva.",
+        "texto": "Las que exigen conocer previamente la implementación del sistema nuevo para poder interpretarlas correctamente.",
         "explicacion": "La candidata debe apoyarse en conocimiento familiar.",
         "correcta": false
       },
       {
-        "texto": "Las que reproducen todos los inconvenientes del proceso tradicional.",
+        "texto": "Las que reproducen fielmente todos los inconvenientes del proceso tradicional, de modo que el usuario los reconoce.",
         "explicacion": "Se busca facilitar la comprensión, no copiar indiscriminadamente.",
         "correcta": false
       }
@@ -3394,17 +3394,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Solo su parecido cromático con el objeto real.",
+        "texto": "Solo su parecido cromático con el objeto real, sin atender a las relaciones que ofrece ni a su representación.",
         "explicacion": "La evaluación abarca más dimensiones que la apariencia.",
         "correcta": false
       },
       {
-        "texto": "Únicamente la velocidad del procesador.",
+        "texto": "Únicamente la velocidad del procesador y el espacio en disco que requiere la aplicación, no la metáfora en sí.",
         "explicacion": "Es una medida técnica ajena a los criterios citados.",
         "correcta": false
       },
       {
-        "texto": "La obligación de que toda metáfora sea exclusivamente sonora.",
+        "texto": "La obligación de que toda metáfora sea exclusivamente sonora, para que no dependa de la vista del usuario.",
         "explicacion": "La metáfora ideal puede asociar representación visual, auditiva y palabras.",
         "correcta": false
       }
@@ -3456,17 +3456,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Ambos son ejemplos de una definición funcional completa.",
+        "texto": "Ambos son ejemplos de una definición funcional completa, que describe correctamente lo que el sistema ofrece al usuario.",
         "explicacion": "Son fallos de la metáfora, no análisis previos de funciones.",
         "correcta": false
       },
       {
-        "texto": "El reproductor es una propiedad física ausente y el disquete una metáfora global.",
+        "texto": "El control de la impresora es una propiedad física ausente del objeto real, y el disquete es una metáfora global del sistema operativo.",
         "explicacion": "Esas categorías no describen los problemas mostrados.",
         "correcta": false
       },
       {
-        "texto": "Ambos demuestran que cualquier metáfora conocida es necesariamente correcta.",
+        "texto": "Ambos casos demuestran que cualquier metáfora conocida por el usuario es necesariamente correcta y no requiere ninguna evaluación.",
         "explicacion": "Los ejemplos se incluyen precisamente para mostrar errores posibles.",
         "correcta": false
       }
@@ -3487,17 +3487,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Asociar objetos solo a sonidos y acciones solo a colores.",
+        "texto": "Asociar los objetos únicamente a sonidos y las acciones únicamente a colores, evitando cualquier objeto o verbo familiar.",
         "explicacion": "Esa restricción no aparece en el método.",
         "correcta": false
       },
       {
-        "texto": "Asociar toda función a un lugar sin utilizar objetos ni actividades.",
+        "texto": "Asociar toda función del sistema a un lugar físico concreto, sin utilizar objetos familiares ni actividades cotidianas.",
         "explicacion": "El tema admite metáforas de objetos, actividades y lugares.",
         "correcta": false
       },
       {
-        "texto": "Asociar el código fuente a palabras elegidas al azar.",
+        "texto": "Asociar el código fuente del sistema a palabras elegidas al azar, para que ninguna analogía condicione al usuario.",
         "explicacion": "La asociación debe apoyarse en conocimiento familiar y relaciones comprensibles.",
         "correcta": false
       }
@@ -3549,17 +3549,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Elegir colores al azar, programar, omitir acciones y preguntar al final.",
+        "texto": "Elegir colores al azar, programar la aplicación, omitir las acciones del usuario y preguntar su opinión solo al final.",
         "explicacion": "No corresponde a la metodología presentada.",
         "correcta": false
       },
       {
-        "texto": "Representar acciones, borrar los objetos y después definir requisitos.",
+        "texto": "Representar primero las acciones, borrar los objetos que no encajen y después definir los requisitos del sistema.",
         "explicacion": "Invierte y elimina pasos esenciales del ejercicio.",
         "correcta": false
       },
       {
-        "texto": "Escoger únicamente verbos sin identificar los objetos implicados.",
+        "texto": "Escoger únicamente verbos de acción para toda la biblioteca, sin identificar los objetos implicados ni representarlos visualmente.",
         "explicacion": "El ejercicio comienza por estantería, álbum, hoja y foto.",
         "correcta": false
       }
@@ -3580,17 +3580,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Estantería, álbum, hoja y foto.",
+        "texto": "Estantería, álbum, hoja, carpeta, foto y marco, que representan objetos de la biblioteca.",
         "explicacion": "Esos son los objetos escogidos en el primer paso.",
         "correcta": false
       },
       {
-        "texto": "Casa, plaza, museo y ciudad.",
+        "texto": "Casa, plaza, museo, ciudad, calle y barrio, que son lugares y no acciones del sistema.",
         "explicacion": "Son ejemplos de lugares de la página 150.",
         "correcta": false
       },
       {
-        "texto": "Peso, ruido, tamaño y material.",
+        "texto": "Peso, ruido, tamaño, material, color y textura, que son propiedades físicas de los objetos.",
         "explicacion": "No es la lista de acciones del ejercicio.",
         "correcta": false
       }
@@ -3611,17 +3611,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Es desconocida para la mayoría y destruye siempre de inmediato.",
+        "texto": "Es una imagen desconocida para la mayoría de los usuarios y destruye siempre de inmediato lo que recibe.",
         "explicacion": "Contradice la familiaridad y la posibilidad de reciclaje indicadas.",
         "correcta": false
       },
       {
-        "texto": "Representa exclusivamente el envío de información a distancia.",
+        "texto": "Representa exclusivamente el envío de información a distancia, como si fuese un buzón de correo del sistema.",
         "explicacion": "Esa función se asocia a la metáfora del correo.",
         "correcta": false
       },
       {
-        "texto": "Sirve para seleccionar una zona de un dibujo con precisión.",
+        "texto": "Sirve para seleccionar con precisión una zona de un dibujo y copiarla, igual que una herramienta de recorte.",
         "explicacion": "Esa no es la función atribuida a la papelera.",
         "correcta": false
       }
@@ -3673,17 +3673,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Mover el objeto a otra carpeta.",
+        "texto": "Mover el objeto seleccionado a otra carpeta o ubicación dentro del sistema de archivos.",
         "explicacion": "La imagen de pintura no comunica esa acción.",
         "correcta": false
       },
       {
-        "texto": "Enviar el objeto por correo electrónico.",
+        "texto": "Enviar el objeto seleccionado por correo electrónico a otro usuario del sistema.",
         "explicacion": "El correo utiliza otro dominio metafórico.",
         "correcta": false
       },
       {
-        "texto": "Ordenar alfabéticamente todas las carpetas.",
+        "texto": "Ordenar alfabéticamente todas las carpetas y archivos que aparecen en la ventana abierta.",
         "explicacion": "Esa es una capacidad virtual distinta.",
         "correcta": false
       }
@@ -3704,17 +3704,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Porque no permite pasar información entre aplicaciones.",
+        "texto": "Porque no permite pasar información entre aplicaciones, que es justo la función que debería cumplir el objeto.",
         "explicacion": "Precisamente pretende representar ese componente del sistema operativo.",
         "correcta": false
       },
       {
-        "texto": "Porque representa perfectamente todas las capacidades del sistema.",
+        "texto": "Porque representa perfectamente todas las capacidades del sistema, lo que hace innecesaria cualquier otra metáfora.",
         "explicacion": "El problema es que deja aspectos sin cubrir que deben aprenderse.",
         "correcta": false
       },
       {
-        "texto": "Porque ninguna persona reconoce un portapapeles como objeto.",
+        "texto": "Porque ninguna persona reconoce un portapapeles como objeto de oficina, por lo que no consigue intuirse.",
         "explicacion": "La crítica se dirige a su cobertura funcional, no a una incomprensión absoluta.",
         "correcta": false
       }
@@ -3735,12 +3735,12 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La arquitectura interna es lo que más valora el usuario, así que el planteamiento es correcto.",
+        "texto": "La arquitectura interna es lo que más valora el usuario, así que el planteamiento del equipo es correcto y la interfaz puede esperar.",
         "explicacion": "El tema dice justo lo contrario: el usuario no está interesado en la estructura interna.",
         "correcta": false
       },
       {
-        "texto": "La interfaz solo importa en aplicaciones de entretenimiento, no en sistemas profesionales.",
+        "texto": "La interfaz solo importa en aplicaciones de entretenimiento y de consumo, no en los sistemas profesionales o corporativos.",
         "explicacion": "El tema no limita la importancia de la interfaz a un tipo de aplicación.",
         "correcta": false
       },
@@ -3797,17 +3797,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Interfaces más consistentes con el modelo mental del usuario.",
+        "texto": "Interfaces más consistentes con el modelo mental del usuario, porque los datos y las funciones reflejan cómo piensa él.",
         "explicacion": "Al no considerar al usuario desde el principio, ocurre lo contrario.",
         "correcta": false
       },
       {
-        "texto": "Interfaces más fáciles de traducir a otros idiomas.",
+        "texto": "Interfaces más fáciles de traducir a otros idiomas y de adaptar a distintas culturas sin rediseñar los datos.",
         "explicacion": "El tema no relaciona este orden de trabajo con la internacionalización.",
         "correcta": false
       },
       {
-        "texto": "Interfaces que se pueden cambiar por completo sin coste al final del desarrollo.",
+        "texto": "Interfaces que se pueden cambiar por completo y sin coste alguno al final del desarrollo, aunque los datos ya estén fijados.",
         "explicacion": "La página 171 dice que, al final, solo se pueden cambiar pequeños detalles.",
         "correcta": false
       }
@@ -3828,17 +3828,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Especificar, diseñar funciones y datos, programar y, al terminar, diseñar la interfaz.",
+        "texto": "Especificar, diseñar funciones y datos, programar el sistema y, solo al terminar, diseñar la interfaz que lo presente al usuario.",
         "explicacion": "La página 172 rechaza explícitamente este orden.",
         "correcta": false
       },
       {
-        "texto": "Programar primero un prototipo funcional completo y decidir la interfaz según cómo haya quedado el código.",
+        "texto": "Programar primero un prototipo funcional completo y decidir la interfaz según cómo haya quedado el código, adaptando al usuario a él.",
         "explicacion": "Subordina la interfaz al código, que es lo que el tema quiere evitar.",
         "correcta": false
       },
       {
-        "texto": "Diseñar la interfaz y las funciones por separado, sin que una guíe a la otra.",
+        "texto": "Diseñar la interfaz y las funciones por equipos separados, sin que una guíe a la otra y uniéndolas solo al final.",
         "explicacion": "El tema pide que la idea de la interfaz guíe las especificaciones funcionales.",
         "correcta": false
       }
@@ -3859,17 +3859,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "No; los sistemas interactivos requieren abandonar por completo la Ingeniería del Software.",
+        "texto": "No; los sistemas interactivos requieren abandonar por completo la Ingeniería del Software y sus técnicas de diseño tradicionales.",
         "explicacion": "El tema no las descarta: las adapta.",
         "correcta": false
       },
       {
-        "texto": "Sí, y deben aplicarse sin ningún cambio respecto al diseño clásico.",
+        "texto": "Sí, y deben aplicarse sin ningún cambio respecto al diseño clásico, porque los sistemas interactivos no tienen peculiaridades.",
         "explicacion": "La página 173 indica que hay que modificar algunos aspectos.",
         "correcta": false
       },
       {
-        "texto": "Solo en la fase de programación, nunca en el diseño.",
+        "texto": "Solo en la fase de programación del sistema, nunca en la fase de diseño ni en la de evaluación.",
         "explicacion": "El tema habla de adaptar los métodos de diseño.",
         "correcta": false
       }
@@ -3890,17 +3890,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Optimización del compilador, normalización de la base de datos y despliegue.",
+        "texto": "Optimización del compilador, normalización de la base de datos, pruebas unitarias y despliegue en el servidor de producción.",
         "explicacion": "Son tareas técnicas que no aparecen entre los aspectos de interacción.",
         "correcta": false
       },
       {
-        "texto": "Elección del lenguaje de programación, licencias y presupuesto.",
+        "texto": "Elección del lenguaje de programación, gestión de licencias, presupuesto del proyecto y planificación del equipo de desarrollo.",
         "explicacion": "El tema no menciona estos aspectos en este punto.",
         "correcta": false
       },
       {
-        "texto": "Únicamente la evaluación final con usuarios, una vez terminado el producto.",
+        "texto": "Únicamente la evaluación final con usuarios, una vez terminado el producto, sin análisis de tareas ni prototipos previos.",
         "explicacion": "La evaluación es solo uno de los aspectos, y no se reduce al final.",
         "correcta": false
       }
@@ -3952,17 +3952,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Solo la velocidad del procesador y el tamaño del ejecutable.",
+        "texto": "Solo la velocidad del procesador, el tamaño del ejecutable y el consumo de memoria del sistema durante la ejecución.",
         "explicacion": "No forman parte de los factores de implementación de tareas del tema.",
         "correcta": false
       },
       {
-        "texto": "Únicamente la paleta de colores y el logotipo.",
+        "texto": "Únicamente la paleta de colores, el logotipo y la tipografía corporativa que identifica la marca de la aplicación.",
         "explicacion": "Son aspectos visuales parciales; el tema incluye interacción, entradas y errores.",
         "correcta": false
       },
       {
-        "texto": "El precio de venta y la campaña de marketing.",
+        "texto": "El precio de venta, la campaña de marketing y la estrategia de distribución del producto entre los clientes.",
         "explicacion": "Son decisiones comerciales, ajenas a la implementación de las tareas.",
         "correcta": false
       }
@@ -3983,17 +3983,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Cualquier función interna del código, aunque el usuario no la perciba.",
+        "texto": "Cualquier función interna del código de la aplicación, aunque el usuario no la perciba ni participe en ella.",
         "explicacion": "La tarea se define desde la actividad de la persona, no desde el código.",
         "correcta": false
       },
       {
-        "texto": "Un botón concreto de la interfaz.",
+        "texto": "Un botón concreto de la interfaz que el usuario pulsa para ejecutar una orden determinada.",
         "explicacion": "Un botón es un elemento de la interfaz, no una unidad de trabajo.",
         "correcta": false
       },
       {
-        "texto": "Un error que comete el usuario al usar el sistema.",
+        "texto": "Un error que comete el usuario al usar el sistema y que debe corregirse mediante un rediseño de la interfaz.",
         "explicacion": "Los errores no definen el concepto de tarea.",
         "correcta": false
       }
@@ -4014,17 +4014,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Eliminar la necesidad de evaluar la usabilidad.",
+        "texto": "Eliminar la necesidad de evaluar la usabilidad del sistema, porque el análisis de tareas la garantiza por sí solo.",
         "explicacion": "Al contrario: el análisis facilita esa evaluación.",
         "correcta": false
       },
       {
-        "texto": "Reducir el tamaño del código fuente.",
+        "texto": "Reducir el tamaño del código fuente y el tiempo de compilación de la aplicación durante el desarrollo.",
         "explicacion": "El tema no menciona este beneficio.",
         "correcta": false
       },
       {
-        "texto": "Garantizar que el sistema no tendrá nunca errores de programación.",
+        "texto": "Garantizar que el sistema no tendrá nunca errores de programación, ya que las tareas quedan definidas con total precisión.",
         "explicacion": "El análisis de tareas trata del uso, no de la corrección del código.",
         "correcta": false
       }
@@ -4169,17 +4169,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Un objetivo del usuario.",
+        "texto": "Un objetivo del usuario, es decir, lo que pretende conseguir con el sistema.",
         "explicacion": "El usuario no quiere comprobar límites: quiere grabar un programa.",
         "correcta": false
       },
       {
-        "texto": "Información requerida.",
+        "texto": "Información requerida por el usuario antes de comenzar la tarea.",
         "explicacion": "Es algo que hay que hacer, no un dato que se necesita.",
         "correcta": false
       },
       {
-        "texto": "Una regla de selección de GOMS.",
+        "texto": "Una regla de selección de GOMS que elige entre varios métodos posibles.",
         "explicacion": "El ejemplo no usa GOMS; es una acción del análisis.",
         "correcta": false
       }
@@ -4200,17 +4200,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Análisis basado en conocimiento.",
+        "texto": "Análisis basado en el conocimiento que el usuario necesita para realizar la tarea.",
         "explicacion": "Este se centra en el conocimiento del usuario y su organización.",
         "correcta": false
       },
       {
-        "texto": "Descomposición de tareas.",
+        "texto": "Descomposición jerárquica de tareas en subtareas cada vez más simples.",
         "explicacion": "Esta divide tareas en otras más simples.",
         "correcta": false
       },
       {
-        "texto": "Wireframing.",
+        "texto": "Wireframing, que esboza la estructura de las pantallas y sus elementos.",
         "explicacion": "Es una técnica de diseño de pantallas, no un método de análisis de tareas.",
         "correcta": false
       }
@@ -4293,17 +4293,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Que deben repetirse hasta que hierva el agua.",
+        "texto": "Que deben repetirse una y otra vez hasta que hierva el agua del cazo.",
         "explicacion": "La repetición se indicaría con un asterisco.",
         "correcta": false
       },
       {
-        "texto": "Que son alternativas excluyentes.",
+        "texto": "Que son alternativas excluyentes entre sí, de las que solo se ejecuta una por vez.",
         "explicacion": "Las alternativas se marcan con un círculo.",
         "correcta": false
       },
       {
-        "texto": "Que son tareas que el usuario puede saltarse.",
+        "texto": "Que son tareas opcionales que el usuario puede saltarse sin afectar al resultado final.",
         "explicacion": "La doble línea no indica que la tarea sea opcional.",
         "correcta": false
       }
@@ -4355,17 +4355,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Antes de llenar el cazo.",
+        "texto": "Antes de llenar el cazo, justo al comenzar el plan de la tarea principal.",
         "explicacion": "Contradice la secuencia del plan 1.",
         "correcta": false
       },
       {
-        "texto": "A la vez que se sirve el té (tarea 6).",
+        "texto": "A la vez que se sirve el té (tarea 6), de manera simultánea con ella.",
         "explicacion": "La tarea 6 pertenece al plan 0 y ocurre después.",
         "correcta": false
       },
       {
-        "texto": "Solo si la tetera estaba llena.",
+        "texto": "Solo si la tetera estaba llena antes de empezar a calentar el agua del cazo.",
         "explicacion": "Esa condición afecta a la tarea 2 del plan 0, no a la 1.5.",
         "correcta": false
       }
@@ -4386,17 +4386,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Un lenguaje de programación de interfaces gráficas.",
+        "texto": "Un lenguaje de programación de interfaces gráficas creado por Card, Moran y Newell (1983) para generar ventanas, menús y controles a partir de órdenes.",
         "explicacion": "GOMS es una técnica de modelado, no un lenguaje de programación.",
         "correcta": false
       },
       {
-        "texto": "Una norma ISO de accesibilidad web.",
+        "texto": "Una norma ISO de accesibilidad web que establece los criterios de conformidad de los sitios para usuarios con discapacidad visual, auditiva o motora.",
         "explicacion": "El tema no lo presenta como norma de accesibilidad.",
         "correcta": false
       },
       {
-        "texto": "Una herramienta para crear mockups de alta fidelidad.",
+        "texto": "Una herramienta para crear mockups de alta fidelidad con colores, tipografías y componentes reales, que permite exportar el diseño a código para el desarrollo.",
         "explicacion": "Las herramientas de mockups son otras (Photoshop, Illustrator…).",
         "correcta": false
       }
@@ -4417,17 +4417,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Objetivos: lo que el usuario pretende conseguir.",
+        "texto": "Objetivos: lo que el usuario pretende conseguir al cerrar la ventana de la aplicación.",
         "explicacion": "El objetivo es cerrar la ventana; estas son formas de lograrlo.",
         "correcta": false
       },
       {
-        "texto": "Reglas de selección.",
+        "texto": "Reglas de selección que eligen la tecla o el menú según el usuario.",
         "explicacion": "Las reglas deciden cuál de los métodos se usa.",
         "correcta": false
       },
       {
-        "texto": "Tareas unitarias de un análisis jerárquico.",
+        "texto": "Tareas unitarias de un análisis jerárquico, que ya no se descomponen más.",
         "explicacion": "Es terminología de otra notación.",
         "correcta": false
       }
@@ -4448,17 +4448,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Un operador.",
+        "texto": "Un operador, es decir, una acción básica que el usuario ejecuta.",
         "explicacion": "Los operadores son acciones básicas como pulsar teclas.",
         "correcta": false
       },
       {
-        "texto": "Un objetivo.",
+        "texto": "Un objetivo, es decir, el resultado que el usuario desea alcanzar.",
         "explicacion": "El objetivo del ejemplo es CERRAR-VENTANA.",
         "correcta": false
       },
       {
-        "texto": "Un plan de análisis jerárquico.",
+        "texto": "Un plan de análisis jerárquico que ordena la ejecución de las subtareas.",
         "explicacion": "Es GOMS, no la notación de análisis jerárquico.",
         "correcta": false
       }
@@ -4479,17 +4479,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Nada: el sketch es la fase donde se fija la paleta definitiva.",
+        "texto": "Nada: el sketch es la fase donde se fija la paleta definitiva, así que la decisión tomada es la correcta.",
         "explicacion": "La paleta y los detalles visuales se definen en el mockup.",
         "correcta": false
       },
       {
-        "texto": "El sketch debería hacerse directamente en código.",
+        "texto": "El sketch debería hacerse directamente en código para comprobar cuanto antes el comportamiento real de los botones.",
         "explicacion": "El tema lo describe con lápiz y papel.",
         "correcta": false
       },
       {
-        "texto": "El sketch debe hacerse solo cuando el prototipo está terminado.",
+        "texto": "El sketch debe hacerse solo cuando el prototipo está terminado, para poder documentar cómo ha quedado el producto.",
         "explicacion": "Es la primera fase, no la última.",
         "correcta": false
       }
@@ -4510,17 +4510,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "El código CSS definitivo de cada componente.",
+        "texto": "El código CSS definitivo de cada componente, con sus medidas, márgenes, colores finales y tipografías ya decididos antes de dibujar la primera idea.",
         "explicacion": "Corresponde a fases mucho más avanzadas.",
         "correcta": false
       },
       {
-        "texto": "Las pruebas de rendimiento del servidor.",
+        "texto": "Las pruebas de rendimiento del servidor, junto con los tiempos de respuesta medidos en producción y los resultados de la carga de trabajo prevista.",
         "explicacion": "No forma parte del boceto de la interfaz.",
         "correcta": false
       },
       {
-        "texto": "Los textos legales definitivos de la aplicación.",
+        "texto": "Los textos legales definitivos de la aplicación, con las políticas de privacidad y condiciones de uso ya redactadas.",
         "explicacion": "El sketch trabaja ideas generales, no contenidos definitivos.",
         "correcta": false
       }
@@ -4541,17 +4541,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Negativamente: el sketch no debe llevar ninguna anotación.",
+        "texto": "Negativamente: el sketch no debe llevar ninguna anotación escrita, porque las notas restan claridad a las ideas generales.",
         "explicacion": "El tema pide documentar lo hecho con anotaciones.",
         "correcta": false
       },
       {
-        "texto": "Es irrelevante, porque los sketches se tiran al terminar.",
+        "texto": "Es irrelevante, porque los sketches se tiran al terminar y no se vuelven a consultar para otras interfaces.",
         "explicacion": "El tema dice que las anotaciones pueden reutilizarse en otras interfaces.",
         "correcta": false
       },
       {
-        "texto": "Solo es válido si las notas se pasan a un documento formal antes de seguir.",
+        "texto": "Solo es válido si las notas se pasan a un documento formal y se aprueban por el cliente antes de seguir bocetando.",
         "explicacion": "El tema no exige ese paso.",
         "correcta": false
       }
@@ -4603,17 +4603,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Ninguno: un wireframe debe parecerse al máximo al producto final.",
+        "texto": "Ninguno: un wireframe debe parecerse al máximo al producto final, con colores corporativos, fotos reales y la tipografía definitiva.",
         "explicacion": "Ese es el papel del mockup de alta fidelidad.",
         "correcta": false
       },
       {
-        "texto": "Que el wireframe debe ser siempre a color para distinguir zonas.",
+        "texto": "Que el wireframe debe ser siempre a color y con varias tipografías, para distinguir mejor las zonas de la pantalla.",
         "explicacion": "El tema pide tonos de gris.",
         "correcta": false
       },
       {
-        "texto": "Que nunca debe incluir logo ni navegación.",
+        "texto": "Que nunca debe incluir logo ni navegación, porque esos elementos solo se añaden en la fase del prototipo final.",
         "explicacion": "El tema cita el logo y la navegación como elementos habituales.",
         "correcta": false
       }
@@ -4634,17 +4634,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Porque es la resolución exacta de todos los monitores.",
+        "texto": "Porque es la resolución exacta de todos los monitores actuales, por lo que cualquier diseño encaja sin ajustes.",
         "explicacion": "El tema no lo justifica así.",
         "correcta": false
       },
       {
-        "texto": "Porque obliga a usar exactamente 7 columnas.",
+        "texto": "Porque obliga a usar exactamente 7 columnas de igual ancho, sin permitir ninguna otra división del espacio.",
         "explicacion": "960 no es divisible entre 7.",
         "correcta": false
       },
       {
-        "texto": "Porque así se evita tener que diseñar para móvil.",
+        "texto": "Porque así se evita tener que diseñar para dispositivos móviles y se reutiliza el mismo diseño en cualquier pantalla.",
         "explicacion": "El tema pide también wireframes para dispositivos pequeños.",
         "correcta": false
       }
@@ -4696,17 +4696,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Con colores distintos para cada nivel de información.",
+        "texto": "Con colores distintos para cada nivel de información, ya que el wireframe debe distinguir las zonas por su tono.",
         "explicacion": "El wireframe no usa colores.",
         "correcta": false
       },
       {
-        "texto": "Con fotografías que señalen lo más importante.",
+        "texto": "Con fotografías reales que señalen lo más importante y sirvan para destacar visualmente cada una de las secciones.",
         "explicacion": "El wireframe evita las imágenes.",
         "correcta": false
       },
       {
-        "texto": "Con animaciones que llamen la atención.",
+        "texto": "Con animaciones y transiciones que llamen la atención del usuario sobre los elementos más relevantes de la página.",
         "explicacion": "El tema no lo propone para un wireframe.",
         "correcta": false
       }
@@ -4727,17 +4727,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "El prototipo es más abstracto que el sketch.",
+        "texto": "El prototipo es más abstracto que el sketch, porque solo recoge las ideas generales con trazos rápidos.",
         "explicacion": "Es al revés: el prototipo es el más concreto.",
         "correcta": false
       },
       {
-        "texto": "El prototipo no sirve para probar la experiencia de usuario.",
+        "texto": "El prototipo no sirve para probar la experiencia de usuario, ya que solo muestra el aspecto visual estático del diseño.",
         "explicacion": "El tema dice que es necesario precisamente para eso.",
         "correcta": false
       },
       {
-        "texto": "El prototipo es siempre la primera fase del diseño.",
+        "texto": "El prototipo es siempre la primera fase del diseño, anterior al sketch, al wireframe y al mockup de la interfaz.",
         "explicacion": "Suele ser la última de las cuatro fases.",
         "correcta": false
       }
@@ -4758,17 +4758,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "De alta fidelidad.",
+        "texto": "De alta fidelidad: casi idéntico al producto, con todos los detalles ya definidos.",
         "explicacion": "La alta fidelidad es casi el producto final.",
         "correcta": false
       },
       {
-        "texto": "Un wireframe.",
+        "texto": "Un wireframe: un esquema en grises sin estilo visual ni detalles de diseño.",
         "explicacion": "El wireframe no incluye estilo visual.",
         "correcta": false
       },
       {
-        "texto": "Un prototipo navegable.",
+        "texto": "Un prototipo navegable: una versión interactiva que permite probar la interacción real.",
         "explicacion": "El prototipo es interactivo; el mockup suele ser estático.",
         "correcta": false
       }
@@ -4789,17 +4789,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Son siempre navegables y permiten probar la validación de formularios.",
+        "texto": "Son siempre navegables y permiten probar la validación de formularios, los iconos y las transiciones entre pantallas.",
         "explicacion": "Eso corresponde al prototipo.",
         "correcta": false
       },
       {
-        "texto": "No incluyen colores ni tipografías.",
+        "texto": "No incluyen colores ni tipografías, ya que solo representan la estructura de la pantalla en tonos de gris.",
         "explicacion": "Eso describe un wireframe.",
         "correcta": false
       },
       {
-        "texto": "Exigen que todos los textos e imágenes sean ya los definitivos.",
+        "texto": "Exigen que todos los textos e imágenes sean ya los definitivos, porque no pueden modificarse una vez elaborados.",
         "explicacion": "La página 206 dice que no tienen por qué serlo.",
         "correcta": false
       }
@@ -4820,17 +4820,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Sustituye por completo las pruebas de usabilidad con prototipos.",
+        "texto": "Sustituye por completo las pruebas de usabilidad con prototipos, ya que el mockup permite validar toda la interacción.",
         "explicacion": "El tema reserva las pruebas de usabilidad a los prototipos.",
         "correcta": false
       },
       {
-        "texto": "Es más difícil de presentar a quien no es diseñador.",
+        "texto": "Es más difícil de presentar a quien no es diseñador, porque resulta demasiado abstracto para entenderse con facilidad.",
         "explicacion": "Es al revés: es más fácil de presentar, sobre todo en alta fidelidad.",
         "correcta": false
       },
       {
-        "texto": "Hace los cambios de diseño más rígidos.",
+        "texto": "Hace los cambios de diseño más rígidos y costosos, porque cada elemento ya está programado en código real.",
         "explicacion": "El tema dice que es flexible y facilita los cambios.",
         "correcta": false
       }
@@ -4851,17 +4851,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Son buenas prácticas, porque hacen el mockup más realista.",
+        "texto": "Son buenas prácticas que recomienda el tema, porque hacen el mockup más realista y atractivo para el cliente.",
         "explicacion": "El tema pide quitar lo que no aporta valor o dificulta el código.",
         "correcta": false
       },
       {
-        "texto": "Solo sería un problema si el mockup fuera de baja fidelidad.",
+        "texto": "Solo sería un problema si el mockup fuera de baja fidelidad, ya que en alta fidelidad estos efectos son siempre adecuados.",
         "explicacion": "El tema no hace esa distinción.",
         "correcta": false
       },
       {
-        "texto": "No importa, porque la alineación se decide en el prototipo.",
+        "texto": "No importa, porque la alineación y los efectos se deciden más adelante, cuando se construya el prototipo funcional.",
         "explicacion": "No usar rejillas es un punto débil del propio mockup.",
         "correcta": false
       }
@@ -4882,17 +4882,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Ver la paleta de colores.",
+        "texto": "Ver la paleta de colores y comprobar cómo se combinan en cada pantalla.",
         "explicacion": "Un mockup ya incluye colores.",
         "correcta": false
       },
       {
-        "texto": "Ver la tipografía.",
+        "texto": "Ver la tipografía elegida y su jerarquía de tamaños en la interfaz.",
         "explicacion": "Un mockup ya incluye tipografía.",
         "correcta": false
       },
       {
-        "texto": "Distribuir el espacio de la pantalla.",
+        "texto": "Distribuir el espacio de la pantalla y colocar cada elemento en su posición definitiva.",
         "explicacion": "Eso ya se trabaja en el wireframe.",
         "correcta": false
       }
@@ -4944,17 +4944,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Que lo haga solo el equipo de desarrollo, sin el cliente.",
+        "texto": "Que lo haga solo el equipo de desarrollo, sin la participación del cliente ni del equipo de diseño gráfico.",
         "explicacion": "El tema pide la participación del cliente y de diseño.",
         "correcta": false
       },
       {
-        "texto": "Diseñarlo a escala reducida y sin navegación para ahorrar tiempo.",
+        "texto": "Diseñarlo a escala reducida y sin estructura de navegación para ahorrar tiempo, ya que se detallará en el producto final.",
         "explicacion": "El tema pide tamaño real y estructura de navegación.",
         "correcta": false
       },
       {
-        "texto": "Que cada sección pueda tener un objetivo ambiguo para dar libertad al usuario.",
+        "texto": "Que cada sección pueda tener un objetivo ambiguo, con el fin de dejar libertad al usuario para interpretarlo como prefiera.",
         "explicacion": "El objetivo de cada sección debe quedar claro.",
         "correcta": false
       }
@@ -4975,17 +4975,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Consistencia: la estética de Google no coincide con los colores minerales de la aplicación.",
+        "texto": "Consistencia: la estética de Google no coincide con los colores minerales de la aplicación, por lo que el botón rompe la coherencia visual de la pantalla.",
         "explicacion": "La discrepancia visual es secundaria; el problema crítico es la restricción impuesta a la libertad de navegación.",
         "correcta": false
       },
       {
-        "texto": "Tiempo de respuesta: el servidor tarda en validar las credenciales de Google.",
+        "texto": "Tiempo de respuesta: el servidor tarda demasiado en validar las credenciales de Google y el usuario no recibe realimentación durante la espera.",
         "explicacion": "El tiempo de validación ocurre después; el bloqueo inicial es una decisión de arquitectura de interacción.",
         "correcta": false
       },
       {
-        "texto": "Capacidad de sustitución: el usuario no puede cambiar el tipo de letra del botón.",
+        "texto": "Capacidad de sustitución: el usuario no puede cambiar el tipo de letra ni el tamaño del botón, ni adaptarlo a sus preferencias de lectura.",
         "explicacion": "La capacidad de sustitución (p. 40) alude a valores equivalentes de entrada/salida, no al muro de autenticación.",
         "correcta": false
       }
@@ -5037,17 +5037,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Disminución de la fatiga muscular ocular por descansar la vista ante el blanco.",
+        "texto": "Disminución de la fatiga muscular ocular, ya que el usuario descansa la vista ante el blanco durante los segundos que dura la carga inicial de la aplicación.",
         "explicacion": "En IPO la ausencia de respuesta visual incrementa la incertidumbre y la ansiedad, no constituye descanso ergonómico.",
         "correcta": false
       },
       {
-        "texto": "Aumento de la memoria a largo plazo al anticipar la carga del contenido.",
+        "texto": "Aumento de la memoria a largo plazo del usuario, al anticipar la carga del contenido y asociar la espera con la información que aparecerá después.",
         "explicacion": "No existe correlación pedagógica entre pantallas en blanco y retención nemotécnica a largo plazo.",
         "correcta": false
       },
       {
-        "texto": "Mejora de la sintetizabilidad al omitir elementos visuales intermedios.",
+        "texto": "Mejora de la sintetizabilidad de la interfaz, al omitir elementos visuales intermedios y permitir que el usuario perciba solo el estado final de la aplicación.",
         "explicacion": "La sintetizabilidad exige ver el resultado de las acciones; la pantalla vacía impide evaluar el estado del sistema.",
         "correcta": false
       }
@@ -5068,17 +5068,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Ocultar completamente la página hasta que todos los assets y fuentes estén en memoria.",
+        "texto": "Ocultar completamente la página hasta que todos los assets y fuentes estén en memoria, de modo que el usuario vea la aplicación solo cuando esté lista del todo.",
         "explicacion": "Empeora la experiencia al alargar el tiempo en blanco percibido.",
         "correcta": false
       },
       {
-        "texto": "Eliminar Flutter y reescribir toda la aplicación en código máquina binario.",
+        "texto": "Eliminar Flutter y reescribir toda la aplicación en código máquina binario, para reducir de forma radical el tiempo de carga del primer pintado en cualquier navegador.",
         "explicacion": "Es una propuesta inviable y desproporcionada que no aborda el principio de feedback progresivo.",
         "correcta": false
       },
       {
-        "texto": "Mostrar un texto técnico que detalle el tamaño en bytes de cada archivo descargado.",
+        "texto": "Mostrar un texto técnico que detalle el tamaño en bytes y la ruta de cada archivo descargado, para que el usuario conozca el progreso exacto de la carga del sitio.",
         "explicacion": "Aumenta la carga cognitiva con datos innecesarios para el usuario final (Tema 1, p. 47).",
         "correcta": false
       }
@@ -5099,17 +5099,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Imposibilidad física de proyectar la pantalla en monitores externos HDMI.",
+        "texto": "Imposibilidad física de proyectar la pantalla en monitores externos HDMI, ya que el canvas no puede enviarse a ningún dispositivo de visualización ajeno al navegador.",
         "explicacion": "El renderizado Canvas no afecta a las señales de vídeo del hardware.",
         "correcta": false
       },
       {
-        "texto": "Duplicación automática del consumo de memoria en la base de datos PostgreSQL.",
+        "texto": "Duplicación automática del consumo de memoria en la base de datos PostgreSQL, porque cada elemento del canvas genera una consulta adicional en el servidor.",
         "explicacion": "La accesibilidad de la capa de presentación no guarda relación con la memoria de la base de datos.",
         "correcta": false
       },
       {
-        "texto": "Fallo obligatorio en los certificados SSL de cifrado de red.",
+        "texto": "Fallo obligatorio en los certificados SSL de cifrado de red, ya que el navegador rechaza las páginas que se renderizan sobre un canvas sin árbol semántico.",
         "explicacion": "Los certificados TLS/HTTPS son ajenos al modelo de objetos del documento (DOM).",
         "correcta": false
       }
@@ -5130,17 +5130,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Porque la longitud de onda del color azul daña el nervio óptico si no hay contraste 10:1.",
+        "texto": "Porque la longitud de onda del color azul daña el nervio óptico si no hay contraste 10:1, lo que provoca fatiga visual y lesiones permanentes tras un uso prolongado.",
         "explicacion": "El argumento cromático es pseudocientífico; la pauta responde a límites psicofísicos de discriminación luminosa.",
         "correcta": false
       },
       {
-        "texto": "Provoca que el procesador gráfico del dispositivo aumente su temperatura un 40 %.",
+        "texto": "Provoca que el procesador gráfico del dispositivo aumente su temperatura un 40 %, al tener que renderizar con mayor esfuerzo los píxeles de texto de bajo contraste.",
         "explicacion": "El valor de contraste visual no altera el consumo térmico del hardware del cliente.",
         "correcta": false
       },
       {
-        "texto": "Impide que el ratón pueda registrar el evento de clic sobre el elemento.",
+        "texto": "Impide que el ratón pueda registrar el evento de clic sobre el elemento, porque el sistema operativo ignora los textos cuyo contraste es inferior al recomendado.",
         "explicacion": "El contraste visual afecta a la percepción humana, no a los controladores de eventos de entrada del sistema.",
         "correcta": false
       }
@@ -5161,17 +5161,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Fallo en la transducción de la fóvea central del ojo humano.",
+        "texto": "Fallo en la transducción de la fóvea central del ojo humano, que impide al usuario leer la promesa de la nube en la pantalla de entrada de la aplicación.",
         "explicacion": "Es un término oftalmológico que no tiene relación con la coherencia conceptual de la interfaz.",
         "correcta": false
       },
       {
-        "texto": "Violación de la metáfora del archivador de escritorio de Xerox Star.",
+        "texto": "Violación de la metáfora del archivador de escritorio de Xerox Star, porque el icono de nube no se corresponde con un objeto físico conocido por el usuario.",
         "explicacion": "La sincronización de datos personales no se limita ni depende de la metáfora del escritorio clásico.",
         "correcta": false
       },
       {
-        "texto": "Principio de agrupamiento por destino común de la Gestalt.",
+        "texto": "Principio de agrupamiento por destino común de la Gestalt, ya que los elementos de la pantalla de entrada no parecen moverse en la misma dirección.",
         "explicacion": "El destino común explica la percepción de movimiento coordinado, no la coherencia funcional del almacenamiento.",
         "correcta": false
       }
@@ -5192,17 +5192,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La Ley de Hick sobre tiempo de decisión proporcional a las alternativas.",
+        "texto": "La Ley de Hick sobre el tiempo de decisión, proporcional al número de alternativas, ya que la portada ofrece más opciones de las que muestra la barra de navegación.",
         "explicacion": "La Ley de Hick se refiere al tiempo para elegir entre opciones disponibles, no a opciones prometidas que no existen.",
         "correcta": false
       },
       {
-        "texto": "El principio de multihilado de la interfaz.",
+        "texto": "El principio de multihilado de la interfaz, según el cual cada sección anunciada debe ejecutarse en un hilo independiente del proceso principal de la aplicación.",
         "explicacion": "El multihilado alude a ejecutar múltiples tareas simultáneas, no al contenido de los menús.",
         "correcta": false
       },
       {
-        "texto": "La tasa de refresco mínima de 60 fotogramas por segundo.",
+        "texto": "La tasa de refresco mínima de 60 fotogramas por segundo, que la aplicación incumple al mantener en la portada un texto que ya no se corresponde con las secciones.",
         "explicacion": "La presencia o ausencia de opciones de menú no condiciona la frecuencia de cuadros por segundo de la pantalla.",
         "correcta": false
       }
@@ -5223,17 +5223,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Reduce el tiempo de clic porque el espacio vacío funciona como un imán para el cursor del ratón.",
+        "texto": "Reduce el tiempo de clic porque el espacio vacío central funciona como un imán que atrae el cursor del ratón hacia el botón de Google, situado a la derecha de la tarjeta.",
         "explicacion": "La Ley de Fitts demuestra que el espacio vacío incrementa la distancia motora, nunca la reduce.",
         "correcta": false
       },
       {
-        "texto": "Garantiza que la ley de Gestalt de proximidad se aplique con eficacia máxima.",
+        "texto": "Garantiza que la ley de Gestalt de proximidad se aplique con eficacia máxima, ya que el amplio espacio vacío agrupa visualmente el botón con el resto de la tarjeta de bienvenida.",
         "explicacion": "La gran separación contradice precisamente el principio de proximidad de la Gestalt.",
         "correcta": false
       },
       {
-        "texto": "Invalida la necesidad de utilizar monitores de alta resolución.",
+        "texto": "Invalida la necesidad de utilizar monitores de alta resolución, porque la tarjeta fija de 620 px ocupa siempre el mismo tamaño en cualquier pantalla de escritorio.",
         "explicacion": "La ergonomía del cursor es independiente de la densidad de píxeles del monitor.",
         "correcta": false
       }
@@ -5254,17 +5254,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Porque elimina la necesidad de cifrar las comunicaciones mediante HTTPS.",
+        "texto": "Porque elimina la necesidad de cifrar las comunicaciones mediante HTTPS, al garantizar por escrito que la aplicación no publicará información en la cuenta del usuario.",
         "explicacion": "La explicación de privacidad no sustituye ni exime de los protocolos de seguridad técnica.",
         "correcta": false
       },
       {
-        "texto": "Porque convierte automáticamente la aplicación en software de código abierto certificado.",
+        "texto": "Porque convierte automáticamente la aplicación en software de código abierto certificado, ya que declara públicamente el uso que hace de la cuenta de Google del usuario.",
         "explicacion": "Un mensaje informativo en el login no altera el régimen legal de licencias del código.",
         "correcta": false
       },
       {
-        "texto": "Porque cumple con la directriz de interfaz unimodal estricta de Norman.",
+        "texto": "Porque cumple con la directriz de interfaz unimodal estricta de Norman, que exige comunicar la política de privacidad exclusivamente mediante texto visual en la pantalla de entrada.",
         "explicacion": "Norman defiende interfaces multimodales ricas y modelos conceptuales claros, no restricciones artificiales.",
         "correcta": false
       }
@@ -5285,17 +5285,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Como un fracaso: una buena interfaz debe ser lo más memorable de la aplicación.",
+        "texto": "Como un fracaso: una buena interfaz debe ser lo más memorable de la aplicación y destacar por encima del contenido.",
         "explicacion": "El tema busca lo contrario: que la interfaz no se interponga entre el usuario y su tarea.",
         "correcta": false
       },
       {
-        "texto": "Como un problema de estética: falta decoración para que el usuario la note.",
+        "texto": "Como un problema de estética: falta decoración y elementos llamativos para que el usuario note y recuerde la interfaz.",
         "explicacion": "Añadir decoración para hacerse notar va contra la transparencia buscada.",
         "correcta": false
       },
       {
-        "texto": "Como irrelevante: el diseño gráfico no influye en la experiencia del usuario.",
+        "texto": "Como irrelevante: el diseño gráfico no influye en la experiencia del usuario, que depende solo de las funciones del sistema.",
         "explicacion": "La página 288 vincula el diseño con una buena experiencia de interacción.",
         "correcta": false
       }
@@ -5316,17 +5316,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Máxima densidad de controles por pantalla y uso de todos los colores disponibles.",
+        "texto": "Máxima densidad de controles por pantalla y uso de todos los colores disponibles, para ofrecer cuanto antes cada función al usuario.",
         "explicacion": "El tema no persigue densidad ni variedad cromática, sino transparencia.",
         "correcta": false
       },
       {
-        "texto": "Originalidad visual por encima de la facilidad de uso.",
+        "texto": "Originalidad visual por encima de la facilidad de uso, para que la interfaz sea diferente de la de otros productos.",
         "explicacion": "El objetivo es una buena experiencia, no la originalidad en sí misma.",
         "correcta": false
       },
       {
-        "texto": "Que la interfaz destaque sobre el contenido para reforzar la marca.",
+        "texto": "Que la interfaz destaque sobre el contenido y se note en todo momento, para reforzar la imagen de marca del producto.",
         "explicacion": "Se busca que la interfaz casi no sea detectada.",
         "correcta": false
       }
@@ -5347,17 +5347,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Usar como máximo 5±2 colores en la interfaz.",
+        "texto": "Usar como máximo 5±2 colores en la interfaz, ya que esa cantidad es la que el usuario retiene en la memoria.",
         "explicacion": "Es una pauta de color; el problema descrito es la correspondencia entre aspecto y función.",
         "correcta": false
       },
       {
-        "texto": "Diseñar primero la interfaz en blanco y negro.",
+        "texto": "Diseñar primero la interfaz en blanco y negro y añadir el color solo cuando el resto del diseño esté terminado.",
         "explicacion": "Es una sugerencia sobre el color, no sobre la apariencia de los controles.",
         "correcta": false
       },
       {
-        "texto": "Utilizar formatos verticales para dar dinamismo.",
+        "texto": "Utilizar formatos verticales o circulares en todas las pantallas para dar dinamismo a la composición gráfica.",
         "explicacion": "El formato del cuadro no explica la confusión entre controles y decoración.",
         "correcta": false
       }
@@ -5378,17 +5378,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Usar colores estandarizados para los mensajes de error.",
+        "texto": "Usar colores estandarizados para los mensajes de error, de modo que el usuario los reconozca en cualquier pantalla.",
         "explicacion": "Es una pauta de claridad del color, no de organización del diseño.",
         "correcta": false
       },
       {
-        "texto": "Evitar el azul puro en el texto.",
+        "texto": "Evitar el azul puro en el texto y en las líneas finas, porque el ojo no lo enfoca bien.",
         "explicacion": "Es una regla de Murch sobre el color, ajena al problema.",
         "correcta": false
       },
       {
-        "texto": "Colocar los pesos mayores en la zona izquierda.",
+        "texto": "Colocar los pesos mayores en la zona izquierda de la pantalla, que es la más estable de la composición.",
         "explicacion": "Es una regla de composición, no de coordinación entre diseño funcional y visual.",
         "correcta": false
       }
@@ -5440,17 +5440,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Que tiene razón, por eso no existen guías de estilo útiles.",
+        "texto": "Que tiene razón, por lo que no existen reglas ni guías de estilo útiles que puedan aplicarse de manera sistemática.",
         "explicacion": "El tema concluye que es importante recurrir a las guías de estilo.",
         "correcta": false
       },
       {
-        "texto": "Que el diseño solo afecta a la estética y no a la usabilidad.",
+        "texto": "Que el diseño solo afecta a la estética de la interfaz y no tiene ninguna influencia sobre la usabilidad del sistema.",
         "explicacion": "La página 349 dice que el diseño es importante para la usabilidad.",
         "correcta": false
       },
       {
-        "texto": "Que basta con copiar la interfaz de un producto conocido.",
+        "texto": "Que basta con copiar la interfaz de un producto conocido, ya que así se garantiza un resultado correcto sin necesidad de conocimientos.",
         "explicacion": "El tema no propone la copia, sino aplicar reglas basadas en la percepción.",
         "correcta": false
       }
@@ -5502,17 +5502,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Aprender a programar motores gráficos y aceleración por hardware.",
+        "texto": "Aprender a programar motores gráficos y aceleración por hardware para obtener un rendimiento visual elevado.",
         "explicacion": "El tema no trata la implementación gráfica de bajo nivel.",
         "correcta": false
       },
       {
-        "texto": "Traducir la interfaz a varios idiomas y culturas.",
+        "texto": "Traducir la interfaz a varios idiomas y adaptarla a diferentes culturas y regiones del mundo.",
         "explicacion": "Eso corresponde al tema de internacionalización.",
         "correcta": false
       },
       {
-        "texto": "Medir el rendimiento de la memoria a largo plazo.",
+        "texto": "Medir el rendimiento de la memoria a largo plazo del usuario mediante pruebas de reconocimiento.",
         "explicacion": "El tema trata el diseño gráfico, no experimentos de memoria.",
         "correcta": false
       }
@@ -5533,17 +5533,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Punto, píxel, vector, código, color y fuente.",
+        "texto": "Punto, píxel, vector, código, color, fuente y resolución, que son elementos del software gráfico.",
         "explicacion": "Píxel, vector o código no forman parte del alfabeto gráfico del tema.",
         "correcta": false
       },
       {
-        "texto": "Menú, botón, ventana, icono y cursor.",
+        "texto": "Menú, botón, ventana, icono, cursor y barra de desplazamiento, propios de una interfaz gráfica.",
         "explicacion": "Son elementos de una GUI, no los elementos morfológicos de la imagen.",
         "correcta": false
       },
       {
-        "texto": "Proximidad, semejanza, cierre y continuidad.",
+        "texto": "Proximidad, semejanza, cierre, continuidad y figura-fondo, que son leyes de la percepción visual.",
         "explicacion": "Son principios de la Gestalt, no los elementos que enumera la página 291.",
         "correcta": false
       }
@@ -5564,17 +5564,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "El punto define una superficie con dimensiones dadas.",
+        "texto": "El punto define una superficie con dimensiones dadas y por sí solo no puede guiar la vista del usuario.",
         "explicacion": "Esa es la definición de la forma (p. 294).",
         "correcta": false
       },
       {
-        "texto": "El punto establece la proporción del cuadro.",
+        "texto": "El punto establece la proporción del cuadro y sirve para fijar el formato general de la página.",
         "explicacion": "Eso corresponde al formato (p. 301).",
         "correcta": false
       },
       {
-        "texto": "El punto simula el paso del tiempo mediante la tonalidad.",
+        "texto": "El punto simula el paso del tiempo mediante la tonalidad, cambiando de color según avanza la página.",
         "explicacion": "La tonalidad es una característica de la luz (p. 295).",
         "correcta": false
       }
@@ -5595,17 +5595,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Es el elemento más simple y tiene gran fuerza atractiva como marca.",
+        "texto": "Es el elemento más simple del alfabeto gráfico y tiene gran fuerza atractiva como marca, aunque no estructura el espacio.",
         "explicacion": "Esas son propiedades del punto (p. 292).",
         "correcta": false
       },
       {
-        "texto": "Combina radiaciones de distinta longitud de onda.",
+        "texto": "Combina radiaciones de distinta longitud de onda para crear los tonos que percibe el ojo.",
         "explicacion": "Describe el sistema de color aditivo (p. 296).",
         "correcta": false
       },
       {
-        "texto": "Es la proporción del cuadro donde se muestra la imagen.",
+        "texto": "Es la proporción del cuadro donde se muestra la imagen y determina si el formato es horizontal o vertical.",
         "explicacion": "Es la definición del formato (p. 301).",
         "correcta": false
       }
@@ -5657,17 +5657,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Los colores saturados producen un fuerte impacto.",
+        "texto": "Los colores saturados producen un fuerte impacto visual, por lo que el texto blanco parece más grueso.",
         "explicacion": "La saturación no explica el cambio aparente de tamaño.",
         "correcta": false
       },
       {
-        "texto": "Los formatos horizontales son más estáticos.",
+        "texto": "Los formatos horizontales son más estáticos, y por eso el texto sobre fondo negro se ve de mayor grosor.",
         "explicacion": "El formato no interviene en el efecto descrito.",
         "correcta": false
       },
       {
-        "texto": "El azul se enfoca en el fondo.",
+        "texto": "El azul se enfoca en el fondo del campo visual, lo que hace que el texto blanco se vea más grueso.",
         "explicacion": "Es un efecto del orden espectral del color, no de la tonalidad clara y oscura.",
         "correcta": false
       }
@@ -5688,12 +5688,12 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Las pantallas usan pigmentos y el papel radiaciones luminosas.",
+        "texto": "Las pantallas usan pigmentos de cian, magenta y amarillo y el papel radiaciones luminosas de distinta longitud de onda.",
         "explicacion": "La relación está invertida.",
         "correcta": false
       },
       {
-        "texto": "El color de pantalla depende de la forma; el del papel, de la línea.",
+        "texto": "El color de pantalla depende de la forma de los elementos; el del papel, de la línea y del trazo.",
         "explicacion": "Forma y línea no determinan el sistema de color.",
         "correcta": false
       },
@@ -5719,17 +5719,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La tonalidad o matiz, que mide la cantidad de luz reflejada.",
+        "texto": "La tonalidad o matiz, que mide la cantidad de luz reflejada por la superficie y la vuelve más gris.",
         "explicacion": "El matiz corresponde a la longitud de onda; la luz reflejada es la luminosidad.",
         "correcta": false
       },
       {
-        "texto": "La luminosidad, que mide la longitud de onda.",
+        "texto": "La luminosidad, que mide la longitud de onda dominante y define el color de la paleta.",
         "explicacion": "La luminosidad es la cantidad de luz que refleja el color.",
         "correcta": false
       },
       {
-        "texto": "El formato, que mide la vividez.",
+        "texto": "El formato de la imagen, que mide la vividez de los colores de la paleta.",
         "explicacion": "El formato es la proporción del cuadro, no una característica del color.",
         "correcta": false
       }
@@ -5750,17 +5750,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Es una armonía cromática: colores afines con variaciones suaves.",
+        "texto": "Es una armonía cromática: colores afines con variaciones suaves, que favorece la legibilidad del panel.",
         "explicacion": "Rojo y verde son complementarios; la armonía relaciona colores afines.",
         "correcta": false
       },
       {
-        "texto": "El problema es el formato horizontal, que resulta estático.",
+        "texto": "El problema es el formato horizontal del panel, que resulta estático y hace que el texto parezca vibrar.",
         "explicacion": "La vibración procede del contraste cromático, no del formato.",
         "correcta": false
       },
       {
-        "texto": "Es un efecto de la tonalidad que hace que el tono oscuro se expanda.",
+        "texto": "Es un efecto de la tonalidad que hace que el tono oscuro se expanda y el claro se comprima en el panel.",
         "explicacion": "El tema dice que se expande el tono claro rodeado de oscuro, y el caso trata de contraste cromático.",
         "correcta": false
       }
@@ -5781,17 +5781,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Los horizontales son los más dinámicos por adaptarse al campo visual.",
+        "texto": "Los horizontales son los más dinámicos por adaptarse al campo visual, mientras que los verticales resultan estáticos.",
         "explicacion": "El tema asocia la horizontalidad con lo estático.",
         "correcta": false
       },
       {
-        "texto": "El formato no influye en la composición.",
+        "texto": "El formato no influye en la composición, que solo depende de los colores y el tamaño de los elementos.",
         "explicacion": "La página 301 dice que influye decisivamente y le da significado.",
         "correcta": false
       },
       {
-        "texto": "Los formatos circulares son los más estáticos.",
+        "texto": "Los formatos circulares son los más estáticos de todos, por lo que transmiten calma y estabilidad.",
         "explicacion": "El tema los agrupa con los verticales como dinámicos.",
         "correcta": false
       }
@@ -5812,17 +5812,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La zona inferior es la más dinámica y llamativa.",
+        "texto": "La zona inferior es la más dinámica y llamativa, y admite los pesos mayores sin desequilibrar la pantalla.",
         "explicacion": "El tema indica que la inferior es más estática y sólida, y la superior más dinámica.",
         "correcta": false
       },
       {
-        "texto": "El tamaño no influye en el peso compositivo.",
+        "texto": "El tamaño de los elementos no influye en el peso compositivo, que depende solo de su posición en la pantalla.",
         "explicacion": "A mayor tamaño, mayor peso compositivo.",
         "correcta": false
       },
       {
-        "texto": "Hay que evitar un centro de interés para no distraer.",
+        "texto": "Hay que evitar un centro de interés en la pantalla para no distraer al usuario de la información principal.",
         "explicacion": "La página 302 pide delimitar claramente el centro de interés.",
         "correcta": false
       }
@@ -5843,17 +5843,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Porque el color solo es decorativo y no afecta a la funcionalidad.",
+        "texto": "Porque el color solo es decorativo y no afecta a la funcionalidad, aunque conviene tratarlo en un apartado propio.",
         "explicacion": "El tema afirma que un uso inapropiado reduce la funcionalidad.",
         "correcta": false
       },
       {
-        "texto": "Porque el color sustituye al texto en todos los mensajes.",
+        "texto": "Porque el color sustituye al texto en todos los mensajes, lo que hace innecesaria cualquier otra explicación.",
         "explicacion": "El tema no propone sustituir el texto por el color.",
         "correcta": false
       },
       {
-        "texto": "Porque las GUI deben usar el mayor número de colores posible.",
+        "texto": "Porque las GUI deben usar el mayor número de colores posible para ofrecer una presentación más rica y atractiva.",
         "explicacion": "La página 309 recomienda pocos colores.",
         "correcta": false
       }
@@ -5874,17 +5874,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Perceptuales: RGB y YIQ; de dispositivos: HSV y HLS.",
+        "texto": "Perceptuales: RGB y YIQ, por basarse en la percepción; de dispositivos de presentación: HSV y HLS, por depender de la pantalla.",
         "explicacion": "La clasificación está invertida.",
         "correcta": false
       },
       {
-        "texto": "Todos son perceptuales y equivalentes uno a uno.",
+        "texto": "Todos son modelos perceptuales y equivalentes uno a uno, por lo que no se necesita ninguna conversión entre ellos.",
         "explicacion": "La página 307 señala que no hay un mapeo uno a uno.",
         "correcta": false
       },
       {
-        "texto": "HSV se usa en la televisión y YIQ en los monitores.",
+        "texto": "HSV se usa en la televisión y YIQ en los monitores de ordenador, que son dispositivos de presentación.",
         "explicacion": "YIQ/YUV se usa en televisión; RGB, en monitores.",
         "correcta": false
       }
@@ -5905,17 +5905,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "HSV y RGB son idénticos; el fallo está en el formato del cuadro.",
+        "texto": "HSV y RGB son modelos idénticos; el fallo está en el formato del cuadro y en la proporción de la pantalla.",
         "explicacion": "Son modelos distintos y su correspondencia no es directa.",
         "correcta": false
       },
       {
-        "texto": "Los monitores usan el modelo sustractivo de pigmentos.",
+        "texto": "Los monitores usan el modelo sustractivo de pigmentos, por lo que HSV no puede representarse en ellos con exactitud.",
         "explicacion": "Los monitores usan RGB, un sistema aditivo.",
         "correcta": false
       },
       {
-        "texto": "El modelo HLS impide representar colores en pantalla.",
+        "texto": "El modelo HLS impide representar los colores en pantalla, de modo que HSV es el único válido para monitores.",
         "explicacion": "El tema no afirma tal limitación.",
         "correcta": false
       }
@@ -5936,17 +5936,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Usar siempre el azul como color de texto.",
+        "texto": "Usar siempre el azul como color de texto para que el contraste sea el mismo en todas las pantallas.",
         "explicacion": "Murch recomienda descartar el azul puro para texto (p. 318).",
         "correcta": false
       },
       {
-        "texto": "Utilizar al menos un color por cada pantalla.",
+        "texto": "Utilizar al menos un color distinto por cada pantalla de la aplicación para que el usuario las identifique.",
         "explicacion": "No es una pauta del tema.",
         "correcta": false
       },
       {
-        "texto": "Evitar los colores primarios por ser difíciles de recordar.",
+        "texto": "Evitar los colores primarios por ser difíciles de recordar y de distinguir entre sí en pantalla.",
         "explicacion": "El tema recomienda vincular significados a los primarios por ser fáciles de recordar.",
         "correcta": false
       }
@@ -5967,17 +5967,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Simplicidad: usar 5±2 colores.",
+        "texto": "Simplicidad: usar 5±2 colores y no sobrecargar cada pantalla con muchos matices distintos entre sí.",
         "explicacion": "El número de colores no es el problema descrito.",
         "correcta": false
       },
       {
-        "texto": "Claridad: usar el verde para el progreso positivo.",
+        "texto": "Claridad: usar el verde para el progreso positivo y el rojo para los errores en todos los mensajes de la aplicación.",
         "explicacion": "El caso no trata de mensajes de progreso.",
         "correcta": false
       },
       {
-        "texto": "Composición: la zona izquierda es más estable.",
+        "texto": "Composición: la zona izquierda es más estable y admite mayores pesos visuales sin desequilibrar la pantalla.",
         "explicacion": "No es una cuestión de composición.",
         "correcta": false
       }
@@ -5998,17 +5998,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "El azul en el frente y el rojo en el fondo.",
+        "texto": "El azul se enfoca en el frente del campo visual y el rojo en el fondo, siguiendo el orden espectral invertido.",
         "explicacion": "La relación está invertida.",
         "correcta": false
       },
       {
-        "texto": "Todos los colores se enfocan en el mismo plano.",
+        "texto": "Todos los colores se enfocan en el mismo plano de la retina, por lo que el orden espectral no influye en la percepción.",
         "explicacion": "El tema distingue planos de enfoque por color.",
         "correcta": false
       },
       {
-        "texto": "El amarillo en el frente y el verde en el fondo.",
+        "texto": "El amarillo en el frente, el rojo en medio y el verde en el fondo, ordenados de mayor a menor brillo.",
         "explicacion": "Verde y amarillo se enfocan en medio.",
         "correcta": false
       }
@@ -6029,17 +6029,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Que es correcto porque el azul es el mejor color para el texto.",
+        "texto": "Que es correcto porque el azul es el mejor color para el texto y los matices ayudan a distinguir las categorías.",
         "explicacion": "Murch desaconseja el azul puro en texto y figuras pequeñas.",
         "correcta": false
       },
       {
-        "texto": "Que es correcto porque mantiene el esquema en un solo color.",
+        "texto": "Que es correcto porque mantiene el esquema en un solo color, lo que da coherencia y simplicidad a la leyenda.",
         "explicacion": "La simplicidad no justifica distinguir conceptos con matices difíciles de discriminar.",
         "correcta": false
       },
       {
-        "texto": "Que debe añadirse un sexto tono para el fondo.",
+        "texto": "Que debe añadirse un sexto tono de azul para el fondo de la leyenda, y mantener los cinco matices anteriores.",
         "explicacion": "Añadir más azules agrava el problema.",
         "correcta": false
       }
@@ -6060,17 +6060,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Verde para errores, rojo para progreso y azul para advertencias.",
+        "texto": "Verde para errores, rojo para progreso positivo y azul para advertencias, de forma que cada mensaje tenga un color propio.",
         "explicacion": "No coincide con los colores estandarizados del tema.",
         "correcta": false
       },
       {
-        "texto": "Un mismo color para todos los mensajes, para no distraer.",
+        "texto": "Un mismo color para todos los mensajes del sistema, con el fin de no distraer al usuario de la tarea.",
         "explicacion": "El tema propone códigos de color para distinguir los mensajes.",
         "correcta": false
       },
       {
-        "texto": "Amarillo para errores y rojo para avisos informativos.",
+        "texto": "Amarillo para errores y rojo para avisos informativos, de modo que los mensajes críticos pasen más inadvertidos.",
         "explicacion": "El rojo se reserva para alertar de errores.",
         "correcta": false
       }
@@ -6091,17 +6091,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "El tiempo de búsqueda aumenta porque el rojo genera fatiga.",
+        "texto": "El tiempo de búsqueda aumenta porque el rojo genera fatiga visual, aunque solo se aplique a esas facturas.",
         "explicacion": "El color conocido y exclusivo reduce el tiempo de búsqueda.",
         "correcta": false
       },
       {
-        "texto": "El color solo mejora la estética, no el procesamiento.",
+        "texto": "El color solo mejora la estética del listado, pero no influye en el procesamiento de la información por el usuario.",
         "explicacion": "La página 312 dice que también mejora el procesamiento y la memoria.",
         "correcta": false
       },
       {
-        "texto": "El efecto se pierde si el rojo está estandarizado.",
+        "texto": "El efecto se pierde si el rojo está estandarizado, porque el usuario deja de percibirlo como un elemento destacado.",
         "explicacion": "El tema recomienda precisamente usar colores estandarizados.",
         "correcta": false
       }
@@ -6122,17 +6122,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Usar azul puro para el texto y las líneas delgadas.",
+        "texto": "Usar azul puro para el texto y las líneas delgadas, que es el color que mejor se enfoca en la retina.",
         "explicacion": "Murch recomienda descartarlo (p. 318).",
         "correcta": false
       },
       {
-        "texto": "Usar el rojo y el verde en la periferia de las presentaciones grandes.",
+        "texto": "Usar el rojo y el verde en la periferia de las presentaciones grandes, y el azul en el centro del campo visual.",
         "explicacion": "Murch recomienda evitarlo (p. 319).",
         "correcta": false
       },
       {
-        "texto": "Usar colores muy saturados y espectralmente extremos a la vez.",
+        "texto": "Usar colores muy saturados y espectralmente extremos a la vez para que destaquen sobre el fondo de la pantalla.",
         "explicacion": "Murch aconseja evitar ese despliegue simultáneo (p. 318).",
         "correcta": false
       }
@@ -6153,17 +6153,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Usar azul para el fondo y la secuencia espectral.",
+        "texto": "Usar azul para el fondo y seguir la secuencia espectral al ordenar los colores de las distintas zonas de la pantalla.",
         "explicacion": "Son reglas de Marcus, y el caso no las contradice directamente.",
         "correcta": false
       },
       {
-        "texto": "Diseñar primero en blanco y negro.",
+        "texto": "Diseñar primero la interfaz en blanco y negro y añadir el color solo al final del proceso de diseño.",
         "explicacion": "Es una sugerencia, no explica los problemas descritos.",
         "correcta": false
       },
       {
-        "texto": "Usar colores opuestos juntos.",
+        "texto": "Usar colores opuestos juntos en una misma zona de la pantalla, para aprovechar su contraste en la presentación.",
         "explicacion": "Murch indica que los colores opuestos se ven bien juntos (p. 319).",
         "correcta": false
       }
@@ -6184,17 +6184,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Usar el rojo y el verde en la periferia de las presentaciones grandes.",
+        "texto": "Usar el rojo y el verde en la periferia de las presentaciones grandes, y el azul en el centro de la pantalla.",
         "explicacion": "Murch recomienda evitarlo.",
         "correcta": false
       },
       {
-        "texto": "Usar varios matices del mismo azul.",
+        "texto": "Usar varios matices del mismo azul para distinguir las zonas seguras de las peligrosas dentro del mapa.",
         "explicacion": "No resuelve el problema y la página 311 lo desaconseja.",
         "correcta": false
       },
       {
-        "texto": "Enfocar hacia orillas creadas solo por el color.",
+        "texto": "Enfocar la atención hacia orillas creadas solo por el color, que es lo que recomienda Murch para este mapa.",
         "explicacion": "La página 319 dice que es difícil enfocar esas orillas.",
         "correcta": false
       }
@@ -6215,17 +6215,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Los colores poco saturados obligan a reenfocar constantemente.",
+        "texto": "Los colores poco saturados obligan a reenfocar constantemente y causan más fatiga que los colores puros.",
         "explicacion": "El tema atribuye ese problema a los colores puros y muy saturados.",
         "correcta": false
       },
       {
-        "texto": "Usar pocos colores impide crear modelos mentales.",
+        "texto": "Usar pocos colores impide crear modelos mentales y obliga al usuario a leer todos los mensajes del texto.",
         "explicacion": "La página 309 recomienda pocos colores.",
         "correcta": false
       },
       {
-        "texto": "El color de fondo nunca influye en cómo se percibe el del frente.",
+        "texto": "El color de fondo nunca influye en cómo se percibe el del frente, que mantiene siempre su aspecto original.",
         "explicacion": "La página 311 advierte de colores que parecen distintos por la variación del fondo.",
         "correcta": false
       }
@@ -6246,17 +6246,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Una interfaz transparente y fácil de usar.",
+        "texto": "Una interfaz transparente y fácil de usar, ya que todos los indicadores reciben la misma atención del usuario.",
         "explicacion": "La falta de jerarquía dificulta la navegación.",
         "correcta": false
       },
       {
-        "texto": "Mayor dinamismo, porque todos los elementos compiten.",
+        "texto": "Mayor dinamismo, porque todos los elementos compiten por la atención y el usuario encuentra antes lo importante.",
         "explicacion": "El tema habla de composición aburrida, no dinámica.",
         "correcta": false
       },
       {
-        "texto": "Un foco claro en el elemento más importante.",
+        "texto": "Un foco claro en el elemento más importante, porque el tamaño y el color iguales ayudan a localizarlo.",
         "explicacion": "Sin diferencias de peso no hay un punto focal claro.",
         "correcta": false
       }
@@ -6277,17 +6277,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Solo con el tamaño de la ventana.",
+        "texto": "Solo con el tamaño de la ventana y la resolución del monitor donde se muestra la aplicación.",
         "explicacion": "El tema cita posición, color y atributos del texto.",
         "correcta": false
       },
       {
-        "texto": "Eliminando la alineación.",
+        "texto": "Eliminando la alineación de los elementos para que ninguno destaque sobre los demás en la pantalla.",
         "explicacion": "La alineación aporta equilibrio; no es el recurso para enfatizar.",
         "correcta": false
       },
       {
-        "texto": "Con más matices del mismo color azul.",
+        "texto": "Con más matices del mismo color azul aplicados a todos los elementos de la pantalla por igual.",
         "explicacion": "La página 311 desaconseja esos matices.",
         "correcta": false
       }
@@ -6308,17 +6308,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "El sistema de color sustractivo.",
+        "texto": "El sistema de color sustractivo de la interfaz, que cambia cuando se invierte la lectura.",
         "explicacion": "Afecta a la impresión, no al orden de lectura.",
         "correcta": false
       },
       {
-        "texto": "El lenguaje icónico de depuración.",
+        "texto": "El lenguaje icónico de depuración del código, que varía en las culturas que leen al revés.",
         "explicacion": "Es un ejemplo de iconos, no tiene relación con el orden de lectura.",
         "correcta": false
       },
       {
-        "texto": "La saturación de los colores.",
+        "texto": "La saturación de los colores empleados, que cambia con la dirección de lectura de cada idioma.",
         "explicacion": "No depende de la dirección de lectura.",
         "correcta": false
       }
@@ -6339,17 +6339,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Añadir un fondo llamativo.",
+        "texto": "Añadir un fondo llamativo a los campos para que resalten sobre el resto del formulario.",
         "explicacion": "La página 340 indica que un fondo llamativo dificulta la lectura.",
         "correcta": false
       },
       {
-        "texto": "Aumentar el número de colores.",
+        "texto": "Aumentar el número de colores de las etiquetas y de los campos para que el usuario los distinga.",
         "explicacion": "No corrige el desorden y contradice la simplicidad.",
         "correcta": false
       },
       {
-        "texto": "Cambiar a un formato circular.",
+        "texto": "Cambiar a un formato circular para el formulario, de modo que los elementos parezcan más dinámicos.",
         "explicacion": "El formato no resuelve la desalineación.",
         "correcta": false
       }
@@ -6370,17 +6370,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La alineación: centrar todos los elementos.",
+        "texto": "La alineación: centrar todos los elementos de la pantalla para que el aviso se vea antes que el resto.",
         "explicacion": "La alineación da equilibrio, pero no crea por sí misma un centro de atención.",
         "correcta": false
       },
       {
-        "texto": "Dar a todos los avisos el mismo peso.",
+        "texto": "Dar a todos los avisos el mismo peso visual, para que el usuario vea primero el que caduca.",
         "explicacion": "Sin diferencias, nada destaca como punto focal.",
         "correcta": false
       },
       {
-        "texto": "Usar un formato horizontal estático.",
+        "texto": "Usar un formato horizontal estático para el aviso, ya que así resulta más llamativo que el resto.",
         "explicacion": "El formato no dirige la atención a un elemento concreto.",
         "correcta": false
       }
@@ -6401,17 +6401,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La diversidad siempre simplifica la composición.",
+        "texto": "La diversidad siempre simplifica la composición, porque cuantos más colores y tamaños, más clara resulta la pantalla.",
         "explicacion": "El tema dice que la complica.",
         "correcta": false
       },
       {
-        "texto": "La composición no necesita un centro de interés.",
+        "texto": "La composición no necesita un centro de interés, y los principios de unidad y claridad no son relevantes.",
         "explicacion": "Hay que delimitar claramente el centro de interés.",
         "correcta": false
       },
       {
-        "texto": "Unidad y claridad solo afectan al formato.",
+        "texto": "Unidad y claridad solo afectan al formato de la pantalla y no a los colores ni a los tamaños utilizados.",
         "explicacion": "Son los principios de la composición.",
         "correcta": false
       }
@@ -6432,17 +6432,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Sobrecarga informativa.",
+        "texto": "Sobrecarga informativa: mucha información sin niveles visuales que ayuden a leerla.",
         "explicacion": "La página 338 la presenta como un problema.",
         "correcta": false
       },
       {
-        "texto": "Contraste erróneo rojo-azul.",
+        "texto": "Contraste erróneo rojo-azul, que obliga a forzar la acomodación visual del usuario.",
         "explicacion": "Es un ejemplo negativo (p. 345) y no se relaciona con niveles de información.",
         "correcta": false
       },
       {
-        "texto": "Un fondo llamativo.",
+        "texto": "Un fondo llamativo que atrae la atención sobre todos los textos de la página.",
         "explicacion": "La página 340 indica que dificulta la lectura.",
         "correcta": false
       }
@@ -6463,17 +6463,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Como un contraste que anima y estimula sin inconvenientes.",
+        "texto": "Como un contraste que anima y estimula sin inconvenientes, porque los colores opuestos mejoran la lectura.",
         "explicacion": "La página 344 habla de contraste estimulante, pero rojo-azul es el ejemplo erróneo.",
         "correcta": false
       },
       {
-        "texto": "Como una armonía de colores afines.",
+        "texto": "Como una armonía de colores afines, con variaciones suaves entre el texto y el fondo.",
         "explicacion": "Rojo y azul no se presentan como colores afines.",
         "correcta": false
       },
       {
-        "texto": "Como el uso recomendado por Marcus para el fondo.",
+        "texto": "Como el uso recomendado por Marcus para el fondo, ya que el azul resulta cómodo para el usuario.",
         "explicacion": "Marcus recomienda el azul para el fondo, pero no esta combinación con texto rojo.",
         "correcta": false
       }
@@ -6494,17 +6494,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Porque siempre se entienden sin aprendizaje, sea cual sea su diseño.",
+        "texto": "Porque siempre se entienden sin aprendizaje, sea cual sea su diseño, y por eso ocupan poco espacio en la pantalla.",
         "explicacion": "Los iconos arbitrarios exigen aprender la asociación (p. 329).",
         "correcta": false
       },
       {
-        "texto": "Porque aparecieron en las interfaces de línea de comandos.",
+        "texto": "Porque aparecieron en las interfaces de línea de comandos y permiten ejecutar las órdenes con rapidez.",
         "explicacion": "Se usan desde la primera interfaz gráfica, Xerox Star.",
         "correcta": false
       },
       {
-        "texto": "Porque solo representan objetos, nunca funciones.",
+        "texto": "Porque solo representan objetos, nunca funciones, de modo que son más fáciles de reconocer por el usuario.",
         "explicacion": "La página 327 dice que representan objetos y también funciones.",
         "correcta": false
       }
@@ -6556,17 +6556,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Solo un objeto abstracto.",
+        "texto": "Solo un objeto abstracto, que el usuario ha de interpretar a partir de su forma geométrica.",
         "explicacion": "Es una de las tres opciones, pero no la más comprensible.",
         "correcta": false
       },
       {
-        "texto": "Solo texto sin imagen.",
+        "texto": "Solo texto sin imagen, que el usuario lee directamente sin necesidad de interpretar símbolos.",
         "explicacion": "El tema trata de formas representativas gráficas.",
         "correcta": false
       },
       {
-        "texto": "Una imagen sin relación con el concepto.",
+        "texto": "Una imagen sin relación alguna con el concepto, que el usuario debe aprender mediante la práctica.",
         "explicacion": "Eso corresponde a los iconos arbitrarios.",
         "correcta": false
       }
@@ -6587,17 +6587,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Similar: presenta el concepto con una imagen análoga.",
+        "texto": "Similar: presenta el concepto con una imagen análoga que el usuario reconoce por su parecido con él.",
         "explicacion": "Un icono similar sí se parece al concepto.",
         "correcta": false
       },
       {
-        "texto": "Ejemplar: muestra un ejemplo del concepto.",
+        "texto": "Ejemplar: muestra un ejemplo típico del concepto, que el usuario identifica de forma inmediata.",
         "explicacion": "No sirve como ejemplo del concepto.",
         "correcta": false
       },
       {
-        "texto": "Concreto: representa el objeto real.",
+        "texto": "Concreto: representa el objeto real tal como el usuario lo ve en su entorno cotidiano.",
         "explicacion": "No representa el objeto real implicado.",
         "correcta": false
       }
@@ -6680,17 +6680,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Permite que cada icono tenga un estilo completamente distinto.",
+        "texto": "Permite que cada icono tenga un estilo completamente distinto, para que el usuario los distinga mejor entre sí.",
         "explicacion": "El objetivo es la consistencia.",
         "correcta": false
       },
       {
-        "texto": "Evita tener que asociar iconos a acciones.",
+        "texto": "Evita tener que asociar los iconos a las acciones, porque el usuario deduce siempre su función.",
         "explicacion": "El lenguaje icónico representa acciones aplicables a un elemento (p. 331).",
         "correcta": false
       },
       {
-        "texto": "Solo es útil en sistemas muy simples.",
+        "texto": "Solo es útil en sistemas muy simples, con pocas funciones y un número reducido de iconos.",
         "explicacion": "El tema dice que los sistemas complejos disponen de un lenguaje icónico simple y consistente.",
         "correcta": false
       }
@@ -6711,17 +6711,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Flexibilizar la presentación mediante personalización.",
+        "texto": "Flexibilizar la presentación mediante personalización, permitiendo al usuario adaptar la pantalla a sus preferencias.",
         "explicacion": "Es otra recomendación, pero no aborda la carga de memoria.",
         "correcta": false
       },
       {
-        "texto": "Utilizar el azul como color de fondo.",
+        "texto": "Utilizar el azul como color de fondo de la pantalla y reservar los tonos cálidos para los elementos principales.",
         "explicacion": "Es una regla de Marcus sobre el color, ajena al problema.",
         "correcta": false
       },
       {
-        "texto": "Diseñar primero en blanco y negro.",
+        "texto": "Diseñar primero la interfaz en blanco y negro y añadir el color solo al final del proceso de diseño.",
         "explicacion": "Es una sugerencia sobre el color, no sobre la memorización.",
         "correcta": false
       }
@@ -6773,17 +6773,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Ambas son l10n porque afectan a lo que ve el usuario.",
+        "texto": "Ambas son l10n porque las dos decisiones afectan a lo que ve el usuario y dependen de su país.",
         "explicacion": "Evitar formatos fijos en código es una decisión de internacionalización.",
         "correcta": false
       },
       {
-        "texto": "La primera es traducción; la segunda, accesibilidad.",
+        "texto": "La primera es traducción de textos; la segunda, una medida de accesibilidad para usuarios con discapacidad.",
         "explicacion": "Ninguna decisión se refiere necesariamente a traducir texto o a accesibilidad.",
         "correcta": false
       },
       {
-        "texto": "La primera es l10n y la segunda i18n.",
+        "texto": "La primera es l10n, porque trabaja con cadenas; la segunda es i18n, porque cambia un formato regional.",
         "explicacion": "Se han intercambiado la preparación general y la adaptación concreta.",
         "correcta": false
       }
@@ -6804,17 +6804,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La internacionalización se completó porque el texto ya está traducido.",
+        "texto": "La internacionalización se completó porque el texto ya está traducido a árabe y el resto es un ajuste visual menor.",
         "explicacion": "La traducción por sí sola no prepara ni adapta toda la interfaz.",
         "correcta": false
       },
       {
-        "texto": "Solo hay que aumentar el tamaño de fuente; la dirección visual no cambia.",
+        "texto": "Solo hay que aumentar el tamaño de fuente de las etiquetas; la dirección visual de la navegación no cambia.",
         "explicacion": "Para RTL debe adaptarse la dirección y disposición cuando el contenido lo requiera.",
         "correcta": false
       },
       {
-        "texto": "Es un problema de contraste, no de localización.",
+        "texto": "Es un problema de contraste y legibilidad de las etiquetas, no de localización ni de dirección de lectura.",
         "explicacion": "El caso describe dirección y ajuste del contenido, no contraste.",
         "correcta": false
       }
@@ -6835,17 +6835,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Internacionalización: elimina toda imagen del sistema.",
+        "texto": "Internacionalización: elimina toda imagen del sistema para que ningún elemento gráfico dependa de la cultura.",
         "explicacion": "No es necesario eliminar imágenes; i18n prepara el producto para poder adaptarlas.",
         "correcta": false
       },
       {
-        "texto": "Traducción literal: cambia el texto sin tocar la imagen.",
+        "texto": "Traducción literal: cambia el texto al idioma del público sin tocar la imagen ni su significado cultural.",
         "explicacion": "La decisión trata de significado cultural de la iconografía.",
         "correcta": false
       },
       {
-        "texto": "Accesibilidad: hace que el gesto se pueda usar con teclado.",
+        "texto": "Accesibilidad: hace que el gesto se pueda usar con teclado y con lectores de pantalla en lugar de con el ratón.",
         "explicacion": "El caso no describe un problema de operación o percepción accesible.",
         "correcta": false
       }
@@ -6928,17 +6928,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Debe usar solo el alfabeto latino.",
+        "texto": "Debe usar solo el alfabeto latino para que sus mensajes se muestren igual en cualquier región.",
         "explicacion": "La internacionalización busca soportar distintas escrituras.",
         "correcta": false
       },
       {
-        "texto": "Los mensajes deben estar siempre en inglés.",
+        "texto": "Los mensajes deben estar siempre en inglés, por ser la lengua común de los programas internacionales.",
         "explicacion": "Eso no elimina la dependencia de una lengua en el código.",
         "correcta": false
       },
       {
-        "texto": "Debe compilarse una versión distinta por país.",
+        "texto": "Debe compilarse una versión distinta del ejecutable por cada país en el que se distribuya la aplicación.",
         "explicacion": "El objetivo es adaptarse sin cambiar el código.",
         "correcta": false
       }
@@ -6959,17 +6959,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Adaptar el software a una región concreta añadiendo componentes y traduciendo texto.",
+        "texto": "Adaptar el software a una región concreta añadiendo componentes específicos, traduciendo texto y cambiando el código fuente de la aplicación.",
         "explicacion": "Esa es la definición de localización (p. 230).",
         "correcta": false
       },
       {
-        "texto": "Traducir la documentación al inglés.",
+        "texto": "Traducir la documentación y los manuales de usuario al inglés para poder distribuir el producto.",
         "explicacion": "La i18n afecta al diseño de la aplicación, no solo a la documentación.",
         "correcta": false
       },
       {
-        "texto": "Publicar la aplicación en tiendas de varios países.",
+        "texto": "Publicar la aplicación en las tiendas de varios países, con una ficha traducida en cada una de ellas.",
         "explicacion": "La distribución no implica que el producto esté preparado.",
         "correcta": false
       }
@@ -6990,17 +6990,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Diseñar el código para que no dependa de ninguna lengua.",
+        "texto": "Diseñar el código de la aplicación para que no dependa de ninguna lengua ni región, sin necesidad de modificarlo después.",
         "explicacion": "Esa es la internacionalización.",
         "correcta": false
       },
       {
-        "texto": "Detectar la ubicación GPS del usuario.",
+        "texto": "Detectar automáticamente la ubicación GPS del usuario para cambiar el idioma de la interfaz según el país donde se encuentre.",
         "explicacion": "El tema no define la localización como geolocalización.",
         "correcta": false
       },
       {
-        "texto": "Convertir todos los textos a ASCII.",
+        "texto": "Convertir todos los textos de la aplicación a ASCII para que se muestren igual en cualquier plataforma, con independencia de la región.",
         "explicacion": "ASCII se queda corto para muchos idiomas (p. 251).",
         "correcta": false
       }
@@ -7021,17 +7021,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Que es la mejor opción porque abarata el mantenimiento.",
+        "texto": "Que es la mejor opción, porque abarata el mantenimiento y evita complicar el diseño de la primera versión.",
         "explicacion": "El mantenimiento es menos costoso cuando se internacionaliza desde el principio.",
         "correcta": false
       },
       {
-        "texto": "Que es obligatorio hacerlo así para no retrasar la primera versión.",
+        "texto": "Que es obligatorio hacerlo así, porque incorporarlo durante el desarrollo retrasa siempre la primera versión del producto.",
         "explicacion": "El tema recomienda tenerla en cuenta desde el principio (p. 283).",
         "correcta": false
       },
       {
-        "texto": "Que no afecta a la estabilidad del producto.",
+        "texto": "Que no afecta a la estabilidad del producto, porque el soporte internacional es independiente del resto del programa.",
         "explicacion": "El tema señala el riesgo de menor estabilidad.",
         "correcta": false
       }
@@ -7052,17 +7052,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Cada país necesita un ejecutable distinto, lo que facilita el control.",
+        "texto": "Cada país necesita un ejecutable distinto, lo que facilita el control de versiones y reduce el coste de añadir regiones.",
         "explicacion": "Una ventaja es precisamente que el mismo ejecutable sirve para todos.",
         "correcta": false
       },
       {
-        "texto": "Reduce el mercado para centrarse en un país.",
+        "texto": "Reduce el mercado de la aplicación para centrar los esfuerzos de desarrollo en un único país concreto.",
         "explicacion": "El mercado es mayor.",
         "correcta": false
       },
       {
-        "texto": "Elimina la necesidad de traducir textos.",
+        "texto": "Elimina por completo la necesidad de traducir los textos, porque el programa los adapta automáticamente.",
         "explicacion": "La localización sigue requiriendo traducción.",
         "correcta": false
       }
@@ -7083,17 +7083,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Es opcional y solo útil para grandes empresas.",
+        "texto": "Es opcional y solo resulta útil para grandes empresas que venden sus productos en muchos mercados distintos.",
         "explicacion": "El tema la presenta como necesidad en un mercado global.",
         "correcta": false
       },
       {
-        "texto": "Se aborda al final, cuando el producto ya funciona.",
+        "texto": "Se aborda al final del proyecto, cuando el producto ya funciona y solo queda adaptar sus textos y formatos.",
         "explicacion": "Debe considerarse desde el principio.",
         "correcta": false
       },
       {
-        "texto": "Solo afecta a los sitios web.",
+        "texto": "Solo afecta a los sitios web, ya que las aplicaciones de escritorio no se distribuyen en varios países.",
         "explicacion": "Los sitios web son el caso extremo, pero no el único (p. 226).",
         "correcta": false
       }
@@ -7114,17 +7114,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Velocidad del procesador, memoria RAM y sistema de archivos.",
+        "texto": "Velocidad del procesador, memoria RAM, sistema de archivos y versión del sistema operativo del equipo.",
         "explicacion": "Son aspectos técnicos ajenos a la adaptación cultural.",
         "correcta": false
       },
       {
-        "texto": "Solo el texto de los menús.",
+        "texto": "Solo el texto de los menús y de los mensajes de error que aparecen en pantalla.",
         "explicacion": "La lista del tema es mucho más amplia.",
         "correcta": false
       },
       {
-        "texto": "El nombre del programador y la fecha de compilación.",
+        "texto": "El nombre del programador, la fecha de compilación y el número de versión que aparece en la ventana Acerca de.",
         "explicacion": "No son elementos de la interfaz a localizar.",
         "correcta": false
       }
@@ -7145,17 +7145,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Que la expresión es un problema de codificación de caracteres.",
+        "texto": "Que la expresión es un problema de codificación de caracteres que impide mostrar bien los acentos del mensaje.",
         "explicacion": "No es un problema de codificación.",
         "correcta": false
       },
       {
-        "texto": "Que basta una traducción literal para conservar el significado.",
+        "texto": "Que basta una traducción literal del mensaje para conservar el significado en cualquier cultura de destino.",
         "explicacion": "El significado cambia aunque la traducción sea correcta.",
         "correcta": false
       },
       {
-        "texto": "Que es un problema de orden de lectura.",
+        "texto": "Que es un problema de orden de lectura, porque cada región interpreta la frase en distinto sentido.",
         "explicacion": "No tiene relación con la dirección del texto.",
         "correcta": false
       }
@@ -7176,17 +7176,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Como iconos universales que no hace falta revisar.",
+        "texto": "Como iconos universales que no hace falta revisar, porque su significado es el mismo en cualquier lengua.",
         "explicacion": "Se citan precisamente porque no son universales.",
         "correcta": false
       },
       {
-        "texto": "Como iconos que solo fallan en escrituras ideográficas.",
+        "texto": "Como iconos que solo fallan en escrituras ideográficas, pero que funcionan bien en todas las lenguas alfabéticas.",
         "explicacion": "La dependencia es cultural y lingüística en general.",
         "correcta": false
       },
       {
-        "texto": "Como ejemplos de iconos arbitrarios del diseño gráfico.",
+        "texto": "Como ejemplos de iconos arbitrarios del diseño gráfico, sin vínculo alguno con una lengua o cultura concreta.",
         "explicacion": "En este tema ilustran la dependencia cultural.",
         "correcta": false
       }
@@ -7207,17 +7207,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Ninguno: el blanco significa matrimonio en todas las culturas.",
+        "texto": "Ninguno: el blanco significa matrimonio en todas las culturas, así que el fondo es adecuado también en Oriente.",
         "explicacion": "En Occidente sí, pero no en Oriente.",
         "correcta": false
       },
       {
-        "texto": "El blanco es ilegible en pantallas orientales.",
+        "texto": "El blanco es ilegible en las pantallas orientales, por lo que el texto de la felicitación no se leería bien.",
         "explicacion": "No es un problema técnico, sino cultural.",
         "correcta": false
       },
       {
-        "texto": "El rojo es el color del luto en Oriente.",
+        "texto": "El rojo es el color del luto en Oriente, así que el fondo blanco es adecuado y habría que evitar el rojo.",
         "explicacion": "Se asocia con el matrimonio.",
         "correcta": false
       }
@@ -7238,17 +7238,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Que sus colores son un estándar universal que no requiere revisión.",
+        "texto": "Que sus colores son un estándar universal que no requiere revisión, porque todas las culturas los interpretan igual.",
         "explicacion": "El tema dice lo contrario.",
         "correcta": false
       },
       {
-        "texto": "Que el verde siempre significa error.",
+        "texto": "Que el verde siempre significa error o peligro, mientras que el rojo indica que se puede continuar.",
         "explicacion": "No es lo que indica el tema.",
         "correcta": false
       },
       {
-        "texto": "Que los colores no tienen significados culturales.",
+        "texto": "Que los colores no tienen significados culturales, sino que dependen solo de la preferencia estética de cada usuario.",
         "explicacion": "Tienen significados asociados por tradición.",
         "correcta": false
       }
@@ -7269,17 +7269,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Porque todos los países usan el formato aaaa/dd/mm.",
+        "texto": "Porque todos los países usan el formato aaaa/dd/mm, y el formulario muestra un orden distinto al habitual.",
         "explicacion": "No existe tal formato común.",
         "correcta": false
       },
       {
-        "texto": "Porque las fechas no deben mostrarse nunca.",
+        "texto": "Porque las fechas no deben mostrarse nunca con números, sino siempre escritas con el nombre completo del mes.",
         "explicacion": "El problema es el formato, no mostrarlas.",
         "correcta": false
       },
       {
-        "texto": "Porque el calendario gregoriano es el único existente.",
+        "texto": "Porque el calendario gregoriano es el único existente y todos los países lo usan con idéntico formato numérico.",
         "explicacion": "El tema cita el budista, islámico, chino o hebreo.",
         "correcta": false
       }
@@ -7331,17 +7331,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Es el orden universal de todas las lenguas.",
+        "texto": "Es el orden universal de todas las lenguas, así que no hace falta revisarlo al adaptar el producto a otros países ni escrituras.",
         "explicacion": "El tema señala que no siempre es aceptable.",
         "correcta": false
       },
       {
-        "texto": "La ordenación no influye en la internacionalización.",
+        "texto": "La ordenación de las listas no influye en la internacionalización, que solo afecta a los textos visibles y a los formatos de fecha.",
         "explicacion": "Es un tema importante y complejo.",
         "correcta": false
       },
       {
-        "texto": "Basta con ordenar los números de 9 a 0.",
+        "texto": "Basta con ordenar los números de 9 a 0 y las letras de la Z a la A, porque el criterio inverso sirve para todas las lenguas del mundo.",
         "explicacion": "No resuelve el problema de los caracteres.",
         "correcta": false
       }
@@ -7362,17 +7362,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Toda Europa, que usa millas.",
+        "texto": "Toda Europa, que usa millas y pulgadas en la mayor parte de sus países y de sus señales de tráfico.",
         "explicacion": "Europa usa el sistema métrico.",
         "correcta": false
       },
       {
-        "texto": "Ninguno: el sistema métrico es universal.",
+        "texto": "Ninguno: el sistema métrico es universal y se emplea en todos los países, así que no hay que adaptar las unidades.",
         "explicacion": "Estados Unidos es la excepción.",
         "correcta": false
       },
       {
-        "texto": "Japón, que usa pulgadas en lugar de centímetros.",
+        "texto": "Japón, que usa pulgadas y millas en lugar de centímetros y kilómetros en su vida cotidiana.",
         "explicacion": "El tema cita a Estados Unidos.",
         "correcta": false
       }
@@ -7393,17 +7393,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "El ideograma representa sonidos y la letra fonética, conceptos.",
+        "texto": "El ideograma representa sonidos de la lengua y la letra fonética, conceptos, de modo que ambos tipos de escritura se leen de forma idéntica.",
         "explicacion": "La relación está invertida.",
         "correcta": false
       },
       {
-        "texto": "Ambos representan sonidos, pero con distinto alfabeto.",
+        "texto": "Ambos representan sonidos, pero con distinto alfabeto, de modo que su única diferencia es el conjunto de símbolos.",
         "explicacion": "Los ideogramas no representan sonidos.",
         "correcta": false
       },
       {
-        "texto": "Los ideogramas solo se usan en escrituras occidentales.",
+        "texto": "Los ideogramas solo se usan en escrituras occidentales, mientras que las orientales emplean únicamente letras fonéticas.",
         "explicacion": "Se usan en el Extremo Oriente.",
         "correcta": false
       }
@@ -7424,17 +7424,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Son ideográficas y se leen de derecha a izquierda.",
+        "texto": "Son ideográficas y se leen de derecha a izquierda, con un símbolo para cada concepto, como el chino.",
         "explicacion": "Eso no corresponde a las escrituras occidentales.",
         "correcta": false
       },
       {
-        "texto": "No distinguen mayúsculas de minúsculas.",
+        "texto": "No distinguen mayúsculas de minúsculas y utilizan ideogramas para representar cada palabra completa.",
         "explicacion": "Sí las distinguen.",
         "correcta": false
       },
       {
-        "texto": "Usan numeración romana.",
+        "texto": "Usan numeración romana en lugar de la arábiga y se leen de derecha a izquierda.",
         "explicacion": "Usan numeración arábiga.",
         "correcta": false
       }
@@ -7455,17 +7455,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "En casi toda Europa occidental y América.",
+        "texto": "En casi toda Europa occidental, en América y en la mayoría de países de África y Oceanía.",
         "explicacion": "Esa es la escritura latina.",
         "correcta": false
       },
       {
-        "texto": "En China y Japón.",
+        "texto": "En China y Japón, junto con otros países del Extremo Oriente que emplean ideogramas.",
         "explicacion": "Usan escrituras basadas en caracteres ideográficos.",
         "correcta": false
       },
       {
-        "texto": "Solo en Grecia.",
+        "texto": "Solo en Grecia y en Chipre, donde se utiliza como escritura oficial exclusiva.",
         "explicacion": "Grecia usa la escritura griega.",
         "correcta": false
       }
@@ -7486,17 +7486,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Unos 128, como en ASCII.",
+        "texto": "Unos 128, tantos como los caracteres de la tabla ASCII para el inglés básico.",
         "explicacion": "ASCII es un mapa latino de 128 caracteres.",
         "correcta": false
       },
       {
-        "texto": "Unos 256, como en los mapas de un octeto.",
+        "texto": "Unos 256, tantos como caben en los mapas de caracteres de un solo octeto.",
         "explicacion": "Un octeto no basta para estas escrituras.",
         "correcta": false
       },
       {
-        "texto": "Unos 50.000, el mínimo para conversar.",
+        "texto": "Unos 50.000, que es el mínimo imprescindible para poder conversar con normalidad.",
         "explicacion": "Esa cifra corresponde al conjunto extendido.",
         "correcta": false
       }
@@ -7517,17 +7517,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "ASCII es un mapa de doble octeto para escrituras orientales.",
+        "texto": "ASCII es un mapa de doble octeto pensado para las escrituras orientales, que no incluye la ñ ni el griego.",
         "explicacion": "ASCII ocupa 128 posiciones.",
         "correcta": false
       },
       {
-        "texto": "ASCII reserva todos sus caracteres para el control.",
+        "texto": "ASCII reserva todos sus caracteres para funciones de control y deja sin posiciones libres para las letras.",
         "explicacion": "Solo los caracteres 0–31 y 127 son de control.",
         "correcta": false
       },
       {
-        "texto": "ASCII es incompatible con el alfabeto latino.",
+        "texto": "ASCII es incompatible con el alfabeto latino, por lo que no puede representar ni siquiera las vocales sin acento.",
         "explicacion": "Está basado en el alfabeto latino.",
         "correcta": false
       }
@@ -7548,17 +7548,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Un mapa de 65.536 caracteres de 16 bits.",
+        "texto": "Un mapa de 65.536 caracteres de 16 bits, pensado para escrituras ideográficas del Extremo Oriente.",
         "explicacion": "Eso corresponde al doble octeto o a Unicode.",
         "correcta": false
       },
       {
-        "texto": "Un mapa sin caracteres de control.",
+        "texto": "Un mapa sin caracteres de control, que solo contiene letras, números y signos de puntuación.",
         "explicacion": "Mantiene la base ASCII.",
         "correcta": false
       },
       {
-        "texto": "Un esquema único para todas las escrituras del mundo.",
+        "texto": "Un esquema único para todas las escrituras del mundo, con un código distinto para cada carácter.",
         "explicacion": "Cada variante ISO 8859 cubre un grupo de lenguas.",
         "correcta": false
       }
@@ -7579,17 +7579,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "ISO 8859-5.",
+        "texto": "ISO 8859-5 (cirílico).",
         "explicacion": "Corresponde al cirílico.",
         "correcta": false
       },
       {
-        "texto": "ISO 8859-7.",
+        "texto": "ISO 8859-7 (griego).",
         "explicacion": "Corresponde al griego.",
         "correcta": false
       },
       {
-        "texto": "ISO 8859-6.",
+        "texto": "ISO 8859-6 (árabe).",
         "explicacion": "Corresponde al árabe.",
         "correcta": false
       }
@@ -7610,17 +7610,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Porque se escriben de derecha a izquierda.",
+        "texto": "Porque se escriben de derecha a izquierda y el mapa de un octeto no puede invertir su orden.",
         "explicacion": "La dirección no determina el tamaño del mapa.",
         "correcta": false
       },
       {
-        "texto": "Porque no usan signos de puntuación.",
+        "texto": "Porque no usan signos de puntuación y necesitan códigos especiales para separar las palabras.",
         "explicacion": "No es el motivo.",
         "correcta": false
       },
       {
-        "texto": "Porque DBCS solo contiene caracteres de dos octetos.",
+        "texto": "Porque DBCS solo contiene caracteres de dos octetos y no puede representar las letras de un octeto.",
         "explicacion": "DBCS mezcla caracteres de 1 y 2 octetos.",
         "correcta": false
       }
@@ -7641,17 +7641,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Que ASCII ocupaba demasiada memoria.",
+        "texto": "Que ASCII ocupaba demasiada memoria en los equipos y se quería reducir el tamaño de los textos, para acelerar su transmisión por Internet.",
         "explicacion": "El problema era su escasa capacidad.",
         "correcta": false
       },
       {
-        "texto": "Que no existían escrituras fonéticas.",
+        "texto": "Que no existían escrituras fonéticas en el mundo y era necesario crear un alfabeto común que sustituyera a los ideogramas y a las lenguas locales.",
         "explicacion": "No es el problema planteado.",
         "correcta": false
       },
       {
-        "texto": "Que los mapas de un octeto eran demasiado grandes.",
+        "texto": "Que los mapas de un octeto eran demasiado grandes y ocupaban más espacio del que necesitaban los textos.",
         "explicacion": "Al contrario, eran limitados.",
         "correcta": false
       }
@@ -7672,17 +7672,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Variable, ambiguo e incompatible con ASCII.",
+        "texto": "Variable, ambiguo e incompatible con ASCII, con diferentes anchuras según la escritura utilizada.",
         "explicacion": "Es lo contrario.",
         "correcta": false
       },
       {
-        "texto": "Limitado a escrituras occidentales.",
+        "texto": "Limitado a escrituras occidentales y a alfabetos fonéticos, sin ideogramas ni símbolos técnicos.",
         "explicacion": "Cubre las escrituras más importantes del mundo.",
         "correcta": false
       },
       {
-        "texto": "Basado en secuencias de escape para cambiar de alfabeto.",
+        "texto": "Basado en secuencias de escape para cambiar de alfabeto, con códigos de longitud variable según la escritura.",
         "explicacion": "No necesita secuencias de escape.",
         "correcta": false
       }
@@ -7703,17 +7703,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Usa un mapa ISO 8859 distinto para cada párrafo.",
+        "texto": "Usa un mapa ISO 8859 distinto para cada párrafo y cambia entre ellos mediante secuencias de escape.",
         "explicacion": "Unicode es un esquema único.",
         "correcta": false
       },
       {
-        "texto": "Convierte los ideogramas en letras latinas.",
+        "texto": "Convierte los ideogramas en letras latinas mediante una transcripción fonética antes de almacenarlos.",
         "explicacion": "No transforma la escritura.",
         "correcta": false
       },
       {
-        "texto": "Solo admite símbolos técnicos de un octeto.",
+        "texto": "Solo admite símbolos técnicos de un octeto, por lo que los ideogramas deben guardarse como imágenes.",
         "explicacion": "Utiliza una codificación de 16 bits.",
         "correcta": false
       }
@@ -7765,17 +7765,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "El código de la aplicación común a todos los países.",
+        "texto": "El código de la aplicación común a todos los países, junto con las rutinas de ordenación y cálculo.",
         "explicacion": "Eso es el código de la aplicación (p. 266).",
         "correcta": false
       },
       {
-        "texto": "Solo el instalador del producto.",
+        "texto": "Solo el instalador del producto y los ficheros de configuración de cada plataforma.",
         "explicacion": "No coincide con el modelo.",
         "correcta": false
       },
       {
-        "texto": "El código fuente traducido.",
+        "texto": "El código fuente traducido al idioma de cada región, con sus funciones y variables renombradas.",
         "explicacion": "Los recursos no contienen código.",
         "correcta": false
       }
@@ -7827,17 +7827,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Mezclar los textos en el código para que no se pierdan.",
+        "texto": "Mezclar los textos con el código fuente para que no se pierdan ni se desincronicen del resto del programa, y documentar solo el ejecutable final.",
         "explicacion": "Hay que extraerlos.",
         "correcta": false
       },
       {
-        "texto": "Traducir el código fuente a cada idioma.",
+        "texto": "Traducir el código fuente a cada idioma de destino para que los programadores locales lo mantengan, con un proceso de construcción distinto para cada región.",
         "explicacion": "El código no se traduce.",
         "correcta": false
       },
       {
-        "texto": "Evitar documentar los recursos para ganar flexibilidad.",
+        "texto": "Evitar documentar los recursos del producto para ganar flexibilidad y poder cambiarlos sin control, y construir cada versión de forma manual en cada país.",
         "explicacion": "Hay que organizarlos y documentarlos.",
         "correcta": false
       }
@@ -7858,17 +7858,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Porque duplica las ventas automáticamente.",
+        "texto": "Porque duplica las ventas automáticamente al lanzar el producto en dos países de manera simultánea.",
         "explicacion": "No es el motivo dado.",
         "correcta": false
       },
       {
-        "texto": "Porque evita documentar los recursos.",
+        "texto": "Porque evita tener que documentar los recursos y organizar los ficheros de cada localización.",
         "explicacion": "También hay que documentar todos los recursos.",
         "correcta": false
       },
       {
-        "texto": "Porque así no hacen falta herramientas de localización.",
+        "texto": "Porque así no hacen falta herramientas de localización ni procesos para construir cada versión del producto.",
         "explicacion": "El tema subraya la importancia de las herramientas.",
         "correcta": false
       }
@@ -7889,17 +7889,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Un char de 8 bits limitado a ASCII.",
+        "texto": "Un char de 8 bits limitado a ASCII, sin notación especial para representar otros caracteres.",
         "explicacion": "Java usa 16 bits.",
         "correcta": false
       },
       {
-        "texto": "Un ejecutable distinto para cada región.",
+        "texto": "Un ejecutable distinto para cada región, compilado con las cadenas ya traducidas en su interior.",
         "explicacion": "Locale representa la región sin cambiar el ejecutable.",
         "correcta": false
       },
       {
-        "texto": "Que el tamaño de char siempre depende de la plataforma.",
+        "texto": "Que el tamaño de char siempre depende de la plataforma, por lo que no se puede garantizar Unicode.",
         "explicacion": "Eso ocurre en C++, no en Java.",
         "correcta": false
       }
@@ -7920,17 +7920,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Que el alemán no necesita localización.",
+        "texto": "Que el alemán no necesita localización, porque sus textos tienen el mismo tamaño que los del inglés.",
         "explicacion": "El ejemplo muestra lo contrario.",
         "correcta": false
       },
       {
-        "texto": "Que las traducciones siempre son más cortas.",
+        "texto": "Que las traducciones siempre son más cortas que el texto original, por lo que sobra espacio.",
         "explicacion": "En este caso es más larga.",
         "correcta": false
       },
       {
-        "texto": "Que hay que evitar los verbos en la interfaz.",
+        "texto": "Que hay que evitar los verbos en la interfaz, porque son los que más cambian entre idiomas.",
         "explicacion": "No es la recomendación del tema.",
         "correcta": false
       }
@@ -7982,17 +7982,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Mantener el mismo orden porque son iconos universales.",
+        "texto": "Mantener el mismo orden de izquierda a derecha, porque son iconos universales que no dependen de la escritura.",
         "explicacion": "La dirección de lectura cambia la disposición.",
         "correcta": false
       },
       {
-        "texto": "Eliminar los controles.",
+        "texto": "Eliminar los controles de navegación en la versión árabe, ya que no resultan necesarios.",
         "explicacion": "No es necesario eliminarlos.",
         "correcta": false
       },
       {
-        "texto": "Cambiar solo su color.",
+        "texto": "Cambiar solo su color y su tamaño, manteniendo el mismo orden de lectura que en la versión inglesa.",
         "explicacion": "El problema es la dirección.",
         "correcta": false
       }
@@ -8013,17 +8013,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "El 100 %, para aprovechar el espacio.",
+        "texto": "El 100 % del ancho disponible, para aprovechar al máximo el espacio de la ventana.",
         "explicacion": "No se debe llenar la barra de estado.",
         "correcta": false
       },
       {
-        "texto": "El 30 %, igual que el margen de expansión.",
+        "texto": "El 30 %, que es el mismo margen de expansión que se prevé para cualquier idioma.",
         "explicacion": "La regla de la barra es el 50 %.",
         "correcta": false
       },
       {
-        "texto": "Nada: no deben usarse barras de estado.",
+        "texto": "Nada: en un producto internacionalizado no deben usarse barras de estado, porque sus textos crecen.",
         "explicacion": "El tema da pautas para usarlas.",
         "correcta": false
       }
@@ -8044,17 +8044,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Ninguno, porque las iniciales se conservan al traducir.",
+        "texto": "Ninguno, porque las iniciales de las palabras se conservan al traducir y siguen siendo únicas en el menú.",
         "explicacion": "Las palabras cambian al traducirlas.",
         "correcta": false
       },
       {
-        "texto": "Hay que suprimir las teclas aceleradoras.",
+        "texto": "Hay que suprimir las teclas aceleradoras en todos los menús de la versión traducida.",
         "explicacion": "Basta con permitir otra tecla.",
         "correcta": false
       },
       {
-        "texto": "El menú debe superar los 80 caracteres.",
+        "texto": "El menú debe superar los 80 caracteres de anchura para que quepan todas las iniciales traducidas.",
         "explicacion": "El tema pide evitar menús densos, con un límite de 80.",
         "correcta": false
       }
@@ -8075,17 +8075,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Exigir el formato estadounidense a todos los usuarios.",
+        "texto": "Exigir el formato estadounidense de dirección a todos los usuarios, para uniformizar los datos.",
         "explicacion": "Ignora las diferencias culturales.",
         "correcta": false
       },
       {
-        "texto": "Eliminar la dirección postal.",
+        "texto": "Eliminar la dirección postal del formulario y sustituirla por un campo de texto libre.",
         "explicacion": "No resuelve el problema.",
         "correcta": false
       },
       {
-        "texto": "Traducir solo las etiquetas de los campos.",
+        "texto": "Traducir solo las etiquetas de los campos y mantener su estructura fija de calle, código postal y estado.",
         "explicacion": "El problema es la estructura, no solo el texto.",
         "correcta": false
       }
@@ -8106,17 +8106,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Solo el color de la fuente.",
+        "texto": "Solo el color de la fuente, el tipo de letra y el tamaño de los textos de la interfaz que se muestran en cada pantalla del producto.",
         "explicacion": "No es un aspecto del procesamiento de texto.",
         "correcta": false
       },
       {
-        "texto": "Únicamente la velocidad de escritura del usuario.",
+        "texto": "Únicamente la velocidad de escritura del usuario, el tiempo que tarda en completar cada campo y el número de errores de tecleo que comete.",
         "explicacion": "No figura en la guía técnica.",
         "correcta": false
       },
       {
-        "texto": "El número de ventanas abiertas.",
+        "texto": "El número de ventanas abiertas a la vez, el tamaño de la pantalla del usuario y la resolución del monitor con el que usa el producto.",
         "explicacion": "No figura en la guía técnica.",
         "correcta": false
       }
@@ -8137,17 +8137,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Que los animales deben eliminarse de las interfaces.",
+        "texto": "Que los animales deben eliminarse de las interfaces, porque su significado cambia de un país a otro.",
         "explicacion": "El tema no lo propone.",
         "correcta": false
       },
       {
-        "texto": "Que es un problema de codificación de caracteres.",
+        "texto": "Que es un problema de codificación de caracteres, porque el nombre del animal no se muestra bien.",
         "explicacion": "Es un problema cultural.",
         "correcta": false
       },
       {
-        "texto": "Que las pelotas son un símbolo político.",
+        "texto": "Que las pelotas son un símbolo político en muchas culturas y por eso conviene retirarlas de la interfaz.",
         "explicacion": "No es lo que plantea el tema.",
         "correcta": false
       }
@@ -8168,17 +8168,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Los tres son paradigmas porque describen dispositivos físicos.",
+        "texto": "Los dos ejemplos son paradigmas de interacción, porque ambos describen dispositivos físicos concretos.",
         "explicacion": "Menús y formularios son estilos; no son paradigmas por sí solos.",
         "correcta": false
       },
       {
-        "texto": "Arrastrar es un paradigma móvil y los campos, ubicuos.",
+        "texto": "Arrastrar es un paradigma móvil y los campos de formulario son un paradigma ubicuo de interacción.",
         "explicacion": "No se describe el modelo de interacción o contexto que definen esos paradigmas.",
         "correcta": false
       },
       {
-        "texto": "El menú es manipulación directa porque permite elegir una opción.",
+        "texto": "El menú de operaciones es manipulación directa, porque permite elegir una opción sin escribir ninguna orden.",
         "explicacion": "Elegir una orden en un menú no manipula directamente el objeto del dominio.",
         "correcta": false
       }
@@ -8199,17 +8199,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Los comandos son siempre mejores porque requieren menos espacio.",
+        "texto": "Los comandos son siempre mejores, porque requieren menos espacio en pantalla y se escriben con más rapidez.",
         "explicacion": "La eficiencia depende del aprendizaje, la frecuencia y el contexto.",
         "correcta": false
       },
       {
-        "texto": "Los menús son siempre mejores porque no requieren aprender nada.",
+        "texto": "Los menús son siempre mejores, porque no requieren aprender nada y sirven igual a cualquier tipo de usuario.",
         "explicacion": "También exigen reconocer y recorrer opciones.",
         "correcta": false
       },
       {
-        "texto": "La interfaz debería ocultar uno de los estilos sin evaluar a sus usuarios.",
+        "texto": "La interfaz debería ocultar uno de los dos estilos para simplificar el diseño, sin evaluar antes a sus usuarios.",
         "explicacion": "La elección necesita atender a las necesidades observadas.",
         "correcta": false
       }
@@ -8230,17 +8230,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Que cada formulario tenga un botón azul.",
+        "texto": "Que cada formulario tenga un botón azul de envío y un diseño adaptado al tamaño de la pantalla del móvil.",
         "explicacion": "El color es una decisión visual, no un paradigma.",
         "correcta": false
       },
       {
-        "texto": "Que la app esté escrita con un lenguaje específico.",
+        "texto": "Que la app esté escrita con un lenguaje de programación específico de las plataformas móviles actuales.",
         "explicacion": "La tecnología interna no define el modelo conceptual de interacción.",
         "correcta": false
       },
       {
-        "texto": "Que los campos tengan etiquetas.",
+        "texto": "Que los campos del formulario tengan etiquetas visibles y teclados adaptados al tipo de dato en cada pantalla.",
         "explicacion": "Las etiquetas son una decisión del estilo formulario.",
         "correcta": false
       }
@@ -8292,17 +8292,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Ambos son estilos porque aparecen en la interfaz.",
+        "texto": "Ambos son estilos de interacción, porque los dos aparecen en la interfaz con la que el usuario se comunica.",
         "explicacion": "Ubicuo describe un paradigma, no un control visual.",
         "correcta": false
       },
       {
-        "texto": "Ambos son paradigmas porque organizan información.",
+        "texto": "Ambos son paradigmas de interacción, porque los dos organizan la información que el usuario consulta.",
         "explicacion": "Un menú es una forma concreta de interacción.",
         "correcta": false
       },
       {
-        "texto": "Menú es un paradigma y ubicuo un dispositivo.",
+        "texto": "Menú es un paradigma de interacción y ubicuo es un dispositivo físico que el usuario lleva consigo.",
         "explicacion": "Se confunden la técnica de diálogo y el modelo de uso.",
         "correcta": false
       }
@@ -8323,17 +8323,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Todos los intercambios entre la persona y el ordenador.",
+        "texto": "Todos los intercambios de información entre la persona y el ordenador, sea cual sea el canal que utilicen y el dispositivo con el que se realicen (Norman, 1988).",
         "explicacion": "Esa es la definición de interacción (Baecker y Buxton, 1987).",
         "correcta": false
       },
       {
-        "texto": "El uso simultáneo de varios canales de comunicación.",
+        "texto": "El uso simultáneo de varios canales de comunicación, como la voz, el gesto y el tacto, durante una misma interacción con el ordenador (Oviatt, 1999).",
         "explicacion": "Esa es la interacción multimodal.",
         "correcta": false
       },
       {
-        "texto": "El modelo del que se derivan todos los sistemas de interacción.",
+        "texto": "El modelo del que se derivan todos los sistemas de interacción, desde los de sobremesa hasta los ubicuos.",
         "explicacion": "Esa es la definición de paradigma (p. 382).",
         "correcta": false
       }
@@ -8354,17 +8354,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Interfaz por línea de órdenes.",
+        "texto": "Interfaz por línea de órdenes: el usuario teclea instrucciones textuales.",
         "explicacion": "No se escriben órdenes de texto.",
         "correcta": false
       },
       {
-        "texto": "Realidad virtual.",
+        "texto": "Realidad virtual: el usuario se sumerge en un mundo tridimensional.",
         "explicacion": "No hay un entorno 3D con sensación de presencia.",
         "correcta": false
       },
       {
-        "texto": "Interacción asistida.",
+        "texto": "Interacción asistida: un agente coopera con el usuario en la tarea.",
         "explicacion": "No interviene un agente que colabore con el usuario.",
         "correcta": false
       }
@@ -8385,17 +8385,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Realidad aumentada, menús, línea de órdenes y manipulación directa.",
+        "texto": "Realidad aumentada, menús y navegación, línea de órdenes, y por último manipulación directa del escritorio.",
         "explicacion": "El orden no se corresponde con la evolución.",
         "correcta": false
       },
       {
-        "texto": "Manipulación directa, texto y realidad virtual.",
+        "texto": "Manipulación directa, texto con teclado y pantalla, menús y, por último, realidad virtual inmersiva.",
         "explicacion": "El texto fue el primer estilo de uso generalizado.",
         "correcta": false
       },
       {
-        "texto": "Computación ubicua, menús y línea de órdenes.",
+        "texto": "Computación ubicua, menús y navegación, línea de órdenes y, por último, manipulación directa.",
         "explicacion": "La computación ubicua es un paradigma reciente.",
         "correcta": false
       }
@@ -8416,17 +8416,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Se basa en arrastrar objetos visibles con un dispositivo apuntador.",
+        "texto": "Fue el primer estilo en usar un dispositivo apuntador para arrastrar objetos visibles en pantalla, con efecto inmediato de cada acción sobre ellos.",
         "explicacion": "Eso es manipulación directa.",
         "correcta": false
       },
       {
-        "texto": "Ya no se usa en ningún sistema actual.",
+        "texto": "Fue el primer estilo de uso generalizado, pero ya no se usa en ningún sistema actual porque los entornos gráficos de ventanas la sustituyeron por completo.",
         "explicacion": "El tema dice que todavía hoy está en uso.",
         "correcta": false
       },
       {
-        "texto": "Requiere que un agente interprete las intenciones del usuario.",
+        "texto": "Consiste en que un agente inteligente interprete las intenciones del usuario y actúe en su nombre en segundo plano, mediante instrucciones habladas en lenguaje cotidiano.",
         "explicacion": "Las órdenes se dan directamente.",
         "correcta": false
       }
@@ -8447,17 +8447,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Las abreviaturas son más fáciles de recordar y más lentas.",
+        "texto": "Las abreviaturas son más fáciles de recordar, aunque más lentas de ejecutar que las palabras enteras.",
         "explicacion": "La relación está invertida.",
         "correcta": false
       },
       {
-        "texto": "Todas las formas son igual de rápidas y fáciles de recordar.",
+        "texto": "Todas las formas son igual de rápidas y fáciles de recordar, por lo que no hay ningún compromiso entre ambas cualidades.",
         "explicacion": "El tema distingue entre recordar y ejecutar.",
         "correcta": false
       },
       {
-        "texto": "Las teclas de función no se usan en la línea de órdenes.",
+        "texto": "Las teclas de función no se usan en la línea de órdenes, que se limita a palabras completas y nombres de archivo.",
         "explicacion": "Son una de las formas citadas.",
         "correcta": false
       }
@@ -8478,17 +8478,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Indicación visual de la orden necesaria.",
+        "texto": "Indicación visual de la orden necesaria, ya que el sistema muestra las opciones disponibles a cada paso.",
         "explicacion": "El tema cita su ausencia como desventaja.",
         "correcta": false
       },
       {
-        "texto": "Buena gestión de errores.",
+        "texto": "Buena gestión de errores, con mensajes que explican al usuario cómo corregir cada una de las órdenes.",
         "explicacion": "La gestión de errores es pobre.",
         "correcta": false
       },
       {
-        "texto": "Que no requiere memorización.",
+        "texto": "Que no requiere memorización de órdenes, ya que cualquier instrucción puede escribirse con lenguaje cotidiano.",
         "explicacion": "Requiere gran memorización y entrenamiento.",
         "correcta": false
       }
@@ -8509,17 +8509,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Que ocupa demasiado espacio en la interfaz.",
+        "texto": "Que ocupa demasiado espacio en la interfaz y deja poco sitio para mostrar el resultado de las órdenes.",
         "explicacion": "Esa desventaja corresponde a los menús.",
         "correcta": false
       },
       {
-        "texto": "Que se necesitan muchos recursos gráficos.",
+        "texto": "Que se necesitan muchos recursos gráficos del equipo para representar los caracteres de cada instrucción.",
         "explicacion": "Es un problema de la manipulación directa.",
         "correcta": false
       },
       {
-        "texto": "Que produce cansancio por el casco.",
+        "texto": "Que produce cansancio físico por el casco de visualización que debe llevar el usuario durante la sesión.",
         "explicacion": "Es un problema de la realidad virtual.",
         "correcta": false
       }
@@ -8602,17 +8602,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Acceso directo a la funcionalidad y capacidad de macros.",
+        "texto": "Acceso directo a la funcionalidad, flexibilidad y capacidad de grabar macros para repetir secuencias de acciones.",
         "explicacion": "Son ventajas de la línea de órdenes.",
         "correcta": false
       },
       {
-        "texto": "Simulaciones imposibles en otro estilo.",
+        "texto": "Simulaciones imposibles en otro estilo, como entrenar situaciones peligrosas sin riesgo para el usuario.",
         "explicacion": "Es el beneficio de la realidad virtual.",
         "correcta": false
       },
       {
-        "texto": "Ocupan poco espacio en la interfaz.",
+        "texto": "Ocupan poco espacio en la interfaz y permiten acceder a cualquier función sin recorrer los niveles.",
         "explicacion": "El tema dice que ocupan mucho.",
         "correcta": false
       }
@@ -8695,17 +8695,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Porque graba todas las palabras posibles.",
+        "texto": "Porque graba todas las palabras posibles con voces humanas y las almacena para reproducirlas cuando se necesitan.",
         "explicacion": "Esa es la concatenación, y no permite un vocabulario indefinido.",
         "correcta": false
       },
       {
-        "texto": "Porque usa directamente voz humana.",
+        "texto": "Porque usa directamente voz humana grabada, que se concatena según el texto que debe pronunciarse.",
         "explicacion": "No utiliza voz humana directamente.",
         "correcta": false
       },
       {
-        "texto": "Porque se entrena con la voz de cada usuario.",
+        "texto": "Porque se entrena con la voz de cada usuario durante varias sesiones, hasta cubrir todo su vocabulario.",
         "explicacion": "El entrenamiento corresponde al reconocimiento dependiente del hablante.",
         "correcta": false
       }
@@ -8726,17 +8726,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Para dibujar diagramas de precisión.",
+        "texto": "Para dibujar diagramas de precisión, tarea que exige mirar la pantalla con continuidad y controlar el trazo.",
         "explicacion": "No es una aplicación citada.",
         "correcta": false
       },
       {
-        "texto": "Para editar una hoja de cálculo extensa con el ratón.",
+        "texto": "Para editar una hoja de cálculo extensa con el ratón, donde el usuario necesita ver las celdas y moverse entre ellas.",
         "explicacion": "No requiere síntesis de voz.",
         "correcta": false
       },
       {
-        "texto": "Para sustituir siempre a la pantalla.",
+        "texto": "Para sustituir siempre a la pantalla en cualquier aplicación, sea cual sea la tarea y el contexto de uso.",
         "explicacion": "Se usa en situaciones concretas.",
         "correcta": false
       }
@@ -8788,17 +8788,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "De vocabulario extenso a vocabulario limitado.",
+        "texto": "De vocabulario extenso y modelos generales a vocabulario limitado y dominio restringido en los sistemas actuales.",
         "explicacion": "La evolución es la contraria.",
         "correcta": false
       },
       {
-        "texto": "De modelos generales a dominios restringidos.",
+        "texto": "De modelos de propósito general en los sistemas antiguos a dominios restringidos en los actuales.",
         "explicacion": "También está invertido.",
         "correcta": false
       },
       {
-        "texto": "Ninguno: los sistemas actuales son iguales a los antiguos.",
+        "texto": "Ninguno: los sistemas actuales mantienen el mismo vocabulario limitado y el mismo dominio restringido que los antiguos.",
         "explicacion": "El tema destaca la evolución.",
         "correcta": false
       }
@@ -8819,17 +8819,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "El sonido debe ser aleatorio para llamar la atención.",
+        "texto": "El sonido debe ser aleatorio y cambiar en cada aviso, para que llame siempre la atención del operario.",
         "explicacion": "Debe guardar relación con lo que representa.",
         "correcta": false
       },
       {
-        "texto": "El sonido nunca debe usarse en interfaces.",
+        "texto": "El sonido nunca debe usarse en interfaces, porque distrae al usuario y dificulta su concentración en la tarea.",
         "explicacion": "El tema lo considera útil.",
         "correcta": false
       },
       {
-        "texto": "Solo puede usarse música, nunca sonidos naturales.",
+        "texto": "Solo puede usarse música, nunca sonidos naturales, porque estos no se relacionan con las acciones del sistema.",
         "explicacion": "El tema cita sonidos naturales y musicales.",
         "correcta": false
       }
@@ -8850,17 +8850,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Exige memorizar órdenes y sintaxis.",
+        "texto": "Exige memorizar órdenes y sintaxis exactas, de manera que el usuario debe aprender un vocabulario cerrado.",
         "explicacion": "Uno de sus beneficios es el conocimiento del propio lenguaje.",
         "correcta": false
       },
       {
-        "texto": "Obliga a usar las manos.",
+        "texto": "Obliga a usar las manos para manipular el dispositivo, lo que impide emplearlo con los ojos ocupados.",
         "explicacion": "Permite manos libres.",
         "correcta": false
       },
       {
-        "texto": "Necesita pantallas de alta resolución.",
+        "texto": "Necesita pantallas de alta resolución para mostrar el texto y los gráficos que el usuario debe consultar.",
         "explicacion": "Es un requisito de la manipulación directa.",
         "correcta": false
       }
@@ -8881,17 +8881,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Órdenes escritas con abreviaturas y teclas de función.",
+        "texto": "Órdenes escritas con abreviaturas y teclas de función, aplicadas sobre una representación textual de los objetos y con realimentación solo cuando termina cada instrucción.",
         "explicacion": "Corresponde a la línea de órdenes.",
         "correcta": false
       },
       {
-        "texto": "Un agente que actúa por propia iniciativa.",
+        "texto": "Un agente que actúa por propia iniciativa, aprende de las preferencias del usuario y toma las decisiones en su lugar en cada momento de la interacción.",
         "explicacion": "Corresponde a la interacción asistida.",
         "correcta": false
       },
       {
-        "texto": "Información superpuesta al mundo real.",
+        "texto": "Información digital superpuesta al mundo real, que el usuario consulta mientras observa su entorno mediante unas gafas o la pantalla de un dispositivo móvil.",
         "explicacion": "Corresponde a la realidad aumentada.",
         "correcta": false
       }
@@ -8943,17 +8943,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Los LLM y la IA generativa; Knowledge Navigator.",
+        "texto": "Los LLM y la IA generativa; Knowledge Navigator, el concepto de agente conversacional imaginado en los años ochenta.",
         "explicacion": "Se asocian al lenguaje natural.",
         "correcta": false
       },
       {
-        "texto": "Las redes 5G; Xerox PARC en 1991.",
+        "texto": "Las redes 5G y los dispositivos móviles; Xerox PARC en 1991, donde Weiser formuló la visión del ordenador invisible.",
         "explicacion": "Se asocian a la computación ubicua.",
         "correcta": false
       },
       {
-        "texto": "Los cascos de visualización; la Cueva.",
+        "texto": "Los cascos de visualización y los guantes de datos; la Cueva, un sistema de proyección inmersiva de realidad virtual.",
         "explicacion": "Corresponden a la realidad virtual.",
         "correcta": false
       }
@@ -8974,17 +8974,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Requiere menos recursos que cualquier otro estilo.",
+        "texto": "Requiere menos recursos del sistema que cualquier otro estilo, por lo que funciona incluso en equipos antiguos.",
         "explicacion": "El tema dice que necesita más recursos.",
         "correcta": false
       },
       {
-        "texto": "Permite describir cualquier tarea mediante objetos concretos.",
+        "texto": "Permite describir cualquier tarea mediante objetos concretos, sin importar su complejidad ni el número de elementos.",
         "explicacion": "No todas las tareas pueden describirse así.",
         "correcta": false
       },
       {
-        "texto": "El usuario delega las tareas en un agente.",
+        "texto": "El usuario delega las tareas en un agente, que las ejecuta de forma autónoma mientras él realiza otras actividades.",
         "explicacion": "Eso es interacción asistida.",
         "correcta": false
       }
@@ -9005,17 +9005,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Que las acciones no son reversibles.",
+        "texto": "Que las acciones no son reversibles y el usuario no puede deshacer lo que ha arrastrado o modificado.",
         "explicacion": "La reversibilidad es un beneficio.",
         "correcta": false
       },
       {
-        "texto": "Que el usuario no ve el resultado.",
+        "texto": "Que el usuario no ve el resultado de sus acciones hasta que el sistema termina de procesar todas las operaciones.",
         "explicacion": "El resultado es visible de inmediato.",
         "correcta": false
       },
       {
-        "texto": "Que necesita una red 5G.",
+        "texto": "Que necesita una red 5G y un servidor remoto para procesar cada uno de los objetos que se arrastran.",
         "explicacion": "No guarda relación con la manipulación directa.",
         "correcta": false
       }
@@ -9036,17 +9036,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Que la línea de órdenes ya no se usa.",
+        "texto": "Que la línea de órdenes ya no se usa y no queda ningún estilo alternativo a la manipulación directa, por lo que hace falta inventar uno nuevo para los usuarios.",
         "explicacion": "No es la motivación citada.",
         "correcta": false
       },
       {
-        "texto": "Que las pantallas gráficas son demasiado caras.",
+        "texto": "Que las pantallas gráficas son demasiado caras para la mayoría de usuarios nuevos que se incorporan al sistema, y se necesita un modo de interacción más económico y sencillo.",
         "explicacion": "No es la motivación citada.",
         "correcta": false
       },
       {
-        "texto": "Que el usuario quiere controlar todos los eventos.",
+        "texto": "Que el usuario quiere controlar personalmente todos los eventos del sistema y rechaza cualquier ayuda automática, por lo que se buscan interfaces que le den mayor control sobre cada acción.",
         "explicacion": "Precisamente se busca reducir ese esfuerzo.",
         "correcta": false
       }
@@ -9067,17 +9067,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Dirige cada evento como en la manipulación directa.",
+        "texto": "Dirige cada evento de la interacción, igual que ocurre en la manipulación directa, con ayuda de un agente.",
         "explicacion": "Ese es el rasgo que la interacción asistida cambia.",
         "correcta": false
       },
       {
-        "texto": "Escribe todas las órdenes con la sintaxis exacta.",
+        "texto": "Escribe todas las órdenes con la sintaxis exacta que exige el agente para comprender cada una de sus peticiones.",
         "explicacion": "Eso es la línea de órdenes.",
         "correcta": false
       },
       {
-        "texto": "No participa en absoluto.",
+        "texto": "No participa en absoluto: el agente decide y ejecuta todas las tareas sin ninguna intervención del usuario.",
         "explicacion": "Trabaja de forma cooperativa con el agente.",
         "correcta": false
       }
@@ -9098,17 +9098,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Un asistente, porque lo activa el usuario.",
+        "texto": "Un asistente, porque lo activa el usuario y le ayuda a organizar su correo cuando se lo pide.",
         "explicacion": "Aquí no lo ha activado el usuario.",
         "correcta": false
       },
       {
-        "texto": "Una interfaz por línea de órdenes.",
+        "texto": "Una interfaz por línea de órdenes, en la que el usuario escribe instrucciones para revisar el correo.",
         "explicacion": "No se escribe ninguna orden.",
         "correcta": false
       },
       {
-        "texto": "Un paradigma de realidad aumentada.",
+        "texto": "Un paradigma de realidad aumentada que superpone avisos de reuniones sobre el mundo real que ve el usuario.",
         "explicacion": "No superpone información al mundo real.",
         "correcta": false
       }
@@ -9160,17 +9160,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Autonomía, porque trabaja con la pantalla apagada.",
+        "texto": "Autonomía, porque trabaja en segundo plano con la pantalla apagada sin atender a las decisiones del usuario.",
         "explicacion": "La autonomía es trabajar en segundo plano observando.",
         "correcta": false
       },
       {
-        "texto": "Programabilidad de la aplicación.",
+        "texto": "Programabilidad de la aplicación: el usuario escribe reglas para que el agente mueva los correos.",
         "explicacion": "Es una propiedad de la aplicación, no del agente.",
         "correcta": false
       },
       {
-        "texto": "Manipulación directa.",
+        "texto": "Manipulación directa: el usuario arrastra el correo hasta la carpeta que prefiere.",
         "explicacion": "No se manipula ningún objeto.",
         "correcta": false
       }
@@ -9253,17 +9253,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "El agente lo activa el usuario; el asistente actúa solo.",
+        "texto": "El agente lo activa el usuario cuando lo necesita; el asistente actúa solo y por propia iniciativa.",
         "explicacion": "La relación está invertida.",
         "correcta": false
       },
       {
-        "texto": "Ninguno de los dos puede aprender del usuario.",
+        "texto": "Ninguno de los dos puede aprender del usuario ni adaptarse a sus preferencias con el uso.",
         "explicacion": "Ambos pueden aprender.",
         "correcta": false
       },
       {
-        "texto": "El asistente solo entiende órdenes escritas con sintaxis exacta.",
+        "texto": "El asistente solo entiende órdenes escritas con sintaxis exacta, mientras que el agente interpreta el lenguaje natural.",
         "explicacion": "Entiende palabras escritas o habladas y acciones gráficas.",
         "correcta": false
       }
@@ -9284,17 +9284,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Las formas de dar órdenes: menús, voz y línea de órdenes.",
+        "texto": "Las formas de dar órdenes al sistema que se derivan de los distintos estilos: menús, voz, línea de órdenes y lenguaje natural, todas ellas en entornos de sobremesa.",
         "explicacion": "Son estilos de interacción.",
         "correcta": false
       },
       {
-        "texto": "Los dispositivos de entrada: ratón, teclado y micrófono.",
+        "texto": "Los dispositivos de entrada de datos con los que el usuario interactúa: ratón, teclado, micrófono y pantalla táctil de los equipos actuales, junto a sus controladores.",
         "explicacion": "No son paradigmas.",
         "correcta": false
       },
       {
-        "texto": "Las propiedades programable, controlable y examinable.",
+        "texto": "Las propiedades programable, controlable y examinable que debe cumplir cualquier aplicación interactiva actual, junto con los estilos de interacción de cada época.",
         "explicacion": "Son propiedades para integrar agentes.",
         "correcta": false
       }
@@ -9315,17 +9315,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Superponer información digital sobre el mundo real.",
+        "texto": "Superponer información digital sobre el mundo real mediante gafas o pantallas transparentes, sin aislar al usuario del entorno ni sustituir lo que ve con un modelo tridimensional.",
         "explicacion": "Eso es realidad aumentada.",
         "correcta": false
       },
       {
-        "texto": "Integrar pequeños dispositivos en objetos cotidianos.",
+        "texto": "Integrar pequeños dispositivos conectados en objetos cotidianos del entorno, relegando el ordenador a un segundo plano y haciendo que el usuario apenas lo perciba al interactuar.",
         "explicacion": "Eso es computación ubicua.",
         "correcta": false
       },
       {
-        "texto": "Usar solo teclado y pantalla.",
+        "texto": "Usar solo teclado y pantalla, con una interacción basada en texto y sin representación tridimensional.",
         "explicacion": "No cumple las condiciones de presencia e interacción natural.",
         "correcta": false
       }
@@ -9346,17 +9346,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Es barato y no produce cansancio.",
+        "texto": "Es barato de producir y no produce cansancio, por lo que se emplea en cualquier tipo de entrenamiento.",
         "explicacion": "El tema señala lo contrario.",
         "correcta": false
       },
       {
-        "texto": "Reduce la privacidad y oculta la información.",
+        "texto": "Reduce la privacidad del usuario y oculta la información, al fusionar los dispositivos con el entorno.",
         "explicacion": "Son desventajas de la computación ubicua.",
         "correcta": false
       },
       {
-        "texto": "Exige memorizar órdenes.",
+        "texto": "Exige memorizar órdenes de texto y sus abreviaturas, sin ofrecer ninguna indicación visual al usuario.",
         "explicacion": "Es una desventaja de la línea de órdenes.",
         "correcta": false
       }
@@ -9377,17 +9377,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Trasladar al usuario a un mundo 3D generado por ordenador.",
+        "texto": "Trasladar al usuario a un mundo tridimensional generado por ordenador, aislándolo del entorno real mediante indicaciones sensoriales que producen una sensación de presencia física.",
         "explicacion": "Eso es realidad virtual.",
         "correcta": false
       },
       {
-        "texto": "Concentrar todo el procesamiento en el ordenador de sobremesa.",
+        "texto": "Concentrar todo el procesamiento en un único ordenador de sobremesa potente y conectado a la red, sin integrarlo en objetos cotidianos, para que el usuario lo controle desde un solo punto.",
         "explicacion": "Es lo contrario.",
         "correcta": false
       },
       {
-        "texto": "Sustituir los menús por órdenes de texto.",
+        "texto": "Sustituir los menús por órdenes de texto escritas con teclado, para agilizar el uso del sistema por expertos.",
         "explicacion": "No es un paradigma de ese tipo.",
         "correcta": false
       }
@@ -9408,17 +9408,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Shneiderman, 1991; representación continua de objetos.",
+        "texto": "Shneiderman, 1991; representación continua de objetos, acciones rápidas e incrementales con efecto inmediato.",
         "explicacion": "Corresponde a la manipulación directa.",
         "correcta": false
       },
       {
-        "texto": "Maes, 1994; delegación de tareas.",
+        "texto": "Maes, 1994; delegación de tareas en agentes que aprenden y actúan en nombre de cada usuario.",
         "explicacion": "Corresponde a los agentes.",
         "correcta": false
       },
       {
-        "texto": "Rekimoto, 1995; superposición de información.",
+        "texto": "Rekimoto, 1995; superposición de información digital sobre los objetos del mundo real mediante visores.",
         "explicacion": "Rekimoto compara paradigmas (p. 405).",
         "correcta": false
       }
@@ -9439,17 +9439,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Alto coste inicial y cansancio por el casco.",
+        "texto": "Alto coste inicial y cansancio por el casco, además de problemas de adaptación del usuario al entorno.",
         "explicacion": "Son problemas de la realidad virtual.",
         "correcta": false
       },
       {
-        "texto": "Que no se adapta al usuario.",
+        "texto": "Que no se adapta al usuario ni a su ubicación, ofreciendo siempre los mismos servicios a todas las personas.",
         "explicacion": "Una ventaja es que se adapta a cada usuario y tarea.",
         "correcta": false
       },
       {
-        "texto": "Que exige memorizar órdenes.",
+        "texto": "Que exige memorizar órdenes de texto para cada servicio, lo que complica su uso por el ciudadano.",
         "explicacion": "Es propio de la línea de órdenes.",
         "correcta": false
       }
@@ -9470,17 +9470,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La RA aísla al usuario del mundo real.",
+        "texto": "La RA aísla al usuario del mundo real y lo sumerge en un entorno completamente generado por el ordenador.",
         "explicacion": "Lo hace, en todo caso, la RV.",
         "correcta": false
       },
       {
-        "texto": "La RV usa el mundo como interfaz.",
+        "texto": "La RV usa el mundo real como interfaz y proyecta la información del ordenador sobre los objetos cotidianos.",
         "explicacion": "Esa idea pertenece a la RA (p. 394).",
         "correcta": false
       },
       {
-        "texto": "Ambas son idénticas.",
+        "texto": "Ambas son idénticas en sus objetivos, ya que las dos introducen al usuario en un entorno virtual tridimensional.",
         "explicacion": "El tema las presenta como paradigmas distintos.",
         "correcta": false
       }
@@ -9501,17 +9501,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Realidad virtual: sustituye la máquina por un modelo 3D.",
+        "texto": "Realidad virtual: sustituye la máquina real por un modelo tridimensional, aislando al técnico del entorno de trabajo.",
         "explicacion": "La máquina real sigue presente.",
         "correcta": false
       },
       {
-        "texto": "Línea de órdenes: escribe la avería.",
+        "texto": "Línea de órdenes: el técnico escribe la avería con el teclado y recibe instrucciones de texto en pantalla.",
         "explicacion": "No se escribe ninguna orden.",
         "correcta": false
       },
       {
-        "texto": "Ordenador de sobremesa: consulta un manual.",
+        "texto": "Ordenador de sobremesa: el técnico consulta un manual electrónico en un equipo fijo alejado de la máquina.",
         "explicacion": "La información se integra en el mundo real.",
         "correcta": false
       }
@@ -9532,17 +9532,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "Medio ambiente: usar luz y sonido como interfaces de fondo.",
+        "texto": "Medio ambiente: usar luz, sonido y otros estímulos del entorno como interfaces de fondo para transmitir información.",
         "explicacion": "No se usa el ambiente como interfaz.",
         "correcta": false
       },
       {
-        "texto": "Ordenadores corporales.",
+        "texto": "Ordenadores corporales: dispositivos que el usuario lleva puestos y que registran sus constantes vitales.",
         "explicacion": "No se lleva el ordenador encima.",
         "correcta": false
       },
       {
-        "texto": "Síntesis de voz por reglas.",
+        "texto": "Síntesis de voz por reglas: fonemas controlados que permiten articular un vocabulario indefinido.",
         "explicacion": "No es una línea de la RA.",
         "correcta": false
       }
@@ -9563,17 +9563,17 @@ const BANCO_GLOBAL = [
         "correcta": true
       },
       {
-        "texto": "La manipulación directa es siempre la mejor opción.",
+        "texto": "La manipulación directa es siempre la mejor opción, sea cual sea el problema a resolver y el usuario, y el resto de estilos acabarán desapareciendo con el tiempo.",
         "explicacion": "El tema no fija un estilo universal.",
         "correcta": false
       },
       {
-        "texto": "La línea de órdenes desaparecerá por completo.",
+        "texto": "La línea de órdenes desaparecerá por completo, porque los demás estilos la sustituirán en todos los contextos de uso, tanto de usuarios noveles como de expertos.",
         "explicacion": "El tema prevé que coexistirán.",
         "correcta": false
       },
       {
-        "texto": "El estilo depende solo del hardware disponible.",
+        "texto": "El estilo depende solo del hardware disponible en cada momento, sin que influyan los conocimientos del usuario, y el futuro pasa por elegir un único estilo dominante.",
         "explicacion": "Depende del problema y del usuario.",
         "correcta": false
       }

@@ -9,13 +9,13 @@ const BANCO = [
     ['Su delimitación es correcta siempre que el sistema tenga una interfaz gráfica.','La definición no exige una interfaz gráfica ni se limita a ella.']]],
   [0,19,'Un sistema muestra una alarma al operador, que todavía no pulsa ni dice nada. Según la definición de interacción del tema, ¿qué se puede afirmar?',[
     ['La presentación de información al operador puede constituir interacción, aunque aún no responda.','Se define como cualquier intercambio de información entre persona y ordenador; no se exige una orden previa ni una respuesta inmediata.'],
-    ['Solo habrá interacción cuando el operador actúe sobre un dispositivo de entrada.','Reduce indebidamente la interacción a la entrada de información.'],
-    ['Hay interfaz, pero no puede haber interacción mientras el flujo sea solo de salida.','La salida de información al usuario también pertenece a la interacción.'],
+    ['Solo habrá interacción cuando el operador actúe de forma explícita sobre un dispositivo de entrada del sistema.','Reduce indebidamente la interacción a la entrada de información.'],
+    ['Hay interfaz, pero no puede haber interacción mientras el flujo de información sea únicamente de salida hacia la persona.','La salida de información al usuario también pertenece a la interacción.'],
     ['Solo habrá interacción si la alarma modifica el estado interno del sistema.','La definición se refiere al intercambio de información, no a exigir una modificación interna.']]],
   [0,20,'Se propone que todos los empleados cambien radicalmente su manera de trabajar para acomodarse a una arquitectura ya decidida. ¿Qué objeción se ajusta mejor a los objetivos de la IPO?',[
     ['Se ha invertido la orientación: el sistema debe diseñarse para satisfacer los requisitos del usuario.','El tema rechaza que los usuarios tengan que cambiar radicalmente su manera de ser para adaptarse al sistema.'],
-    ['La IPO impide que los usuarios aprendan procedimientos que antes desconocían.','El tema contempla aprendizaje; no prohíbe cualquier cambio ni toda formación.'],
-    ['La arquitectura debería decidirse exclusivamente a partir de preferencias individuales.','Centrarse en requisitos no equivale a ignorar todos los demás factores.'],
+    ['La IPO impide que los usuarios aprendan procedimientos nuevos, porque su objetivo es que nadie modifique nunca su forma de trabajar.','El tema contempla aprendizaje; no prohíbe cualquier cambio ni toda formación.'],
+    ['La arquitectura debería decidirse exclusivamente a partir de las preferencias individuales de cada empleado, sin criterios comunes.','Centrarse en requisitos no equivale a ignorar todos los demás factores.'],
     ['El problema solo sería relevante si disminuyera la velocidad de ejecución.','Los objetivos incluyen seguridad, utilidad, efectividad, eficiencia y usabilidad.']]],
   [0,20,'¿Qué conjunto reproduce los objetivos de mejora de la IPO sin sustituir ninguno por una condición o un medio?',[
     ['Seguridad, utilidad, efectividad, eficiencia y usabilidad.','Es la enumeración de objetivos del tema.'],
@@ -44,8 +44,8 @@ const BANCO = [
     ['Todavía tiene sentido comprender cómo trabajan las personas que usarán el sistema.','Comprender los factores del uso sigue siendo necesario.']]],
   [1,26,'Un teclado funciona perfectamente, pero la pantalla muestra mensajes que el usuario no comprende. ¿Cuál es el diagnóstico más preciso?',[
     ['La interfaz presenta un problema de contacto cognitivo aunque el componente físico funcione.','La interfaz comprende el contacto físico y cognitivo; la comprensibilidad es parte de ella.'],
-    ['No es un problema de interfaz porque todos los dispositivos responden.','Confunde interfaz con funcionamiento del hardware.'],
-    ['Es exclusivamente un problema físico porque el mensaje aparece en una pantalla.','Que se presente físicamente no convierte su incomprensibilidad en un problema exclusivamente físico.'],
+    ['No es un problema de interfaz, porque todos los dispositivos físicos responden correctamente a las acciones del usuario.','Confunde interfaz con funcionamiento del hardware.'],
+    ['Es exclusivamente un problema físico del dispositivo, porque el mensaje incomprensible aparece en una pantalla concreta.','Que se presente físicamente no convierte su incomprensibilidad en un problema exclusivamente físico.'],
     ['La interfaz solo podrá evaluarse cuando falle también el dispositivo de entrada.','No hace falta un fallo físico para identificar un problema cognitivo.']]],
   [1,23,'¿Qué relación entre “interfaz” en general e “interfaz” en IPO es correcta?',[
     ['En general es una superficie de contacto entre entidades; en IPO estas son la persona y el ordenador.','La definición general se concreta identificando las dos entidades.'],
@@ -54,9 +54,9 @@ const BANCO = [
     ['En general exige dos máquinas; en IPO una de ellas se sustituye por una persona.','Las entidades de la definición general no tienen que ser máquinas.']]],
   [1,26,'Una aplicación sustituye el ratón por órdenes de voz y respuestas sonoras. ¿Qué afirmación está mejor respaldada por la definición amplia de interfaz?',[
     ['Sigue habiendo interfaz: hay partes del sistema con las que el usuario entra en contacto físico y cognitivo.','Teclado, ratón y pantalla son ejemplos, no requisitos que excluyan otras modalidades.'],
-    ['Ya no hay interfaz de usuario, aunque sí exista interacción.','No tener pantalla o ratón no elimina la superficie de contacto.'],
+    ['Ya no hay interfaz de usuario al desaparecer el ratón, aunque sí siga existiendo interacción mediante la voz.','No tener pantalla o ratón no elimina la superficie de contacto.'],
     ['Solo hay interfaz cognitiva: el sonido no es una forma física de contacto con el sistema.','La presentación sonora tiene una dimensión física, además de su interpretación.'],
-    ['La interfaz pasa a ser únicamente el algoritmo de reconocimiento de voz.','La interfaz no se identifica solo con un algoritmo interno.']]],
+    ['La interfaz pasa a ser únicamente el algoritmo de reconocimiento de voz, ya que el usuario deja de tocar ningún componente.','La interfaz no se identifica solo con un algoritmo interno.']]],
   [1,25,'Un botón es grande y se ve inmediatamente, pero su etiqueta admite dos interpretaciones incompatibles. ¿Qué conclusión evita confundir visibilidad y comprensión?',[
     ['La visibilidad del control no garantiza que el usuario comprenda intuitivamente su función.','El tema destaca visibilidad y comprensión intuitiva; resolver una no demuestra la otra.'],
     ['Al ser visible, ya satisface necesariamente la dimensión cognitiva de la interfaz.','Ver un control no equivale a comprenderlo.'],
@@ -74,9 +74,9 @@ const BANCO = [
     ['Añadir más dispositivos de entrada para que la muestra física sea completa.','Más dispositivos no corrigen la omisión de la dimensión cognitiva.']]],
   [1,19,'¿Qué enunciado distingue mejor interfaz e interacción?',[
     ['La interfaz es el contacto con el sistema; la interacción es el intercambio de información entre persona y ordenador.','Combina las definiciones de las páginas 19, 23 y 26.'],
-    ['La interfaz es la entrada de información; la interacción, exclusivamente la salida.','Ninguna de las definiciones establece esa división.'],
-    ['La interfaz es lo físico; la interacción es lo cognitivo.','La propia interfaz incluye contacto físico y cognitivo.'],
-    ['La interfaz existe solo mientras el usuario está introduciendo una orden.','El concepto no se limita al instante de entrada de una orden.']]],
+    ['La interfaz es la entrada de información al sistema; la interacción, exclusivamente la salida de resultados hacia la persona.','Ninguna de las definiciones establece esa división.'],
+    ['La interfaz es siempre la parte física del sistema; la interacción es siempre y solo la parte cognitiva del usuario.','La propia interfaz incluye contacto físico y cognitivo.'],
+    ['La interfaz existe solo mientras el usuario está introduciendo activamente una orden, y desaparece al recibir la respuesta.','El concepto no se limita al instante de entrada de una orden.']]],
   [1,48,'Un diseñador identifica la interfaz con “los píxeles de las ventanas” y omite el entorno de uso. ¿Qué conclusión del tema cuestiona mejor su postura?',[
     ['La interfaz es un concepto amplio en el que hay que tener en cuenta todo el entorno.','La conclusión del tema insiste expresamente en esa amplitud.'],
     ['El entorno solo se considera después de asegurar una estética uniforme.','El tema no establece esa subordinación.'],
@@ -114,13 +114,13 @@ const BANCO = [
     ['Psicología, programación, consistencia, inteligencia artificial, ergonomía, sociología y diseño.','Consistencia es un principio; falta ingeniería del software.']]],
   [2,29,'Dos estudios usan colores. El primero analiza atención; el segundo, distinción entre colores y fatiga visual. ¿Qué asignación sigue mejor los ejemplos del tema?',[
     ['Primero psicología; segundo ergonomía, sin suponer que las aportaciones sean excluyentes.','La finalidad del estudio permite distinguir las aportaciones; usar color no las convierte en la misma.'],
-    ['Ambos exclusivamente diseño, ya que cualquier uso del color es estético.','El tema relaciona el color también con atención y salud.'],
-    ['Primero ergonomía; segundo sociología, porque la fatiga depende de grupos.','No corresponde a los objetivos descritos en los casos.'],
-    ['Ambos exclusivamente psicología, porque el color se percibe.','Ignora los aspectos ergonómicos explícitos del tema.']]],
+    ['Ambos son exclusivamente diseño, ya que cualquier uso del color en una interfaz persigue únicamente un fin estético.','El tema relaciona el color también con atención y salud.'],
+    ['Primero ergonomía; segundo sociología, porque la fatiga visual depende sobre todo de los grupos sociales de pertenencia.','No corresponde a los objetivos descritos en los casos.'],
+    ['Ambos son exclusivamente psicología, porque el color siempre se percibe y no interviene ningún otro factor.','Ignora los aspectos ergonómicos explícitos del tema.']]],
   [2,32,'¿Qué objeción es más precisa a la afirmación “el diseño aporta belleza, pero no utilidad ni usabilidad”?',[
     ['El tema lo vincula a objetos útiles y visualmente agradables y lo considera importante para programas usables.','Su aportación no es exclusivamente decorativa.'],
-    ['El diseño sustituye a las demás disciplinas cuando la interfaz tiene iconos.','La interdisciplinariedad no desaparece por incorporar iconos.'],
-    ['El diseño únicamente aporta utilidad; el aspecto visual pertenece solo a ergonomía.','El tema menciona expresamente lo visualmente agradable dentro del diseño.'],
+    ['El diseño sustituye a las demás disciplinas relacionadas cuando la interfaz incorpora iconos y elementos gráficos.','La interdisciplinariedad no desaparece por incorporar iconos.'],
+    ['El diseño únicamente aporta utilidad práctica; todo lo relativo al aspecto visual pertenece solo a la ergonomía.','El tema menciona expresamente lo visualmente agradable dentro del diseño.'],
     ['La utilidad solo puede valorarse por el lenguaje de programación elegido.','Esa equivalencia no figura en el tema.']]],
   [3,34,'Un producto funciona bien con expertos en una oficina. Se concluye que es usable para cualquier usuario y entorno. ¿Qué error de razonamiento aparece?',[
     ['Se generaliza una medida ligada a determinados usuarios, objetivos específicos y contexto de uso.','La definición de usabilidad incluye esas tres condiciones y efectividad, eficiencia y satisfacción.'],
@@ -149,9 +149,9 @@ const BANCO = [
     ['Afirmar que la operación viola necesariamente la IPO y eliminarla del sistema.','El tema contempla operaciones no interrumpibles; no impone eliminarlas.']]],
   [3,42,'Una nueva versión añade funciones pero cambia sin necesidad el significado de los controles conocidos. ¿Qué recomendación se ha incumplido más directamente?',[
     ['Añadir nuevas funcionalidades al conjunto preexistente en vez de cambiar las ya conocidas.','Es una recomendación de consistencia; también se aconseja evitar modificaciones innecesarias.'],
-    ['Evitar añadir funcionalidades nuevas a un sistema existente.','El tema permite añadirlas; recomienda conservar lo conocido.'],
-    ['Garantizar que cada mecanismo cambie de uso según el momento.','Eso contradice la definición de consistencia.'],
-    ['Permitir exclusivamente una manera de intercambiar información.','Eso restringe la flexibilidad y no es la recomendación relevante.']]],
+    ['Evitar añadir funcionalidades nuevas a un sistema ya existente, para no alterar lo que el usuario conoce de él.','El tema permite añadirlas; recomienda conservar lo conocido.'],
+    ['Garantizar que cada mecanismo de la interfaz cambie de uso según el momento, para mantener al usuario atento.','Eso contradice la definición de consistencia.'],
+    ['Permitir exclusivamente una única manera de intercambiar información entre el usuario y el sistema en toda la interfaz.','Eso restringe la flexibilidad y no es la recomendación relevante.']]],
   [3,43,'El usuario puede terminar su trabajo sin ratón y con poca batería, pero no puede corregir una acción que reconoce como errónea. ¿Qué evaluación distingue mejor las evidencias?',[
     ['Hay evidencia favorable de robustez y desfavorable de recuperabilidad.','Robustez contempla condiciones adversas; recuperabilidad permite corregir acciones reconocidas como erróneas (p. 44).'],
     ['Hay evidencia favorable de recuperabilidad y desfavorable de robustez.','Invierte los principios.'],
@@ -159,19 +159,19 @@ const BANCO = [
     ['Ambos hechos solo permiten evaluar familiaridad.','No se habla de conocimientos previos.']]],
   [3,45,'Una operación termina internamente en 0,1 s, pero el usuario recibe la indicación del nuevo estado 8 s después de iniciarla. ¿Qué intervalo interesa según la definición de tiempo de respuesta del tema?',[
     ['El que necesita el sistema para expresar el cambio de estado al usuario: en el caso, 8 s.','La definición se centra en expresar los cambios al usuario, no solo en el cálculo interno.'],
-    ['Solo los 0,1 s de ejecución interna.','Ignora el retraso de la expresión del estado al usuario.'],
-    ['El tiempo que tarda el usuario en aprender qué significa el mensaje.','Eso es aprendizaje o comprensión, no el intervalo definido.'],
+    ['Solo los 0,1 s que dura la ejecución interna de la operación, con independencia de cuándo se comunique el resultado.','Ignora el retraso de la expresión del estado al usuario.'],
+    ['El tiempo que tarda el usuario en aprender y asimilar qué significa el mensaje que recibe del sistema.','Eso es aprendizaje o comprensión, no el intervalo definido.'],
     ['Únicamente el tiempo empleado por el usuario en corregir un error posterior.','Eso no es el tiempo de respuesta del sistema.']]],
   [4,46,'Un sistema permite obtener todos los resultados requeridos, pero obliga a realizar las tareas de una forma incompatible con la que necesita el usuario. ¿Qué juicio se ajusta al principio de adecuación de las tareas?',[
     ['No basta con permitir el resultado: debe permitir las tareas y la forma en que el usuario quiere hacerlas.','La formulación del principio incorpora ambos requisitos.'],
-    ['La adecuación está plenamente satisfecha porque solo exige llegar al resultado.','Omite la forma de realizar las tareas.'],
+    ['La adecuación está plenamente satisfecha, porque este principio solo exige que el usuario llegue al resultado esperado.','Omite la forma de realizar las tareas.'],
     ['Solo hay un problema de familiaridad; la adecuación no se refiere a la forma de trabajo.','La forma de trabajo figura expresamente en adecuación.'],
-    ['Si el sistema es rápido, queda demostrada la adecuación.','Rapidez y adecuación de las tareas no son equivalentes.']]],
+    ['Si el sistema es rápido al responder y completa el resultado, queda demostrada la adecuación de las tareas.','Rapidez y adecuación de las tareas no son equivalentes.']]],
   [4,47,'Para ejecutar una función poco frecuente hay que memorizar un código arbitrario y una abreviatura complicada. ¿Qué rediseño responde más directamente a la recomendación inequívoca de la diapositiva 47?',[
     ['Permitir identificar la función mediante opciones comprensibles, sin exigir recordar esos códigos.','La diapositiva indica que no se deben tener que recordar abreviaturas y códigos complicados. Su frase sobre reconocimiento y recuerdo es poco clara; aquí se usa la recomendación explícita.'],
-    ['Acortar el código, pero mantener una abreviatura complicada que debe memorizarse.','Puede aliviar algo, pero mantiene la exigencia que el tema desaconseja.'],
-    ['Ejecutar el código más rápido sin modificar cómo se selecciona la función.','Mejora potencialmente respuesta, pero no elimina la carga de recordar el código.'],
-    ['Cambiar el código en cada sesión para que el usuario no dependa de hábitos.','Aumenta la dificultad de recuerdo y perjudica la consistencia.']]],
+    ['Acortar el código de la función, pero mantener una abreviatura complicada que sigue obligando al usuario a memorizarla.','Puede aliviar algo, pero mantiene la exigencia que el tema desaconseja.'],
+    ['Ejecutar el código más rápido en el sistema, sin modificar en absoluto cómo selecciona la función el usuario.','Mejora potencialmente respuesta, pero no elimina la carga de recordar el código.'],
+    ['Cambiar el código en cada sesión para que el usuario no dependa de hábitos adquiridos con el uso anterior.','Aumenta la dificultad de recuerdo y perjudica la consistencia.']]],
   [4,37,'Una aplicación tiene muchas funciones y una apariencia atractiva, pero obliga a dedicar más atención a manejarla que a resolver la tarea. ¿Qué criterio del tema pone en duda su usabilidad?',[
     ['Una aplicación usable permite centrarse en la tarea, no en la aplicación.','La riqueza funcional o estética no sustituye ese criterio.'],
     ['Una aplicación usable debe carecer de funciones avanzadas.','El tema no exige renunciar a ellas.'],
@@ -179,24 +179,24 @@ const BANCO = [
     ['Una aplicación usable obliga a dominar toda la herramienta antes de realizar tareas.','Se busca un tiempo mínimo hasta el uso productivo.']]],
   [4,39,'Los principiantes llegan pronto a un uso productivo, pero los usuarios intermedios no reciben ayuda para avanzar. ¿Cuál es la valoración más precisa de la facilidad de aprendizaje descrita en el tema?',[
     ['Se atiende el inicio, pero queda desatendida la ayuda a usuarios intermedios para alcanzar un uso máximo.','La facilidad de aprendizaje no se agota en el primer contacto.'],
-    ['Está completamente atendida: el tema solo menciona usuarios sin experiencia.','También menciona explícitamente a los intermedios.'],
-    ['Está ausente por completo: el éxito inicial no constituye ninguna evidencia.','El tiempo hasta el uso productivo sí es parte del principio.'],
-    ['El único principio implicado es capacidad de sustitución.','No hay valores equivalentes en el caso.']]],
+    ['Está completamente atendida, porque el tema solo menciona la llegada productiva de los usuarios sin experiencia previa.','También menciona explícitamente a los intermedios.'],
+    ['Está ausente por completo, ya que el éxito inicial de los principiantes no constituye ninguna evidencia de aprendizaje.','El tiempo hasta el uso productivo sí es parte del principio.'],
+    ['El único principio implicado en este caso es la capacidad de sustitución, sin relación con la facilidad de aprendizaje.','No hay valores equivalentes en el caso.']]],
   [4,41,'Un botón Deshacer devuelve el estado anterior tras una equivocación. Un alumno dice “es control del usuario”; otro dice “es recuperabilidad”. ¿Qué respuesta respeta mejor el tema?',[
     ['Ambas lecturas son compatibles: Deshacer se recomienda para el control y permite corregir la acción errónea.','Control del usuario incluye deshacer (p. 41); recuperabilidad permite corregir errores reconocidos (p. 44). Los principios pueden solaparse.'],
-    ['Solo control: recuperabilidad exige que el sistema corrija sin intervención humana.','La definición de recuperabilidad no exige automatismo.'],
-    ['Solo recuperabilidad: el tema excluye Deshacer de las formas de dar control.','Deshacer aparece expresamente en las recomendaciones de control.'],
-    ['Ninguna: restablecer un estado es siempre capacidad de sustitución.','Sustitución se refiere a valores equivalentes, no a deshacer operaciones.']]],
+    ['Solo control: la recuperabilidad exige que sea el propio sistema quien corrija el error sin intervención humana.','La definición de recuperabilidad no exige automatismo.'],
+    ['Solo recuperabilidad: el tema excluye expresamente Deshacer de las formas de dar control al usuario sobre la interacción.','Deshacer aparece expresamente en las recomendaciones de control.'],
+    ['Ninguna de las dos: restablecer un estado anterior es siempre y solo un caso de capacidad de sustitución.','Sustitución se refiere a valores equivalentes, no a deshacer operaciones.']]],
   [4,34,'En un contexto concreto, los usuarios completan los objetivos con eficiencia, pero declaran una satisfacción muy baja. ¿Qué conclusión está justificada?',[
     ['Hay evidencias favorables en algunos componentes, pero no puede darse por plenamente satisfecha la definición de usabilidad.','La satisfacción también forma parte de la definición, junto con efectividad y eficiencia.'],
-    ['La satisfacción es irrelevante siempre que se completen las tareas.','Elimina uno de los componentes explícitos.'],
-    ['La insatisfacción demuestra que no se ha completado ningún objetivo.','Contradice el caso y confunde satisfacción con logro.'],
-    ['El resultado permite concluir lo mismo para cualquier otro contexto.','La definición está ligada a usuarios, objetivos y contexto determinados.']]],
+    ['La satisfacción es irrelevante para la usabilidad siempre que los usuarios completen las tareas con eficiencia en ese contexto.','Elimina uno de los componentes explícitos.'],
+    ['La insatisfacción declarada demuestra que los usuarios no han llegado a completar ningún objetivo en ese contexto de uso.','Contradice el caso y confunde satisfacción con logro.'],
+    ['El resultado obtenido permite concluir exactamente lo mismo para cualquier otro contexto de uso, usuario o tarea distintos.','La definición está ligada a usuarios, objetivos y contexto determinados.']]],
   [4,36,'Un dispositivo exige aprender la lógica de su tecnología interna antes de realizar una tarea cotidiana. El equipo propone acelerar el procesador sin revisar ese requisito. ¿Qué análisis se ajusta mejor al argumento de Norman recogido en el tema?',[
     ['La mejora técnica no corrige por sí sola la orientación del desarrollo hacia la tecnología en lugar del usuario.','El problema señalado es la orientación del producto; velocidad técnica y orientación al usuario son cuestiones distintas.'],
-    ['Cualquier mejora técnica garantiza que el desarrollo ya está centrado en el usuario.','La mejora puede mantener exactamente la misma exigencia problemática.'],
-    ['La IPO exige ocultar todas las funciones avanzadas, cualquiera que sea la tarea.','No se establece esa prohibición general.'],
-    ['Si el dispositivo funciona correctamente, el argumento de Norman deja de ser aplicable.','Puede funcionar técnicamente y seguir siendo difícil de usar.']]],
+    ['Cualquier mejora técnica, como un procesador más rápido, garantiza que el desarrollo ya está centrado en el usuario.','La mejora puede mantener exactamente la misma exigencia problemática.'],
+    ['La IPO exige ocultar todas las funciones avanzadas del dispositivo al usuario, cualquiera que sea la tarea que realice.','No se establece esa prohibición general.'],
+    ['Si el dispositivo funciona correctamente desde el punto de vista técnico, el argumento de Norman deja de ser aplicable.','Puede funcionar técnicamente y seguir siendo difícil de usar.']]],
   [4,38,'Considera: I) la familiaridad relaciona conocimientos previos y requeridos; II) la adaptabilidad del tema es una adecuación automática; III) la consistencia prohíbe añadir funciones. ¿Qué combinación es correcta?',[
     ['I y II son verdaderas; III es falsa.','I: p. 39. II: p. 40. III contradice p. 42, que recomienda añadir funciones al conjunto preexistente.'],
     ['I y III son verdaderas; II es falsa.','La adecuación automática sí es la definición empleada; añadir funciones no está prohibido.'],

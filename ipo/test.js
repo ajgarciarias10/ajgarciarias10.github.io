@@ -21,6 +21,7 @@ let activeScope = 'all';
 let activeTema = isGlobal ? (new URLSearchParams(location.search).get('tema') || 'all') : TEMA;
 if (isGlobal && activeTema !== 'all' && activeTema !== 'clevertracker' && !temaYaImpartido.has(activeTema)) activeTema = 'all';
 let onlyFailed = new URLSearchParams(location.search).get('fallos') === '1';
+let correctionIds = null; // identities of the questions being corrected (null = normal test)
 let currentQuestion = null;
 let currentOrder = [];
 let currentAnswer = null;
@@ -32,10 +33,27 @@ let sessionHistory = [];
 let session;
 const labelBlock = q => isGlobal ? q.bloqueNombre : BLOQUES[q.bloque];
 function getMatchingPool() {
+  if (correctionIds) return QUESTIONS.filter(q => correctionIds.has(IPOStudy.identity(q)));
   return QUESTIONS.filter(q => (isGlobal && activeTema === 'all' ? (q.tema === 'clevertracker' || temaYaImpartido.has(String(q.tema))) : (activeTema === 'all' || String(q.tema) === activeTema)) &&
     (activeScope === 'all' || q.bloque === Number(activeScope)));
 }
-function sessionKey() { return JSON.stringify([isGlobal ? 'global' : TEMA, activeTema, activeScope, onlyFailed]); }
+function sessionKey() {
+  const corr = correctionIds ? [...correctionIds].sort().join('|') : null;
+  return JSON.stringify([isGlobal ? 'global' : TEMA, activeTema, activeScope, onlyFailed, corr]);
+}
+function pendingFailures() {
+  if (!session) return [];
+  return session.ids.filter(id => IPOStudy.data.answers[id]?.correct === false);
+}
+function startCorrection() {
+  const failed = pendingFailures();
+  if (!failed.length) return;
+  correctionIds = new Set(failed);
+  onlyFailed = true;
+  if ($('filter-failed')) $('filter-failed').checked = true;
+  openSession(true);
+}
+function leaveCorrection() { correctionIds = null; }
 function openSession(fresh = false) {
   session = IPOStudy.session(sessionKey(), getMatchingPool(), onlyFailed, fresh);
   syncSession();
@@ -120,7 +138,7 @@ function renderProgress() {
       : 'No se ha podido guardar: el almacenamiento del navegador no está disponible.';
   }
   if ($('test-status')) $('test-status').textContent = session.completed
-    ? 'Test terminado. Los aciertos no se repetirán; puedes iniciar otro test con preguntas nuevas y errores pendientes.'
+    ? 'Test terminado (con o sin fallos). Puedes corregir los fallos las veces que quieras o iniciar otro test.'
     : session.ids.length < 40 ? `Hay ${session.ids.length} preguntas disponibles de las 40 previstas, sin repetir aciertos.` : 'Responde las 40 preguntas. El repaso se registra al terminar.';
   if ($('btn-reset')) {
     $('btn-reset').textContent = 'Nuevo test';
@@ -132,12 +150,21 @@ function renderProgress() {
   if ($('test-completed-banner')) {
     $('test-completed-banner').hidden = !session.completed;
     if (session.completed) {
-      $('test-completed-banner').innerHTML = `<h3 style="margin-top:0;">🎉 ¡Test completado!</h3>` +
+      const pending = pendingFailures().length;
+      const title = correctionIds ? 'Ronda de corrección terminada' : '¡Test completado!';
+      const fixMsg = pending
+        ? `<p style="margin:6px 0;">Te quedan <strong>${pending}</strong> pregunta${pending === 1 ? '' : 's'} por corregir. Puedes repasarlas cuantas veces quieras.</p>`
+        : `<p style="margin:6px 0;">🏆 No te quedan fallos pendientes en este test.</p>`;
+      $('test-completed-banner').innerHTML = `<h3 style="margin-top:0;">🎉 ${title}</h3>` +
         `<p style="margin:6px 0;"><strong>Calificación:</strong> ${(countCorrect / (session.ids.length || 1) * 10).toFixed(1)} / 10 · ${countCorrect} de ${session.ids.length} aciertos (${Math.round((countCorrect / (session.ids.length || 1)) * 100)}%)</p>` +
+        fixMsg +
         `<p class="muted" style="margin:4px 0 12px; font-size:0.9rem;">✓ Test guardado en tu historial y almacenamiento.${window.IPOAccount?.user ? ' Sincronizado en la nube.' : ' Conecta Google para sincronizarlo entre tus dispositivos.'}</p>` +
-        `<div class="actions" style="margin-top:10px;"><button type="button" id="btn-banner-download">Descargar informe del test (JSON)</button>` +
+        `<div class="actions" style="margin-top:10px;">` +
+        (pending ? `<button type="button" id="btn-banner-fix">Corregir ${pending} fallo${pending === 1 ? '' : 's'}</button>` : '') +
+        `<button type="button" class="secondary" id="btn-banner-download">Descargar informe del test (JSON)</button>` +
         (window.IPOAccount?.user ? `<button type="button" class="secondary" id="btn-banner-sync">Sincronizar progreso</button>` : `<a href="cuenta.html" class="button secondary">Conectar con Google</a>`) +
         `</div>`;
+      if ($('btn-banner-fix')) $('btn-banner-fix').onclick = startCorrection;
       if ($('btn-banner-download')) $('btn-banner-download').onclick = exportCurrentTestJSON;
       if ($('btn-banner-sync')) $('btn-banner-sync').onclick = () => { window.IPOAccount?.flush?.(); };
     }
@@ -292,9 +319,10 @@ $('gen-options').onchange = e => {
 };
 $('btn-next').onclick = nextRandomQuestion;
 $('btn-skip').hidden = true;
-$('btn-reset').onclick = () => openSession(true);
+$('btn-reset').onclick = () => { leaveCorrection(); openSession(true); };
 if ($('filter-failed')) $('filter-failed').checked = onlyFailed;
 if ($('filter-failed')) $('filter-failed').onchange = e => {
+  leaveCorrection();
   onlyFailed = e.target.checked;
   openSession();
 };
@@ -304,7 +332,7 @@ if ($('scope-selector')) {
   const scope = new URLSearchParams(location.search).get('apartado');
   if (scope !== null && BLOQUES[Number(scope)]) activeScope = scope;
   $('scope-selector').value = activeScope;
-  $('scope-selector').onchange = e => { activeScope = e.target.value; openSession(); };
+  $('scope-selector').onchange = e => { leaveCorrection(); activeScope = e.target.value; openSession(); };
 }
 document.querySelectorAll('.pill-tab').forEach(tab => {
   const theme = tab.dataset.tema;
@@ -317,7 +345,7 @@ document.querySelectorAll('.pill-tab').forEach(tab => {
     const count = QUESTIONS.filter(q => String(q.tema) === theme).length;
     tab.textContent = `Tema ${theme} (${count})`;
   }
-  if (available) tab.onclick = () => { activeTema = theme; openSession(); };
+  if (available) tab.onclick = () => { leaveCorrection(); activeTema = theme; openSession(); };
 });
 window.addEventListener('keydown', e => {
   if (['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(document.activeElement.tagName)) return;
