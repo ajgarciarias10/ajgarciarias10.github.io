@@ -17,6 +17,7 @@
     }
     const logout = panel.querySelector('[data-logout]'); if (logout) logout.hidden = !account?.user;
     const sync = panel.querySelector('[data-sync]'); if (sync) sync.hidden = !account?.user || !account.ready;
+    const download = panel.querySelector('[data-download-local]'); if (download) download.hidden = !account?.conflict;
     const recover = panel.querySelector('[data-recover]'); if (recover) recover.hidden = !account?.conflict;
     document.querySelectorAll('main > *').forEach(el => {
       if (el !== panel && el.tagName !== 'HEADER' && el.tagName !== 'SCRIPT') el.inert = Boolean(account?.conflict);
@@ -32,6 +33,7 @@
       '<div class="actions"><button type="button" data-connect>Conectar con Google</button>' +
       '<button type="button" class="secondary" data-sync hidden>Guardar / Reintentar</button>' +
       '<button type="button" class="secondary" data-import hidden>Importar mi progreso de este navegador</button>' +
+      '<button type="button" class="secondary" data-download-local hidden>Descargar copia local (JSON)</button>' +
       '<button type="button" class="secondary" data-recover hidden>Recuperar la última copia guardada</button>' +
       '<button type="button" class="ghost" data-logout hidden>Desconectar</button></div>' :
       '<div class="actions"><a class="button secondary" href="cuenta.html">Mi cuenta y progreso</a></div>');
@@ -64,6 +66,15 @@
     }; };
     action('[data-sync]', () => account.flush());
     action('[data-import]', async () => { await account.importGuest(); if (!account.dirty) location.reload(); });
+    action('[data-download-local]', () => {
+      const blob = new Blob([JSON.stringify(account.snapshot(), null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'copia-ipo-local-conflicto.json';
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
     action('[data-recover]', async () => {
       if (!confirm('Se usará la última versión guardada en Firebase. Descarga primero una copia local si quieres conservarla.')) return;
       await account.restoreCloud(); location.reload();
