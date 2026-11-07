@@ -40,7 +40,7 @@
     <p class="muted">Sigue tu ruta, estudia un tema o responde preguntas.</p>
     <div class="actions">
       <a class="button" href="generador.html">Practicar preguntas</a>
-      <a class="button secondary" href="tema-1.html">Abrir temas</a>
+      <a class="button secondary" href="temas.html">Abrir temas</a>
       <a class="button ghost" href="calendario.html">Ver mi semana</a>
     </div>
   </section>
@@ -74,7 +74,7 @@
   (function () {
     var prof = temaProfesor();
     var comp = leerCompetencias();
-    var CON_BANCO = { 1: true, 2: true, 3: true, 4: true };
+    var CON_BANCO = { 1: true, 2: true, 3: true, 4: true, 5: true, 6: true, 7: true, 8: true, 9: true, 10: true };
     function hecho(t) {
       if (!CON_BANCO[t]) return false;
       var c = comp[t] || {};
@@ -120,6 +120,7 @@
   })();
 </script>
 <script type="text/plain" data-ipo-script="preguntas-globales.js"></script>
+<script type="text/plain" data-ipo-script="preguntas-temas-5-10.js"></script>
 <script type="text/plain" data-ipo-script="progreso.js"></script>
 <script type="text/plain" data-ipo-script="repasos-semanales.js"></script>
 <script src="cuenta-arranque.js"></script>

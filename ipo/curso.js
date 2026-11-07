@@ -16,9 +16,9 @@ const TEMAS_CURSO = {
   5: { titulo: 'Internacionalización', paginas: '223–284', peso: 62, pagina: 'tema-5.html' },
   6: { titulo: 'El diseño gráfico', paginas: '285–349', peso: 65, pagina: 'tema-6.html' },
   7: { titulo: 'Estilos y paradigmas', paginas: '350–406', peso: 57, pagina: 'tema-7.html' },
-  8: { titulo: 'Accesibilidad', paginas: '407–456', peso: 50 },
-  9: { titulo: 'Evaluación', paginas: '457–515', peso: 59 },
-  10: { titulo: 'Estándares y guías de estilo', paginas: '516–602', peso: 87 }
+  8: { titulo: 'Accesibilidad', paginas: '407–456', peso: 50, pagina: 'tema-8.html' },
+  9: { titulo: 'Evaluación', paginas: '457–515', peso: 59, pagina: 'tema-9.html' },
+  10: { titulo: 'Estándares y guías de estilo', paginas: '516–602', peso: 87, pagina: 'tema-10.html' }
 };
 
 /* Planificación oficial de teoría (IPO2627.pdf, p. 15): cada clase con su tema y lección.

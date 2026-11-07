@@ -9,7 +9,7 @@ function load(store = new Map(), blocked = false) {
     localStorage: { getItem: k => { if (blocked) throw Error(); return store.get(k) || null; },
       setItem: (k, v) => { if (blocked) throw Error(); store.set(k, v); } },
     window: { dispatchEvent() {} } });
-  for (const file of ['curso.js', 'progreso.js', 'preguntas-globales.js']) vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context);
+  for (const file of ['curso.js', 'progreso.js', 'preguntas-globales.js', 'preguntas-temas-5-10.js']) vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context);
   return { app: context.window.IPOStudy, pool: vm.runInContext('BANCO_GLOBAL', context), context, store };
 }
 test('40 unique questions, answer persistence, option order and cursor restored', () => {
@@ -73,15 +73,34 @@ test('small or exhausted banks do not pad tests; unavailable storage remains usa
 });
 test('topic and global question identities match for all existing banks', () => {
   const { app, pool } = load();
-  for (const [file, tema] of [['preguntas.js', '1'], ['preguntas-tema-2.js', '2'], ['preguntas-tema-3.js', '3'], ['preguntas-tema-4.js', '4'], ['preguntas-clevertracker.js', 'clevertracker']]) {
+  for (const [file, tema] of [['preguntas.js', '1'], ['preguntas-tema-2.js', '2'], ['preguntas-tema-3.js', '3'], ['preguntas-tema-4.js', '4'], ['preguntas-tema-5.js', '5'], ['preguntas-tema-6.js', '6'], ['preguntas-tema-7.js', '7'], ['preguntas-tema-8.js', '8'], ['preguntas-tema-9.js', '9'], ['preguntas-tema-10.js', '10'], ['preguntas-clevertracker.js', 'clevertracker']]) {
     const context = vm.createContext({});
+    if (Number(tema) >= 8) vm.runInContext(fs.readFileSync(path.join(root, 'preguntas-temas-5-10.js'), 'utf8'), context);
     vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context);
     const local = vm.runInContext('BANCO', context);
     local.forEach(q => assert.ok(pool.some(g => app.identity(g) === app.identity({ ...q, tema })), `${file}: ${q.id}`));
   }
 });
-test('all six quiz pages render, reject skipping, finish and resume with saved answers', () => {
-  for (const page of ['tema-1.html','tema-2.html','tema-3.html','tema-4.html','tema-5.html','tema-6.html','tema-7.html','test-clevertracker.html','generador.html']) {
+test('all ten topics offer full banks with valid answers and source pages', () => {
+  const { pool } = load();
+  assert.equal(pool.length, 442);
+  assert.equal(new Set(pool.map(q => JSON.stringify([q.tema, q.enunciado]))).size, pool.length);
+  for (let tema = 1; tema <= 10; tema++) {
+    const questions = pool.filter(q => q.tema === String(tema));
+    assert.ok(questions.length >= 40, `Tema ${tema}: ${questions.length} preguntas`);
+    assert.equal(new Set(questions.map(q => q.bloqueIndex)).size, 5, `Tema ${tema}: apartados`);
+    questions.forEach(q => {
+      assert.equal(q.opciones.length, 4, q.enunciado);
+      assert.equal(q.opciones.filter(o => o.correcta).length, 1, q.enunciado);
+      if (q.pagina !== null && tema >= 8) {
+        const [start, end] = { 8: [407, 456], 9: [457, 515], 10: [516, 602] }[tema];
+        assert.ok(q.pagina >= start && q.pagina <= end, q.enunciado);
+      }
+    });
+  }
+});
+test('all topic quiz pages render, reject skipping, finish and resume with saved answers', () => {
+  for (const page of ['tema-1.html','tema-2.html','tema-3.html','tema-4.html','tema-5.html','tema-6.html','tema-7.html','tema-8.html','tema-9.html','tema-10.html','test-clevertracker.html','generador.html']) {
     const html = fs.readFileSync(path.join(root, page), 'utf8');
     const elements = new Map();
     const element = () => ({ classList: { add() {}, remove() {}, toggle() {} }, focus() {}, before() {},

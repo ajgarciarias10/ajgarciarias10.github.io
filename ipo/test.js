@@ -14,12 +14,9 @@ const shuffle = values => {
 const isGlobal = typeof BANCO_GLOBAL !== 'undefined';
 const QUESTIONS = isGlobal ? BANCO_GLOBAL.map(q => ({ ...q, bloque: q.bloqueIndex }))
   : BANCO.map(q => ({ ...q, tema: TEMA }));
-const sesionesTeoria = typeof SESIONES_TEORIA !== 'undefined' ? SESIONES_TEORIA : [];
-const temaYaImpartido = new Set(sesionesTeoria
-  .filter(s => s.tema && s.fecha <= fechaISO(new Date())).map(s => String(s.tema)));
 let activeScope = 'all';
 let activeTema = isGlobal ? (new URLSearchParams(location.search).get('tema') || 'all') : TEMA;
-if (isGlobal && activeTema !== 'all' && activeTema !== 'clevertracker' && !temaYaImpartido.has(activeTema)) activeTema = 'all';
+if (isGlobal && activeTema !== 'all' && !QUESTIONS.some(q => String(q.tema) === activeTema)) activeTema = 'all';
 let onlyFailed = new URLSearchParams(location.search).get('fallos') === '1';
 let correctionIds = null; // identities of the questions being corrected (null = normal test)
 const correctionKey = isGlobal ? 'global' : TEMA;
@@ -35,7 +32,7 @@ let session;
 const labelBlock = q => isGlobal ? q.bloqueNombre : BLOQUES[q.bloque];
 function getMatchingPool() {
   if (correctionIds) return QUESTIONS.filter(q => correctionIds.has(IPOStudy.identity(q)));
-  return QUESTIONS.filter(q => (isGlobal && activeTema === 'all' ? (q.tema === 'clevertracker' || temaYaImpartido.has(String(q.tema))) : (activeTema === 'all' || String(q.tema) === activeTema)) &&
+  return QUESTIONS.filter(q => (activeTema === 'all' || String(q.tema) === activeTema) &&
     (activeScope === 'all' || q.bloque === Number(activeScope)));
 }
 function sessionKey() {
@@ -361,10 +358,10 @@ if ($('scope-selector')) {
 }
 document.querySelectorAll('.pill-tab').forEach(tab => {
   const theme = tab.dataset.tema;
-  const available = theme === 'all' || theme === 'clevertracker' || temaYaImpartido.has(theme);
+  const available = theme === 'all' || QUESTIONS.some(q => String(q.tema) === theme);
   tab.hidden = !available;
   if (available && theme === 'all') {
-    const count = QUESTIONS.filter(q => q.tema === 'clevertracker' || temaYaImpartido.has(String(q.tema))).length;
+    const count = QUESTIONS.length;
     tab.textContent = `Todo (${count})`;
   } else if (available && /^\d+$/.test(theme)) {
     const count = QUESTIONS.filter(q => String(q.tema) === theme).length;

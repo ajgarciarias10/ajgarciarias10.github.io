@@ -1,6 +1,6 @@
 # Repasos y tests de IPO
 
-Los tests de los temas, CleverTracker y el generador comparten el progreso (`ipo_tests_v1`). El banco contiene 324 preguntas de IPO y CleverTracker; cada test contiene como máximo 40 preguntas disponibles. Los temas de IPO se habilitan a partir de la primera clase registrada para cada tema. Las acertadas se excluyen de nuevos tests; las falladas pueden volver a aparecer hasta que se acierten. Si no hay 40 disponibles, se indica el tamaño real del test.
+Los tests de los diez temas, CleverTracker y el generador comparten el progreso (`ipo_tests_v1`). El banco contiene 442 preguntas de IPO y CleverTracker; cada test contiene como máximo 40 preguntas disponibles. Todos los temas se pueden abrir desde `temas.html` y desde el generador mixto. Las acertadas se excluyen de nuevos tests; las falladas pueden volver a aparecer hasta que se acierten. Si no hay 40 disponibles, se indica el tamaño real del test.
 
 La sesión conserva las preguntas, el orden de las opciones, las respuestas y la posición. Cambiar de apartado o modo conserva una sesión independiente para cada filtro. El botón «Nuevo test» se habilita al terminar; los errores y los aciertos acumulados se conservan.
 
